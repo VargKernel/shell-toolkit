@@ -9,14 +9,14 @@
 
 ## Table of Contents
 
-* [Features](#-features)
-* [Compatibility](#-compatibility)
-* [Scripts Overview](#-scripts-overview)
-* [Detailed Descriptions](#-detailed-descriptions)
-* [Quick Start](#-quick-start)
-* [Important Notes](#-important-notes)
-* [Requirements](#-requirements)
-* [License](#-license)
+* [Features](##-features)
+* [Compatibility](##-compatibility)
+* [Scripts Overview](##-scripts-overview)
+* [Detailed Descriptions](##-detailed-descriptions)
+* [Quick Start](##-quick-start)
+* [Important Notes](##-important-notes)
+* [Requirements](##-requirements)
+* [License](##-license)
 
 ## Features
 
