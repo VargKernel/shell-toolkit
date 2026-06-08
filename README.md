@@ -47,8 +47,9 @@
 |---------|---------|:------------:|
 | [`server-bootstrap.sh`](#server-bootstrapsh) | Initial server setup, users, firewall, Fail2Ban | ✅ |
 | [`server-report.sh`](#server-reportsh) | Full system inventory report + archive | ✅ |
-| [`deploy-nginx.sh`](#deploy-nginxsh) | Production Nginx + optional PHP-FPM | ✅ |
+| [`deploy-nginx.sh`](#deploy-nginxsh) | Production Nginx + optional PHP-FPM, Grafana & Portainer proxy | ✅ |
 | [`deploy-grafana.sh`](#deploy-grafanash) | Grafana + Prometheus + Node Exporter via Docker | ✅ |
+| [`deploy-portainer.sh`](#deploy-portainersh) | Portainer CE container management UI via Docker | ✅ |
 | [`download-java.sh`](#download-javash) | Eclipse Temurin JDK/JRE (v8, 17, 21, 25) | ❌ |
 | [`discord-attachments-dl.sh`](#discord-attachments-dlsh) | Download attachments from Discord data export | ❌ |
 
@@ -60,6 +61,7 @@
 | `server-report.sh` | Generates a full system inventory and archive |
 | `deploy-nginx.sh` | Deploys Nginx with secure defaults |
 | `deploy-grafana.sh` | Deploys Grafana, Prometheus, and Node Exporter via Docker |
+| `deploy-portainer.sh` | Deploys Portainer CE via Docker |
 | `download-java.sh` | Downloads and installs Eclipse Temurin builds |
 | `discord-attachments-dl.sh` | Downloads Discord attachments from an export |
 | `README.md` | Project overview and usage documentation |
@@ -93,7 +95,9 @@ Deploys a hardened, production-ready Nginx web server.
 
 - Installs Nginx with an optional **PHP-FPM** integration (correct socket config)
 - Generates a clean virtual host with security headers and best practices
+- Optional **avahi-daemon** for mDNS / `.local` hostname resolution on the LAN
 - Optional **Grafana reverse proxy** endpoint at `/grafana`
+- Optional **Portainer reverse proxy** endpoint at `/portainer`
 - Configures **Firewalld** for HTTP, HTTPS, and mDNS
 - Creates a clean default `index.html`
 
@@ -104,10 +108,22 @@ Deploys a full observability stack: **Grafana + Prometheus + Node Exporter**.
 - Orchestrated via **Docker Compose** for easy lifecycle management
 - Secure credential setup with a prominent warning for default passwords
 - Pre-configured Prometheus scraping Node Exporter metrics
-- Auto-imports the popular **[Node Exporter Full](https://grafana.com/grafana/dashboards/1860)** dashboard (ID 1860)
+- Auto-imports the popular **[Node Exporter Full](https://grafana.com/grafana/dashboards/19937)** dashboard (ID 19937)
 - Supports `root_url` configuration for proxying through Nginx
 
 > **Default binding:** `127.0.0.1:3000` — use `deploy-nginx.sh` to expose it externally.
+
+### `deploy-portainer.sh`
+
+Deploys **[Portainer CE](https://www.portainer.io/)** — a lightweight web UI for managing Docker containers.
+
+- Orchestrated via **Docker Compose** with Docker socket access
+- Admin password hashed with **bcrypt** at setup time — plaintext never written to disk
+- Password stored as a **Docker secret** and passed via `--admin-password-file`
+- Secure credential setup with a prominent warning for default passwords
+- Data persisted to `/opt/portainer-stack/data`
+
+> **Default binding:** `127.0.0.1:9000` — use `deploy-nginx.sh` to expose it externally.
 
 ### `download-java.sh`
 
@@ -144,11 +160,14 @@ sudo ./server-bootstrap.sh
 # 2. Generate a full system inventory
 sudo ./server-report.sh
 
-# 3. Deploy Nginx (optionally with PHP-FPM)
+# 3. Deploy Nginx (optionally with PHP-FPM, Grafana & Portainer proxy)
 sudo ./deploy-nginx.sh
 
 # 4. Deploy the monitoring stack (requires Docker)
 sudo ./deploy-grafana.sh
+
+# 5. Deploy Portainer CE for container management (requires Docker)
+sudo ./deploy-portainer.sh
 ```
 
 Or use standalone scripts independently — each one is self-contained.
@@ -161,8 +180,9 @@ Or use standalone scripts independently — each one is self-contained.
 
 > [!IMPORTANT]
 > Grafana is bound to `127.0.0.1:3000` by default.
-> Use `deploy-nginx.sh` to create a reverse proxy for external access.
-> **Change the default Grafana admin password immediately after first login.**
+> Portainer is bound to `127.0.0.1:9000` by default.
+> Use `deploy-nginx.sh` to create reverse proxies for external access.
+> **Change default admin passwords immediately after first login.**
 
 > [!TIP]
 > Scripts are idempotent where possible, but a dry-run review (`bash -n script.sh`) before first execution is always a good idea.
@@ -173,7 +193,7 @@ Or use standalone scripts independently — each one is self-contained.
 * `bash` 5.0+
 * Root or `sudo` access
 * Internet connection (for package and Docker image downloads)
-* `docker` + `docker compose` *(only for `deploy-grafana.sh`)*
+* `docker` + `docker compose` *(only for `deploy-grafana.sh` and `deploy-portainer.sh`)*
 * `jq` *(only for `discord-attachments-dl.sh`)*
 
 ## Contributing
