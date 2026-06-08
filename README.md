@@ -118,7 +118,6 @@ Deploys a full observability stack: **Grafana + Prometheus + Node Exporter**.
 Deploys **[Portainer CE](https://www.portainer.io/)** — a lightweight web UI for managing Docker containers.
 
 - Orchestrated via **Docker Compose** with Docker socket access
-- Admin password hashed with **bcrypt** at setup time — plaintext never written to disk
 - Password stored as a **Docker secret** and passed via `--admin-password-file`
 - Secure credential setup with a prominent warning for default passwords
 - Data persisted to `/opt/portainer-stack/data`
