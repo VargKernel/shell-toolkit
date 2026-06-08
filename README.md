@@ -103,13 +103,14 @@ Deploys a hardened, production-ready Nginx web server.
 
 ### `deploy-grafana.sh`
 
-Deploys a full observability stack: **Grafana + Prometheus + Node Exporter**.
+Deploys a full observability stack: **[Grafana](https://grafana.com/) + [Prometheus](https://prometheus.io/) + [Node Exporter](https://github.com/prometheus/node_exporter)**.
 
-- Orchestrated via **Docker Compose** for easy lifecycle management
+- Managed via **Docker Compose**
 - Secure credential setup with a prominent warning for default passwords
+- Password stored as a **Docker secret** and passed via `--admin-password-file`
 - Pre-configured Prometheus scraping Node Exporter metrics
 - Auto-imports the popular **[Node Exporter Full](https://grafana.com/grafana/dashboards/19937)** dashboard (ID 19937)
-- Supports `root_url` configuration for proxying through Nginx
+- Data persisted to `/opt/grafana-stack/data`
 
 > **Default binding:** `127.0.0.1:3000` — use `deploy-nginx.sh` to expose it externally.
 
@@ -117,9 +118,9 @@ Deploys a full observability stack: **Grafana + Prometheus + Node Exporter**.
 
 Deploys **[Portainer CE](https://www.portainer.io/)** — a lightweight web UI for managing Docker containers.
 
-- Orchestrated via **Docker Compose** with Docker socket access
-- Password stored as a **Docker secret** and passed via `--admin-password-file`
+- Managed via **Docker Compose**
 - Secure credential setup with a prominent warning for default passwords
+- Password stored as a **Docker secret** and passed via `--admin-password-file`
 - Data persisted to `/opt/portainer-stack/data`
 
 > **Default binding:** `127.0.0.1:9000` — use `deploy-nginx.sh` to expose it externally.
