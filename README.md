@@ -124,6 +124,8 @@ Deploys a full observability stack: **[Grafana](https://grafana.com/) + [Prometh
 - Password stored as a **Docker secret** and passed via `--admin-password-file`
 - Pre-configured Prometheus scraping Node Exporter metrics
 - Auto-imports the popular **[Node Exporter Full](https://grafana.com/grafana/dashboards/19937)** dashboard (ID 19937)
+> [!NOTE]
+> On low-spec servers, Grafana may take longer to initialize on the first boot. If the healthcheck times out before it fully starts, the Node Exporter Full dashboard (ID 19937) won't auto-import, requiring > you to set it up manually.
 - Data persisted to `/opt/grafana-stack/data`
 
 > **Default binding:** `127.0.0.1:3000` — use `deploy-nginx.sh` to expose it externally.
