@@ -47,6 +47,7 @@
 |---------|---------|:------------:|
 | [`server-bootstrap.sh`](#server-bootstrapsh) | Initial server setup, users, firewall, Fail2Ban | ✅ |
 | [`server-report.sh`](#server-reportsh) | Full system inventory report + archive | ✅ |
+| [`system-cleanup.sh`](#system-cleanupsh) | Clean up APT cache, old kernels, logs, temp files & Docker leftovers | ✅ |
 | [`deploy-nginx.sh`](#deploy-nginxsh) | Production Nginx + optional PHP-FPM, Grafana & Portainer proxy | ✅ |
 | [`deploy-grafana.sh`](#deploy-grafanash) | Grafana + Prometheus + Node Exporter via Docker | ✅ |
 | [`deploy-portainer.sh`](#deploy-portainersh) | Portainer CE container management UI via Docker | ✅ |
@@ -59,6 +60,7 @@
 |------|-------------|
 | `server-bootstrap.sh` | Initial hardening and system setup script |
 | `server-report.sh` | Generates a full system inventory and archive |
+| `system-cleanup.sh` | Cleans up disk space and stale system files |
 | `deploy-nginx.sh` | Deploys Nginx with secure defaults |
 | `deploy-grafana.sh` | Deploys Grafana, Prometheus, and Node Exporter via Docker |
 | `deploy-portainer.sh` | Deploys Portainer CE via Docker |
@@ -88,6 +90,18 @@ Generates a comprehensive server inventory report, saved locally and archived.
 - Saves all data to `~/server-report/`
 - Packages everything into `server-report.tar.gz` for easy transfer
 - Displays a color-coded console summary with key metrics
+
+### `system-cleanup.sh`
+
+Frees up disk space by clearing caches, logs, and other safe-to-remove files.
+
+- Runs `apt-get autoremove`, `autoclean`, and `clean` to clear package leftovers
+- Detects and optionally removes **old kernel packages** (keeps the running kernel)
+- Vacuums `journald` logs and removes rotated/compressed logs in `/var/log` older than 7 days
+- Clears stale files from `/tmp` and `/var/tmp`
+- Optional **Docker cleanup**: prunes dangling images/containers/networks, with a separate confirmation for unused images and volumes
+- Clears thumbnail caches for all home directories
+- Prints a summary of freed disk space at the end
 
 ### `deploy-nginx.sh`
 
@@ -168,6 +182,9 @@ sudo ./deploy-grafana.sh
 
 # 5. Deploy Portainer CE for container management (requires Docker)
 sudo ./deploy-portainer.sh
+
+# 6. Periodically free up disk space
+sudo ./system-cleanup.sh
 ```
 
 Or use standalone scripts independently — each one is self-contained.
