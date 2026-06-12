@@ -48,24 +48,34 @@
 | [`server-bootstrap.sh`](#server-bootstrapsh) | Initial server setup, users, firewall, Fail2Ban | ✅ |
 | [`server-report.sh`](#server-reportsh) | Full system inventory report + archive | ✅ |
 | [`system-cleanup.sh`](#system-cleanupsh) | Clean up APT cache, old kernels, logs, temp files & Docker leftovers | ✅ |
+| [`update-stacks.sh`](#update-stackssh) | Pull and redeploy all Docker Compose stacks under `/opt/*` | ✅ |
 | [`deploy-nginx.sh`](#deploy-nginxsh) | Production Nginx + optional PHP-FPM, Grafana & Portainer proxy | ✅ |
 | [`deploy-grafana.sh`](#deploy-grafanash) | Grafana + Prometheus + Node Exporter via Docker | ✅ |
 | [`deploy-portainer.sh`](#deploy-portainersh) | Portainer CE container management UI via Docker | ✅ |
 | [`download-java.sh`](#download-javash) | Eclipse Temurin JDK/JRE (v8, 17, 21, 25) | ❌ |
 | [`discord-attachments-dl.sh`](#discord-attachments-dlsh) | Download attachments from Discord data export | ❌ |
+| [`git-clone-all.sh`](#git-clone-allsh) | Clone all public repositories from a GitHub user/profile | ❌ |
+| [`yt-dlp-best-format.sh`](#yt-dlp-best-formatsh) | Download best quality video as MP4 via yt-dlp | ❌ |
+| [`yt-dlp-audio-only.sh`](#yt-dlp-audio-onlysh) | Download audio only as MP3 via yt-dlp | ❌ |
+| [`yt-dlp-all-formats.sh`](#yt-dlp-all-formatssh) | Download every resolution tier (480p–8K) via yt-dlp | ❌ |
 
 ## Repository Structure
 
-| Path | Description |
+| Name | Description |
 |------|-------------|
 | `server-bootstrap.sh` | Initial hardening and system setup script |
 | `server-report.sh` | Generates a full system inventory and archive |
 | `system-cleanup.sh` | Cleans up disk space and stale system files |
+| `update-stacks.sh` | Updates and redeploys all Docker Compose stacks in `/opt/` |
 | `deploy-nginx.sh` | Deploys Nginx with secure defaults |
 | `deploy-grafana.sh` | Deploys Grafana, Prometheus, and Node Exporter via Docker |
 | `deploy-portainer.sh` | Deploys Portainer CE via Docker |
 | `download-java.sh` | Downloads and installs Eclipse Temurin builds |
 | `discord-attachments-dl.sh` | Downloads Discord attachments from an export |
+| `git-clone-all.sh` | Clones every repository belonging to a GitHub user |
+| `yt-dlp-best-format.sh` | Downloads best-quality video via yt-dlp |
+| `yt-dlp-audio-only.sh` | Downloads audio-only MP3 via yt-dlp |
+| `yt-dlp-all-formats.sh` | Downloads multiple resolution tiers via yt-dlp |
 | `README.md` | Project overview and usage documentation |
 | `LICENSE` | GNU GPL v3.0 license text |
 
@@ -102,6 +112,17 @@ Frees up disk space by clearing caches, logs, and other safe-to-remove files.
 - Optional **Docker cleanup**: prunes dangling images/containers/networks, with a separate confirmation for unused images and volumes
 - Clears thumbnail caches for all home directories
 - Prints a summary of freed disk space at the end
+
+### `update-stacks.sh`
+
+Updates and redeploys every Docker Compose stack found under `/opt/*`.
+
+- Lists currently running containers before starting
+- Iterates over each subdirectory of `/opt/`, detecting `docker-compose.yml`, `compose.yml`, `compose.yaml`, or `docker-compose.yaml`
+- Runs `docker compose pull` followed by `docker compose up -d` for each stack
+- Detects whether new images were actually pulled (vs. already up to date)
+- Skips directories with no compose file or where the pull fails
+- Prints a final summary of updated, unchanged, and skipped stacks
 
 ### `deploy-nginx.sh`
 
@@ -159,6 +180,54 @@ Downloads media attachments from a local **Discord data export**.
 - Skips already-downloaded files
 - Logs all failed downloads for review
 
+### `git-clone-all.sh`
+
+Clones every public repository belonging to a GitHub user or organization.
+
+- Usage: `./git-clone-all.sh <github-username-or-url> [target-dir]`
+- Accepts either a bare username or a full `github.com/<user>` URL
+- Paginates through the GitHub API to fetch all repositories
+- Clones each repo into the target directory (default `./repos`)
+- Skips repositories that are already cloned locally
+- No root required
+
+### `yt-dlp-best-format.sh`
+
+Downloads a video at the best available quality, merged into a single MP4.
+
+- Usage: `./yt-dlp-best-format.sh <URL> [extra yt-dlp options]`
+- Prefers `bestvideo[ext=mp4]+bestaudio[ext=m4a]`, falling back to best overall
+- Installs `jq` and `wget` dependencies automatically
+- Uses Firefox cookies and Node.js JS runtime for restricted videos
+- Retries up to 100 times with randomized sleep intervals between requests
+- Output filename includes uploader, upload date, title, and video ID
+- No root required
+
+### `yt-dlp-audio-only.sh`
+
+Downloads only the audio track and converts it to MP3.
+
+- Usage: `./yt-dlp-audio-only.sh <URL> [extra yt-dlp options]`
+- Extracts audio at the best available quality (`--audio-quality 0`)
+- Installs `jq` and `wget` dependencies automatically
+- Uses Firefox cookies and Node.js JS runtime for restricted videos
+- Retries up to 100 times with randomized sleep intervals between requests
+- Output filename includes uploader, upload date, title, and video ID
+- No root required
+
+### `yt-dlp-all-formats.sh`
+
+Downloads a video at each resolution tier up to 8K, falling back to best overall.
+
+- Usage: `./yt-dlp-all-formats.sh <URL> [extra yt-dlp options]`
+- Targets 480p, 720p, 1080p, 1440p, 2160p (4K), and 4320p (8K) tiers with `bestaudio[ext=m4a]`
+- Falls back to `best[ext=mp4]`/`best` if no matching tier is available
+- Merges output into MP4
+- Installs `jq` and `wget` dependencies automatically
+- Uses Firefox cookies and Node.js JS runtime for restricted videos
+- Output filename includes uploader, upload date, title, video ID, and resolution
+- No root required
+
 ## Quick Start
 
 ```bash
@@ -187,6 +256,9 @@ sudo ./deploy-portainer.sh
 
 # 6. Periodically free up disk space
 sudo ./system-cleanup.sh
+
+# 7. Periodically pull and redeploy updated Docker stacks
+sudo ./update-stacks.sh
 ```
 
 Or use standalone scripts independently — each one is self-contained.
@@ -212,8 +284,9 @@ Or use standalone scripts independently — each one is self-contained.
 * `bash` 5.0+
 * Root or `sudo` access
 * Internet connection (for package and Docker image downloads)
-* `docker` + `docker compose` *(only for `deploy-grafana.sh` and `deploy-portainer.sh`)*
-* `jq` *(only for `discord-attachments-dl.sh`)*
+* `docker` + `docker compose` *(only for `deploy-grafana.sh`, `deploy-portainer.sh`, and `update-stacks.sh`)*
+* `jq` *(only for `discord-attachments-dl.sh` and the `yt-dlp-*` scripts)*
+* `yt-dlp` and a Firefox profile with cookies *(only for the `yt-dlp-*` scripts)*
 
 ## Contributing
 
