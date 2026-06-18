@@ -178,7 +178,8 @@ Orchestrates a full server deployment by running four scripts in sequence from a
 - Prints a deployment plan before running and confirms before proceeding
 - Located in `workflows/deploy-server/` alongside its `.env.example` config template
 
-> **Note:** Designed for fresh deployments only — re-running on an existing system breaks prompt ordering in the subscripts.
+> [!NOTE]
+> Designed for fresh deployments only — re-running on an existing system breaks prompt ordering in the subscripts.
 
 ### `update-stacks.sh`
 
