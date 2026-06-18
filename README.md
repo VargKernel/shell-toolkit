@@ -14,6 +14,25 @@
 - [Scripts Overview](#scripts-overview)
 - [Repository Structure](#repository-structure)
 - [Detailed Descriptions](#detailed-descriptions)
+  - [server-bootstrap.sh](#server-bootstrapsh)
+  - [server-report.sh](#server-reportsh)
+  - [deploy-nginx.sh](#deploy-nginxsh)
+  - [deploy-grafana.sh](#deploy-grafanash)
+  - [deploy-portainer.sh](#deploy-portainersh)
+  - [deploy-server.sh](#deploy-serversh)
+  - [update-stacks.sh](#update-stackssh)
+  - [system-cleanup.sh](#system-cleanupsh)
+  - [bashrc-default.sh](#bashrc-defaultsh)
+  - [download-java.sh](#download-javash)
+  - [discord-attachments-dl.sh](#discord-attachments-dlsh)
+  - [git-clone-all.sh](#git-clone-allsh)
+  - [prompt-cli.sh](#prompt-clish)
+  - [yt-dlp-best-format.sh](#yt-dlp-best-formatsh)
+  - [yt-dlp-audio-only.sh](#yt-dlp-audio-onlysh)
+  - [yt-dlp-all-formats.sh](#yt-dlp-all-formatssh)
+  - [bash-qol.sh](#bash-qolsh)
+  - [oh-my-bash.sh](#oh-my-bashsh)
+  - [bash-qol-demo.sh](#bash-qol-demosh)
 - [Quick Start](#quick-start)
 - [Important Notes](#important-notes)
 - [Requirements](#requirements)
@@ -44,9 +63,10 @@
 | [`deploy-nginx.sh`](#deploy-nginxsh) | Production Nginx + optional PHP-FPM, Grafana & Portainer proxy | ✅ |
 | [`deploy-grafana.sh`](#deploy-grafanash) | Grafana + Prometheus + Node Exporter via Docker | ✅ |
 | [`deploy-portainer.sh`](#deploy-portainersh) | Portainer CE container management UI via Docker | ✅ |
+| [`deploy-server.sh`](#deploy-serversh) | Full-stack orchestrator: bootstrap → nginx → grafana → portainer from a single `.env` | ✅ |
 | [`update-stacks.sh`](#update-stackssh) | Pull and redeploy all Docker Compose stacks under `/opt/*` | ✅ |
 | [`system-cleanup.sh`](#system-cleanupsh) | Clean up APT cache, old kernels, logs, temp files & Docker leftovers | ✅ |
-| [`bashrc-default.sh`](#bashrc-defaultsh) | Reset `~/.bashrc` to the distribution default | ✅ |
+| [`bashrc-default.sh`](#bashrc-defaultsh) | Reset `~/.bashrc` to the distribution default | ❌ |
 | [`download-java.sh`](#download-javash) | Eclipse Temurin JDK/JRE installer (v8, 17, 21, 25) | ✅ |
 | [`discord-attachments-dl.sh`](#discord-attachments-dlsh) | Download attachments from Discord data export | ❌ |
 | [`git-clone-all.sh`](#git-clone-allsh) | Clone all public repositories from a GitHub user/profile | ❌ |
@@ -60,15 +80,38 @@
 
 ## Repository Structure
 
-| Path | Description |
-|------|-------------|
-| `server/` | Server deployment, monitoring, and maintenance scripts |
-| `maintenance/` | System cleanup and shell reset utilities |
-| `utilities/` | General-purpose standalone tools |
-| `yt-dlp/` | Video and audio download helpers |
-| `qol/` | Bash quality-of-life and terminal customization scripts |
-| `README.md` | Project overview and usage documentation |
-| `LICENSE` | GNU GPL v3.0 license text |
+```
+shell-toolkit/
+├── server/                          # Server deployment, monitoring, and maintenance
+│   ├── server-bootstrap.sh
+│   ├── server-report.sh
+│   ├── deploy-nginx.sh
+│   ├── deploy-grafana.sh
+│   ├── deploy-portainer.sh
+│   └── update-stacks.sh
+├── workflows/                       # Multi-step orchestrators and their config
+│   └── deploy-server/
+│       ├── deploy-server.sh
+│       └── env.example
+├── maintenance/                     # System cleanup and shell reset utilities
+│   ├── system-cleanup.sh
+│   └── bashrc-default.sh
+├── utilities/                       # General-purpose standalone tools
+│   ├── prompt-cli.sh
+│   ├── download-java.sh
+│   ├── discord-attachments-dl.sh
+│   └── git-clone-all.sh
+├── yt-dlp/                          # Video and audio download helpers
+│   ├── yt-dlp-best-format.sh
+│   ├── yt-dlp-audio-only.sh
+│   └── yt-dlp-all-formats.sh
+├── qol/                             # Bash quality-of-life and terminal customization
+│   ├── bash-qol.sh
+│   ├── oh-my-bash.sh
+│   └── bash-qol-demo.sh
+├── README.md
+└── LICENSE
+```
 
 ## Detailed Descriptions
 
@@ -87,7 +130,7 @@ Initial hardening and configuration for a fresh server.
 
 Generates a comprehensive server inventory report, saved locally and archived.
 
-- Collects hardware specs, OS info, network interfaces, active users, running services, Docker containers, Nginx vhosts, and firewall rules
+- Collects hardware specs, OS info, network interfaces, active users, running services, Docker containers, Nginx config, and firewall rules
 - Saves all data to `~/server-report/`
 - Packages everything into `server-report.tar.gz` for easy transfer
 - Displays a color-coded console summary with key metrics
@@ -124,6 +167,18 @@ Deploys **Portainer CE** — a lightweight web UI for managing Docker containers
 - Stores data under `/opt/portainer-stack/`
 
 > **Default binding:** `127.0.0.1:9000` — use `deploy-nginx.sh` to expose it externally.
+
+### `deploy-server.sh`
+
+Orchestrates a full server deployment by running four scripts in sequence from a single `.env` config file.
+
+- Validates all `.env` variables before starting — fails fast with clear errors
+- Pipes answers to each subscript via `printf`, safely handling special characters in credentials
+- Handles sudo user creation between the bootstrap and Nginx steps
+- Prints a deployment plan before running and confirms before proceeding
+- Located in `workflows/deploy-server/` alongside its `.env.example` config template
+
+> **Note:** Designed for fresh deployments only — re-running on an existing system breaks prompt ordering in the subscripts.
 
 ### `update-stacks.sh`
 
@@ -195,7 +250,7 @@ A terminal-based assistant client for the **Google Gemini API** with markdown re
 - Stores the API key in `~/.config/prompt-cli/keys.env`
 - Renders markdown directly in the terminal
 - Includes `--setup`, `--reset`, `--uninstall`, and `--help`
-- Uses the `ask` command name because `prompt` is already used by **oh-my-bash**
+- Uses the `ask` command name because `prompt` is already taken by **oh-my-bash**
 
 ### `yt-dlp-best-format.sh`
 
@@ -236,10 +291,10 @@ Downloads a video at each resolution tier up to 8K, falling back to the best ove
 
 ### `bash-qol.sh`
 
-Installs shell quality-of-life tools and configures the current user’s Bash environment.
+Installs shell quality-of-life tools and configures the current user's Bash environment.
 
-- Installs packages such as `bash-completion`, `fzf`, `zoxide`, `ripgrep`, and `bat`
-- Optionally adds the `eza` apt repository when needed
+- Installs packages such as `bash-completion`, `fzf`, `zoxide`, `ripgrep`, `bat`, and `eza`
+- Adds the official `eza` apt repository when the package is not available in distro repos
 - Updates `~/.bashrc` and `~/.inputrc` with a managed block
 - Adds aliases, completion tweaks, and history improvements
 - Designed to be re-run safely
@@ -265,13 +320,24 @@ A standalone demonstration of the Bash QOL terminal styling.
 
 ## Quick Start
 
+**1. Clone the repository and enter the project directory:**
+
 ```bash
 git clone https://github.com/VargKernel/shell-toolkit.git
 cd shell-toolkit
+```
+
+**2. Make all scripts executable:**
+
+```bash
+# This allows you to run scripts directly with ./script.sh
+# Without this step the shell will refuse to execute them
 find . -type f -name "*.sh" -exec chmod +x {} \;
 ```
 
-Run the scripts in logical order for a fresh server setup:
+**3. Choose how to proceed:**
+
+**Option A — run scripts individually** in logical order for a fresh server setup:
 
 ```bash
 # 1. Harden and configure the new server
@@ -296,7 +362,21 @@ sudo ./maintenance/system-cleanup.sh
 sudo ./server/update-stacks.sh
 ```
 
-Or use standalone scripts independently — each one is self-contained.
+**Option B — deploy the full server stack in one step** using the orchestrator:
+
+```bash
+# Enter the workflow directory
+cd workflows/deploy-server
+
+# Copy the config template and fill in your values
+cp .env.example .env
+nano .env
+
+# Run the orchestrator — it will validate the config and confirm before starting
+sudo ./deploy-server.sh
+```
+
+Each script is self-contained and can be run independently at any time.
 
 ## Important Notes
 
@@ -311,6 +391,7 @@ Or use standalone scripts independently — each one is self-contained.
 > **Change default admin passwords immediately after first login.**
 
 > [!NOTE]
+> `deploy-server.sh` is designed for **fresh deployments only** — re-running it on an existing setup will break prompt ordering in the subscripts.
 > `prompt-cli.sh` stores the Gemini API key locally in `~/.config/prompt-cli/keys.env`.
 > `bash-qol.sh` and `oh-my-bash.sh` modify shell startup files such as `~/.bashrc`.
 
@@ -323,14 +404,14 @@ Or use standalone scripts independently — each one is self-contained.
 - `bash` 5.0+
 - Root or `sudo` access for the system-level scripts
 - Internet connection for package and Docker image downloads
-- `docker` + `docker compose` *(only for `deploy-grafana.sh`, `deploy-portainer.sh`, and `update-stacks.sh`)*
+- `docker` + `docker compose` *(only for `deploy-grafana.sh`, `deploy-portainer.sh`, `update-stacks.sh`, and `deploy-server.sh`)*
 - `jq` *(only for `discord-attachments-dl.sh`, `prompt-cli.sh`, and the `yt-dlp-*` scripts)*
 - `yt-dlp` and a Firefox profile with cookies *(only for the `yt-dlp-*` scripts)*
 - A Google Gemini API key *(only for `prompt-cli.sh`)*
 
 ## Contributing
 
-Issues and Pull Requests are welcome. If a script fits the collection’s scope (server ops, monitoring, deployment, shell tooling, or useful automation), feel free to open a PR.
+Issues and Pull Requests are welcome. If a script fits the collection's scope (server ops, monitoring, deployment, shell tooling, or useful automation), feel free to open a PR.
 
 Please follow the existing code style: colored output, safety prompts, and inline English comments.
 
