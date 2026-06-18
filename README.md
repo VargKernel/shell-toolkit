@@ -52,6 +52,8 @@
 
 - **Platform:** Debian-based GNU/Linux distributions
 - **Architecture:** x86_64 / amd64
+> Most scripts are architecture-neutral (apt, Docker, Python); 
+> The exception is download-java.sh, which hardcodes x64 in the Adoptium API URL and will fail on ARM.
 - **Shell:** Bash 5.0+
 
 ## Scripts Overview
