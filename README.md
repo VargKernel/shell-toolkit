@@ -1,5 +1,3 @@
-# Shell-Toolkit
-
 > **A personal collection of Bash scripts for Debian-based x86_64 systems.**
 > Designed for server bootstrapping, monitoring stack deployment, web server setup, shell quality-of-life tweaks, media downloads, and day-to-day automation.
 
@@ -14,25 +12,6 @@
 - [Scripts Overview](#scripts-overview)
 - [Repository Structure](#repository-structure)
 - [Detailed Descriptions](#detailed-descriptions)
-  - [server-bootstrap.sh](#server-bootstrapsh)
-  - [server-report.sh](#server-reportsh)
-  - [deploy-nginx.sh](#deploy-nginxsh)
-  - [deploy-grafana.sh](#deploy-grafanash)
-  - [deploy-portainer.sh](#deploy-portainersh)
-  - [deploy-server.sh](#deploy-serversh)
-  - [update-stacks.sh](#update-stackssh)
-  - [system-cleanup.sh](#system-cleanupsh)
-  - [bashrc-default.sh](#bashrc-defaultsh)
-  - [download-java.sh](#download-javash)
-  - [discord-attachments-dl.sh](#discord-attachments-dlsh)
-  - [git-clone-all.sh](#git-clone-allsh)
-  - [prompt-cli.sh](#prompt-clish)
-  - [yt-dlp-best-format.sh](#yt-dlp-best-formatsh)
-  - [yt-dlp-audio-only.sh](#yt-dlp-audio-onlysh)
-  - [yt-dlp-all-formats.sh](#yt-dlp-all-formatssh)
-  - [bash-qol.sh](#bash-qolsh)
-  - [oh-my-bash.sh](#oh-my-bashsh)
-  - [bash-qol-demo.sh](#bash-qol-demosh)
 - [Quick Start](#quick-start)
 - [Important Notes](#important-notes)
 - [Requirements](#requirements)
@@ -52,33 +31,46 @@
 
 - **Platform:** Debian-based GNU/Linux distributions
 - **Architecture:** x86_64 / amd64
-> Most scripts are architecture-neutral (apt, Docker, Python); 
-> The exception is download-java.sh, which hardcodes x64 in the Adoptium API URL and will fail on ARM.
+> Most scripts are architecture-neutral (apt, Docker, Python);
+> The exception is `download-java.sh`, which hardcodes `x64` in the Adoptium API URL and will fail on ARM.
 - **Shell:** Bash 5.0+
 
 ## Scripts Overview
 
-| Script | Purpose | Requires Root |
-|---------|---------|:------------:|
-| [`server-bootstrap.sh`](#server-bootstrapsh) | Initial server setup, users, firewall, Fail2Ban | ✅ |
-| [`server-report.sh`](#server-reportsh) | Full system inventory report + archive | ✅ |
-| [`deploy-nginx.sh`](#deploy-nginxsh) | Production Nginx + optional PHP-FPM, Grafana & Portainer proxy | ✅ |
-| [`deploy-grafana.sh`](#deploy-grafanash) | Grafana + Prometheus + Node Exporter via Docker | ✅ |
-| [`deploy-portainer.sh`](#deploy-portainersh) | Portainer CE container management UI via Docker | ✅ |
-| [`deploy-server.sh`](#deploy-serversh) | Full-stack orchestrator: bootstrap → nginx → grafana → portainer from a single `.env` | ✅ |
-| [`update-stacks.sh`](#update-stackssh) | Pull and redeploy all Docker Compose stacks under `/opt/*` | ✅ |
-| [`system-cleanup.sh`](#system-cleanupsh) | Clean up APT cache, old kernels, logs, temp files & Docker leftovers | ✅ |
-| [`bashrc-default.sh`](#bashrc-defaultsh) | Reset `~/.bashrc` to the distribution default | ❌ |
-| [`download-java.sh`](#download-javash) | Eclipse Temurin JDK/JRE installer (v8, 17, 21, 25) | ✅ |
-| [`discord-attachments-dl.sh`](#discord-attachments-dlsh) | Download attachments from Discord data export | ❌ |
-| [`git-clone-all.sh`](#git-clone-allsh) | Clone all public repositories from a GitHub user/profile | ❌ |
-| [`prompt-cli.sh`](#prompt-clish) | Gemini-based CLI assistant with markdown rendering; exposed as `ask` | ❌ |
-| [`yt-dlp-best-format.sh`](#yt-dlp-best-formatsh) | Download best quality video as MP4 via yt-dlp | ❌ |
-| [`yt-dlp-audio-only.sh`](#yt-dlp-audio-onlysh) | Download audio only as MP3 via yt-dlp | ❌ |
-| [`yt-dlp-all-formats.sh`](#yt-dlp-all-formatssh) | Download every resolution tier (480p–8K) via yt-dlp | ❌ |
-| [`bash-qol.sh`](#bash-qolsh) | Install shell quality-of-life tools and Bash config | ✅ |
-| [`oh-my-bash.sh`](#oh-my-bashsh) | Install oh-my-bash with theme selection | ✅ |
-| [`bash-qol-demo.sh`](#bash-qol-demosh) | Demo for the Bash QOL terminal styling | ❌ |
+| Script | Purpose | Root | Idempotent |
+|--------|---------|:----:|:----------:|
+| [`server-bootstrap.sh`](#server-bootstrapsh) | Initial server setup, users, firewall, Fail2Ban | ✅ | ✅ |
+| [`server-report.sh`](#server-reportsh) | Full system inventory report + archive | ✅ | ✅ |
+| [`deploy-nginx.sh`](#deploy-nginxsh) | Production Nginx + optional PHP-FPM, Grafana & Portainer proxy | ✅ | ✅ |
+| [`deploy-grafana.sh`](#deploy-grafanash) | Grafana + Prometheus + Node Exporter via Docker | ✅ | ✅ |
+| [`deploy-portainer.sh`](#deploy-portainersh) | Portainer CE container management UI via Docker | ✅ | ✅ |
+| [`update-stacks.sh`](#update-stackssh) | Pull and redeploy all Docker Compose stacks under `/opt/*` | ✅ | ✅ |
+| [`deploy-server.sh`](#deploy-serversh) | Full-stack orchestrator: bootstrap → nginx → grafana → portainer from a single `.env` | ✅ | ❌ |
+| [`setup-dev.sh`](#setup-devsh) | Install a full C++/Python/PHP/Node dev environment + LSP servers in one step | ✅ | ✅ |
+| [`setup-flatpak.sh`](#setup-flatpaksh) | Install Flatpak + Flathub + Discord, Steam, Telegram in one step | ❌ | ✅ |
+| [`setup-pipx.sh`](#setup-pipxsh) | Install yt-dlp, gallery-dl, spotdl via pipx in one step | ❌ | ✅ |
+| [`system-cleanup.sh`](#system-cleanupsh) | Clean up APT cache, old kernels, logs, temp files & Docker leftovers | ✅ | ✅ |
+| [`browser-cleanup.sh`](#browser-cleanupsh) | Clear cache, cookies, and history for Firefox, Chrome, Chromium, and others | ❌ | ✅ |
+| [`set-bashrc-default.sh`](#set-bashrc-defaultsh) | Reset `~/.bashrc` to the distribution default | ❌ | ✅ |
+| [`create-swap-file.sh`](#create-swap-filesh) | Create and activate a swap file of any size | ✅ | ✅ |
+| [`grant-sudo.sh`](#grant-sudosh) | Add a user to the `sudo` group | ✅ | ✅ |
+| [`ufw-firewalld-migration.sh`](#ufw-firewalld-migrationsh) | Remove UFW and replace it with Firewalld | ✅ | ⚠️ |
+| [`install-virtualbox-guest-additions.sh`](#install-virtualbox-guest-additionssh) | Install VirtualBox Guest Additions from apt | ✅ | ✅ |
+| [`chmod-add-x.sh`](#chmod-add-xsh--chmod-remove-xsh) | Recursively add execute permission to `.sh` files in a path | ❌ | ✅ |
+| [`chmod-remove-x.sh`](#chmod-add-xsh--chmod-remove-xsh) | Recursively remove execute permission from `.sh` files in a path | ❌ | ✅ |
+| [`prompt-cli.sh`](#prompt-clish) | Gemini-based CLI assistant with markdown rendering; exposed as `ask` | ❌ | ✅ |
+| [`git-clone-all.sh`](#git-clone-allsh) | Clone all public repositories from a GitHub user/profile | ❌ | ✅ |
+| [`download-java.sh`](#download-javash) | Eclipse Temurin JDK/JRE installer (v8, 17, 21, 25) | ✅ | ⚠️ |
+| [`discord-attachments-dl.sh`](#discord-attachments-dlsh) | Download attachments from a Discord data export | ❌ | ✅ |
+| [`yt-dlp-best-format.sh`](#yt-dlp-best-formatsh) | Download best quality video as MP4 via yt-dlp | ❌ | ✅ |
+| [`yt-dlp-audio-only.sh`](#yt-dlp-audio-onlysh) | Download audio only as MP3 via yt-dlp | ❌ | ✅ |
+| [`yt-dlp-all-formats.sh`](#yt-dlp-all-formatssh) | Download every resolution tier (480p–8K) via yt-dlp | ❌ | ✅ |
+| [`bash-qol.sh`](#bash-qolsh) | Install shell quality-of-life tools and configure Bash | ✅ | ✅ |
+| [`oh-my-bash.sh`](#oh-my-bashsh) | Install oh-my-bash with interactive theme selection | ✅ | ✅ |
+| [`bash-qol-demo.sh`](#bash-qol-demosh) | Demo for the Bash QOL terminal styling | ❌ | ✅ |
+| [`git-fetch.sh`](#git-fetchsh) | Fastfetch-style terminal portfolio card with live GitHub stats | ❌ | ✅ |
+
+> ⚠️ — mostly safe to re-run, but with caveats described in the script's section below.
 
 ## Repository Structure
 
@@ -92,17 +84,57 @@ shell-toolkit/
 │   ├── deploy-portainer.sh
 │   └── update-stacks.sh
 ├── workflows/                       # Multi-step orchestrators and their config
-│   └── deploy-server/
-│       ├── deploy-server.sh
-│       └── env.example
-├── maintenance/                     # System cleanup and shell reset utilities
+│   ├── deploy-server/
+│   │   ├── deploy-server.sh
+│   │   └── .env.example
+│   ├── setup-dev/
+│   │   └── setup-dev.sh
+│   ├── setup-flatpak/
+│   │   └── setup-flatpak.sh
+│   └── setup-pipx/
+│       └── setup-pipx.sh
+├── maintenance/                     # System utilities and one-off admin tasks
 │   ├── system-cleanup.sh
-│   └── bashrc-default.sh
+│   ├── browser-cleanup.sh
+│   ├── set-bashrc-default.sh
+│   ├── create-swap-file.sh
+│   ├── grant-sudo.sh
+│   ├── ufw-firewalld-migration.sh
+│   ├── install-virtualbox-guest-additions.sh
+│   ├── chmod-add-x.sh
+│   └── chmod-remove-x.sh
+├── apt/                             # Individual apt package installers
+│   ├── install-cpp.sh
+│   ├── install-python.sh
+│   ├── install-php.sh
+│   ├── install-npm.sh
+│   ├── install-docker.sh
+│   ├── install-kdevelop.sh
+│   ├── install-ghostwriter.sh
+│   ├── install-okular.sh
+│   ├── install-pipx.sh
+│   ├── install-kio-admin.sh
+│   ├── install-protonvpn.sh
+│   ├── install-tor-browser.sh
+│   ├── install-veracrypt.sh
+│   └── install-virtualbox.sh
+├── flatpak/                         # Flatpak app installers
+│   ├── install-flatpak.sh
+│   ├── install-discord.sh
+│   ├── install-steam.sh
+│   └── install-telegram.sh
+├── pipx/                            # pipx-based tool installers
+│   ├── install-yt-dlp.sh
+│   ├── install-gallery-dl.sh
+│   └── install-spotdl.sh
+├── lsp/                             # Language server installations
+│   ├── install-bash-language-server.sh
+│   └── install-markdown-language-server.sh
 ├── utilities/                       # General-purpose standalone tools
 │   ├── prompt-cli.sh
+│   ├── git-clone-all.sh
 │   ├── download-java.sh
-│   ├── discord-attachments-dl.sh
-│   └── git-clone-all.sh
+│   └── discord-attachments-dl.sh
 ├── yt-dlp/                          # Video and audio download helpers
 │   ├── yt-dlp-best-format.sh
 │   ├── yt-dlp-audio-only.sh
@@ -111,24 +143,41 @@ shell-toolkit/
 │   ├── bash-qol.sh
 │   ├── oh-my-bash.sh
 │   └── bash-qol-demo.sh
+├── showcase/                        # Terminal portfolio and visual scripts
+│   └── git-fetch.sh
 ├── README.md
 └── LICENSE
 ```
 
 ## Detailed Descriptions
 
-### `server-bootstrap.sh`
+---
+
+<details>
+<summary><strong>server/</strong> — deployment, monitoring, bootstrapping</summary>
+
+<br>
+
+<details>
+<summary><code>server-bootstrap.sh</code> — initial server hardening and configuration</summary>
+
+<br>
 
 Initial hardening and configuration for a fresh server.
 
 - Installs essential admin tools such as `htop`, `ranger`, `git`, `curl`, `wget`, and more
 - Offers optional hardware diagnostic utilities
 - Creates and configures a sudo-enabled user account
-- Sets up **Firewalld** with sensible default rules
-- Configures **Fail2Ban** for SSH brute-force protection
+- Sets up **[Firewalld](https://firewalld.org)** with sensible default rules
+- Configures **[Fail2Ban](https://github.com/fail2ban/fail2ban)** for SSH brute-force protection
 - Prints a full system summary at the end
 
-### `server-report.sh`
+</details>
+
+<details>
+<summary><code>server-report.sh</code> — full system inventory report + archive</summary>
+
+<br>
 
 Generates a comprehensive server inventory report, saved locally and archived.
 
@@ -137,53 +186,60 @@ Generates a comprehensive server inventory report, saved locally and archived.
 - Packages everything into `server-report.tar.gz` for easy transfer
 - Displays a color-coded console summary with key metrics
 
-### `deploy-nginx.sh`
+</details>
 
-Deploys a hardened, production-ready Nginx web server.
+<details>
+<summary><code>deploy-nginx.sh</code> — production Nginx + optional PHP-FPM, Grafana &amp; Portainer proxy</summary>
 
-- Installs Nginx with optional **PHP-FPM** integration
+<br>
+
+Deploys a hardened, production-ready **[Nginx](https://nginx.org)** web server.
+
+- Installs Nginx with optional **[PHP-FPM](https://www.php.net/manual/en/install.fpm.php)** integration
 - Generates a clean virtual host with security headers and other baseline best practices
-- Optionally installs **avahi-daemon** for mDNS / `.local` hostname resolution on the LAN
+- Optionally installs **[avahi-daemon](https://avahi.org)** for mDNS / `.local` hostname resolution on the LAN
 - Can add reverse proxies for **Grafana** at `/grafana` and **Portainer** at `/portainer`
 - Configures **Firewalld** for HTTP, HTTPS, and mDNS
 - Creates a clean default `index.html`
 
-### `deploy-grafana.sh`
+</details>
 
-Deploys a full observability stack: **Grafana + Prometheus + Node Exporter**.
+<details>
+<summary><code>deploy-grafana.sh</code> — Grafana + Prometheus + Node Exporter via Docker</summary>
 
-- Managed via **Docker Compose**
+<br>
+
+Deploys a full observability stack: **[Grafana](https://grafana.com)** + **[Prometheus](https://prometheus.io)** + **[Node Exporter](https://github.com/prometheus/node_exporter)**.
+
+- Managed via **[Docker Compose](https://docs.docker.com/compose/)**
 - Uses a dedicated secret for the Grafana admin password
 - Pre-configures Prometheus to scrape Node Exporter metrics
-- Attempts to auto-import the **Node Exporter Full** dashboard (ID 19937)
+- Attempts to auto-import the **[Node Exporter Full](https://grafana.com/grafana/dashboards/19937)** dashboard (ID 19937)
 - Persists data under `/opt/grafana-stack/`
 
 > **Default binding:** `127.0.0.1:3000` — use `deploy-nginx.sh` to expose it externally.
 
-### `deploy-portainer.sh`
+</details>
 
-Deploys **Portainer CE** — a lightweight web UI for managing Docker containers.
+<details>
+<summary><code>deploy-portainer.sh</code> — Portainer CE container management UI via Docker</summary>
 
-- Managed via **Docker Compose**
+<br>
+
+Deploys **[Portainer CE](https://github.com/portainer/portainer)** — a lightweight web UI for managing Docker containers.
+
+- Managed via **[Docker Compose](https://docs.docker.com/compose/)**
 - Uses a dedicated secret for the Portainer admin password
 - Stores data under `/opt/portainer-stack/`
 
 > **Default binding:** `127.0.0.1:9000` — use `deploy-nginx.sh` to expose it externally.
 
-### `deploy-server.sh`
+</details>
 
-Orchestrates a full server deployment by running four scripts in sequence from a single `.env` config file.
+<details>
+<summary><code>update-stacks.sh</code> — pull and redeploy all Docker Compose stacks under <code>/opt/*</code></summary>
 
-- Validates all `.env` variables before starting — fails fast with clear errors
-- Pipes answers to each subscript via `printf`, safely handling special characters in credentials
-- Handles sudo user creation between the bootstrap and Nginx steps
-- Prints a deployment plan before running and confirms before proceeding
-- Located in `workflows/deploy-server/` alongside its `.env.example` config template
-
-> [!NOTE]
-> Designed for fresh deployments only — re-running on an existing system breaks prompt ordering in the subscripts.
-
-### `update-stacks.sh`
+<br>
 
 Updates and redeploys every Docker Compose stack found under `/opt/*`.
 
@@ -194,7 +250,85 @@ Updates and redeploys every Docker Compose stack found under `/opt/*`.
 - Skips directories with no compose file or where the pull fails
 - Prints a final summary of updated, unchanged, and skipped stacks
 
-### `system-cleanup.sh`
+</details>
+
+</details>
+
+---
+
+<details>
+<summary><strong>workflows/</strong> — multi-step orchestrators</summary>
+
+<br>
+
+<details>
+<summary><code>deploy-server.sh</code> — full-stack orchestrator from a single <code>.env</code></summary>
+
+<br>
+
+Orchestrates a full server deployment by running four scripts in sequence from a single `.env` config file.
+
+- Validates all `.env` variables before starting — fails fast with clear errors
+- Pipes answers to each subscript via `printf`, safely handling special characters in credentials
+- Handles sudo user creation between the bootstrap and Nginx steps
+- Prints a deployment plan before running and confirms before proceeding
+- Located in `workflows/deploy-server/` alongside its `.env.example` config template
+
+> Designed for **fresh deployments only** — re-running on an existing system breaks prompt ordering in the subscripts.
+
+</details>
+
+<details>
+<summary><code>setup-dev.sh</code> — full dev environment in one step</summary>
+
+<br>
+
+Installs a complete development environment by chaining scripts from `apt/` and `lsp/`.
+
+- Runs in order: `install-cpp.sh`, `install-python.sh`, `install-php.sh`, `install-kdevelop.sh`, `install-npm.sh`, `install-ghostwriter.sh`, `install-docker.sh`
+- Then installs `install-bash-language-server.sh` and `install-markdown-language-server.sh`
+- Each subscript is executed individually so a failure is isolated and traceable
+- Located in `workflows/setup-dev/`
+
+</details>
+
+<details>
+<summary><code>setup-flatpak.sh</code> — Flatpak + standard GUI apps in one step</summary>
+
+<br>
+
+Installs [Flatpak](https://flatpak.org) and a standard set of GUI applications in one step.
+
+- Runs in order: `install-flatpak.sh` (Flatpak + Flathub), `install-telegram.sh`, `install-discord.sh`, `install-steam.sh`
+- Located in `workflows/setup-flatpak/`
+
+</details>
+
+<details>
+<summary><code>setup-pipx.sh</code> — Python CLI tools via pipx in one step</summary>
+
+<br>
+
+Installs a curated set of Python CLI tools via [pipx](https://github.com/pypa/pipx) in one step.
+
+- Runs in order: `install-gallery-dl.sh`, `install-yt-dlp.sh`, `install-spotdl.sh`
+- Located in `workflows/setup-pipx/`
+
+</details>
+
+</details>
+
+---
+
+<details>
+<summary><strong>maintenance/</strong> — system utilities and one-off admin tasks</summary>
+
+<br>
+
+<details>
+<summary><code>system-cleanup.sh</code> — free up disk space</summary>
+
+<br>
 
 Frees up disk space by clearing caches, logs, and other safe-to-remove files.
 
@@ -206,7 +340,26 @@ Frees up disk space by clearing caches, logs, and other safe-to-remove files.
 - Clears thumbnail caches for all home directories
 - Prints a summary of freed disk space at the end
 
-### `bashrc-default.sh`
+</details>
+
+<details>
+<summary><code>browser-cleanup.sh</code> — clear cache, cookies, and history for major browsers</summary>
+
+<br>
+
+Clears browser data for Firefox, Chrome, Chromium, Brave, Edge, Opera, and Vivaldi.
+
+- Stops all detected browser processes before cleaning
+- Removes cookies, history, cache, session data, and local storage per browser
+- Only cleans browsers that are actually installed on the system
+- No root required — operates entirely within the current user's home directory
+
+</details>
+
+<details>
+<summary><code>set-bashrc-default.sh</code> — reset <code>~/.bashrc</code> to the distro default</summary>
+
+<br>
 
 Restores `~/.bashrc` to the distro default.
 
@@ -214,26 +367,182 @@ Restores `~/.bashrc` to the distro default.
 - Restores the file from `/etc/skel/.bashrc`
 - Requires explicit confirmation before making changes
 
-### `download-java.sh`
+</details>
 
-Downloads and installs multiple **Eclipse Temurin (Adoptium)** JDK/JRE builds.
+<details>
+<summary><code>create-swap-file.sh</code> — create and activate a swap file</summary>
 
-- Supported versions: **8, 17, 21, 25**
-- Downloads both **JDK** and **JRE** for each version
-- Installs to `/opt/java/temurin/`
-- Updates shell configuration so the installed Java versions can be used easily
+<br>
 
-### `discord-attachments-dl.sh`
+Creates and activates a swap file at `/swapfile`.
 
-Downloads media attachments from a local **Discord data export**.
+- Usage: `./create-swap-file.sh <size>` (e.g. `4G`, `8192M`, `2GiB`)
+- Accepts G, GB, GiB, M, MB, MiB, T, TB, TiB units
+- Detects and safely handles an existing swap file with a confirmation prompt
+- Enables the new swap immediately and persists it via `/etc/fstab`
 
-- Scans all `c*/` channel folders inside the export directory
-- Parses `messages.json` using `jq` to extract attachment URLs
-- Downloads files to an `attachments/` subdirectory per channel
-- Skips already-downloaded files
-- Logs failed downloads for review
+</details>
 
-### `git-clone-all.sh`
+<details>
+<summary><code>grant-sudo.sh</code> — add a user to the <code>sudo</code> group</summary>
+
+<br>
+
+Adds an existing user to the `sudo` group.
+
+- Usage: `./grant-sudo.sh <username>` or run as `sudo` (inherits `SUDO_USER` automatically)
+- Validates that the target user exists and is not `root`
+
+</details>
+
+<details>
+<summary><code>ufw-firewalld-migration.sh</code> — replace UFW with Firewalld</summary>
+
+<br>
+
+Replaces UFW with **[Firewalld](https://firewalld.org)** on Debian/Ubuntu systems.
+
+- Disables and removes UFW
+- Installs Firewalld and enables it on boot
+- Opens SSH in the default zone before finishing so the session is not dropped
+
+> ⚠️ **Idempotency caveat:** safe to run on a system that still has UFW, but a no-op if UFW is already gone and Firewalld is already running — it will not reconfigure an existing Firewalld setup.
+
+</details>
+
+<details>
+<summary><code>install-virtualbox-guest-additions.sh</code> — install VirtualBox Guest Additions from apt</summary>
+
+<br>
+
+Installs [VirtualBox Guest Additions](https://www.virtualbox.org/manual/ch04.html) from the distribution's apt repository.
+
+- Supports Debian, Ubuntu, Linux Mint, Pop!_OS, and Kali
+- Installs `virtualbox-guest-x11` and `virtualbox-guest-utils`
+- Reminds the user to reboot to activate the additions
+
+</details>
+
+<details>
+<summary><code>chmod-add-x.sh</code> / <code>chmod-remove-x.sh</code> — bulk permission toggle for <code>.sh</code> files</summary>
+
+<br>
+
+Recursively add or remove the execute bit on all `.sh` files under a given path.
+
+- Usage: `./chmod-add-x.sh <path>` / `./chmod-remove-x.sh <path>`
+- No root required unless the target path requires elevated access
+
+</details>
+
+</details>
+
+---
+
+<details>
+<summary><strong>apt/</strong> — individual package installers (14 scripts)</summary>
+
+<br>
+
+Individual apt-based package installers. Each script is self-contained, idempotent, and requires root.
+
+| Script | What it installs |
+|--------|-----------------|
+| `install-cpp.sh` | `build-essential`, `gcc`, `g++`, `clang`, `cmake`, `ninja-build`, `gdb`, `lldb` |
+| `install-python.sh` | `python3`, `python3-pip`, `python3-venv` |
+| `install-php.sh` | `php`, `php-cli`, `php-fpm`, common PHP extensions |
+| `install-npm.sh` | `nodejs`, `npm` |
+| `install-docker.sh` | [Docker](https://www.docker.com) Engine (`docker.io`), Docker Compose plugin; enables and starts the service |
+| `install-kdevelop.sh` | [KDevelop](https://kdevelop.org) IDE |
+| `install-ghostwriter.sh` | [Ghostwriter](https://ghostwriter.kde.org) Markdown editor |
+| `install-okular.sh` | [Okular](https://okular.kde.org) document viewer |
+| `install-pipx.sh` | [pipx](https://github.com/pypa/pipx) and ensures `~/.local/bin` is on PATH |
+| `install-kio-admin.sh` | `kio-admin` for Dolphin root access |
+| `install-protonvpn.sh` | [ProtonVPN](https://protonvpn.com) CLI from the official Proton apt repository |
+| `install-tor-browser.sh` | [Tor Browser](https://www.torproject.org) via the official Tor Project apt repository |
+| `install-veracrypt.sh` | [VeraCrypt](https://www.veracrypt.fr) from the official PPA |
+| `install-virtualbox.sh` | [VirtualBox](https://www.virtualbox.org) from the official Oracle apt repository |
+
+</details>
+
+---
+
+<details>
+<summary><strong>flatpak/</strong> — Flatpak app installers (4 scripts)</summary>
+
+<br>
+
+[Flatpak](https://flatpak.org)-based app installers. Each script is idempotent and does not require root (except `install-flatpak.sh`).
+
+| Script | What it installs |
+|--------|-----------------|
+| `install-flatpak.sh` | `flatpak`, adds the [Flathub](https://flathub.org) remote, optionally enables KDE Discover integration |
+| `install-discord.sh` | [Discord](https://discord.com) from Flathub |
+| `install-steam.sh` | [Steam](https://store.steampowered.com) from Flathub |
+| `install-telegram.sh` | [Telegram Desktop](https://desktop.telegram.org) from Flathub |
+
+</details>
+
+---
+
+<details>
+<summary><strong>pipx/</strong> — Python CLI tool installers (3 scripts)</summary>
+
+<br>
+
+[pipx](https://github.com/pypa/pipx)-based CLI tool installers. Each script is idempotent and does not require root.
+
+| Script | What it installs |
+|--------|-----------------|
+| `install-yt-dlp.sh` | [yt-dlp](https://github.com/yt-dlp/yt-dlp) |
+| `install-gallery-dl.sh` | [gallery-dl](https://github.com/mikf/gallery-dl) |
+| `install-spotdl.sh` | [spotdl](https://github.com/spotDL/spotify-downloader) |
+
+</details>
+
+---
+
+<details>
+<summary><strong>lsp/</strong> — language server installations (2 scripts)</summary>
+
+<br>
+
+Language server installations for editor/IDE LSP integration via npm. Both scripts are idempotent — they use marker blocks in `~/.bashrc` and skip installation if the server is already present.
+
+| Script | What it installs |
+|--------|-----------------|
+| `install-bash-language-server.sh` | [bash-language-server](https://github.com/bash-lsp/bash-language-server) via npm into `~/.local/npm`; adds to `~/.bashrc` |
+| `install-markdown-language-server.sh` | `markdown-language-server` via npm into `~/.local/npm`; adds to `~/.bashrc` |
+
+</details>
+
+---
+
+<details>
+<summary><strong>utilities/</strong> — general-purpose standalone tools</summary>
+
+<br>
+
+<details>
+<summary><code>prompt-cli.sh</code> — Gemini-based CLI assistant exposed as <code>ask</code></summary>
+
+<br>
+
+A terminal-based assistant client for the **[Google Gemini API](https://ai.google.dev)** with markdown rendering.
+
+- Usage: `ask [--model NAME] <prompt text>`
+- Self-installs into `~/.local/bin/` on first run
+- Stores the API key in `~/.config/prompt-cli/keys.env`
+- Renders markdown directly in the terminal
+- Includes `--setup`, `--reset`, `--uninstall`, and `--help`
+- Uses the `ask` command name because `prompt` is already taken by oh-my-bash
+
+</details>
+
+<details>
+<summary><code>git-clone-all.sh</code> — clone all public repos from a GitHub user</summary>
+
+<br>
 
 Clones every public repository belonging to a GitHub user or organization.
 
@@ -244,82 +553,163 @@ Clones every public repository belonging to a GitHub user or organization.
 - Skips repositories that are already cloned locally
 - No root required
 
-### `prompt-cli.sh`
+</details>
 
-A terminal-based assistant client for the **Google Gemini API** with markdown rendering.
+<details>
+<summary><code>download-java.sh</code> — Eclipse Temurin JDK/JRE installer</summary>
 
-- Usage: `ask [--model NAME] <prompt text>`
-- Self-installs into `~/.local/bin/` on first run
-- Stores the API key in `~/.config/prompt-cli/keys.env`
-- Renders markdown directly in the terminal
-- Includes `--setup`, `--reset`, `--uninstall`, and `--help`
-- Uses the `ask` command name because `prompt` is already taken by **oh-my-bash**
+<br>
 
-### `yt-dlp-best-format.sh`
+Downloads and installs multiple **[Eclipse Temurin (Adoptium)](https://adoptium.net)** JDK/JRE builds.
 
-Downloads a video at the best available quality, merged into a single MP4.
+- Supported versions: **8, 17, 21, 25**
+- Downloads both **JDK** and **JRE** for each version
+- Installs to `/opt/java/temurin/`
+- Updates shell configuration so the installed Java versions can be used easily
+
+> ⚠️ **Idempotency caveat:** hardcodes `x64` in the Adoptium API URL — will fail on ARM. Re-running will re-download and overwrite existing installations without prompting.
+
+</details>
+
+<details>
+<summary><code>discord-attachments-dl.sh</code> — download attachments from a Discord data export</summary>
+
+<br>
+
+Downloads media attachments from a local **Discord data export**.
+
+- Scans all `c*/` channel folders inside the export directory
+- Parses `messages.json` using [jq](https://jqlang.github.io/jq/) to extract attachment URLs
+- Downloads files to an `attachments/` subdirectory per channel
+- Skips already-downloaded files
+- Logs failed downloads for review
+
+</details>
+
+</details>
+
+---
+
+<details>
+<summary><strong>yt-dlp/</strong> — video and audio download helpers (3 scripts)</summary>
+
+<br>
+
+All three scripts share the same conventions: they install [jq](https://jqlang.github.io/jq/) and `wget` if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID. No root required.
+
+<details>
+<summary><code>yt-dlp-best-format.sh</code> — best quality video as MP4</summary>
+
+<br>
 
 - Usage: `./yt-dlp-best-format.sh <URL> [extra yt-dlp options]`
 - Prefers `bestvideo[ext=mp4]+bestaudio[ext=m4a]`, falling back to the best overall format
-- Installs `jq` and `wget` dependencies automatically
-- Uses Firefox cookies and Node.js JS runtime for restricted videos
-- Retries up to 100 times with randomized sleep intervals between requests
-- Output filename includes uploader, upload date, title, and video ID
-- No root required
 
-### `yt-dlp-audio-only.sh`
+</details>
 
-Downloads only the audio track and converts it to MP3.
+<details>
+<summary><code>yt-dlp-audio-only.sh</code> — audio only as MP3</summary>
+
+<br>
 
 - Usage: `./yt-dlp-audio-only.sh <URL> [extra yt-dlp options]`
-- Extracts audio at the best available quality (`--audio-quality 0`)
-- Installs `jq` and `wget` dependencies automatically
-- Uses Firefox cookies and Node.js JS runtime for restricted videos
-- Retries up to 100 times with randomized sleep intervals between requests
-- Output filename includes uploader, upload date, title, and video ID
-- No root required
+- Extracts audio at the best available quality (`--audio-quality 0`) and converts to MP3
 
-### `yt-dlp-all-formats.sh`
+</details>
 
-Downloads a video at each resolution tier up to 8K, falling back to the best overall format.
+<details>
+<summary><code>yt-dlp-all-formats.sh</code> — every resolution tier up to 8K</summary>
+
+<br>
 
 - Usage: `./yt-dlp-all-formats.sh <URL> [extra yt-dlp options]`
-- Targets 480p, 720p, 1080p, 1440p, 2160p (4K), and 4320p (8K) tiers with `bestaudio[ext=m4a]`
+- Targets 480p, 720p, 1080p, 1440p, 2160p (4K), and 4320p (8K) with `bestaudio[ext=m4a]`
 - Falls back to `best[ext=mp4]` / `best` if no matching tier is available
-- Merges output into MP4
-- Installs `jq` and `wget` dependencies automatically
-- Uses Firefox cookies and Node.js JS runtime for restricted videos
-- Output filename includes uploader, upload date, title, video ID, and resolution
-- No root required
+- Output filename also includes the resolution
 
-### `bash-qol.sh`
+</details>
+
+</details>
+
+---
+
+<details>
+<summary><strong>qol/</strong> — Bash quality-of-life and terminal customization</summary>
+
+<br>
+
+<details>
+<summary><code>bash-qol.sh</code> — install shell tools and configure Bash</summary>
+
+<br>
 
 Installs shell quality-of-life tools and configures the current user's Bash environment.
 
-- Installs packages such as `bash-completion`, `fzf`, `zoxide`, `ripgrep`, `bat`, and `eza`
+- Installs [fzf](https://github.com/junegunn/fzf), [zoxide](https://github.com/ajeetdsouza/zoxide), [ripgrep](https://github.com/BurntSushi/ripgrep), [bat](https://github.com/sharkdp/bat), [eza](https://github.com/eza-community/eza), and `bash-completion`
 - Adds the official `eza` apt repository when the package is not available in distro repos
 - Updates `~/.bashrc` and `~/.inputrc` with a managed block
 - Adds aliases, completion tweaks, and history improvements
 - Designed to be re-run safely
 
-### `oh-my-bash.sh`
+</details>
 
-Installs **oh-my-bash** and lets the user pick a theme via an interactive preview.
+<details>
+<summary><code>oh-my-bash.sh</code> — install oh-my-bash with interactive theme selection</summary>
 
-- Uses theme screenshots rendered in the terminal with `chafa`
+<br>
+
+Installs **[oh-my-bash](https://github.com/ohmybash/oh-my-bash)** and lets the user pick a theme via an interactive preview.
+
+- Uses theme screenshots rendered in the terminal with [chafa](https://github.com/hpjansson/chafa)
 - Supports both upstream installation and a manual integration mode
 - Preserves existing Bash customizations in manual mode
 - Updates only the managed block when re-run
 - Requires `git` and `chafa`
 
-### `bash-qol-demo.sh`
+</details>
+
+<details>
+<summary><code>bash-qol-demo.sh</code> — standalone demo of the Bash QOL terminal styling</summary>
+
+<br>
 
 A standalone demonstration of the Bash QOL terminal styling.
 
 - Creates a temporary sandbox with sample files
 - Shows off formatted output and terminal UI behavior
-- Useful as a preview for the QOL theme and rendering style
+- Useful as a preview before committing to `bash-qol.sh`
 - No root required
+
+</details>
+
+</details>
+
+---
+
+<details>
+<summary><strong>showcase/</strong> — terminal portfolio and visual scripts</summary>
+
+<br>
+
+<details>
+<summary><code>git-fetch.sh</code> — fastfetch-style terminal portfolio card with live GitHub stats</summary>
+
+<br>
+
+A fastfetch-style terminal portfolio card with live GitHub stats, rendered in 24-bit ANSI color.
+
+- Displays identity, role, focus, and tech stack as [Nerd Fonts](https://www.nerdfonts.com) pill badges
+- Fetches live data from the GitHub API: repo count, total stars, forks, followers, last push date
+- Computes top languages by byte count across all public repos and shows them with percentage and icon
+- Uses a dot spinner while API requests are in flight
+- Displays a 16-color palette at the bottom using the project's brand colors
+- Requires **[Nerd Fonts](https://www.nerdfonts.com)** to render the pill badge glyphs correctly
+
+</details>
+
+</details>
+
+---
 
 ## Quick Start
 
@@ -333,8 +723,6 @@ cd shell-toolkit
 **2. Make all scripts executable:**
 
 ```bash
-# This allows you to run scripts directly with ./script.sh
-# Without this step the shell will refuse to execute them
 find . -type f -name "*.sh" -exec chmod +x {} \;
 ```
 
@@ -368,15 +756,26 @@ sudo ./server/update-stacks.sh
 **Option B — deploy the full server stack in one step** using the orchestrator:
 
 ```bash
-# Enter the workflow directory
 cd workflows/deploy-server
-
-# Copy the config template and fill in your values
 cp .env.example .env
 nano .env
-
-# Run the orchestrator — it will validate the config and confirm before starting
 sudo ./deploy-server.sh
+```
+
+**Option C — set up a development workstation:**
+
+```bash
+# Full dev environment (C++, Python, PHP, Node, Docker, KDevelop, LSP servers)
+sudo ./workflows/setup-dev/setup-dev.sh
+
+# Flatpak apps (Telegram, Discord, Steam)
+./workflows/setup-flatpak/setup-flatpak.sh
+
+# Python CLI tools via pipx (yt-dlp, gallery-dl, spotdl)
+./workflows/setup-pipx/setup-pipx.sh
+
+# Shell quality-of-life tools (fzf, zoxide, eza, bat, ripgrep)
+sudo ./qol/bash-qol.sh
 ```
 
 Each script is self-contained and can be run independently at any time.
@@ -397,6 +796,7 @@ Each script is self-contained and can be run independently at any time.
 > `deploy-server.sh` is designed for **fresh deployments only** — re-running it on an existing setup will break prompt ordering in the subscripts.
 > `prompt-cli.sh` stores the Gemini API key locally in `~/.config/prompt-cli/keys.env`.
 > `bash-qol.sh` and `oh-my-bash.sh` modify shell startup files such as `~/.bashrc`.
+> `git-fetch.sh` requires **Nerd Fonts** to render correctly.
 
 > [!TIP]
 > Scripts are idempotent where possible, but a dry-run review (`bash -n script.sh`) before first execution is always a good idea.
@@ -405,12 +805,16 @@ Each script is self-contained and can be run independently at any time.
 
 - Debian-based **x86_64** Linux system
 - `bash` 5.0+
-- Root or `sudo` access for the system-level scripts
+- Root or `sudo` access for system-level scripts
 - Internet connection for package and Docker image downloads
 - `docker` + `docker compose` *(only for `deploy-grafana.sh`, `deploy-portainer.sh`, `update-stacks.sh`, and `deploy-server.sh`)*
 - `jq` *(only for `discord-attachments-dl.sh`, `prompt-cli.sh`, and the `yt-dlp-*` scripts)*
 - `yt-dlp` and a Firefox profile with cookies *(only for the `yt-dlp-*` scripts)*
+- `pipx` *(only for scripts in `pipx/` and the `setup-pipx` workflow)*
+- `flatpak` *(only for scripts in `flatpak/` and the `setup-flatpak` workflow)*
+- `npm` *(only for scripts in `lsp/`)*
 - A Google Gemini API key *(only for `prompt-cli.sh`)*
+- **Nerd Fonts** *(only for `git-fetch.sh`)*
 
 ## Contributing
 
@@ -423,5 +827,5 @@ Please follow the existing code style: colored output, safety prompts, and inlin
 Distributed under the [GNU General Public License v3.0](LICENSE).
 
 <div align="center">
-Made for clean, efficient server management.
+Built for self-hosted infrastructure, automation, and observability.
 </div>
