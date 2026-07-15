@@ -40,6 +40,7 @@
 | Script | Purpose | Root | Idempotent |
 |--------|---------|:----:|:----------:|
 | [`server-bootstrap.sh`](#server-bootstrapsh) | Initial server setup, users, firewall, Fail2Ban | ✅ | ✅ |
+| [`deploy-ssh.sh`](#deploy-sshsh) | Install & harden OpenSSH Server, optional Firewalld rule | ✅ | ✅ |
 | [`server-report.sh`](#server-reportsh) | Full system inventory report + archive | ✅ | ✅ |
 | [`deploy-nginx.sh`](#deploy-nginxsh) | Production Nginx + optional PHP-FPM, Grafana & Portainer proxy | ✅ | ✅ |
 | [`deploy-grafana.sh`](#deploy-grafanash) | Grafana + Prometheus + Node Exporter via Docker | ✅ | ✅ |
@@ -69,8 +70,11 @@
 | [`oh-my-bash.sh`](#oh-my-bashsh) | Install oh-my-bash with interactive theme selection | ✅ | ✅ |
 | [`bash-qol-demo.sh`](#bash-qol-demosh) | Demo for the Bash QOL terminal styling | ❌ | ✅ |
 | [`git-fetch.sh`](#git-fetchsh) | Fastfetch-style terminal portfolio card with live GitHub stats | ❌ | ✅ |
+| [`install-nvidia-driver.sh`](#install-nvidia-driversh) | NVIDIA GPU driver install (auto-detect, apt package, or `.run`), with nouveau blacklist | ✅ | ⚠️ |
 
 > ⚠️ — mostly safe to re-run, but with caveats described in the script's section below.
+>
+> The read-only diagnostic scripts under `network/` (17 scripts), plus the individual package installers under `apt/`, `flatpak/`, `pipx/`, and `lsp/`, are not listed row-by-row above — see their dedicated tables in [Detailed Descriptions](#detailed-descriptions).
 
 ## Repository Structure
 
@@ -78,11 +82,30 @@
 shell-toolkit/
 ├── server/                          # Server deployment, monitoring, and maintenance
 │   ├── server-bootstrap.sh
+│   ├── deploy-ssh.sh
 │   ├── server-report.sh
 │   ├── deploy-nginx.sh
 │   ├── deploy-grafana.sh
 │   ├── deploy-portainer.sh
 │   └── update-stacks.sh
+├── network/                         # Read-only network diagnostics and status checks
+│   ├── network-summary.sh
+│   ├── connectivity.sh
+│   ├── network-interfaces.sh
+│   ├── interface-statistics.sh
+│   ├── bandwidth-summary.sh
+│   ├── routing.sh
+│   ├── neighbors.sh
+│   ├── dns-info.sh
+│   ├── public-ip.sh
+│   ├── listening-ports.sh
+│   ├── established-connections.sh
+│   ├── firewall-status.sh
+│   ├── network-services.sh
+│   ├── network-statistics.sh
+│   ├── wifi-status.sh
+│   ├── vpn-status.sh
+│   └── system-info.sh
 ├── workflows/                       # Multi-step orchestrators and their config
 │   ├── deploy-server/
 │   │   ├── deploy-server.sh
@@ -145,6 +168,8 @@ shell-toolkit/
 │   └── bash-qol-demo.sh
 ├── showcase/                        # Terminal portfolio and visual scripts
 │   └── git-fetch.sh
+├── nvidia/                          # NVIDIA GPU driver installation
+│   └── install-nvidia-driver.sh
 ├── README.md
 └── LICENSE
 ```
@@ -171,6 +196,22 @@ Initial hardening and configuration for a fresh server.
 - Sets up **[Firewalld](https://firewalld.org)** with sensible default rules
 - Configures **[Fail2Ban](https://github.com/fail2ban/fail2ban)** for SSH brute-force protection
 - Prints a full system summary at the end
+
+</details>
+
+<details>
+<summary><code>deploy-ssh.sh</code> — install &amp; harden OpenSSH Server</summary>
+
+<br>
+
+Installs and enables **[OpenSSH Server](https://www.openssh.com)**, with optional firewall configuration.
+
+- Installs `openssh-server` and enables the `ssh` service
+- Optionally installs **Firewalld** and opens the SSH service in the `public` zone
+- Validates `sshd` configuration with `sshd -t` before restarting the service — aborts on a bad config instead of dropping the session
+- Prints a summary of service status, startup state, and firewall configuration
+
+> Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.
 
 </details>
 
@@ -251,6 +292,39 @@ Updates and redeploys every Docker Compose stack found under `/opt/*`.
 - Prints a final summary of updated, unchanged, and skipped stacks
 
 </details>
+
+</details>
+
+---
+
+<details>
+<summary><strong>network/</strong> — read-only network diagnostics (17 scripts)</summary>
+
+<br>
+
+Read-only status and diagnostic scripts — none of them modify system configuration. Most work without root, though a few (`established-connections.sh`, `listening-ports.sh`, `firewall-status.sh`) print a warning and show reduced process detail when not run as `sudo`. Colored output degrades gracefully to plain text when not attached to a terminal.
+
+| Script | What it shows |
+|--------|-----------------|
+| `network-summary.sh` | One-shot pass/fail overview: gateway, DNS, internet, public IPv4/IPv6 |
+| `connectivity.sh` | Same checks as above plus DNS query time and IPv6 internet reachability |
+| `network-interfaces.sh` | Per-interface state, MAC, MTU, driver, speed, and IPv4/IPv6 addresses |
+| `interface-statistics.sh` | Per-interface RX/TX bytes, packets, errors, drops, and collisions from `/sys/class/net` |
+| `bandwidth-summary.sh` | Per-interface link speed, duplex, carrier state, and MTU |
+| `routing.sh` | IPv4/IPv6 routing tables and the default gateway/interface |
+| `neighbors.sh` | ARP table (IPv4) and neighbor cache (IPv6) |
+| `dns-info.sh` | `resolvectl` status or `/etc/resolv.conf`, active nameservers, and search domains |
+| `public-ip.sh` | Public IPv4/IPv6 via ipify, falling back to ifconfig.me/ifconfig.co |
+| `listening-ports.sh` | Listening TCP/UDP ports with the owning process, via `ss` |
+| `established-connections.sh` | Established TCP connections with local/remote endpoints and owning process |
+| `firewall-status.sh` | Status across UFW, Firewalld, nftables, and iptables — whichever are installed |
+| `network-services.sh` | Active state of NetworkManager, systemd-networkd/-resolved, dhcpcd, wpa_supplicant, iwd |
+| `network-statistics.sh` | TCP congestion control algorithm, IPv4/IPv6 forwarding, and BBR status via `sysctl` |
+| `wifi-status.sh` | SSID, signal, bitrate, and frequency for wireless interfaces via `iw` or `nmcli` |
+| `vpn-status.sh` | WireGuard/TUN/TAP interfaces, Tailscale status, and ZeroTier status |
+| `system-info.sh` | Hostname, OS, kernel, architecture, and uptime |
+
+> None require root, but running as `sudo` gives fuller process detail on the connection- and port-related scripts.
 
 </details>
 
@@ -711,6 +785,33 @@ A fastfetch-style terminal portfolio card with live GitHub stats, rendered in 24
 
 ---
 
+<details>
+<summary><strong>nvidia/</strong> — NVIDIA GPU driver installation</summary>
+
+<br>
+
+<details>
+<summary><code>install-nvidia-driver.sh</code> — install an NVIDIA GPU driver safely</summary>
+
+<br>
+
+Installs an NVIDIA GPU driver, either from the distro's apt repository or from a legacy/manual `.run` installer.
+
+- Usage: `sudo ./install-nvidia-driver.sh --detect` (auto-detects the recommended package via `ubuntu-drivers` or `nvidia-detect`), `--package <nvidia-driver-XXX>`, or `--run <path-to-.run>`
+- Blacklists the `nouveau` driver and refreshes `initramfs` before installing
+- Stops the display manager and switches to `multi-user.target` so X/Wayland is fully down before the driver installs or builds — asks for confirmation first
+- Warns if a process is still holding `/dev/nvidia*` before proceeding
+- Installs via `apt-get install` (package mode) or runs the `.run` file with `--silent --dkms --no-x-check` (manual mode)
+- Offers to reboot at the end, or prints how to return to `graphical.target` manually
+
+> ⚠️ **Idempotency caveat:** re-running always stops the graphical session and prompts for a reboot again, even if the driver is already installed — run it from an SSH session or TTY, not from inside the graphical session it's about to stop.
+
+</details>
+
+</details>
+
+---
+
 ## Quick Start
 
 **1. Clone the repository and enter the project directory:**
@@ -734,22 +835,29 @@ find . -type f -name "*.sh" -exec chmod +x {} \;
 # 1. Harden and configure the new server
 sudo ./server/server-bootstrap.sh
 
-# 2. Generate a full system inventory
+# 2. Install & harden OpenSSH Server (skip if already configured)
+sudo ./server/deploy-ssh.sh
+
+# 3. Generate a full system inventory
 sudo ./server/server-report.sh
 
-# 3. Deploy Nginx (optionally with PHP-FPM, Grafana & Portainer proxy)
+# 4. Deploy Nginx (optionally with PHP-FPM, Grafana & Portainer proxy)
 sudo ./server/deploy-nginx.sh
 
-# 4. Deploy the monitoring stack (requires Docker)
+# 5. Deploy the monitoring stack (requires Docker)
 sudo ./server/deploy-grafana.sh
 
-# 5. Deploy Portainer CE for container management (requires Docker)
+# 6. Deploy Portainer CE for container management (requires Docker)
 sudo ./server/deploy-portainer.sh
 
-# 6. Periodically free up disk space
+# 7. Check connectivity, open ports, and firewall status at any time
+./network/network-summary.sh
+./network/firewall-status.sh
+
+# 8. Periodically free up disk space
 sudo ./maintenance/system-cleanup.sh
 
-# 7. Periodically pull and redeploy updated Docker stacks
+# 9. Periodically pull and redeploy updated Docker stacks
 sudo ./server/update-stacks.sh
 ```
 
@@ -797,6 +905,8 @@ Each script is self-contained and can be run independently at any time.
 > `prompt-cli.sh` stores the Gemini API key locally in `~/.config/prompt-cli/keys.env`.
 > `bash-qol.sh` and `oh-my-bash.sh` modify shell startup files such as `~/.bashrc`.
 > `git-fetch.sh` requires **Nerd Fonts** to render correctly.
+> `install-nvidia-driver.sh` stops the display manager and switches to `multi-user.target` — run it from an SSH session or a TTY, never from inside the graphical session it's about to close.
+> Scripts under `network/` are read-only diagnostics; none of them change system configuration.
 
 > [!TIP]
 > Scripts are idempotent where possible, but a dry-run review (`bash -n script.sh`) before first execution is always a good idea.
@@ -815,6 +925,8 @@ Each script is self-contained and can be run independently at any time.
 - `npm` *(only for scripts in `lsp/`)*
 - A Google Gemini API key *(only for `prompt-cli.sh`)*
 - **Nerd Fonts** *(only for `git-fetch.sh`)*
+- `ubuntu-drivers` or `nvidia-detect`, and `dkms` for the `.run` mode *(only for `install-nvidia-driver.sh`, `--detect` mode is optional)*
+- Standard networking tools (`ip`, `ss`, `curl`) — present by default on most Debian/Ubuntu systems; `dig`, `ethtool`, `iw`/`nmcli`, `tailscale`, and `zerotier-cli` unlock extra detail where installed *(only for scripts in `network/`)*
 
 ## Contributing
 
