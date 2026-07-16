@@ -1,7 +1,7 @@
 > **A personal collection of Bash scripts for Debian-based x86_64 systems.**
 > Designed for server bootstrapping, monitoring stack deployment, web server setup, shell quality-of-life tweaks, media downloads, and day-to-day automation.
 
-[![License](https://img.shields.io/github/license/VargKernel/shell-toolkit)](LICENSE)
+[![License](https://img.shields.io/github/license/rebootless/shell-toolkit)](LICENSE)
 [![Shell](https://img.shields.io/badge/language-Bash-4EAA25?logo=gnubash&logoColor=white)](https://www.gnu.org/software/bash/)
 [![Platform](https://img.shields.io/badge/platform-Debian%20%2F%20Ubuntu-informational?logo=linux)](https://debian.org)
 
