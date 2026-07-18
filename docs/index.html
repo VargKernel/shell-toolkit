@@ -112,18 +112,18 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>71</td></tr>
+<tr><td>Total scripts</td><td>94</td></tr>
 <tr><td>Directories</td><td>17</td></tr>
-<tr><td>Require root / sudo</td><td>38 / 71</td></tr>
-<tr><td>Interactive</td><td>18 / 71</td></tr>
+<tr><td>Require root / sudo</td><td>60 / 94</td></tr>
+<tr><td>Interactive</td><td>18 / 94</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>53 / 17 / 1</td></tr>
+    <td>74 / 19 / 1</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>apt/cli</td><td>5</td></tr><tr><td class='dir-tag'>apt/gui</td><td>7</td></tr><tr><td class='dir-tag'>flatpak</td><td>4</td></tr><tr><td class='dir-tag'>lsp</td><td>2</td></tr><tr><td class='dir-tag'>maintenance</td><td>9</td></tr><tr><td class='dir-tag'>network</td><td>17</td></tr><tr><td class='dir-tag'>nvidia</td><td>1</td></tr><tr><td class='dir-tag'>pipx</td><td>4</td></tr><tr><td class='dir-tag'>qol</td><td>3</td></tr><tr><td class='dir-tag'>server</td><td>7</td></tr><tr><td class='dir-tag'>showcase</td><td>1</td></tr><tr><td class='dir-tag'>utilities</td><td>4</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr><tr><td class='dir-tag'>workflows/setup-dev</td><td>1</td></tr><tr><td class='dir-tag'>workflows/setup-flatpak</td><td>1</td></tr><tr><td class='dir-tag'>workflows/setup-pipx</td><td>1</td></tr><tr><td class='dir-tag'>yt-dlp</td><td>3</td></tr>
+<tr><td class='dir-tag'>apt/cli</td><td>15</td></tr><tr><td class='dir-tag'>apt/gui</td><td>19</td></tr><tr><td class='dir-tag'>flatpak</td><td>4</td></tr><tr><td class='dir-tag'>lsp</td><td>3</td></tr><tr><td class='dir-tag'>maintenance</td><td>9</td></tr><tr><td class='dir-tag'>network</td><td>17</td></tr><tr><td class='dir-tag'>nvidia</td><td>1</td></tr><tr><td class='dir-tag'>pipx</td><td>4</td></tr><tr><td class='dir-tag'>qol</td><td>3</td></tr><tr><td class='dir-tag'>server</td><td>7</td></tr><tr><td class='dir-tag'>showcase</td><td>1</td></tr><tr><td class='dir-tag'>utilities</td><td>4</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr><tr><td class='dir-tag'>workflows/setup-dev</td><td>1</td></tr><tr><td class='dir-tag'>workflows/setup-flatpak</td><td>1</td></tr><tr><td class='dir-tag'>workflows/setup-pipx</td><td>1</td></tr><tr><td class='dir-tag'>yt-dlp</td><td>3</td></tr>
 </tbody>
 </table>
 
@@ -134,19 +134,41 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │       └── docs.yml
 ├── apt/                                  # Individual apt package installers
 │   ├── cli/                              # CLI tools
+│   │   ├── install-bash-completion.sh
+│   │   ├── install-bat.sh
 │   │   ├── install-cpp.sh
 │   │   ├── install-docker.sh
+│   │   ├── install-eza.sh
+│   │   ├── install-firewalld-cli.sh
+│   │   ├── install-fzf.sh
+│   │   ├── install-htop.sh
 │   │   ├── install-npm.sh
 │   │   ├── install-php.sh
-│   │   └── install-python.sh
+│   │   ├── install-python.sh
+│   │   ├── install-ranger.sh
+│   │   ├── install-ripgrep.sh
+│   │   ├── install-veracrypt-cli.sh
+│   │   └── install-zoxide.sh
 │   └── gui/                              # GUI apps
+│       ├── install-blender.sh
+│       ├── install-firefox.sh
+│       ├── install-firewalld-gui.sh
+│       ├── install-flameshot.sh
 │       ├── install-ghostwriter.sh
+│       ├── install-gimp.sh
+│       ├── install-inkscape.sh
 │       ├── install-kdevelop.sh
 │       ├── install-kio-admin.sh
+│       ├── install-krusader.sh
+│       ├── install-obs-studio.sh
 │       ├── install-okular.sh
 │       ├── install-protonvpn.sh
+│       ├── install-qbittorrent.sh
+│       ├── install-remmina.sh
 │       ├── install-tor-browser.sh
-│       └── install-virtualbox.sh
+│       ├── install-veracrypt-gui.sh
+│       ├── install-virtualbox.sh
+│       └── install-vlc.sh
 ├── docs/                                 # Generated documentation + metadata guidelines
 │   ├── documentation-metadata-guidelines.md
 │   └── index.html
@@ -157,7 +179,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   └── install-telegram.sh
 ├── lsp/                                  # Language server installations
 │   ├── install-bash-language-server.sh
-│   └── install-markdown-language-server.sh
+│   ├── install-markdown-language-server.sh
+│   └── install-python-language-server.sh
 ├── maintenance/                          # System utilities and one-off admin tasks
 │   ├── browser-cleanup.sh
 │   ├── chmod-add-x.sh
@@ -234,24 +257,47 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Directory</th><th>Script</th><th>Summary</th><th>Sudo</th><th>Interactive</th><th>Idempotent</th></tr></thead>
 <tbody>
+<tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-bash-completion-sh"><code>install-bash-completion.sh</code></a></td><td>Install bash-completion from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-bat-sh"><code>install-bat.sh</code></a></td><td>Install bat (cat clone with syntax highlighting) from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-cpp-sh"><code>install-cpp.sh</code></a></td><td>Install the C and C++ development environment.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
 <tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-docker-sh"><code>install-docker.sh</code></a></td><td>Install Docker Engine and the Docker Compose plugin.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
+<tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-eza-sh"><code>install-eza.sh</code></a></td><td>Install eza (modern ls replacement), adding the official apt repo if needed.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-firewalld-cli-sh"><code>install-firewalld-cli.sh</code></a></td><td>Install firewalld.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-fzf-sh"><code>install-fzf.sh</code></a></td><td>Install fzf from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-htop-sh"><code>install-htop.sh</code></a></td><td>Install htop from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-npm-sh"><code>install-npm.sh</code></a></td><td>Install Node.js and npm.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
 <tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-php-sh"><code>install-php.sh</code></a></td><td>Install PHP and common extensions.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
 <tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-python-sh"><code>install-python.sh</code></a></td><td>Install the Python development environment.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
+<tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-ranger-sh"><code>install-ranger.sh</code></a></td><td>Install ranger from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-ripgrep-sh"><code>install-ripgrep.sh</code></a></td><td>Install ripgrep from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-veracrypt-cli-sh"><code>install-veracrypt-cli.sh</code></a></td><td>Install VeraCrypt CLI from the official PPA.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
+<tr><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-zoxide-sh"><code>install-zoxide.sh</code></a></td><td>Install zoxide (smarter cd command) from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-blender-sh"><code>install-blender.sh</code></a></td><td>Install Blender from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-firefox-sh"><code>install-firefox.sh</code></a></td><td>Install Firefox from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-firewalld-gui-sh"><code>install-firewalld-gui.sh</code></a></td><td>Install firewalld with its GUI configuration tool (firewall-config).</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-flameshot-sh"><code>install-flameshot.sh</code></a></td><td>Install Flameshot from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-ghostwriter-sh"><code>install-ghostwriter.sh</code></a></td><td>Install the Ghostwriter Markdown editor.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
+<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-gimp-sh"><code>install-gimp.sh</code></a></td><td>Install GIMP from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-inkscape-sh"><code>install-inkscape.sh</code></a></td><td>Install Inkscape from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-kdevelop-sh"><code>install-kdevelop.sh</code></a></td><td>Install the KDevelop IDE.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
 <tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-kio-admin-sh"><code>install-kio-admin.sh</code></a></td><td>Install kio-admin for Dolphin root access.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
+<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-krusader-sh"><code>install-krusader.sh</code></a></td><td>Install Krusader from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-obs-studio-sh"><code>install-obs-studio.sh</code></a></td><td>Install OBS Studio from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-okular-sh"><code>install-okular.sh</code></a></td><td>Install the Okular document viewer.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
 <tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-protonvpn-sh"><code>install-protonvpn.sh</code></a></td><td>Install the ProtonVPN CLI from the official Proton apt repository.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">⚠️</td></tr>
+<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-qbittorrent-sh"><code>install-qbittorrent.sh</code></a></td><td>Install qBittorrent from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-remmina-sh"><code>install-remmina.sh</code></a></td><td>Install Remmina from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-tor-browser-sh"><code>install-tor-browser.sh</code></a></td><td>Install Tor Browser via the official Tor Project apt repository.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
+<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-veracrypt-gui-sh"><code>install-veracrypt-gui.sh</code></a></td><td>Install VeraCrypt GUI from the official PPA.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
 <tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-virtualbox-sh"><code>install-virtualbox.sh</code></a></td><td>Install VirtualBox from the official Oracle apt repository.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
+<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-vlc-sh"><code>install-vlc.sh</code></a></td><td>Install VLC from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-discord-sh"><code>install-discord.sh</code></a></td><td>Install Discord from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-flatpak-sh"><code>install-flatpak.sh</code></a></td><td>Install flatpak, add the Flathub remote, optionally enable KDE Discover integration.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
 <tr><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-steam-sh"><code>install-steam.sh</code></a></td><td>Install Steam from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-telegram-sh"><code>install-telegram.sh</code></a></td><td>Install Telegram Desktop from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">lsp</td><td><a href="#script-lsp-install-bash-language-server-sh"><code>install-bash-language-server.sh</code></a></td><td>Install bash-language-server via npm for editor/IDE LSP integration.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">lsp</td><td><a href="#script-lsp-install-markdown-language-server-sh"><code>install-markdown-language-server.sh</code></a></td><td>Install markdown-language-server via npm for editor/IDE LSP integration.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr><td class="dir-tag">lsp</td><td><a href="#script-lsp-install-python-language-server-sh"><code>install-python-language-server.sh</code></a></td><td>Install python-lsp-server (pylsp) via pip for editor/IDE LSP integration.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-browser-cleanup-sh"><code>browser-cleanup.sh</code></a></td><td>Clear cache, cookies, and history for Firefox, Chrome, Chromium, and others.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-chmod-add-x-sh"><code>chmod-add-x.sh</code></a></td><td>Recursively add execute permission to .sh files in a path.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-chmod-remove-x-sh"><code>chmod-remove-x.sh</code></a></td><td>Recursively remove execute permission from .sh files in a path.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">✅</td></tr>
@@ -309,6 +355,26 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </table>
 
 <h2><code>apt/cli/</code></h2>
+<div class="script-card" id="script-apt-cli-install-bash-completion-sh">
+<h3><code>apt/cli/install-bash-completion.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://github.com/scop/bash-completion">bash-completion</a> via apt. Programmable completion is normally auto-sourced by <code>/etc/bash.bashrc</code> on Debian/Ubuntu once the package is present — no manual .bashrc edit needed.</p>
+</div>
+<div class="script-card" id="script-apt-cli-install-bat-sh">
+<h3><code>apt/cli/install-bat.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://github.com/sharkdp/bat">bat</a> via apt.</p>
+<ul><li>On Ubuntu/Debian the binary ships as <code>batcat</code> (to avoid a name clash</li></ul>
+<p>with an unrelated <code>bat</code> package). This script adds a <code>bat</code> symlink to <code>/usr/local/bin/bat</code> when only <code>batcat</code> is present, so <code>bat</code> works out of the box.</p>
+</div>
 <div class="script-card" id="script-apt-cli-install-cpp-sh">
 <h3><code>apt/cli/install-cpp.sh</code></h3>
 <div class="meta-row">
@@ -326,6 +392,46 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <a href="https://www.docker.com">Docker</a> Engine (<code>docker.io</code>) and the Docker Compose plugin; enables and starts the service.</p>
+</div>
+<div class="script-card" id="script-apt-cli-install-eza-sh">
+<h3><code>apt/cli/install-eza.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://github.com/eza-community/eza">eza</a> via apt.</p>
+<ul><li>eza only reached Debian's own repos in Debian 13 (Trixie) / recent</li></ul>
+<p>Ubuntu. On releases where the apt package is unavailable, this script adds the official third-party repository, <code>deb.gierens.de</code> (https://eza.rocks / https://github.com/eza-community/eza/blob/main/INSTALL.md), signed with its published GPG key, then installs from there.</p>
+</div>
+<div class="script-card" id="script-apt-cli-install-firewalld-cli-sh">
+<h3><code>apt/cli/install-firewalld-cli.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://firewalld.org">firewalld</a>.</p>
+<ul><li>Enables and starts the <code>firewalld</code> service.</li><li>Note: if <code>ufw</code> is active, it should be disabled to avoid conflicting</li></ul>
+<p>netfilter rules; this script does not do that automatically.</p>
+</div>
+<div class="script-card" id="script-apt-cli-install-fzf-sh">
+<h3><code>apt/cli/install-fzf.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://github.com/junegunn/fzf">fzf</a> via apt.</p>
+</div>
+<div class="script-card" id="script-apt-cli-install-htop-sh">
+<h3><code>apt/cli/install-htop.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://htop.dev">htop</a> via apt.</p>
 </div>
 <div class="script-card" id="script-apt-cli-install-npm-sh">
 <h3><code>apt/cli/install-npm.sh</code></h3>
@@ -353,7 +459,87 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <code>python3</code>, <code>python3-pip</code>, <code>python3-venv</code>.</p>
+</div>
+<div class="script-card" id="script-apt-cli-install-ranger-sh">
+<h3><code>apt/cli/install-ranger.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://github.com/ranger/ranger">ranger</a> via apt.</p>
+</div>
+<div class="script-card" id="script-apt-cli-install-ripgrep-sh">
+<h3><code>apt/cli/install-ripgrep.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a> via apt.</p>
+</div>
+<div class="script-card" id="script-apt-cli-install-veracrypt-cli-sh">
+<h3><code>apt/cli/install-veracrypt-cli.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ⚠️ (mostly)</span>
+</div>
+<p>Installs <a href="https://www.veracrypt.fr">VeraCrypt</a> CLI (Console Only) from the official PPA.</p>
+</div>
+<div class="script-card" id="script-apt-cli-install-zoxide-sh">
+<h3><code>apt/cli/install-zoxide.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://github.com/ajeetdsouza/zoxide">zoxide</a> via apt.</p>
+<ul><li><code>zoxide</code> landed in Debian/Ubuntu repos only in recent releases</li></ul>
+<p>(Debian 12+, Ubuntu 22.10+). On older releases where the apt package is unavailable, this script falls back to the official upstream install script (installs to <code>~/.local/bin</code> for the invoking user via <code>SUDO_USER</code>, or root's home if run directly as root).</p>
 </div><h2><code>apt/gui/</code></h2>
+<div class="script-card" id="script-apt-gui-install-blender-sh">
+<h3><code>apt/gui/install-blender.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://www.blender.org">Blender</a> via apt.</p>
+</div>
+<div class="script-card" id="script-apt-gui-install-firefox-sh">
+<h3><code>apt/gui/install-firefox.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://www.mozilla.org/firefox/">Firefox</a> via apt.</p>
+<ul><li>Uses the <code>firefox</code> package where available (Ubuntu's apt repos install</li></ul>
+<p>the Snap transitional package on stock Ubuntu; Debian ships a real deb).</p>
+<ul><li>Falls back to <code>firefox-esr</code>, the package name used on Debian stable</li></ul>
+<p>when the plain <code>firefox</code> package does not exist in the configured repos.</p>
+</div>
+<div class="script-card" id="script-apt-gui-install-firewalld-gui-sh">
+<h3><code>apt/gui/install-firewalld-gui.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://firewalld.org">firewalld</a> and <code>firewall-config</code>, its GTK graphical configuration tool.</p>
+<ul><li>Enables and starts the <code>firewalld</code> service.</li><li>Note: if <code>ufw</code> is active, it should be disabled to avoid conflicting</li></ul>
+<p>netfilter rules; this script does not do that automatically.</p>
+</div>
+<div class="script-card" id="script-apt-gui-install-flameshot-sh">
+<h3><code>apt/gui/install-flameshot.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://flameshot.org">Flameshot</a> via apt.</p>
+</div>
 <div class="script-card" id="script-apt-gui-install-ghostwriter-sh">
 <h3><code>apt/gui/install-ghostwriter.sh</code></h3>
 <div class="meta-row">
@@ -362,6 +548,24 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs the <a href="https://ghostwriter.kde.org">Ghostwriter</a> Markdown editor.</p>
+</div>
+<div class="script-card" id="script-apt-gui-install-gimp-sh">
+<h3><code>apt/gui/install-gimp.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://www.gimp.org">GIMP</a> via apt.</p>
+</div>
+<div class="script-card" id="script-apt-gui-install-inkscape-sh">
+<h3><code>apt/gui/install-inkscape.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://inkscape.org">Inkscape</a> via apt.</p>
 </div>
 <div class="script-card" id="script-apt-gui-install-kdevelop-sh">
 <h3><code>apt/gui/install-kdevelop.sh</code></h3>
@@ -381,6 +585,24 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs <code>kio-admin</code> for Dolphin root access.</p>
 </div>
+<div class="script-card" id="script-apt-gui-install-krusader-sh">
+<h3><code>apt/gui/install-krusader.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://krusader.org">Krusader</a> via apt.</p>
+</div>
+<div class="script-card" id="script-apt-gui-install-obs-studio-sh">
+<h3><code>apt/gui/install-obs-studio.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://obsproject.com">OBS Studio</a> via apt.</p>
+</div>
 <div class="script-card" id="script-apt-gui-install-okular-sh">
 <h3><code>apt/gui/install-okular.sh</code></h3>
 <div class="meta-row">
@@ -399,6 +621,24 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs the <a href="https://protonvpn.com">ProtonVPN</a> CLI from the official Proton apt repository.</p>
 </div>
+<div class="script-card" id="script-apt-gui-install-qbittorrent-sh">
+<h3><code>apt/gui/install-qbittorrent.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://www.qbittorrent.org">qBittorrent</a> via apt.</p>
+</div>
+<div class="script-card" id="script-apt-gui-install-remmina-sh">
+<h3><code>apt/gui/install-remmina.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://remmina.org">Remmina</a> via apt.</p>
+</div>
 <div class="script-card" id="script-apt-gui-install-tor-browser-sh">
 <h3><code>apt/gui/install-tor-browser.sh</code></h3>
 <div class="meta-row">
@@ -408,6 +648,15 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs <a href="https://www.torproject.org">Tor Browser</a> via the official Tor Project apt repository.</p>
 </div>
+<div class="script-card" id="script-apt-gui-install-veracrypt-gui-sh">
+<h3><code>apt/gui/install-veracrypt-gui.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ⚠️ (mostly)</span>
+</div>
+<p>Installs <a href="https://www.veracrypt.fr">VeraCrypt</a> GUI (Graphical Interface) from the official PPA.</p>
+</div>
 <div class="script-card" id="script-apt-gui-install-virtualbox-sh">
 <h3><code>apt/gui/install-virtualbox.sh</code></h3>
 <div class="meta-row">
@@ -416,6 +665,15 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <a href="https://www.virtualbox.org">VirtualBox</a> from the official Oracle apt repository.</p>
+</div>
+<div class="script-card" id="script-apt-gui-install-vlc-sh">
+<h3><code>apt/gui/install-vlc.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://www.videolan.org/vlc/">VLC</a> via apt.</p>
 </div><h2><code>flatpak/</code></h2>
 <div class="script-card" id="script-flatpak-install-discord-sh">
 <h3><code>flatpak/install-discord.sh</code></h3>
@@ -472,6 +730,18 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs <code>markdown-language-server</code> via npm into <code>~/.local/npm</code>; adds to <code>~/.bashrc</code>.</p>
 <ul><li>Idempotent — uses a marker block in <code>~/.bashrc</code> and skips installation if the server is already present</li><li>Must be run as root so it can resolve the real user's home directory via <code>SUDO_USER</code></li></ul>
+</div>
+<div class="script-card" id="script-lsp-install-python-language-server-sh">
+<h3><code>lsp/install-python-language-server.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://github.com/python-lsp/python-lsp-server">python-lsp-server</a> (<code>pylsp</code>) for the current user, with all optional providers (Rope, Pyflakes, McCabe, pycodestyle, pydocstyle, autopep8, YAPF) enabled via the <code>[all]</code> extra.</p>
+<ul><li>Installs into <code>~/.local/bin</code> via <code>pip install --user</code>, then adds it to <code>~/.bashrc</code></li><li>Falls back to <code>--break-system-packages</code> automatically on distros that mark the</li></ul>
+<p>system Python as externally managed (PEP 668, e.g. Debian 12+/Ubuntu 23.04+)</p>
+<ul><li>Idempotent — skips installation if <code>pylsp</code> is already present in <code>~/.local/bin</code></li></ul>
 </div><h2><code>maintenance/</code></h2>
 <div class="script-card" id="script-maintenance-browser-cleanup-sh">
 <h3><code>maintenance/browser-cleanup.sh</code></h3>
@@ -1015,7 +1285,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul><li>Usage: <code>./yt-dlp-best-format.sh &lt;URL&gt; [extra yt-dlp options]</code></li><li>Prefers <code>bestvideo[ext=mp4]+bestaudio[ext=m4a]</code>, falling back to the best overall format</li></ul>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-18 13:47 UTC &middot;
-71 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-18 14:07 UTC &middot;
+94 scripts documented.</p>
 </body>
 </html>
