@@ -112,18 +112,18 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>72</td></tr>
+<tr><td>Total scripts</td><td>71</td></tr>
 <tr><td>Directories</td><td>17</td></tr>
-<tr><td>Require root / sudo</td><td>39 / 72</td></tr>
-<tr><td>Interactive</td><td>19 / 72</td></tr>
+<tr><td>Require root / sudo</td><td>38 / 71</td></tr>
+<tr><td>Interactive</td><td>18 / 71</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>53 / 18 / 1</td></tr>
+    <td>53 / 17 / 1</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>apt/cli</td><td>5</td></tr><tr><td class='dir-tag'>apt/gui</td><td>8</td></tr><tr><td class='dir-tag'>flatpak</td><td>4</td></tr><tr><td class='dir-tag'>lsp</td><td>2</td></tr><tr><td class='dir-tag'>maintenance</td><td>9</td></tr><tr><td class='dir-tag'>network</td><td>17</td></tr><tr><td class='dir-tag'>nvidia</td><td>1</td></tr><tr><td class='dir-tag'>pipx</td><td>4</td></tr><tr><td class='dir-tag'>qol</td><td>3</td></tr><tr><td class='dir-tag'>server</td><td>7</td></tr><tr><td class='dir-tag'>showcase</td><td>1</td></tr><tr><td class='dir-tag'>utilities</td><td>4</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr><tr><td class='dir-tag'>workflows/setup-dev</td><td>1</td></tr><tr><td class='dir-tag'>workflows/setup-flatpak</td><td>1</td></tr><tr><td class='dir-tag'>workflows/setup-pipx</td><td>1</td></tr><tr><td class='dir-tag'>yt-dlp</td><td>3</td></tr>
+<tr><td class='dir-tag'>apt/cli</td><td>5</td></tr><tr><td class='dir-tag'>apt/gui</td><td>7</td></tr><tr><td class='dir-tag'>flatpak</td><td>4</td></tr><tr><td class='dir-tag'>lsp</td><td>2</td></tr><tr><td class='dir-tag'>maintenance</td><td>9</td></tr><tr><td class='dir-tag'>network</td><td>17</td></tr><tr><td class='dir-tag'>nvidia</td><td>1</td></tr><tr><td class='dir-tag'>pipx</td><td>4</td></tr><tr><td class='dir-tag'>qol</td><td>3</td></tr><tr><td class='dir-tag'>server</td><td>7</td></tr><tr><td class='dir-tag'>showcase</td><td>1</td></tr><tr><td class='dir-tag'>utilities</td><td>4</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr><tr><td class='dir-tag'>workflows/setup-dev</td><td>1</td></tr><tr><td class='dir-tag'>workflows/setup-flatpak</td><td>1</td></tr><tr><td class='dir-tag'>workflows/setup-pipx</td><td>1</td></tr><tr><td class='dir-tag'>yt-dlp</td><td>3</td></tr>
 </tbody>
 </table>
 
@@ -146,7 +146,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │       ├── install-okular.sh
 │       ├── install-protonvpn.sh
 │       ├── install-tor-browser.sh
-│       ├── install-veracrypt.sh
 │       └── install-virtualbox.sh
 ├── docs/                                 # Generated documentation + metadata guidelines
 │   ├── documentation-metadata-guidelines.md
@@ -246,7 +245,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-okular-sh"><code>install-okular.sh</code></a></td><td>Install the Okular document viewer.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
 <tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-protonvpn-sh"><code>install-protonvpn.sh</code></a></td><td>Install the ProtonVPN CLI from the official Proton apt repository.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">⚠️</td></tr>
 <tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-tor-browser-sh"><code>install-tor-browser.sh</code></a></td><td>Install Tor Browser via the official Tor Project apt repository.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-veracrypt-sh"><code>install-veracrypt.sh</code></a></td><td>Install VeraCrypt from the official PPA.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">⚠️</td></tr>
 <tr><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-virtualbox-sh"><code>install-virtualbox.sh</code></a></td><td>Install VirtualBox from the official Oracle apt repository.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
 <tr><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-discord-sh"><code>install-discord.sh</code></a></td><td>Install Discord from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
 <tr><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-flatpak-sh"><code>install-flatpak.sh</code></a></td><td>Install flatpak, add the Flathub remote, optionally enable KDE Discover integration.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
@@ -409,16 +407,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <a href="https://www.torproject.org">Tor Browser</a> via the official Tor Project apt repository.</p>
-</div>
-<div class="script-card" id="script-apt-gui-install-veracrypt-sh">
-<h3><code>apt/gui/install-veracrypt.sh</code></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ✅</span>
-<span class="badge">Idempotent: ⚠️ (mostly)</span>
-</div>
-<p>Installs <a href="https://www.veracrypt.fr">VeraCrypt</a> from the official PPA.</p>
-<ul><li>Prompts the user to choose between the stable and nightly PPA channels</li></ul>
 </div>
 <div class="script-card" id="script-apt-gui-install-virtualbox-sh">
 <h3><code>apt/gui/install-virtualbox.sh</code></h3>
@@ -1027,7 +1015,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul><li>Usage: <code>./yt-dlp-best-format.sh &lt;URL&gt; [extra yt-dlp options]</code></li><li>Prefers <code>bestvideo[ext=mp4]+bestaudio[ext=m4a]</code>, falling back to the best overall format</li></ul>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-18 09:11 UTC &middot;
-72 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-18 13:47 UTC &middot;
+71 scripts documented.</p>
 </body>
 </html>
