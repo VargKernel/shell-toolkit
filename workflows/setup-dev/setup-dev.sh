@@ -5,8 +5,8 @@
 # description: |
 #   Installs a complete development environment by chaining scripts from `apt/` and `lsp/`.
 #
-#   - Runs in order: `install-cpp.sh`, `install-python.sh`, `install-php.sh`, `install-kdevelop.sh`, `install-npm.sh`, `install-ghostwriter.sh`, `install-docker.sh`
-#   - Then installs `install-bash-language-server.sh` and `install-markdown-language-server.sh`
+#   - Runs in order: `install-cpp.sh`, `install-python.sh`, `install-php.sh`, `install-kate.sh`, `install-kdevelop.sh`, `install-npm.sh`, `install-ghostwriter.sh`, `install-docker.sh`
+#   - Then installs `install-bash-language-server.sh`, `install-markdown-language-server.sh` and `install-python-language-server.sh`
 #   - Each subscript is executed individually so a failure is isolated and traceable
 #   - Located in `workflows/setup-dev/`
 # sudo: true
@@ -55,12 +55,14 @@ run_scripts "$CLI_DIR" \
 
 echo "[*] Running GUI installation scripts..."
 run_scripts "$GUI_DIR" \
+    install-kate.sh \
     install-kdevelop.sh \
     install-ghostwriter.sh
 
 echo "[*] Running LSP installation scripts..."
 run_scripts "$LSP_DIR" \
     install-bash-language-server.sh \
-    install-markdown-language-server.sh
+    install-markdown-language-server.sh \
+    install-python-language-server.sh
 
 echo "[+] Done."
