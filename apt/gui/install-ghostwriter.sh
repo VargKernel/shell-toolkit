@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install the Ghostwriter Markdown editor.
+# description: |
+#   Installs the [Ghostwriter](https://ghostwriter.kde.org) Markdown editor.
+# sudo: true
+# interactive: false
+# idempotent: mostly
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

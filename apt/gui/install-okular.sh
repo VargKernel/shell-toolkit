@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install the Okular document viewer.
+# description: |
+#   Installs the [Okular](https://okular.kde.org) document viewer.
+# sudo: true
+# interactive: false
+# idempotent: mostly
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

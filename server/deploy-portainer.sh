@@ -1,9 +1,23 @@
 #!/bin/bash
 
-# Portainer CE deployment for Debian/Ubuntu systems.
-# Installs Docker, generates all configs inline, and deploys
-# Portainer CE with admin password via Docker secrets.
-# Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.
+# ---DOC-START---
+# summary: Portainer CE container management UI via Docker.
+# description: |
+#   Deploys **[Portainer CE](https://github.com/portainer/portainer)** — a lightweight web UI for managing Docker containers.
+#
+#   - Managed via **[Docker Compose](https://docs.docker.com/compose/)**
+#   - Uses a dedicated secret for the Portainer admin password
+#   - Stores data under `/opt/portainer-stack/`
+#
+#   > **Default binding:** `127.0.0.1:9000` — use `deploy-nginx.sh` to expose it externally.
+#   >
+#   > **Change the default admin password immediately after first login.**
+#
+#   > Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.
+# sudo: true
+# interactive: true
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

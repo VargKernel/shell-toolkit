@@ -1,9 +1,22 @@
 #!/bin/bash
 
-# Nginx deployment for Debian/Ubuntu systems.
-# Installs nginx, optional PHP-FPM, avahi-daemon, grafana, portainer, creates a site root and vhost,
-# and can configure firewalld for web access.
-# Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.
+# ---DOC-START---
+# summary: Production Nginx + optional PHP-FPM, Grafana & Portainer proxy.
+# description: |
+#   Deploys a hardened, production-ready **[Nginx](https://nginx.org)** web server.
+#
+#   - Installs Nginx with optional **[PHP-FPM](https://www.php.net/manual/en/install.fpm.php)** integration
+#   - Generates a clean virtual host with security headers and other baseline best practices
+#   - Optionally installs **[avahi-daemon](https://avahi.org)** for mDNS / `.local` hostname resolution on the LAN
+#   - Can add reverse proxies for **Grafana** at `/grafana` and **Portainer** at `/portainer`
+#   - Configures **Firewalld** for HTTP, HTTPS, and mDNS
+#   - Creates a clean default `index.html`
+#
+#   > Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.
+# sudo: true
+# interactive: true
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

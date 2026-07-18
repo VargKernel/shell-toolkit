@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install the ProtonVPN CLI from the official Proton apt repository.
+# description: |
+#   Installs the [ProtonVPN](https://protonvpn.com) CLI from the official Proton apt repository.
+# sudo: true
+# interactive: true
+# idempotent: mostly
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install kio-admin for Dolphin root access.
+# description: |
+#   Installs `kio-admin` for Dolphin root access.
+# sudo: true
+# interactive: false
+# idempotent: mostly
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

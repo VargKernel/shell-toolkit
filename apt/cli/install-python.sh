@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install the Python development environment.
+# description: |
+#   Installs `python3`, `python3-pip`, `python3-venv`.
+# sudo: true
+# interactive: false
+# idempotent: mostly
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

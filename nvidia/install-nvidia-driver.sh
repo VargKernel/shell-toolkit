@@ -1,12 +1,22 @@
 #!/bin/bash
 
-# Installs an NVIDIA GPU driver, either from the distro repo (nvidia-driver-XXX)
-# or from a legacy/manual .run installer.
-# Workflow: blacklists nouveau, stops the display manager and switches to
-# multi-user.target (X/Wayland must be fully down before driver install/build),
-# installs the driver, then restores graphical.target and reboots if needed.
-# Requirements: root, Debian/Ubuntu-based system (apt), or a downloaded .run
-# installer for the manual mode.
+# ---DOC-START---
+# summary: NVIDIA GPU driver install (auto-detect, apt package, or .run), with nouveau blacklist.
+# description: |
+#   Installs an NVIDIA GPU driver, either from the distro's apt repository or from a legacy/manual `.run` installer.
+#
+#   - Usage: `sudo ./install-nvidia-driver.sh --detect` (auto-detects the recommended package via `ubuntu-drivers` or `nvidia-detect`), `--package <nvidia-driver-XXX>`, or `--run <path-to-.run>`
+#   - Blacklists the `nouveau` driver and refreshes `initramfs` before installing
+#   - Stops the display manager and switches to `multi-user.target` so X/Wayland is fully down before the driver installs or builds — asks for confirmation first
+#   - Warns if a process is still holding `/dev/nvidia*` before proceeding
+#   - Installs via `apt-get install` (package mode) or runs the `.run` file with `--silent --dkms --no-x-check` (manual mode)
+#   - Offers to reboot at the end, or prints how to return to `graphical.target` manually
+#
+#   > ⚠️ **Idempotency caveat:** re-running always stops the graphical session and prompts for a reboot again, even if the driver is already installed — run it from an SSH session or TTY, not from inside the graphical session it's about to stop.
+# sudo: true
+# interactive: true
+# idempotent: mostly
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

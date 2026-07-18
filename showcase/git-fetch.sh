@@ -1,6 +1,20 @@
 #!/bin/bash
 
-# This script requires Nerd Fonts to be installed
+# ---DOC-START---
+# summary: Fastfetch-style terminal portfolio card with live GitHub stats.
+# description: |
+#   A fastfetch-style terminal portfolio card with live GitHub stats, rendered in 24-bit ANSI color.
+#
+#   - Displays identity, role, focus, and tech stack as [Nerd Fonts](https://www.nerdfonts.com) pill badges
+#   - Fetches live data from the GitHub API: repo count, total stars, forks, followers, last push date
+#   - Computes top languages by byte count across all public repos and shows them with percentage and icon
+#   - Uses a dot spinner while API requests are in flight
+#   - Displays a 16-color palette at the bottom using the project's brand colors
+#   - Requires **[Nerd Fonts](https://www.nerdfonts.com)** to render the pill badge glyphs correctly
+# sudo: false
+# interactive: false
+# idempotent: true
+# ---DOC-END---
 
 RESET="\e[0m"
 BOLD="\e[1m"

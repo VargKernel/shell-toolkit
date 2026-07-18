@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: ARP table (IPv4) and neighbor cache (IPv6).
+# description: |
+#   Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.
+#
+#   - ARP table (IPv4) and neighbor cache (IPv6)
+# sudo: false
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

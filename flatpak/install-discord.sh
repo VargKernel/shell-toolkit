@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install Discord from Flathub.
+# description: |
+#   Installs [Discord](https://discord.com) from Flathub.
+# sudo: false
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 
 export DEBIAN_FRONTEND=noninteractive

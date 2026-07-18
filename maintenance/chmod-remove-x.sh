@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Recursively remove execute permission from .sh files in a path.
+# description: |
+#   Recursively removes the execute bit from all `.sh` files under a given path.
+#
+#   - Usage: `./chmod-remove-x.sh <path>`
+#   - No root required unless the target path requires elevated access
+# sudo: false
+# interactive: true
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 
 if [ $# -ne 1 ]; then

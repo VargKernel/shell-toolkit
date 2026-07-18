@@ -1,11 +1,21 @@
 #!/bin/bash
 
-# Full server deployment workflow for Debian/Ubuntu.
-# Sources .env from the same directory and runs four scripts in sequence:
-#   server-bootstrap.sh → deploy-nginx.sh → deploy-grafana.sh → deploy-portainer.sh
-# Answers are piped to each script via stdin using printf — safely handles
-# special characters in values. Fresh deployments only — re-running on an
-# existing setup breaks prompt ordering.
+# ---DOC-START---
+# summary: Full-stack orchestrator: bootstrap → nginx → grafana → portainer from a single .env.
+# description: |
+#   Orchestrates a full server deployment by running four scripts in sequence from a single `.env` config file.
+#
+#   - Validates all `.env` variables before starting — fails fast with clear errors
+#   - Pipes answers to each subscript via `printf`, safely handling special characters in credentials
+#   - Handles sudo user creation between the bootstrap and Nginx steps
+#   - Prints a deployment plan before running and confirms before proceeding
+#   - Located in `workflows/deploy-server/` alongside its `.env.example` config template
+#
+#   > Designed for **fresh deployments only** — re-running on an existing system breaks prompt ordering in the subscripts.
+# sudo: true
+# interactive: true
+# idempotent: false
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

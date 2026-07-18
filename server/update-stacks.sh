@@ -1,9 +1,20 @@
 #!/bin/bash
 
-# update-stacks.sh
-# Iterates over all docker compose stacks in /opt/*, runs
-# `docker compose pull && docker compose up -d` for each, and
-# reports which stacks had image updates.
+# ---DOC-START---
+# summary: Pull and redeploy all Docker Compose stacks under `/opt/*`.
+# description: |
+#   Updates and redeploys every Docker Compose stack found under `/opt/*`.
+#
+#   - Lists currently running containers before starting
+#   - Detects `docker-compose.yml`, `compose.yml`, `compose.yaml`, and `docker-compose.yaml`
+#   - Runs `docker compose pull` followed by `docker compose up -d` for each stack
+#   - Detects whether new images were actually pulled
+#   - Skips directories with no compose file or where the pull fails
+#   - Prints a final summary of updated, unchanged, and skipped stacks
+# sudo: true
+# interactive: false
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

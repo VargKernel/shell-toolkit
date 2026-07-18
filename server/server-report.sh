@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Gathers detailed server information (optimized for Debian/Ubuntu), saves
-# all data into .txt files in ~/server-report, packs them into a .tar.gz
-# archive, and prints a clean summary to the console.
+# ---DOC-START---
+# summary: Full system inventory report + archive.
+# description: |
+#   Generates a comprehensive server inventory report, saved locally and archived.
 #
-# --- CORE UTILITIES (Usually pre-installed) ---
-# systemctl, journalctl, ip, ss, free, ps, df, lsblk, lscpu, dpkg-query
-#
-# --- 3RD-PARTY SOFTWARE (Auto-detected) ---
-# The script automatically checks for and logs data from:
-# - Docker (containers, networks, volumes, info)
-# - Nginx (version, config test)
-# - Firewalls (UFW, Firewalld, iptables)
-# - Cron & Tree (directory structures)
+#   - Collects hardware specs, OS info, network interfaces, active users, running services, Docker containers, Nginx config, and firewall rules
+#   - Saves all data to `~/server-report/`
+#   - Packages everything into `server-report.tar.gz` for easy transfer
+#   - Displays a color-coded console summary with key metrics
+# sudo: true
+# interactive: false
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

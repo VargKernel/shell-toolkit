@@ -1,9 +1,20 @@
 #!/bin/bash
 
-# Server bootstrap for Debian/Ubuntu systems.
-# Installs base admin tools, optional hardware diagnostics,
-# and can configure sudo access, firewalld, and Fail2Ban.
-# Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.
+# ---DOC-START---
+# summary: Initial server hardening and configuration.
+# description: |
+#   Initial hardening and configuration for a fresh server.
+#
+#   - Installs essential admin tools such as `htop`, `ranger`, `git`, `curl`, `wget`, and more
+#   - Offers optional hardware diagnostic utilities
+#   - Creates and configures a sudo-enabled user account
+#   - Sets up **[Firewalld](https://firewalld.org)** with sensible default rules
+#   - Configures **[Fail2Ban](https://github.com/fail2ban/fail2ban)** for SSH brute-force protection
+#   - Prints a full system summary at the end
+# sudo: true
+# interactive: true
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

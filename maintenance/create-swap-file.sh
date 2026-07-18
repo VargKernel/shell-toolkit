@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Create and activate a swap file of any size.
+# description: |
+#   Creates and activates a swap file at `/swapfile`.
+#
+#   - Usage: `./create-swap-file.sh <size>` (e.g. `4G`, `8192M`, `2GiB`)
+#   - Accepts G, GB, GiB, M, MB, MiB, T, TB, TiB units
+#   - Detects and safely handles an existing swap file with a confirmation prompt
+#   - Enables the new swap immediately and persists it via `/etc/fstab`
+# sudo: true
+# interactive: true
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

@@ -1,9 +1,20 @@
 #!/bin/bash
 
-# Downloads and installs Eclipse Temurin JDK/JRE builds into /opt/java/temurin/.
-# Re-runnable: existing version dirs trigger an overwrite prompt; the
-# java-temurin block in ~/.bashrc is replaced on every run.
-# Requirements: sudo access, curl, tar, ca-certificates (installed automatically via apt).
+# ---DOC-START---
+# summary: Eclipse Temurin JDK/JRE installer (v8, 17, 21, 25).
+# description: |
+#   Downloads and installs multiple **[Eclipse Temurin (Adoptium)](https://adoptium.net)** JDK/JRE builds.
+#
+#   - Supported versions: **8, 17, 21, 25**
+#   - Downloads both **JDK** and **JRE** for each version
+#   - Installs to `/opt/java/temurin/`
+#   - Updates shell configuration so the installed Java versions can be used easily
+#
+#   > ⚠️ **Idempotency caveat:** hardcodes `x64` in the Adoptium API URL — will fail on ARM. Re-running will re-download and overwrite existing installations without prompting.
+# sudo: true
+# interactive: true
+# idempotent: mostly
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

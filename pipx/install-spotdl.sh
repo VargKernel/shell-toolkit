@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install spotdl via pipx.
+# description: |
+#   Installs [spotdl](https://github.com/spotDL/spotify-downloader).
+# sudo: false
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 
 export PATH="$HOME/.local/bin:$PATH"

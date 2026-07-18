@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install Docker Engine and the Docker Compose plugin.
+# description: |
+#   Installs [Docker](https://www.docker.com) Engine (`docker.io`) and the Docker Compose plugin; enables and starts the service.
+# sudo: true
+# interactive: false
+# idempotent: mostly
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

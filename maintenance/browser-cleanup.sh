@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Clear cache, cookies, and history for Firefox, Chrome, Chromium, and others.
+# description: |
+#   Clears browser data for Firefox, Chrome, Chromium, Brave, Edge, Opera, and Vivaldi.
+#
+#   - Stops all detected browser processes before cleaning
+#   - Removes cookies, history, cache, session data, and local storage per browser
+#   - Only cleans browsers that are actually installed on the system
+#   - No root required — operates entirely within the current user's home directory
+# sudo: false
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 
 echo "[*] Stopping browsers (if running)..."

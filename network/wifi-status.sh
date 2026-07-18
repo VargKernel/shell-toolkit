@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: SSID, signal, bitrate, and frequency for wireless interfaces via iw or nmcli.
+# description: |
+#   Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.
+#
+#   - SSID, signal, bitrate, and frequency for wireless interfaces via `iw` or `nmcli`
+# sudo: false
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

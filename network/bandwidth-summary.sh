@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Per-interface link speed, duplex, carrier state, and MTU.
+# description: |
+#   Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.
+#
+#   - Per-interface link speed, duplex, carrier state, and MTU
+# sudo: false
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

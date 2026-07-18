@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Recursively add execute permission to .sh files in a path.
+# description: |
+#   Recursively adds the execute bit on all `.sh` files under a given path.
+#
+#   - Usage: `./chmod-add-x.sh <path>`
+#   - No root required unless the target path requires elevated access
+# sudo: false
+# interactive: true
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 
 if [ $# -ne 1 ]; then

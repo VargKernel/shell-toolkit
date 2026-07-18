@@ -1,9 +1,21 @@
 #!/bin/bash
 
-# System cleanup for Debian/Ubuntu systems.
-# Cleans APT caches, removes orphaned packages, rotates/truncates old logs.
-# Clears journald history, and removes temp files and old kernels.
-# Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.
+# ---DOC-START---
+# summary: Clean up APT cache, old kernels, logs, temp files & Docker leftovers.
+# description: |
+#   Frees up disk space by clearing caches, logs, and other safe-to-remove files.
+#
+#   - Runs `apt-get autoremove`, `autoclean`, and `clean`
+#   - Detects and optionally removes **old kernel packages** while keeping the running kernel
+#   - Vacuums `journald` logs and removes rotated/compressed logs in `/var/log` older than 7 days
+#   - Clears stale files from `/tmp` and `/var/tmp`
+#   - Optionally prunes Docker images, containers, networks, and volumes with separate confirmations
+#   - Clears thumbnail caches for all home directories
+#   - Prints a summary of freed disk space at the end
+# sudo: true
+# interactive: true
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

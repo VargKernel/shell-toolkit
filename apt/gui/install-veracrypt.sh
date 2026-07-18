@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install VeraCrypt from the official PPA.
+# description: |
+#   Installs [VeraCrypt](https://www.veracrypt.fr) from the official PPA.
+#
+#   - Prompts the user to choose between the stable and nightly PPA channels
+# sudo: true
+# interactive: true
+# idempotent: mostly
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install yt-dlp via pipx.
+# description: |
+#   Installs [yt-dlp](https://github.com/yt-dlp/yt-dlp).
+# sudo: false
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 
 export PATH="$HOME/.local/bin:$PATH"

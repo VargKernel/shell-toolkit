@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# Installs oh-my-bash and lets you pick a theme via an interactive
-# preview (Tab = next theme, Enter = confirm), using chafa to render
-# theme screenshots in the terminal.
+# ---DOC-START---
+# summary: Install oh-my-bash with interactive theme selection.
+# description: |
+#   Installs **[oh-my-bash](https://github.com/ohmybash/oh-my-bash)** and lets the user pick a theme via an interactive preview.
 #
-# Two modes:
-#   1) Official installer - runs the upstream install.sh, which REPLACES
-#      ~/.bashrc with its own template (backup as ~/.bashrc.omb-*,
-#      plus an extra ~/.bashrc.bak.TIMESTAMP from this script).
-#   2) Manual integration - git-clones oh-my-bash to ~/.oh-my-bash and
-#      prepends a small managed block (>>> oh-my-bash >>>) to the TOP of
-#      ~/.bashrc, without touching any existing lines (e.g. bash-qol block
-#      stays at the end, untouched).
+#   - Uses theme screenshots rendered in the terminal with [chafa](https://github.com/hpjansson/chafa)
+#   - Supports both upstream installation and a manual integration mode
+#   - Preserves existing Bash customizations in manual mode
+#   - Updates only the managed block when re-run
+#   - Requires `git` and `chafa`
 #
-# Idempotent: if oh-my-bash is already installed, only the theme picker
-# (and, in manual mode, the managed block) is refreshed.
-# Requirements: sudo access for package installation (chafa, git).
+#   > Modifies shell startup files such as `~/.bashrc`.
+# sudo: true
+# interactive: true
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

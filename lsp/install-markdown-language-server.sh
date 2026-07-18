@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install markdown-language-server via npm for editor/IDE LSP integration.
+# description: |
+#   Installs `markdown-language-server` via npm into `~/.local/npm`; adds to `~/.bashrc`.
+#
+#   - Idempotent — uses a marker block in `~/.bashrc` and skips installation if the server is already present
+#   - Must be run as root so it can resolve the real user's home directory via `SUDO_USER`
+# sudo: true
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export DEBIAN_FRONTEND=noninteractive

@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install flatpak, add the Flathub remote, optionally enable KDE Discover integration.
+# description: |
+#   Installs `flatpak`, adds the [Flathub](https://flathub.org) remote, optionally enables KDE Discover integration.
+# sudo: true
+# interactive: false
+# idempotent: mostly
+# ---DOC-END---
+
 set -euo pipefail
 
 export DEBIAN_FRONTEND=noninteractive

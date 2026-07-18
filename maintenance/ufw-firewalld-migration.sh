@@ -1,5 +1,20 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Remove UFW and replace it with Firewalld.
+# description: |
+#   Replaces UFW with **[Firewalld](https://firewalld.org)** on Debian/Ubuntu systems.
+#
+#   - Disables and removes UFW
+#   - Installs Firewalld and enables it on boot
+#   - Opens SSH in the default zone before finishing so the session is not dropped
+#
+#   > ⚠️ **Idempotency caveat:** safe to run on a system that still has UFW, but a no-op if UFW is already gone and Firewalld is already running — it will not reconfigure an existing Firewalld setup.
+# sudo: true
+# interactive: false
+# idempotent: mostly
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

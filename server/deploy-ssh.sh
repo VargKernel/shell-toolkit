@@ -1,9 +1,20 @@
 #!/bin/bash
 
-# OpenSSH deployment for Debian/Ubuntu systems.
-# Installs OpenSSH Server, enables the service,
-# and can configure firewalld for SSH access.
-# Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.
+# ---DOC-START---
+# summary: Install & harden OpenSSH Server, optional Firewalld rule.
+# description: |
+#   Installs and enables **[OpenSSH Server](https://www.openssh.com)**, with optional firewall configuration.
+#
+#   - Installs `openssh-server` and enables the `ssh` service
+#   - Optionally installs **Firewalld** and opens the SSH service in the `public` zone
+#   - Validates `sshd` configuration with `sshd -t` before restarting the service — aborts on a bad config instead of dropping the session
+#   - Prints a summary of service status, startup state, and firewall configuration
+#
+#   > Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.
+# sudo: true
+# interactive: true
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

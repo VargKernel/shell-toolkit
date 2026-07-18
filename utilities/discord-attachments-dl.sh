@@ -1,32 +1,19 @@
 #!/bin/bash
 
-# Discord attachment downloader
+# ---DOC-START---
+# summary: Download attachments from a Discord data export.
+# description: |
+#   Downloads media attachments from a local **Discord data export**.
 #
-# This script scans directories starting with "c*" (e.g. Discord channel exports),
-# extracts attachment URLs from messages.json files, and downloads them locally.
-#
-# Workflow:
-# 1. Finds all matching directories in the current path.
-# 2. Optionally removes existing "attachments" folders.
-# 3. For each directory:
-#    - Reads messages.json
-#    - Extracts Discord CDN attachment URLs using jq
-#    - Saves URLs to a temporary file
-#    - Downloads each file into ./attachments/
-#    - Skips files that already exist
-#    - Logs failed downloads to failed_links.log
-#
-# Output:
-# - Downloaded files: <dir>/attachments/
-# - Failed links log: ./failed_links.log
-#
-# Requirements:
-# - jq (JSON parsing)
-# - wget (file downloading)
-#
-# Notes:
-# - Designed for Discord export formats with "Attachments" field
-# - Safe to re-run (existing files are skipped)
+#   - Scans all `c*/` channel folders inside the export directory
+#   - Parses `messages.json` using [jq](https://jqlang.github.io/jq/) to extract attachment URLs
+#   - Downloads files to an `attachments/` subdirectory per channel
+#   - Skips already-downloaded files
+#   - Logs failed downloads for review
+# sudo: true
+# interactive: true
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

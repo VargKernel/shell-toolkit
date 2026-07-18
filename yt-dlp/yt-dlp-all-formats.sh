@@ -1,9 +1,18 @@
 #!/bin/bash
 
-# yt-dlp-all-formats.sh
-# Downloads the highest quality up to and including each available
-# resolution tier (480p..8K), falling back to best overall as MP4.
-# Usage: ./yt-dlp-all-formats.sh <URL> [extra yt-dlp options]
+# ---DOC-START---
+# summary: Download every resolution tier (480p-8K) via yt-dlp.
+# description: |
+#   All three scripts share the same conventions: they install [jq](https://jqlang.github.io/jq/) and `wget` if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID. No root required.
+#
+#   - Usage: `./yt-dlp-all-formats.sh <URL> [extra yt-dlp options]`
+#   - Targets 480p, 720p, 1080p, 1440p, 2160p (4K), and 4320p (8K) with `bestaudio[ext=m4a]`
+#   - Falls back to `best[ext=mp4]` / `best` if no matching tier is available
+#   - Output filename also includes the resolution
+# sudo: true
+# interactive: false
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 

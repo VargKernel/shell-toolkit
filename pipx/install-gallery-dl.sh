@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install gallery-dl via pipx.
+# description: |
+#   Installs [gallery-dl](https://github.com/mikf/gallery-dl).
+# sudo: false
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 
 export PATH="$HOME/.local/bin:$PATH"

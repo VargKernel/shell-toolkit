@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install pipx and ensure ~/.local/bin is on PATH.
+# description: |
+#   Installs [pipx](https://github.com/pypa/pipx) and ensures `~/.local/bin` is on PATH.
+# sudo: true
+# interactive: false
+# idempotent: mostly
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install Steam from Flathub.
+# description: |
+#   Installs [Steam](https://store.steampowered.com) from Flathub.
+# sudo: false
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 
 export DEBIAN_FRONTEND=noninteractive

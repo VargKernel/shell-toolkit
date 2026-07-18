@@ -1,10 +1,21 @@
 #!/bin/bash
 
-# Configures a convenience-focused Bash environment for the current user
-# on Debian: history, completion, fzf, shopt options, aliases, and extra
-# CLI tools (zoxide, ripgrep, bat, eza).
-# Idempotent: re-running replaces the managed block in ~/.bashrc/~/.inputrc.
-# Requirements: sudo access for package installation.
+# ---DOC-START---
+# summary: Install shell quality-of-life tools and configure Bash.
+# description: |
+#   Installs shell quality-of-life tools and configures the current user's Bash environment.
+#
+#   - Installs [fzf](https://github.com/junegunn/fzf), [zoxide](https://github.com/ajeetdsouza/zoxide), [ripgrep](https://github.com/BurntSushi/ripgrep), [bat](https://github.com/sharkdp/bat), [eza](https://github.com/eza-community/eza), and `bash-completion`
+#   - Adds the official `eza` apt repository when the package is not available in distro repos
+#   - Updates `~/.bashrc` and `~/.inputrc` with a managed block
+#   - Adds aliases, completion tweaks, and history improvements
+#   - Designed to be re-run safely
+#
+#   > Modifies shell startup files such as `~/.bashrc`.
+# sudo: true
+# interactive: false
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

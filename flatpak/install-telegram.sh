@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install Telegram Desktop from Flathub.
+# description: |
+#   Installs [Telegram Desktop](https://desktop.telegram.org) from Flathub.
+# sudo: false
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 
 export DEBIAN_FRONTEND=noninteractive

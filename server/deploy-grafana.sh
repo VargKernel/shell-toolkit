@@ -1,9 +1,25 @@
 #!/bin/bash
 
-# Grafana + Prometheus stack deployment for Debian/Ubuntu systems.
-# Installs Docker, generates all configs inline, and imports
-# the Node Exporter Full dashboard (ID 19937) via the Grafana API.
-# Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.
+# ---DOC-START---
+# summary: Grafana + Prometheus + Node Exporter via Docker.
+# description: |
+#   Deploys a full observability stack: **[Grafana](https://grafana.com)** + **[Prometheus](https://prometheus.io)** + **[Node Exporter](https://github.com/prometheus/node_exporter)**.
+#
+#   - Managed via **[Docker Compose](https://docs.docker.com/compose/)**
+#   - Uses a dedicated secret for the Grafana admin password
+#   - Pre-configures Prometheus to scrape Node Exporter metrics
+#   - Attempts to auto-import the **[Node Exporter Full](https://grafana.com/grafana/dashboards/19937)** dashboard (ID 19937)
+#   - Persists data under `/opt/grafana-stack/`
+#
+#   > **Default binding:** `127.0.0.1:3000` — use `deploy-nginx.sh` to expose it externally.
+#   >
+#   > **Change the default admin password immediately after first login.**
+#
+#   > Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.
+# sudo: true
+# interactive: true
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

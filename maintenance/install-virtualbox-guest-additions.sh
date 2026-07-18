@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Install VirtualBox Guest Additions from apt.
+# description: |
+#   Installs [VirtualBox Guest Additions](https://www.virtualbox.org/manual/ch04.html) from the distribution's apt repository.
+#
+#   - Supports Debian, Ubuntu, Linux Mint, Pop!_OS, and Kali
+#   - Installs `virtualbox-guest-x11` and `virtualbox-guest-utils`
+#   - Reminds the user to reboot to activate the additions
+# sudo: true
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

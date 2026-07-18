@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Add a user to the sudo group.
+# description: |
+#   Adds an existing user to the `sudo` group.
+#
+#   - Usage: `./grant-sudo.sh <username>` or run as `sudo` (inherits `SUDO_USER` automatically)
+#   - Validates that the target user exists and is not `root`
+# sudo: true
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

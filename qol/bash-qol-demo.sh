@@ -1,6 +1,19 @@
 #!/bin/bash
 
-# Colors for formatted output (using ANSI-C quoting)
+# ---DOC-START---
+# summary: Demo for the Bash QOL terminal styling.
+# description: |
+#   A standalone demonstration of the Bash QOL terminal styling.
+#
+#   - Creates a temporary sandbox with sample files
+#   - Shows off formatted output and terminal UI behavior
+#   - Useful as a preview before committing to `bash-qol.sh`
+#   - No root required
+# sudo: false
+# interactive: true
+# idempotent: true
+# ---DOC-END---
+
 C_CYAN=$'\e[1;36m'
 C_GREEN=$'\e[1;32m'
 C_YELLOW=$'\e[1;33m'

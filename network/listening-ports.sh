@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# ---DOC-START---
+# summary: Listening TCP/UDP ports with the owning process, via ss.
+# description: |
+#   Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.
+#
+#   - Listening TCP/UDP ports with the owning process, via `ss`
+#
+#   > Running as `sudo` gives fuller process detail on this script; it still works without root, but with a warning and reduced detail.
+# sudo: false
+# interactive: false
+# idempotent: true
+# ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

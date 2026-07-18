@@ -1,8 +1,17 @@
 #!/bin/bash
 
-# Resets ~/.bashrc to the distribution default (/etc/skel/.bashrc).
-# Backs up the current ~/.bashrc with a timestamp before overwriting.
-# Idempotent / safe: only acts after explicit confirmation.
+# ---DOC-START---
+# summary: Reset ~/.bashrc to the distribution default.
+# description: |
+#   Restores `~/.bashrc` to the distro default.
+#
+#   - Backs up the current `~/.bashrc` with a timestamp before overwriting
+#   - Restores the file from `/etc/skel/.bashrc`
+#   - Requires explicit confirmation before making changes
+# sudo: false
+# interactive: true
+# idempotent: true
+# ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
