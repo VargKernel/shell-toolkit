@@ -1,4 +1,4 @@
-name: Generate Documentation
+name: Generate documentation
 
 on:
   push:
@@ -21,9 +21,11 @@ jobs:
         with:
           python-version: "3.x"
 
-      # Fails the build if any *.sh file is missing a DOC-START/DOC-END block.
+      # Invoked via `python3` rather than `./generate-docs.py` so this doesn't depend on
+      # the executable bit surviving git/zip transport -- fails the build if any *.sh
+      # file is missing a DOC-START/DOC-END block.
       - name: Generate docs/index.html
-        run: ./generate-docs.py --strict
+        run: python3 generate-docs.py --strict
 
       - name: Commit updated docs
         run: |
