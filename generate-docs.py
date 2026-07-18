@@ -74,6 +74,15 @@ DIR_PURPOSE = {
 TOP_KEY_RE = re.compile(r"^# ([a-zA-Z_]+): ?(.*)$")
 
 
+def slugify(text: str) -> str:
+    return re.sub(r"[^a-zA-Z0-9]+", "-", text).strip("-").lower()
+
+
+def dir_anchor(directory: str) -> str:
+    slug = slugify(directory)
+    return f"dir-{slug}" if slug else "dir-root"
+
+
 @dataclass
 class ScriptDoc:
     relpath: str  # e.g. "server/deploy-nginx.sh"
@@ -332,7 +341,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   color: #1f2328;
   background: #ffffff;
-  max-width: 980px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 32px 24px 80px;
   line-height: 1.5;
@@ -419,6 +428,110 @@ tr:nth-child(2n) { background: #f6f8fa; }
   border-top: 1px solid #d1d9e0;
   padding-top: 1em;
 }
+
+/* Two-column layout: main content + sticky right-hand table of contents */
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.toc {
+  flex: 0 0 240px;
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  font-size: .85em;
+  border-left: 1px solid #d1d9e0;
+  padding-left: 16px;
+}
+.toc-title {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .78em;
+  color: #59636e;
+  margin-bottom: .6em;
+}
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.toc li { margin: 0; }
+.toc a {
+  display: block;
+  color: #59636e;
+  padding: 3px 0 3px 10px;
+  border-left: 2px solid transparent;
+}
+.toc a:hover {
+  color: #0969da;
+  text-decoration: none;
+}
+.toc a.active {
+  color: #0969da;
+  border-left-color: #0969da;
+  font-weight: 600;
+}
+.toc .toc-divider {
+  margin-top: 1em;
+  padding-top: .6em;
+  border-top: 1px solid #d1d9e0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .78em;
+  color: #59636e;
+}
+.toc .toc-count {
+  color: #8c959f;
+  font-size: .9em;
+}
+.toc-back-to-top {
+  display: inline-block;
+  margin-top: 1em;
+}
+
+.filter-box {
+  margin: 1em 0;
+}
+.filter-box input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: .95em;
+  border: 1px solid #d1d9e0;
+  border-radius: 6px;
+  font-family: inherit;
+}
+.filter-box input:focus {
+  outline: none;
+  border-color: #0969da;
+}
+.filter-hint {
+  font-size: .82em;
+  color: #59636e;
+  margin-top: .3em;
+}
+tr.filtered-out { display: none; }
+
+@media (max-width: 900px) {
+  .layout { flex-direction: column-reverse; gap: 0; }
+  .toc {
+    position: static;
+    max-height: none;
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid #d1d9e0;
+    padding-left: 0;
+    padding-top: 16px;
+    margin-bottom: 1em;
+  }
+}
 """
 
 IDEMPOTENT_BADGE = {"true": "\u2705", "false": "\u274c", "mostly": "\u26a0\ufe0f"}
@@ -428,8 +541,9 @@ BOOL_BADGE = {True: "\u2705", False: "\u274c"}
 def build_summary_table(docs: list[ScriptDoc]) -> str:
     rows = []
     for d in docs:
+        search_blob = html.escape(f"{d.directory} {d.filename} {d.summary}".lower(), quote=True)
         rows.append(
-            "<tr>"
+            f'<tr data-search="{search_blob}">'
             f'<td class="dir-tag">{html.escape(d.directory)}</td>'
             f'<td><a href="#{d.anchor}"><code>{html.escape(d.filename)}</code></a></td>'
             f"<td>{render_inline(d.summary)}</td>"
@@ -439,7 +553,7 @@ def build_summary_table(docs: list[ScriptDoc]) -> str:
             "</tr>"
         )
     return (
-        "<table>\n<thead><tr>"
+        '<table id="all-scripts-table">\n<thead><tr>'
         "<th>Directory</th><th>Script</th><th>Summary</th>"
         "<th>Sudo</th><th>Interactive</th><th>Idempotent</th>"
         "</tr></thead>\n<tbody>\n" + "\n".join(rows) + "\n</tbody>\n</table>"
@@ -465,7 +579,7 @@ def build_stats_block(stats: dict) -> str:
         f"<tr><td class='dir-tag'>{html.escape(d)}</td><td>{n}</td></tr>"
         for d, n in sorted(stats["by_dir"].items())
     )
-    return f"""<h2>At a Glance</h2>
+    return f"""<h2 id="at-a-glance">At a Glance</h2>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
@@ -485,6 +599,28 @@ def build_stats_block(stats: dict) -> str:
 </table>"""
 
 
+def build_toc(by_dir: dict[str, list[ScriptDoc]]) -> str:
+    top_links = [
+        '<li><a href="#at-a-glance">At a Glance</a></li>',
+        '<li><a href="#repository-structure">Repository Structure</a></li>',
+        '<li><a href="#all-scripts">All Scripts</a></li>',
+    ]
+    dir_links = [
+        f'<li><a href="#{dir_anchor(directory)}">{html.escape(directory)}/'
+        f'<span class="toc-count"> ({len(by_dir[directory])})</span></a></li>'
+        for directory in sorted(by_dir)
+    ]
+    return f"""<nav class="toc" id="toc" aria-label="On this page">
+<div class="toc-title">On this page</div>
+<ul>
+{''.join(top_links)}
+<li class="toc-divider">Directories</li>
+{''.join(dir_links)}
+</ul>
+<a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
+</nav>"""
+
+
 def build_html(docs: list[ScriptDoc], repo_root: str) -> str:
     by_dir: dict[str, list[ScriptDoc]] = {}
     for d in docs:
@@ -493,7 +629,9 @@ def build_html(docs: list[ScriptDoc], repo_root: str) -> str:
     sections = []
     for directory in sorted(by_dir):
         cards = "\n".join(build_script_card(d) for d in by_dir[directory])
-        sections.append(f'<h2><code>{html.escape(directory)}/</code></h2>\n{cards}')
+        sections.append(
+            f'<h2 id="{dir_anchor(directory)}"><code>{html.escape(directory)}/</code></h2>\n{cards}'
+        )
 
     generated_at = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     stats = compute_stats(docs)
@@ -508,23 +646,80 @@ def build_html(docs: list[ScriptDoc], repo_root: str) -> str:
 <style>{CSS}</style>
 </head>
 <body>
+<a id="top"></a>
 <h1>shell-toolkit — Script Documentation</h1>
 <p>Auto-generated from the <code># ---DOC-START---</code> / <code># ---DOC-END---</code> metadata
 block at the top of every script. Do not edit this file by hand — edit the metadata in the
 scripts and re-run <code>generate-docs.py</code> instead.</p>
 
+<div class="layout">
+<div class="content">
+
 {build_stats_block(stats)}
 
-<h2>Repository Structure</h2>
+<h2 id="repository-structure">Repository Structure</h2>
 <pre><code>{html.escape(tree_text)}</code></pre>
 
-<h2>All Scripts</h2>
+<h2 id="all-scripts">All Scripts</h2>
+<div class="filter-box">
+<input type="text" id="script-filter" placeholder="Filter scripts by name, summary, or directory…" autocomplete="off">
+<div class="filter-hint" id="filter-hint"></div>
+</div>
 {build_summary_table(docs)}
 
 {''.join(sections)}
 
 <p class="generated-note">Generated by <code>generate-docs.py</code> on {generated_at} &middot;
 {len(docs)} scripts documented.</p>
+
+</div>
+{build_toc(by_dir)}
+</div>
+
+<script>
+(function() {{
+  // --- Live filter for the "All Scripts" summary table ---
+  var input = document.getElementById('script-filter');
+  var hint = document.getElementById('filter-hint');
+  var rows = Array.prototype.slice.call(
+    document.querySelectorAll('#all-scripts-table tbody tr')
+  );
+  if (input) {{
+    input.addEventListener('input', function() {{
+      var q = input.value.trim().toLowerCase();
+      var shown = 0;
+      rows.forEach(function(row) {{
+        var match = !q || (row.getAttribute('data-search') || '').indexOf(q) !== -1;
+        row.classList.toggle('filtered-out', !match);
+        if (match) shown++;
+      }});
+      hint.textContent = q ? (shown + ' of ' + rows.length + ' scripts match') : '';
+    }});
+  }}
+
+  // --- Scrollspy: highlight the current section in the TOC while scrolling ---
+  var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
+  var targets = tocLinks
+    .map(function(a) {{
+      var id = a.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      return el ? {{ link: a, el: el }} : null;
+    }})
+    .filter(Boolean);
+
+  function onScroll() {{
+    var pos = window.scrollY + 110;
+    var current = null;
+    targets.forEach(function(t) {{
+      if (t.el.offsetTop <= pos) current = t;
+    }});
+    tocLinks.forEach(function(a) {{ a.classList.remove('active'); }});
+    if (current) current.link.classList.add('active');
+  }}
+  window.addEventListener('scroll', onScroll, {{ passive: true }});
+  onScroll();
+}})();
+</script>
 </body>
 </html>
 """
