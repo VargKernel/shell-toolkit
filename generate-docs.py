@@ -12,10 +12,12 @@ Scans every *.sh file in the repository for a documentation metadata block:
     # sudo: true|false
     # interactive: true|false
     # idempotent: true|false|mostly
+    # dependencies: path/to/other-script.sh, path/to/another.sh|none
     # ---DOC-END---
 
 ...and renders a single static HTML page (docs/index.html) with a summary
-table and a detailed, per-directory breakdown of every script.
+table and a detailed, per-directory breakdown of every script -- including,
+for each script, a dependency tree built from its `dependencies` field.
 
 Usage:
     ./generate-docs.py                 # scan repo root, write docs/index.html
@@ -91,6 +93,7 @@ class ScriptDoc:
     sudo: bool = False
     interactive: bool = False
     idempotent: str = "false"  # "true" | "false" | "mostly"
+    dependencies: list[str] = field(default_factory=list)  # relpaths of other repo scripts
 
     @property
     def directory(self) -> str:
@@ -162,6 +165,11 @@ def parse_doc_block(path: str, relpath: str) -> ScriptDoc | None:
                 doc.interactive = parse_bool(value)
             elif key == "idempotent":
                 doc.idempotent = value.lower() if value.lower() in ("true", "false", "mostly") else "false"
+            elif key == "dependencies":
+                if value.strip().lower() in ("", "none"):
+                    doc.dependencies = []
+                else:
+                    doc.dependencies = [dep.strip() for dep in value.split(",") if dep.strip()]
             continue
 
         if in_description:
@@ -178,11 +186,8 @@ def parse_doc_block(path: str, relpath: str) -> ScriptDoc | None:
 
     return doc
 
-
-# ---------------------------------------------------------------------------
 # Minimal markdown -> HTML (only the subset used in DOC-START/DOC-END blocks:
 # paragraphs, "- " bullet lists, "> " blockquotes, **bold**, `code`, [text](url))
-# ---------------------------------------------------------------------------
 
 def render_inline(text: str) -> str:
     escaped = html.escape(text, quote=False)
@@ -258,10 +263,7 @@ def render_description(md: str) -> str:
 
     return "\n".join(blocks)
 
-
-# ---------------------------------------------------------------------------
 # Repository structure tree (fully discovered from the filesystem)
-# ---------------------------------------------------------------------------
 
 def _list_dir(path: str) -> tuple[list[str], list[str]]:
     dirs, files = [], []
@@ -303,10 +305,7 @@ def build_tree_text(root: str) -> str:
     recurse(root, "", "")
     return "\n".join(lines)
 
-
-# ---------------------------------------------------------------------------
 # Aggregate stats over parsed docs
-# ---------------------------------------------------------------------------
 
 def compute_stats(docs: list[ScriptDoc]) -> dict:
     total = len(docs)
@@ -318,6 +317,7 @@ def compute_stats(docs: list[ScriptDoc]) -> dict:
     by_dir: dict[str, int] = {}
     for d in docs:
         by_dir[d.directory] = by_dir.get(d.directory, 0) + 1
+    with_deps_count = sum(1 for d in docs if d.dependencies)
     return {
         "total": total,
         "directories": len(by_dir),
@@ -325,12 +325,61 @@ def compute_stats(docs: list[ScriptDoc]) -> dict:
         "sudo_count": sudo_count,
         "interactive_count": interactive_count,
         "idempotent_counts": idempotent_counts,
+        "with_deps_count": with_deps_count,
     }
 
+# Dependency trees (built from each script's `dependencies` field)
 
-# ---------------------------------------------------------------------------
+def find_missing_dependencies(docs: list[ScriptDoc]) -> dict[str, list[str]]:
+    """Map relpath -> list of declared dependencies that don't resolve to a documented script."""
+    docs_by_path = {d.relpath: d for d in docs}
+    missing: dict[str, list[str]] = {}
+    for d in docs:
+        bad = [dep for dep in d.dependencies if dep not in docs_by_path]
+        if bad:
+            missing[d.relpath] = bad
+    return missing
+
+
+def render_dependency_tree(doc: ScriptDoc, docs_by_path: dict[str, ScriptDoc],
+                            stack: tuple[str, ...] = ()) -> str:
+    """Recursively render this script's dependencies as a nested <ul> tree.
+
+    Handles two edge cases so a bad/typo'd metadata block can't break generation:
+    - a dependency path that doesn't match any documented script ("not found")
+    - a dependency cycle (A depends on B which depends on A) ("circular reference")
+    """
+    if not doc.dependencies:
+        return ""
+
+    items = []
+    for dep in doc.dependencies:
+        dep_doc = docs_by_path.get(dep)
+        if dep in stack:
+            items.append(
+                f'<li><code>{html.escape(dep)}</code> '
+                f'<span class="dep-flag dep-cycle">circular reference</span></li>'
+            )
+        elif dep_doc is None:
+            items.append(
+                f'<li><code>{html.escape(dep)}</code> '
+                f'<span class="dep-flag dep-missing">not found</span></li>'
+            )
+        else:
+            child_tree = render_dependency_tree(dep_doc, docs_by_path, stack + (doc.relpath,))
+            link = f'<a href="#{dep_doc.anchor}"><code>{html.escape(dep)}</code></a>'
+            items.append(f"<li>{link}{child_tree}</li>")
+
+    return "<ul class=\"dep-tree\">" + "".join(items) + "</ul>"
+
+
+def build_dependency_section(doc: ScriptDoc, docs_by_path: dict[str, ScriptDoc]) -> str:
+    if not doc.dependencies:
+        return '<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>'
+    tree = render_dependency_tree(doc, docs_by_path)
+    return f'<div class="dep-section"><strong>Dependencies:</strong>{tree}</div>'
+
 # HTML rendering
-# ---------------------------------------------------------------------------
 
 CSS = """
 :root {
@@ -519,6 +568,28 @@ tr:nth-child(2n) { background: #f6f8fa; }
 }
 tr.filtered-out { display: none; }
 
+.dep-section { margin: .8em 0; font-size: .95em; }
+.dep-tree, .dep-tree ul {
+  list-style: none;
+  padding-left: 1.2em;
+  margin: .3em 0 0;
+}
+.dep-tree li {
+  margin: .15em 0;
+  border-left: 1px dashed #d1d9e0;
+  padding-left: .8em;
+}
+.dep-none { color: #59636e; }
+.dep-flag {
+  font-size: .82em;
+  padding: 0 .4em;
+  border-radius: 4px;
+  margin-left: .3em;
+}
+.dep-missing { color: #9a6700; background: #fff8c5; }
+.dep-cycle { color: #cf222e; background: #ffebe9; }
+.deps-count { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
 @media (max-width: 900px) {
   .layout { flex-direction: column-reverse; gap: 0; }
   .toc {
@@ -550,18 +621,20 @@ def build_summary_table(docs: list[ScriptDoc]) -> str:
             f'<td class="badge">{BOOL_BADGE[d.sudo]}</td>'
             f'<td class="badge">{BOOL_BADGE[d.interactive]}</td>'
             f'<td class="badge">{IDEMPOTENT_BADGE.get(d.idempotent, "\u274c")}</td>'
+            f'<td class="deps-count">{len(d.dependencies) if d.dependencies else "\u2014"}</td>'
             "</tr>"
         )
     return (
         '<table id="all-scripts-table">\n<thead><tr>'
         "<th>Directory</th><th>Script</th><th>Summary</th>"
-        "<th>Sudo</th><th>Interactive</th><th>Idempotent</th>"
+        "<th>Sudo</th><th>Interactive</th><th>Idempotent</th><th>Deps</th>"
         "</tr></thead>\n<tbody>\n" + "\n".join(rows) + "\n</tbody>\n</table>"
     )
 
 
-def build_script_card(d: ScriptDoc) -> str:
+def build_script_card(d: ScriptDoc, docs_by_path: dict[str, ScriptDoc]) -> str:
     desc_html = render_description(d.description)
+    deps_html = build_dependency_section(d, docs_by_path)
     return f"""<div class="script-card" id="{d.anchor}">
 <h3><code>{html.escape(d.relpath)}</code></h3>
 <div class="meta-row">
@@ -570,6 +643,7 @@ def build_script_card(d: ScriptDoc) -> str:
 <span class="badge">Idempotent: {IDEMPOTENT_BADGE.get(d.idempotent, "\u274c")} ({html.escape(d.idempotent)})</span>
 </div>
 {desc_html}
+{deps_html}
 </div>"""
 
 
@@ -589,6 +663,7 @@ def build_stats_block(stats: dict) -> str:
 <tr><td>Interactive</td><td>{stats['interactive_count']} / {stats['total']}</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
     <td>{idem.get('true', 0)} / {idem.get('mostly', 0)} / {idem.get('false', 0)}</td></tr>
+<tr><td>Scripts with dependencies</td><td>{stats['with_deps_count']} / {stats['total']}</td></tr>
 </tbody>
 </table>
 <table>
@@ -626,9 +701,11 @@ def build_html(docs: list[ScriptDoc], repo_root: str) -> str:
     for d in docs:
         by_dir.setdefault(d.directory, []).append(d)
 
+    docs_by_path = {d.relpath: d for d in docs}
+
     sections = []
     for directory in sorted(by_dir):
-        cards = "\n".join(build_script_card(d) for d in by_dir[directory])
+        cards = "\n".join(build_script_card(d, docs_by_path) for d in by_dir[directory])
         sections.append(
             f'<h2 id="{dir_anchor(directory)}"><code>{html.escape(directory)}/</code></h2>\n{cards}'
         )
@@ -724,9 +801,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </html>
 """
 
-
-# ---------------------------------------------------------------------------
-
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--root", default=os.path.dirname(os.path.abspath(__file__)),
@@ -759,13 +833,21 @@ def main() -> int:
 
     docs.sort(key=lambda d: d.relpath)
 
+    missing_deps = find_missing_dependencies(docs)
+    if missing_deps:
+        print(f"[!] {len(missing_deps)} script(s) declare a dependency that doesn't resolve "
+              f"to a documented script:", file=sys.stderr)
+        for relpath, bad in sorted(missing_deps.items()):
+            for dep in bad:
+                print(f"    - {relpath} -> {dep}", file=sys.stderr)
+
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(build_html(docs, root))
 
     print(f"[+] Wrote {out_path} ({len(docs)} scripts documented)")
 
-    if args.strict and undocumented:
+    if args.strict and (undocumented or missing_deps):
         return 1
     return 0
 

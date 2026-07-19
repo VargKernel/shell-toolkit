@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# ---DOC-START---
+# summary: Install pipx and ensure ~/.local/bin is on PATH.
+# description: |
+#   Installs [pipx](https://github.com/pypa/pipx) and ensures `~/.local/bin` is on PATH.
+# sudo: true
+# interactive: false
+# idempotent: mostly
+# dependencies: none
+# ---DOC-END---
+
+set -euo pipefail
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+export DEBIAN_FRONTEND=noninteractive
+
+if [[ $EUID -ne 0 ]]; then
+    echo "[!] Please log in as root and run this script."
+    exit 1
+fi
+
+echo "[*] Updating package index..."
+sudo apt update
+
+echo "[*] Installing pipx..."
+sudo apt install -y pipx
+
+echo "[*] Ensuring pipx PATH is configured..."
+pipx ensurepath
+
+export PATH="$HOME/.local/bin:$PATH"
+
+echo "[+] pipx installed and PATH configured."

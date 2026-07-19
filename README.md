@@ -37,13 +37,13 @@
 ## Documentation
 
 Every script carries its own documentation as a metadata block right after the shebang
-(`summary`, `description`, `sudo`, `interactive`, `idempotent` — see
+(`summary`, `description`, `sudo`, `interactive`, `idempotent`, `dependencies` — see
 [`docs/documentation-metadata-guidelines.md`](docs/documentation-metadata-guidelines.md)).
 
 That metadata is the single source of truth for what each script does. It's rendered into a
-static page at **[`docs/index.html`](docs/index.html)** — a summary table of every script plus a
-detailed, per-directory breakdown — by [`generate-docs.py`](generate-docs.py), a
-dependency-free Python 3 script:
+static page at **[`docs/index.html`](docs/index.html)** — a summary table of every script, a
+per-script dependency tree built from the `dependencies` field, and a detailed, per-directory
+breakdown — by [`generate-docs.py`](generate-docs.py), a dependency-free Python 3 script:
 
 ```bash
 ./generate-docs.py

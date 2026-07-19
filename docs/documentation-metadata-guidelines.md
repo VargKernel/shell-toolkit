@@ -16,6 +16,11 @@ Every script must contain a documentation metadata block immediately after the s
   * `true` — Safe to run repeatedly without changing the final system state.
   * `mostly` — Generally safe, but some operations may be repeated (for example, updating package indexes or downloading files).
   * `false` — Repeated execution may produce different results or unwanted side effects.
+* `dependencies` lists other scripts **in this repository** that the script invokes or requires (for example, an orchestrator in `workflows/` that runs several installers in sequence). This is used to render a dependency tree for each script in the generated documentation.
+
+  * Paths are relative to the repository root and comma-separated on a single line, e.g. `server/deploy-nginx.sh, server/deploy-grafana.sh`.
+  * If the script does not call any other script in the repository, use `none`.
+  * Only list scripts from this repository — do not list external programs or packages (e.g. `curl`, `docker`, `apt`) here.
 
 ## Supported Fields
 
@@ -26,6 +31,7 @@ Every script must contain a documentation metadata block immediately after the s
 | `sudo`        | `true` / `false`            | Whether the script requires root privileges.          |
 | `interactive` | `true` / `false`            | Whether the script requires user interaction.         |
 | `idempotent`  | `true` / `mostly` / `false` | Whether the script is idempotent.                     |
+| `dependencies` | comma-separated paths / `none` | Other repo scripts this script calls; used to build a dependency tree. |
 
 ## Example
 
@@ -41,6 +47,23 @@ Every script must contain a documentation metadata block immediately after the s
 # sudo: true
 # interactive: false
 # idempotent: mostly
+# dependencies: none
+# ---DOC-END---
+```
+
+Example for an orchestrator script that runs other scripts from this repo:
+
+```bash
+#!/bin/bash
+
+# ---DOC-START---
+# summary: Install yt-dlp, gallery-dl, spotdl via pipx in one step.
+# description: |
+#   Installs a curated set of Python CLI tools via pipx in one step.
+# sudo: false
+# interactive: false
+# idempotent: true
+# dependencies: pipx/install-gallery-dl.sh, pipx/install-yt-dlp.sh, pipx/install-spotdl.sh
 # ---DOC-END---
 ```
 

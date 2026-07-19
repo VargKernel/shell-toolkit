@@ -191,6 +191,28 @@ tr:nth-child(2n) { background: #f6f8fa; }
 }
 tr.filtered-out { display: none; }
 
+.dep-section { margin: .8em 0; font-size: .95em; }
+.dep-tree, .dep-tree ul {
+  list-style: none;
+  padding-left: 1.2em;
+  margin: .3em 0 0;
+}
+.dep-tree li {
+  margin: .15em 0;
+  border-left: 1px dashed #d1d9e0;
+  padding-left: .8em;
+}
+.dep-none { color: #59636e; }
+.dep-flag {
+  font-size: .82em;
+  padding: 0 .4em;
+  border-radius: 4px;
+  margin-left: .3em;
+}
+.dep-missing { color: #9a6700; background: #fff8c5; }
+.dep-cycle { color: #cf222e; background: #ffebe9; }
+.deps-count { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
 @media (max-width: 900px) {
   .layout { flex-direction: column-reverse; gap: 0; }
   .toc {
@@ -226,6 +248,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr><td>Interactive</td><td>18 / 95</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
     <td>74 / 20 / 1</td></tr>
+<tr><td>Scripts with dependencies</td><td>4 / 95</td></tr>
 </tbody>
 </table>
 <table>
@@ -368,103 +391,103 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="filter-hint" id="filter-hint"></div>
 </div>
 <table id="all-scripts-table">
-<thead><tr><th>Directory</th><th>Script</th><th>Summary</th><th>Sudo</th><th>Interactive</th><th>Idempotent</th></tr></thead>
+<thead><tr><th>Directory</th><th>Script</th><th>Summary</th><th>Sudo</th><th>Interactive</th><th>Idempotent</th><th>Deps</th></tr></thead>
 <tbody>
-<tr data-search="apt/cli install-bash-completion.sh install bash-completion from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-bash-completion-sh"><code>install-bash-completion.sh</code></a></td><td>Install bash-completion from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/cli install-bat.sh install bat (cat clone with syntax highlighting) from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-bat-sh"><code>install-bat.sh</code></a></td><td>Install bat (cat clone with syntax highlighting) from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/cli install-cpp.sh install the c and c++ development environment."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-cpp-sh"><code>install-cpp.sh</code></a></td><td>Install the C and C++ development environment.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/cli install-docker.sh install docker engine and the docker compose plugin."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-docker-sh"><code>install-docker.sh</code></a></td><td>Install Docker Engine and the Docker Compose plugin.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/cli install-eza.sh install eza (modern ls replacement), adding the official apt repo if needed."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-eza-sh"><code>install-eza.sh</code></a></td><td>Install eza (modern ls replacement), adding the official apt repo if needed.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/cli install-firewalld-cli.sh install firewalld."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-firewalld-cli-sh"><code>install-firewalld-cli.sh</code></a></td><td>Install firewalld.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/cli install-fzf.sh install fzf from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-fzf-sh"><code>install-fzf.sh</code></a></td><td>Install fzf from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/cli install-htop.sh install htop from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-htop-sh"><code>install-htop.sh</code></a></td><td>Install htop from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/cli install-npm.sh install node.js and npm."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-npm-sh"><code>install-npm.sh</code></a></td><td>Install Node.js and npm.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/cli install-php.sh install php and common extensions."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-php-sh"><code>install-php.sh</code></a></td><td>Install PHP and common extensions.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/cli install-python.sh install the python development environment."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-python-sh"><code>install-python.sh</code></a></td><td>Install the Python development environment.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/cli install-ranger.sh install ranger from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-ranger-sh"><code>install-ranger.sh</code></a></td><td>Install ranger from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/cli install-ripgrep.sh install ripgrep from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-ripgrep-sh"><code>install-ripgrep.sh</code></a></td><td>Install ripgrep from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/cli install-veracrypt-cli.sh install veracrypt cli from the official ppa."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-veracrypt-cli-sh"><code>install-veracrypt-cli.sh</code></a></td><td>Install VeraCrypt CLI from the official PPA.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/cli install-zoxide.sh install zoxide (smarter cd command) from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-zoxide-sh"><code>install-zoxide.sh</code></a></td><td>Install zoxide (smarter cd command) from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/gui install-blender.sh install blender from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-blender-sh"><code>install-blender.sh</code></a></td><td>Install Blender from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/gui install-firefox.sh install firefox from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-firefox-sh"><code>install-firefox.sh</code></a></td><td>Install Firefox from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/gui install-firewalld-gui.sh install firewalld with its gui configuration tool (firewall-config)."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-firewalld-gui-sh"><code>install-firewalld-gui.sh</code></a></td><td>Install firewalld with its GUI configuration tool (firewall-config).</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/gui install-flameshot.sh install flameshot from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-flameshot-sh"><code>install-flameshot.sh</code></a></td><td>Install Flameshot from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/gui install-ghostwriter.sh install the ghostwriter markdown editor."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-ghostwriter-sh"><code>install-ghostwriter.sh</code></a></td><td>Install the Ghostwriter Markdown editor.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/gui install-gimp.sh install gimp from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-gimp-sh"><code>install-gimp.sh</code></a></td><td>Install GIMP from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/gui install-inkscape.sh install inkscape from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-inkscape-sh"><code>install-inkscape.sh</code></a></td><td>Install Inkscape from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/gui install-kate.sh install the kate text editor and official plugins."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-kate-sh"><code>install-kate.sh</code></a></td><td>Install the Kate text editor and official plugins.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/gui install-kdevelop.sh install the kdevelop ide."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-kdevelop-sh"><code>install-kdevelop.sh</code></a></td><td>Install the KDevelop IDE.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/gui install-kio-admin.sh install kio-admin for dolphin root access."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-kio-admin-sh"><code>install-kio-admin.sh</code></a></td><td>Install kio-admin for Dolphin root access.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/gui install-krusader.sh install krusader from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-krusader-sh"><code>install-krusader.sh</code></a></td><td>Install Krusader from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/gui install-obs-studio.sh install obs studio from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-obs-studio-sh"><code>install-obs-studio.sh</code></a></td><td>Install OBS Studio from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/gui install-okular.sh install the okular document viewer."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-okular-sh"><code>install-okular.sh</code></a></td><td>Install the Okular document viewer.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/gui install-protonvpn.sh install the protonvpn cli from the official proton apt repository."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-protonvpn-sh"><code>install-protonvpn.sh</code></a></td><td>Install the ProtonVPN CLI from the official Proton apt repository.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/gui install-qbittorrent.sh install qbittorrent from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-qbittorrent-sh"><code>install-qbittorrent.sh</code></a></td><td>Install qBittorrent from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/gui install-remmina.sh install remmina from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-remmina-sh"><code>install-remmina.sh</code></a></td><td>Install Remmina from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="apt/gui install-tor-browser.sh install tor browser via the official tor project apt repository."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-tor-browser-sh"><code>install-tor-browser.sh</code></a></td><td>Install Tor Browser via the official Tor Project apt repository.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/gui install-veracrypt-gui.sh install veracrypt gui from the official ppa."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-veracrypt-gui-sh"><code>install-veracrypt-gui.sh</code></a></td><td>Install VeraCrypt GUI from the official PPA.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/gui install-virtualbox.sh install virtualbox from the official oracle apt repository."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-virtualbox-sh"><code>install-virtualbox.sh</code></a></td><td>Install VirtualBox from the official Oracle apt repository.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="apt/gui install-vlc.sh install vlc from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-vlc-sh"><code>install-vlc.sh</code></a></td><td>Install VLC from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="flatpak install-discord.sh install discord from flathub."><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-discord-sh"><code>install-discord.sh</code></a></td><td>Install Discord from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="flatpak install-flatpak.sh install flatpak, add the flathub remote, optionally enable kde discover integration."><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-flatpak-sh"><code>install-flatpak.sh</code></a></td><td>Install flatpak, add the Flathub remote, optionally enable KDE Discover integration.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="flatpak install-steam.sh install steam from flathub."><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-steam-sh"><code>install-steam.sh</code></a></td><td>Install Steam from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="flatpak install-telegram.sh install telegram desktop from flathub."><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-telegram-sh"><code>install-telegram.sh</code></a></td><td>Install Telegram Desktop from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="lsp install-bash-language-server.sh install bash-language-server via npm for editor/ide lsp integration."><td class="dir-tag">lsp</td><td><a href="#script-lsp-install-bash-language-server-sh"><code>install-bash-language-server.sh</code></a></td><td>Install bash-language-server via npm for editor/IDE LSP integration.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="lsp install-markdown-language-server.sh install markdown-language-server via npm for editor/ide lsp integration."><td class="dir-tag">lsp</td><td><a href="#script-lsp-install-markdown-language-server-sh"><code>install-markdown-language-server.sh</code></a></td><td>Install markdown-language-server via npm for editor/IDE LSP integration.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="lsp install-python-language-server.sh install python-lsp-server (pylsp) via pipx for editor/ide lsp integration."><td class="dir-tag">lsp</td><td><a href="#script-lsp-install-python-language-server-sh"><code>install-python-language-server.sh</code></a></td><td>Install python-lsp-server (pylsp) via pipx for editor/IDE LSP integration.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="maintenance browser-cleanup.sh clear cache, cookies, and history for firefox, chrome, chromium, and others."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-browser-cleanup-sh"><code>browser-cleanup.sh</code></a></td><td>Clear cache, cookies, and history for Firefox, Chrome, Chromium, and others.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="maintenance chmod-add-x.sh recursively add execute permission to .sh files in a path."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-chmod-add-x-sh"><code>chmod-add-x.sh</code></a></td><td>Recursively add execute permission to .sh files in a path.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="maintenance chmod-remove-x.sh recursively remove execute permission from .sh files in a path."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-chmod-remove-x-sh"><code>chmod-remove-x.sh</code></a></td><td>Recursively remove execute permission from .sh files in a path.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="maintenance create-swap-file.sh create and activate a swap file of any size."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-create-swap-file-sh"><code>create-swap-file.sh</code></a></td><td>Create and activate a swap file of any size.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="maintenance grant-sudo.sh add a user to the sudo group."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-grant-sudo-sh"><code>grant-sudo.sh</code></a></td><td>Add a user to the sudo group.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="maintenance install-virtualbox-guest-additions.sh install virtualbox guest additions from apt."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-install-virtualbox-guest-additions-sh"><code>install-virtualbox-guest-additions.sh</code></a></td><td>Install VirtualBox Guest Additions from apt.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="maintenance set-bashrc-default.sh reset ~/.bashrc to the distribution default."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-set-bashrc-default-sh"><code>set-bashrc-default.sh</code></a></td><td>Reset ~/.bashrc to the distribution default.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="maintenance system-cleanup.sh clean up apt cache, old kernels, logs, temp files &amp; docker leftovers."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-system-cleanup-sh"><code>system-cleanup.sh</code></a></td><td>Clean up APT cache, old kernels, logs, temp files &amp; Docker leftovers.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="maintenance ufw-firewalld-migration.sh remove ufw and replace it with firewalld."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-ufw-firewalld-migration-sh"><code>ufw-firewalld-migration.sh</code></a></td><td>Remove UFW and replace it with Firewalld.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="network bandwidth-summary.sh per-interface link speed, duplex, carrier state, and mtu."><td class="dir-tag">network</td><td><a href="#script-network-bandwidth-summary-sh"><code>bandwidth-summary.sh</code></a></td><td>Per-interface link speed, duplex, carrier state, and MTU.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network connectivity.sh same checks as network-summary.sh plus dns query time and ipv6 internet reachability."><td class="dir-tag">network</td><td><a href="#script-network-connectivity-sh"><code>connectivity.sh</code></a></td><td>Same checks as network-summary.sh plus DNS query time and IPv6 internet reachability.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network dns-info.sh resolvectl status or /etc/resolv.conf, active nameservers, and search domains."><td class="dir-tag">network</td><td><a href="#script-network-dns-info-sh"><code>dns-info.sh</code></a></td><td>resolvectl status or /etc/resolv.conf, active nameservers, and search domains.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network established-connections.sh established tcp connections with local/remote endpoints and owning process."><td class="dir-tag">network</td><td><a href="#script-network-established-connections-sh"><code>established-connections.sh</code></a></td><td>Established TCP connections with local/remote endpoints and owning process.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network firewall-status.sh status across ufw, firewalld, nftables, and iptables — whichever are installed."><td class="dir-tag">network</td><td><a href="#script-network-firewall-status-sh"><code>firewall-status.sh</code></a></td><td>Status across UFW, Firewalld, nftables, and iptables — whichever are installed.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network interface-statistics.sh per-interface rx/tx bytes, packets, errors, drops, and collisions."><td class="dir-tag">network</td><td><a href="#script-network-interface-statistics-sh"><code>interface-statistics.sh</code></a></td><td>Per-interface RX/TX bytes, packets, errors, drops, and collisions.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network listening-ports.sh listening tcp/udp ports with the owning process, via ss."><td class="dir-tag">network</td><td><a href="#script-network-listening-ports-sh"><code>listening-ports.sh</code></a></td><td>Listening TCP/UDP ports with the owning process, via ss.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network neighbors.sh arp table (ipv4) and neighbor cache (ipv6)."><td class="dir-tag">network</td><td><a href="#script-network-neighbors-sh"><code>neighbors.sh</code></a></td><td>ARP table (IPv4) and neighbor cache (IPv6).</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network network-interfaces.sh per-interface state, mac, mtu, driver, speed, and ipv4/ipv6 addresses."><td class="dir-tag">network</td><td><a href="#script-network-network-interfaces-sh"><code>network-interfaces.sh</code></a></td><td>Per-interface state, MAC, MTU, driver, speed, and IPv4/IPv6 addresses.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network network-services.sh active state of networkmanager, systemd-networkd/-resolved, dhcpcd, wpa_supplicant, iwd."><td class="dir-tag">network</td><td><a href="#script-network-network-services-sh"><code>network-services.sh</code></a></td><td>Active state of NetworkManager, systemd-networkd/-resolved, dhcpcd, wpa_supplicant, iwd.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network network-statistics.sh tcp congestion control algorithm, ipv4/ipv6 forwarding, and bbr status via sysctl."><td class="dir-tag">network</td><td><a href="#script-network-network-statistics-sh"><code>network-statistics.sh</code></a></td><td>TCP congestion control algorithm, IPv4/IPv6 forwarding, and BBR status via sysctl.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network network-summary.sh one-shot pass/fail overview: gateway, dns, internet, public ipv4/ipv6."><td class="dir-tag">network</td><td><a href="#script-network-network-summary-sh"><code>network-summary.sh</code></a></td><td>One-shot pass/fail overview: gateway, DNS, internet, public IPv4/IPv6.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network public-ip.sh public ipv4/ipv6 via ipify, falling back to ifconfig.me/ifconfig.co."><td class="dir-tag">network</td><td><a href="#script-network-public-ip-sh"><code>public-ip.sh</code></a></td><td>Public IPv4/IPv6 via ipify, falling back to ifconfig.me/ifconfig.co.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network routing.sh ipv4/ipv6 routing tables and the default gateway/interface."><td class="dir-tag">network</td><td><a href="#script-network-routing-sh"><code>routing.sh</code></a></td><td>IPv4/IPv6 routing tables and the default gateway/interface.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network system-info.sh hostname, os, kernel, architecture, and uptime."><td class="dir-tag">network</td><td><a href="#script-network-system-info-sh"><code>system-info.sh</code></a></td><td>Hostname, OS, kernel, architecture, and uptime.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network vpn-status.sh wireguard/tun/tap interfaces, tailscale status, and zerotier status."><td class="dir-tag">network</td><td><a href="#script-network-vpn-status-sh"><code>vpn-status.sh</code></a></td><td>WireGuard/TUN/TAP interfaces, Tailscale status, and ZeroTier status.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="network wifi-status.sh ssid, signal, bitrate, and frequency for wireless interfaces via iw or nmcli."><td class="dir-tag">network</td><td><a href="#script-network-wifi-status-sh"><code>wifi-status.sh</code></a></td><td>SSID, signal, bitrate, and frequency for wireless interfaces via iw or nmcli.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="nvidia install-nvidia-driver.sh nvidia gpu driver install (auto-detect, apt package, or .run), with nouveau blacklist."><td class="dir-tag">nvidia</td><td><a href="#script-nvidia-install-nvidia-driver-sh"><code>install-nvidia-driver.sh</code></a></td><td>NVIDIA GPU driver install (auto-detect, apt package, or .run), with nouveau blacklist.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">⚠️</td></tr>
-<tr data-search="pipx install-gallery-dl.sh install gallery-dl via pipx."><td class="dir-tag">pipx</td><td><a href="#script-pipx-install-gallery-dl-sh"><code>install-gallery-dl.sh</code></a></td><td>Install gallery-dl via pipx.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="pipx install-pipx.sh install pipx and ensure ~/.local/bin is on path."><td class="dir-tag">pipx</td><td><a href="#script-pipx-install-pipx-sh"><code>install-pipx.sh</code></a></td><td>Install pipx and ensure ~/.local/bin is on PATH.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td></tr>
-<tr data-search="pipx install-spotdl.sh install spotdl via pipx."><td class="dir-tag">pipx</td><td><a href="#script-pipx-install-spotdl-sh"><code>install-spotdl.sh</code></a></td><td>Install spotdl via pipx.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="pipx install-yt-dlp.sh install yt-dlp via pipx."><td class="dir-tag">pipx</td><td><a href="#script-pipx-install-yt-dlp-sh"><code>install-yt-dlp.sh</code></a></td><td>Install yt-dlp via pipx.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="qol bash-qol-demo.sh demo for the bash qol terminal styling."><td class="dir-tag">qol</td><td><a href="#script-qol-bash-qol-demo-sh"><code>bash-qol-demo.sh</code></a></td><td>Demo for the Bash QOL terminal styling.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="qol bash-qol.sh install shell quality-of-life tools and configure bash."><td class="dir-tag">qol</td><td><a href="#script-qol-bash-qol-sh"><code>bash-qol.sh</code></a></td><td>Install shell quality-of-life tools and configure Bash.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="qol oh-my-bash.sh install oh-my-bash with interactive theme selection."><td class="dir-tag">qol</td><td><a href="#script-qol-oh-my-bash-sh"><code>oh-my-bash.sh</code></a></td><td>Install oh-my-bash with interactive theme selection.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="server deploy-grafana.sh grafana + prometheus + node exporter via docker."><td class="dir-tag">server</td><td><a href="#script-server-deploy-grafana-sh"><code>deploy-grafana.sh</code></a></td><td>Grafana + Prometheus + Node Exporter via Docker.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="server deploy-nginx.sh production nginx + optional php-fpm, grafana &amp; portainer proxy."><td class="dir-tag">server</td><td><a href="#script-server-deploy-nginx-sh"><code>deploy-nginx.sh</code></a></td><td>Production Nginx + optional PHP-FPM, Grafana &amp; Portainer proxy.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="server deploy-portainer.sh portainer ce container management ui via docker."><td class="dir-tag">server</td><td><a href="#script-server-deploy-portainer-sh"><code>deploy-portainer.sh</code></a></td><td>Portainer CE container management UI via Docker.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="server deploy-ssh.sh install &amp; harden openssh server, optional firewalld rule."><td class="dir-tag">server</td><td><a href="#script-server-deploy-ssh-sh"><code>deploy-ssh.sh</code></a></td><td>Install &amp; harden OpenSSH Server, optional Firewalld rule.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="server server-bootstrap.sh initial server hardening and configuration."><td class="dir-tag">server</td><td><a href="#script-server-server-bootstrap-sh"><code>server-bootstrap.sh</code></a></td><td>Initial server hardening and configuration.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="server server-report.sh full system inventory report + archive."><td class="dir-tag">server</td><td><a href="#script-server-server-report-sh"><code>server-report.sh</code></a></td><td>Full system inventory report + archive.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="server update-stacks.sh pull and redeploy all docker compose stacks under `/opt/*`."><td class="dir-tag">server</td><td><a href="#script-server-update-stacks-sh"><code>update-stacks.sh</code></a></td><td>Pull and redeploy all Docker Compose stacks under <code>/opt/*</code>.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="showcase git-fetch.sh fastfetch-style terminal portfolio card with live github stats."><td class="dir-tag">showcase</td><td><a href="#script-showcase-git-fetch-sh"><code>git-fetch.sh</code></a></td><td>Fastfetch-style terminal portfolio card with live GitHub stats.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="utilities discord-attachments-dl.sh download attachments from a discord data export."><td class="dir-tag">utilities</td><td><a href="#script-utilities-discord-attachments-dl-sh"><code>discord-attachments-dl.sh</code></a></td><td>Download attachments from a Discord data export.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="utilities download-java.sh eclipse temurin jdk/jre installer (v8, 17, 21, 25)."><td class="dir-tag">utilities</td><td><a href="#script-utilities-download-java-sh"><code>download-java.sh</code></a></td><td>Eclipse Temurin JDK/JRE installer (v8, 17, 21, 25).</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">⚠️</td></tr>
-<tr data-search="utilities git-clone-all.sh clone all public repositories from a github user/profile."><td class="dir-tag">utilities</td><td><a href="#script-utilities-git-clone-all-sh"><code>git-clone-all.sh</code></a></td><td>Clone all public repositories from a GitHub user/profile.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="utilities prompt-cli.sh gemini-based cli assistant with markdown rendering; exposed as ask."><td class="dir-tag">utilities</td><td><a href="#script-utilities-prompt-cli-sh"><code>prompt-cli.sh</code></a></td><td>Gemini-based CLI assistant with markdown rendering; exposed as ask.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td></tr>
-<tr data-search="workflows/deploy-server deploy-server.sh full-stack orchestrator: bootstrap → nginx → grafana → portainer from a single .env."><td class="dir-tag">workflows/deploy-server</td><td><a href="#script-workflows-deploy-server-deploy-server-sh"><code>deploy-server.sh</code></a></td><td>Full-stack orchestrator: bootstrap → nginx → grafana → portainer from a single .env.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">❌</td></tr>
-<tr data-search="workflows/setup-dev setup-dev.sh install a full c++/python/php/node dev environment + lsp servers in one step."><td class="dir-tag">workflows/setup-dev</td><td><a href="#script-workflows-setup-dev-setup-dev-sh"><code>setup-dev.sh</code></a></td><td>Install a full C++/Python/PHP/Node dev environment + LSP servers in one step.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="workflows/setup-flatpak setup-flatpak.sh install flatpak + flathub + discord, steam, telegram in one step."><td class="dir-tag">workflows/setup-flatpak</td><td><a href="#script-workflows-setup-flatpak-setup-flatpak-sh"><code>setup-flatpak.sh</code></a></td><td>Install Flatpak + Flathub + Discord, Steam, Telegram in one step.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="workflows/setup-pipx setup-pipx.sh install yt-dlp, gallery-dl, spotdl via pipx in one step."><td class="dir-tag">workflows/setup-pipx</td><td><a href="#script-workflows-setup-pipx-setup-pipx-sh"><code>setup-pipx.sh</code></a></td><td>Install yt-dlp, gallery-dl, spotdl via pipx in one step.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="yt-dlp yt-dlp-all-formats.sh download every resolution tier (480p-8k) via yt-dlp."><td class="dir-tag">yt-dlp</td><td><a href="#script-yt-dlp-yt-dlp-all-formats-sh"><code>yt-dlp-all-formats.sh</code></a></td><td>Download every resolution tier (480p-8K) via yt-dlp.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="yt-dlp yt-dlp-audio-only.sh download audio only as mp3 via yt-dlp."><td class="dir-tag">yt-dlp</td><td><a href="#script-yt-dlp-yt-dlp-audio-only-sh"><code>yt-dlp-audio-only.sh</code></a></td><td>Download audio only as MP3 via yt-dlp.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
-<tr data-search="yt-dlp yt-dlp-best-format.sh download best quality video as mp4 via yt-dlp."><td class="dir-tag">yt-dlp</td><td><a href="#script-yt-dlp-yt-dlp-best-format-sh"><code>yt-dlp-best-format.sh</code></a></td><td>Download best quality video as MP4 via yt-dlp.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td></tr>
+<tr data-search="apt/cli install-bash-completion.sh install bash-completion from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-bash-completion-sh"><code>install-bash-completion.sh</code></a></td><td>Install bash-completion from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-bat.sh install bat (cat clone with syntax highlighting) from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-bat-sh"><code>install-bat.sh</code></a></td><td>Install bat (cat clone with syntax highlighting) from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-cpp.sh install the c and c++ development environment."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-cpp-sh"><code>install-cpp.sh</code></a></td><td>Install the C and C++ development environment.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-docker.sh install docker engine and the docker compose plugin."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-docker-sh"><code>install-docker.sh</code></a></td><td>Install Docker Engine and the Docker Compose plugin.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-eza.sh install eza (modern ls replacement), adding the official apt repo if needed."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-eza-sh"><code>install-eza.sh</code></a></td><td>Install eza (modern ls replacement), adding the official apt repo if needed.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-firewalld-cli.sh install firewalld."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-firewalld-cli-sh"><code>install-firewalld-cli.sh</code></a></td><td>Install firewalld.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-fzf.sh install fzf from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-fzf-sh"><code>install-fzf.sh</code></a></td><td>Install fzf from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-htop.sh install htop from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-htop-sh"><code>install-htop.sh</code></a></td><td>Install htop from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-npm.sh install node.js and npm."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-npm-sh"><code>install-npm.sh</code></a></td><td>Install Node.js and npm.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-php.sh install php and common extensions."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-php-sh"><code>install-php.sh</code></a></td><td>Install PHP and common extensions.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-python.sh install the python development environment."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-python-sh"><code>install-python.sh</code></a></td><td>Install the Python development environment.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-ranger.sh install ranger from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-ranger-sh"><code>install-ranger.sh</code></a></td><td>Install ranger from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-ripgrep.sh install ripgrep from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-ripgrep-sh"><code>install-ripgrep.sh</code></a></td><td>Install ripgrep from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-veracrypt-cli.sh install veracrypt cli from the official ppa."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-veracrypt-cli-sh"><code>install-veracrypt-cli.sh</code></a></td><td>Install VeraCrypt CLI from the official PPA.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/cli install-zoxide.sh install zoxide (smarter cd command) from the distribution repositories."><td class="dir-tag">apt/cli</td><td><a href="#script-apt-cli-install-zoxide-sh"><code>install-zoxide.sh</code></a></td><td>Install zoxide (smarter cd command) from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-blender.sh install blender from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-blender-sh"><code>install-blender.sh</code></a></td><td>Install Blender from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-firefox.sh install firefox from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-firefox-sh"><code>install-firefox.sh</code></a></td><td>Install Firefox from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-firewalld-gui.sh install firewalld with its gui configuration tool (firewall-config)."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-firewalld-gui-sh"><code>install-firewalld-gui.sh</code></a></td><td>Install firewalld with its GUI configuration tool (firewall-config).</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-flameshot.sh install flameshot from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-flameshot-sh"><code>install-flameshot.sh</code></a></td><td>Install Flameshot from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-ghostwriter.sh install the ghostwriter markdown editor."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-ghostwriter-sh"><code>install-ghostwriter.sh</code></a></td><td>Install the Ghostwriter Markdown editor.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-gimp.sh install gimp from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-gimp-sh"><code>install-gimp.sh</code></a></td><td>Install GIMP from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-inkscape.sh install inkscape from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-inkscape-sh"><code>install-inkscape.sh</code></a></td><td>Install Inkscape from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-kate.sh install the kate text editor and official plugins."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-kate-sh"><code>install-kate.sh</code></a></td><td>Install the Kate text editor and official plugins.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-kdevelop.sh install the kdevelop ide."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-kdevelop-sh"><code>install-kdevelop.sh</code></a></td><td>Install the KDevelop IDE.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-kio-admin.sh install kio-admin for dolphin root access."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-kio-admin-sh"><code>install-kio-admin.sh</code></a></td><td>Install kio-admin for Dolphin root access.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-krusader.sh install krusader from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-krusader-sh"><code>install-krusader.sh</code></a></td><td>Install Krusader from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-obs-studio.sh install obs studio from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-obs-studio-sh"><code>install-obs-studio.sh</code></a></td><td>Install OBS Studio from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-okular.sh install the okular document viewer."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-okular-sh"><code>install-okular.sh</code></a></td><td>Install the Okular document viewer.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-protonvpn.sh install the protonvpn cli from the official proton apt repository."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-protonvpn-sh"><code>install-protonvpn.sh</code></a></td><td>Install the ProtonVPN CLI from the official Proton apt repository.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-qbittorrent.sh install qbittorrent from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-qbittorrent-sh"><code>install-qbittorrent.sh</code></a></td><td>Install qBittorrent from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-remmina.sh install remmina from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-remmina-sh"><code>install-remmina.sh</code></a></td><td>Install Remmina from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-tor-browser.sh install tor browser via the official tor project apt repository."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-tor-browser-sh"><code>install-tor-browser.sh</code></a></td><td>Install Tor Browser via the official Tor Project apt repository.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-veracrypt-gui.sh install veracrypt gui from the official ppa."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-veracrypt-gui-sh"><code>install-veracrypt-gui.sh</code></a></td><td>Install VeraCrypt GUI from the official PPA.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-virtualbox.sh install virtualbox from the official oracle apt repository."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-virtualbox-sh"><code>install-virtualbox.sh</code></a></td><td>Install VirtualBox from the official Oracle apt repository.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="apt/gui install-vlc.sh install vlc from the distribution repositories."><td class="dir-tag">apt/gui</td><td><a href="#script-apt-gui-install-vlc-sh"><code>install-vlc.sh</code></a></td><td>Install VLC from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="flatpak install-discord.sh install discord from flathub."><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-discord-sh"><code>install-discord.sh</code></a></td><td>Install Discord from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="flatpak install-flatpak.sh install flatpak, add the flathub remote, optionally enable kde discover integration."><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-flatpak-sh"><code>install-flatpak.sh</code></a></td><td>Install flatpak, add the Flathub remote, optionally enable KDE Discover integration.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="flatpak install-steam.sh install steam from flathub."><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-steam-sh"><code>install-steam.sh</code></a></td><td>Install Steam from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="flatpak install-telegram.sh install telegram desktop from flathub."><td class="dir-tag">flatpak</td><td><a href="#script-flatpak-install-telegram-sh"><code>install-telegram.sh</code></a></td><td>Install Telegram Desktop from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="lsp install-bash-language-server.sh install bash-language-server via npm for editor/ide lsp integration."><td class="dir-tag">lsp</td><td><a href="#script-lsp-install-bash-language-server-sh"><code>install-bash-language-server.sh</code></a></td><td>Install bash-language-server via npm for editor/IDE LSP integration.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="lsp install-markdown-language-server.sh install markdown-language-server via npm for editor/ide lsp integration."><td class="dir-tag">lsp</td><td><a href="#script-lsp-install-markdown-language-server-sh"><code>install-markdown-language-server.sh</code></a></td><td>Install markdown-language-server via npm for editor/IDE LSP integration.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="lsp install-python-language-server.sh install python-lsp-server (pylsp) via pipx for editor/ide lsp integration."><td class="dir-tag">lsp</td><td><a href="#script-lsp-install-python-language-server-sh"><code>install-python-language-server.sh</code></a></td><td>Install python-lsp-server (pylsp) via pipx for editor/IDE LSP integration.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="maintenance browser-cleanup.sh clear cache, cookies, and history for firefox, chrome, chromium, and others."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-browser-cleanup-sh"><code>browser-cleanup.sh</code></a></td><td>Clear cache, cookies, and history for Firefox, Chrome, Chromium, and others.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="maintenance chmod-add-x.sh recursively add execute permission to .sh files in a path."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-chmod-add-x-sh"><code>chmod-add-x.sh</code></a></td><td>Recursively add execute permission to .sh files in a path.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="maintenance chmod-remove-x.sh recursively remove execute permission from .sh files in a path."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-chmod-remove-x-sh"><code>chmod-remove-x.sh</code></a></td><td>Recursively remove execute permission from .sh files in a path.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="maintenance create-swap-file.sh create and activate a swap file of any size."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-create-swap-file-sh"><code>create-swap-file.sh</code></a></td><td>Create and activate a swap file of any size.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="maintenance grant-sudo.sh add a user to the sudo group."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-grant-sudo-sh"><code>grant-sudo.sh</code></a></td><td>Add a user to the sudo group.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="maintenance install-virtualbox-guest-additions.sh install virtualbox guest additions from apt."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-install-virtualbox-guest-additions-sh"><code>install-virtualbox-guest-additions.sh</code></a></td><td>Install VirtualBox Guest Additions from apt.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="maintenance set-bashrc-default.sh reset ~/.bashrc to the distribution default."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-set-bashrc-default-sh"><code>set-bashrc-default.sh</code></a></td><td>Reset ~/.bashrc to the distribution default.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="maintenance system-cleanup.sh clean up apt cache, old kernels, logs, temp files &amp; docker leftovers."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-system-cleanup-sh"><code>system-cleanup.sh</code></a></td><td>Clean up APT cache, old kernels, logs, temp files &amp; Docker leftovers.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="maintenance ufw-firewalld-migration.sh remove ufw and replace it with firewalld."><td class="dir-tag">maintenance</td><td><a href="#script-maintenance-ufw-firewalld-migration-sh"><code>ufw-firewalld-migration.sh</code></a></td><td>Remove UFW and replace it with Firewalld.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="network bandwidth-summary.sh per-interface link speed, duplex, carrier state, and mtu."><td class="dir-tag">network</td><td><a href="#script-network-bandwidth-summary-sh"><code>bandwidth-summary.sh</code></a></td><td>Per-interface link speed, duplex, carrier state, and MTU.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network connectivity.sh same checks as network-summary.sh plus dns query time and ipv6 internet reachability."><td class="dir-tag">network</td><td><a href="#script-network-connectivity-sh"><code>connectivity.sh</code></a></td><td>Same checks as network-summary.sh plus DNS query time and IPv6 internet reachability.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network dns-info.sh resolvectl status or /etc/resolv.conf, active nameservers, and search domains."><td class="dir-tag">network</td><td><a href="#script-network-dns-info-sh"><code>dns-info.sh</code></a></td><td>resolvectl status or /etc/resolv.conf, active nameservers, and search domains.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network established-connections.sh established tcp connections with local/remote endpoints and owning process."><td class="dir-tag">network</td><td><a href="#script-network-established-connections-sh"><code>established-connections.sh</code></a></td><td>Established TCP connections with local/remote endpoints and owning process.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network firewall-status.sh status across ufw, firewalld, nftables, and iptables — whichever are installed."><td class="dir-tag">network</td><td><a href="#script-network-firewall-status-sh"><code>firewall-status.sh</code></a></td><td>Status across UFW, Firewalld, nftables, and iptables — whichever are installed.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network interface-statistics.sh per-interface rx/tx bytes, packets, errors, drops, and collisions."><td class="dir-tag">network</td><td><a href="#script-network-interface-statistics-sh"><code>interface-statistics.sh</code></a></td><td>Per-interface RX/TX bytes, packets, errors, drops, and collisions.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network listening-ports.sh listening tcp/udp ports with the owning process, via ss."><td class="dir-tag">network</td><td><a href="#script-network-listening-ports-sh"><code>listening-ports.sh</code></a></td><td>Listening TCP/UDP ports with the owning process, via ss.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network neighbors.sh arp table (ipv4) and neighbor cache (ipv6)."><td class="dir-tag">network</td><td><a href="#script-network-neighbors-sh"><code>neighbors.sh</code></a></td><td>ARP table (IPv4) and neighbor cache (IPv6).</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network network-interfaces.sh per-interface state, mac, mtu, driver, speed, and ipv4/ipv6 addresses."><td class="dir-tag">network</td><td><a href="#script-network-network-interfaces-sh"><code>network-interfaces.sh</code></a></td><td>Per-interface state, MAC, MTU, driver, speed, and IPv4/IPv6 addresses.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network network-services.sh active state of networkmanager, systemd-networkd/-resolved, dhcpcd, wpa_supplicant, iwd."><td class="dir-tag">network</td><td><a href="#script-network-network-services-sh"><code>network-services.sh</code></a></td><td>Active state of NetworkManager, systemd-networkd/-resolved, dhcpcd, wpa_supplicant, iwd.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network network-statistics.sh tcp congestion control algorithm, ipv4/ipv6 forwarding, and bbr status via sysctl."><td class="dir-tag">network</td><td><a href="#script-network-network-statistics-sh"><code>network-statistics.sh</code></a></td><td>TCP congestion control algorithm, IPv4/IPv6 forwarding, and BBR status via sysctl.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network network-summary.sh one-shot pass/fail overview: gateway, dns, internet, public ipv4/ipv6."><td class="dir-tag">network</td><td><a href="#script-network-network-summary-sh"><code>network-summary.sh</code></a></td><td>One-shot pass/fail overview: gateway, DNS, internet, public IPv4/IPv6.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network public-ip.sh public ipv4/ipv6 via ipify, falling back to ifconfig.me/ifconfig.co."><td class="dir-tag">network</td><td><a href="#script-network-public-ip-sh"><code>public-ip.sh</code></a></td><td>Public IPv4/IPv6 via ipify, falling back to ifconfig.me/ifconfig.co.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network routing.sh ipv4/ipv6 routing tables and the default gateway/interface."><td class="dir-tag">network</td><td><a href="#script-network-routing-sh"><code>routing.sh</code></a></td><td>IPv4/IPv6 routing tables and the default gateway/interface.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network system-info.sh hostname, os, kernel, architecture, and uptime."><td class="dir-tag">network</td><td><a href="#script-network-system-info-sh"><code>system-info.sh</code></a></td><td>Hostname, OS, kernel, architecture, and uptime.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network vpn-status.sh wireguard/tun/tap interfaces, tailscale status, and zerotier status."><td class="dir-tag">network</td><td><a href="#script-network-vpn-status-sh"><code>vpn-status.sh</code></a></td><td>WireGuard/TUN/TAP interfaces, Tailscale status, and ZeroTier status.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="network wifi-status.sh ssid, signal, bitrate, and frequency for wireless interfaces via iw or nmcli."><td class="dir-tag">network</td><td><a href="#script-network-wifi-status-sh"><code>wifi-status.sh</code></a></td><td>SSID, signal, bitrate, and frequency for wireless interfaces via iw or nmcli.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="nvidia install-nvidia-driver.sh nvidia gpu driver install (auto-detect, apt package, or .run), with nouveau blacklist."><td class="dir-tag">nvidia</td><td><a href="#script-nvidia-install-nvidia-driver-sh"><code>install-nvidia-driver.sh</code></a></td><td>NVIDIA GPU driver install (auto-detect, apt package, or .run), with nouveau blacklist.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="pipx install-gallery-dl.sh install gallery-dl via pipx."><td class="dir-tag">pipx</td><td><a href="#script-pipx-install-gallery-dl-sh"><code>install-gallery-dl.sh</code></a></td><td>Install gallery-dl via pipx.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="pipx install-pipx.sh install pipx and ensure ~/.local/bin is on path."><td class="dir-tag">pipx</td><td><a href="#script-pipx-install-pipx-sh"><code>install-pipx.sh</code></a></td><td>Install pipx and ensure ~/.local/bin is on PATH.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="pipx install-spotdl.sh install spotdl via pipx."><td class="dir-tag">pipx</td><td><a href="#script-pipx-install-spotdl-sh"><code>install-spotdl.sh</code></a></td><td>Install spotdl via pipx.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="pipx install-yt-dlp.sh install yt-dlp via pipx."><td class="dir-tag">pipx</td><td><a href="#script-pipx-install-yt-dlp-sh"><code>install-yt-dlp.sh</code></a></td><td>Install yt-dlp via pipx.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="qol bash-qol-demo.sh demo for the bash qol terminal styling."><td class="dir-tag">qol</td><td><a href="#script-qol-bash-qol-demo-sh"><code>bash-qol-demo.sh</code></a></td><td>Demo for the Bash QOL terminal styling.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="qol bash-qol.sh install shell quality-of-life tools and configure bash."><td class="dir-tag">qol</td><td><a href="#script-qol-bash-qol-sh"><code>bash-qol.sh</code></a></td><td>Install shell quality-of-life tools and configure Bash.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="qol oh-my-bash.sh install oh-my-bash with interactive theme selection."><td class="dir-tag">qol</td><td><a href="#script-qol-oh-my-bash-sh"><code>oh-my-bash.sh</code></a></td><td>Install oh-my-bash with interactive theme selection.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="server deploy-grafana.sh grafana + prometheus + node exporter via docker."><td class="dir-tag">server</td><td><a href="#script-server-deploy-grafana-sh"><code>deploy-grafana.sh</code></a></td><td>Grafana + Prometheus + Node Exporter via Docker.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="server deploy-nginx.sh production nginx + optional php-fpm, grafana &amp; portainer proxy."><td class="dir-tag">server</td><td><a href="#script-server-deploy-nginx-sh"><code>deploy-nginx.sh</code></a></td><td>Production Nginx + optional PHP-FPM, Grafana &amp; Portainer proxy.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="server deploy-portainer.sh portainer ce container management ui via docker."><td class="dir-tag">server</td><td><a href="#script-server-deploy-portainer-sh"><code>deploy-portainer.sh</code></a></td><td>Portainer CE container management UI via Docker.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="server deploy-ssh.sh install &amp; harden openssh server, optional firewalld rule."><td class="dir-tag">server</td><td><a href="#script-server-deploy-ssh-sh"><code>deploy-ssh.sh</code></a></td><td>Install &amp; harden OpenSSH Server, optional Firewalld rule.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="server server-bootstrap.sh initial server hardening and configuration."><td class="dir-tag">server</td><td><a href="#script-server-server-bootstrap-sh"><code>server-bootstrap.sh</code></a></td><td>Initial server hardening and configuration.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="server server-report.sh full system inventory report + archive."><td class="dir-tag">server</td><td><a href="#script-server-server-report-sh"><code>server-report.sh</code></a></td><td>Full system inventory report + archive.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="server update-stacks.sh pull and redeploy all docker compose stacks under `/opt/*`."><td class="dir-tag">server</td><td><a href="#script-server-update-stacks-sh"><code>update-stacks.sh</code></a></td><td>Pull and redeploy all Docker Compose stacks under <code>/opt/*</code>.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="showcase git-fetch.sh fastfetch-style terminal portfolio card with live github stats."><td class="dir-tag">showcase</td><td><a href="#script-showcase-git-fetch-sh"><code>git-fetch.sh</code></a></td><td>Fastfetch-style terminal portfolio card with live GitHub stats.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="utilities discord-attachments-dl.sh download attachments from a discord data export."><td class="dir-tag">utilities</td><td><a href="#script-utilities-discord-attachments-dl-sh"><code>discord-attachments-dl.sh</code></a></td><td>Download attachments from a Discord data export.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="utilities download-java.sh eclipse temurin jdk/jre installer (v8, 17, 21, 25)."><td class="dir-tag">utilities</td><td><a href="#script-utilities-download-java-sh"><code>download-java.sh</code></a></td><td>Eclipse Temurin JDK/JRE installer (v8, 17, 21, 25).</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="utilities git-clone-all.sh clone all public repositories from a github user/profile."><td class="dir-tag">utilities</td><td><a href="#script-utilities-git-clone-all-sh"><code>git-clone-all.sh</code></a></td><td>Clone all public repositories from a GitHub user/profile.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="utilities prompt-cli.sh gemini-based cli assistant with markdown rendering; exposed as ask."><td class="dir-tag">utilities</td><td><a href="#script-utilities-prompt-cli-sh"><code>prompt-cli.sh</code></a></td><td>Gemini-based CLI assistant with markdown rendering; exposed as ask.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="workflows/deploy-server deploy-server.sh full-stack orchestrator: bootstrap → nginx → grafana → portainer from a single .env."><td class="dir-tag">workflows/deploy-server</td><td><a href="#script-workflows-deploy-server-deploy-server-sh"><code>deploy-server.sh</code></a></td><td>Full-stack orchestrator: bootstrap → nginx → grafana → portainer from a single .env.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">❌</td><td class="deps-count">4</td></tr>
+<tr data-search="workflows/setup-dev setup-dev.sh install a full c++/python/php/node dev environment + lsp servers in one step."><td class="dir-tag">workflows/setup-dev</td><td><a href="#script-workflows-setup-dev-setup-dev-sh"><code>setup-dev.sh</code></a></td><td>Install a full C++/Python/PHP/Node dev environment + LSP servers in one step.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">11</td></tr>
+<tr data-search="workflows/setup-flatpak setup-flatpak.sh install flatpak + flathub + discord, steam, telegram in one step."><td class="dir-tag">workflows/setup-flatpak</td><td><a href="#script-workflows-setup-flatpak-setup-flatpak-sh"><code>setup-flatpak.sh</code></a></td><td>Install Flatpak + Flathub + Discord, Steam, Telegram in one step.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">4</td></tr>
+<tr data-search="workflows/setup-pipx setup-pipx.sh install yt-dlp, gallery-dl, spotdl via pipx in one step."><td class="dir-tag">workflows/setup-pipx</td><td><a href="#script-workflows-setup-pipx-setup-pipx-sh"><code>setup-pipx.sh</code></a></td><td>Install yt-dlp, gallery-dl, spotdl via pipx in one step.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">3</td></tr>
+<tr data-search="yt-dlp yt-dlp-all-formats.sh download every resolution tier (480p-8k) via yt-dlp."><td class="dir-tag">yt-dlp</td><td><a href="#script-yt-dlp-yt-dlp-all-formats-sh"><code>yt-dlp-all-formats.sh</code></a></td><td>Download every resolution tier (480p-8K) via yt-dlp.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="yt-dlp yt-dlp-audio-only.sh download audio only as mp3 via yt-dlp."><td class="dir-tag">yt-dlp</td><td><a href="#script-yt-dlp-yt-dlp-audio-only-sh"><code>yt-dlp-audio-only.sh</code></a></td><td>Download audio only as MP3 via yt-dlp.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="yt-dlp yt-dlp-best-format.sh download best quality video as mp4 via yt-dlp."><td class="dir-tag">yt-dlp</td><td><a href="#script-yt-dlp-yt-dlp-best-format-sh"><code>yt-dlp-best-format.sh</code></a></td><td>Download best quality video as MP4 via yt-dlp.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 </tbody>
 </table>
 
@@ -477,6 +500,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://github.com/scop/bash-completion">bash-completion</a> via apt. Programmable completion is normally auto-sourced by <code>/etc/bash.bashrc</code> on Debian/Ubuntu once the package is present — no manual .bashrc edit needed.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-bat-sh">
 <h3><code>apt/cli/install-bat.sh</code></h3>
@@ -488,6 +512,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <a href="https://github.com/sharkdp/bat">bat</a> via apt.</p>
 <ul><li>On Ubuntu/Debian the binary ships as <code>batcat</code> (to avoid a name clash</li></ul>
 <p>with an unrelated <code>bat</code> package). This script adds a <code>bat</code> symlink to <code>/usr/local/bin/bat</code> when only <code>batcat</code> is present, so <code>bat</code> works out of the box.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-cpp-sh">
 <h3><code>apt/cli/install-cpp.sh</code></h3>
@@ -497,6 +522,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <code>build-essential</code>, <code>gcc</code>, <code>g++</code>, <code>clang</code>, <code>cmake</code>, <code>ninja-build</code>, <code>gdb</code>, <code>lldb</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-docker-sh">
 <h3><code>apt/cli/install-docker.sh</code></h3>
@@ -506,6 +532,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <a href="https://www.docker.com">Docker</a> Engine (<code>docker.io</code>) and the Docker Compose plugin; enables and starts the service.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-eza-sh">
 <h3><code>apt/cli/install-eza.sh</code></h3>
@@ -517,6 +544,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <a href="https://github.com/eza-community/eza">eza</a> via apt.</p>
 <ul><li>eza only reached Debian's own repos in Debian 13 (Trixie) / recent</li></ul>
 <p>Ubuntu. On releases where the apt package is unavailable, this script adds the official third-party repository, <code>deb.gierens.de</code> (https://eza.rocks / https://github.com/eza-community/eza/blob/main/INSTALL.md), signed with its published GPG key, then installs from there.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-firewalld-cli-sh">
 <h3><code>apt/cli/install-firewalld-cli.sh</code></h3>
@@ -528,6 +556,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <a href="https://firewalld.org">firewalld</a>.</p>
 <ul><li>Enables and starts the <code>firewalld</code> service.</li><li>Note: if <code>ufw</code> is active, it should be disabled to avoid conflicting</li></ul>
 <p>netfilter rules; this script does not do that automatically.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-fzf-sh">
 <h3><code>apt/cli/install-fzf.sh</code></h3>
@@ -537,6 +566,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://github.com/junegunn/fzf">fzf</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-htop-sh">
 <h3><code>apt/cli/install-htop.sh</code></h3>
@@ -546,6 +576,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://htop.dev">htop</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-npm-sh">
 <h3><code>apt/cli/install-npm.sh</code></h3>
@@ -555,6 +586,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <code>nodejs</code>, <code>npm</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-php-sh">
 <h3><code>apt/cli/install-php.sh</code></h3>
@@ -564,6 +596,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <code>php</code>, <code>php-cli</code>, <code>php-fpm</code>, and common PHP extensions.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-python-sh">
 <h3><code>apt/cli/install-python.sh</code></h3>
@@ -573,6 +606,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <code>python3</code>, <code>python3-pip</code>, <code>python3-venv</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-ranger-sh">
 <h3><code>apt/cli/install-ranger.sh</code></h3>
@@ -582,6 +616,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://github.com/ranger/ranger">ranger</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-ripgrep-sh">
 <h3><code>apt/cli/install-ripgrep.sh</code></h3>
@@ -591,6 +626,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-veracrypt-cli-sh">
 <h3><code>apt/cli/install-veracrypt-cli.sh</code></h3>
@@ -600,6 +636,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <a href="https://www.veracrypt.fr">VeraCrypt</a> CLI (Console Only) from the official PPA.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-cli-install-zoxide-sh">
 <h3><code>apt/cli/install-zoxide.sh</code></h3>
@@ -611,6 +648,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <a href="https://github.com/ajeetdsouza/zoxide">zoxide</a> via apt.</p>
 <ul><li><code>zoxide</code> landed in Debian/Ubuntu repos only in recent releases</li></ul>
 <p>(Debian 12+, Ubuntu 22.10+). On older releases where the apt package is unavailable, this script falls back to the official upstream install script (installs to <code>~/.local/bin</code> for the invoking user via <code>SUDO_USER</code>, or root's home if run directly as root).</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-apt-gui"><code>apt/gui/</code></h2>
 <div class="script-card" id="script-apt-gui-install-blender-sh">
 <h3><code>apt/gui/install-blender.sh</code></h3>
@@ -620,6 +658,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://www.blender.org">Blender</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-firefox-sh">
 <h3><code>apt/gui/install-firefox.sh</code></h3>
@@ -633,6 +672,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>the Snap transitional package on stock Ubuntu; Debian ships a real deb).</p>
 <ul><li>Falls back to <code>firefox-esr</code>, the package name used on Debian stable</li></ul>
 <p>when the plain <code>firefox</code> package does not exist in the configured repos.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-firewalld-gui-sh">
 <h3><code>apt/gui/install-firewalld-gui.sh</code></h3>
@@ -644,6 +684,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <a href="https://firewalld.org">firewalld</a> and <code>firewall-config</code>, its GTK graphical configuration tool.</p>
 <ul><li>Enables and starts the <code>firewalld</code> service.</li><li>Note: if <code>ufw</code> is active, it should be disabled to avoid conflicting</li></ul>
 <p>netfilter rules; this script does not do that automatically.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-flameshot-sh">
 <h3><code>apt/gui/install-flameshot.sh</code></h3>
@@ -653,6 +694,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://flameshot.org">Flameshot</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-ghostwriter-sh">
 <h3><code>apt/gui/install-ghostwriter.sh</code></h3>
@@ -662,6 +704,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs the <a href="https://ghostwriter.kde.org">Ghostwriter</a> Markdown editor.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-gimp-sh">
 <h3><code>apt/gui/install-gimp.sh</code></h3>
@@ -671,6 +714,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://www.gimp.org">GIMP</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-inkscape-sh">
 <h3><code>apt/gui/install-inkscape.sh</code></h3>
@@ -680,6 +724,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://inkscape.org">Inkscape</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-kate-sh">
 <h3><code>apt/gui/install-kate.sh</code></h3>
@@ -689,6 +734,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs the <a href="https://kate-editor.org">Kate</a> text editor along with the official plugin collection (<code>kate-plugins</code>).</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-kdevelop-sh">
 <h3><code>apt/gui/install-kdevelop.sh</code></h3>
@@ -698,6 +744,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs the <a href="https://kdevelop.org">KDevelop</a> IDE.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-kio-admin-sh">
 <h3><code>apt/gui/install-kio-admin.sh</code></h3>
@@ -707,6 +754,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <code>kio-admin</code> for Dolphin root access.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-krusader-sh">
 <h3><code>apt/gui/install-krusader.sh</code></h3>
@@ -716,6 +764,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://krusader.org">Krusader</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-obs-studio-sh">
 <h3><code>apt/gui/install-obs-studio.sh</code></h3>
@@ -725,6 +774,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://obsproject.com">OBS Studio</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-okular-sh">
 <h3><code>apt/gui/install-okular.sh</code></h3>
@@ -734,6 +784,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs the <a href="https://okular.kde.org">Okular</a> document viewer.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-protonvpn-sh">
 <h3><code>apt/gui/install-protonvpn.sh</code></h3>
@@ -743,6 +794,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs the <a href="https://protonvpn.com">ProtonVPN</a> CLI from the official Proton apt repository.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-qbittorrent-sh">
 <h3><code>apt/gui/install-qbittorrent.sh</code></h3>
@@ -752,6 +804,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://www.qbittorrent.org">qBittorrent</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-remmina-sh">
 <h3><code>apt/gui/install-remmina.sh</code></h3>
@@ -761,6 +814,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://remmina.org">Remmina</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-tor-browser-sh">
 <h3><code>apt/gui/install-tor-browser.sh</code></h3>
@@ -770,6 +824,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <a href="https://www.torproject.org">Tor Browser</a> via the official Tor Project apt repository.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-veracrypt-gui-sh">
 <h3><code>apt/gui/install-veracrypt-gui.sh</code></h3>
@@ -779,6 +834,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <a href="https://www.veracrypt.fr">VeraCrypt</a> GUI (Graphical Interface) from the official PPA.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-virtualbox-sh">
 <h3><code>apt/gui/install-virtualbox.sh</code></h3>
@@ -788,6 +844,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <a href="https://www.virtualbox.org">VirtualBox</a> from the official Oracle apt repository.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-apt-gui-install-vlc-sh">
 <h3><code>apt/gui/install-vlc.sh</code></h3>
@@ -797,6 +854,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://www.videolan.org/vlc/">VLC</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-flatpak"><code>flatpak/</code></h2>
 <div class="script-card" id="script-flatpak-install-discord-sh">
 <h3><code>flatpak/install-discord.sh</code></h3>
@@ -806,6 +864,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://discord.com">Discord</a> from Flathub.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-flatpak-install-flatpak-sh">
 <h3><code>flatpak/install-flatpak.sh</code></h3>
@@ -815,6 +874,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <code>flatpak</code>, adds the <a href="https://flathub.org">Flathub</a> remote, optionally enables KDE Discover integration.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-flatpak-install-steam-sh">
 <h3><code>flatpak/install-steam.sh</code></h3>
@@ -824,6 +884,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://store.steampowered.com">Steam</a> from Flathub.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-flatpak-install-telegram-sh">
 <h3><code>flatpak/install-telegram.sh</code></h3>
@@ -833,6 +894,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://desktop.telegram.org">Telegram Desktop</a> from Flathub.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-lsp"><code>lsp/</code></h2>
 <div class="script-card" id="script-lsp-install-bash-language-server-sh">
 <h3><code>lsp/install-bash-language-server.sh</code></h3>
@@ -843,6 +905,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs <a href="https://github.com/bash-lsp/bash-language-server">bash-language-server</a> via npm into <code>~/.local/npm</code>; adds to <code>~/.bashrc</code>.</p>
 <ul><li>Idempotent — uses a marker block in <code>~/.bashrc</code> and skips installation if the server is already present</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-lsp-install-markdown-language-server-sh">
 <h3><code>lsp/install-markdown-language-server.sh</code></h3>
@@ -853,6 +916,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs <code>markdown-language-server</code> via npm into <code>~/.local/npm</code>; adds to <code>~/.bashrc</code>.</p>
 <ul><li>Idempotent — uses a marker block in <code>~/.bashrc</code> and skips installation if the server is already present</li><li>Must be run as root so it can resolve the real user's home directory via <code>SUDO_USER</code></li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-lsp-install-python-language-server-sh">
 <h3><code>lsp/install-python-language-server.sh</code></h3>
@@ -863,6 +927,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs <a href="https://github.com/python-lsp/python-lsp-server">python-lsp-server</a> (<code>pylsp</code>) for the current user, with all optional providers (Rope, Pyflakes, McCabe, pycodestyle, pydocstyle, autopep8, YAPF) enabled via the <code>[all]</code> extra.</p>
 <ul><li>Installs via <code>pipx</code></li><li>Adds <code>~/.local/bin</code> to PATH in <code>.bashrc</code> and <code>.profile</code></li><li>Idempotent — skips installation if <code>pylsp</code> is already available</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-maintenance"><code>maintenance/</code></h2>
 <div class="script-card" id="script-maintenance-browser-cleanup-sh">
 <h3><code>maintenance/browser-cleanup.sh</code></h3>
@@ -873,6 +938,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Clears browser data for Firefox, Chrome, Chromium, Brave, Edge, Opera, and Vivaldi.</p>
 <ul><li>Stops all detected browser processes before cleaning</li><li>Removes cookies, history, cache, session data, and local storage per browser</li><li>Only cleans browsers that are actually installed on the system</li><li>No root required — operates entirely within the current user's home directory</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-maintenance-chmod-add-x-sh">
 <h3><code>maintenance/chmod-add-x.sh</code></h3>
@@ -883,6 +949,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Recursively adds the execute bit on all <code>.sh</code> files under a given path.</p>
 <ul><li>Usage: <code>./chmod-add-x.sh &lt;path&gt;</code></li><li>No root required unless the target path requires elevated access</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-maintenance-chmod-remove-x-sh">
 <h3><code>maintenance/chmod-remove-x.sh</code></h3>
@@ -893,6 +960,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Recursively removes the execute bit from all <code>.sh</code> files under a given path.</p>
 <ul><li>Usage: <code>./chmod-remove-x.sh &lt;path&gt;</code></li><li>No root required unless the target path requires elevated access</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-maintenance-create-swap-file-sh">
 <h3><code>maintenance/create-swap-file.sh</code></h3>
@@ -903,6 +971,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Creates and activates a swap file at <code>/swapfile</code>.</p>
 <ul><li>Usage: <code>./create-swap-file.sh &lt;size&gt;</code> (e.g. <code>4G</code>, <code>8192M</code>, <code>2GiB</code>)</li><li>Accepts G, GB, GiB, M, MB, MiB, T, TB, TiB units</li><li>Detects and safely handles an existing swap file with a confirmation prompt</li><li>Enables the new swap immediately and persists it via <code>/etc/fstab</code></li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-maintenance-grant-sudo-sh">
 <h3><code>maintenance/grant-sudo.sh</code></h3>
@@ -913,6 +982,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Adds an existing user to the <code>sudo</code> group.</p>
 <ul><li>Usage: <code>./grant-sudo.sh &lt;username&gt;</code> or run as <code>sudo</code> (inherits <code>SUDO_USER</code> automatically)</li><li>Validates that the target user exists and is not <code>root</code></li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-maintenance-install-virtualbox-guest-additions-sh">
 <h3><code>maintenance/install-virtualbox-guest-additions.sh</code></h3>
@@ -923,6 +993,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs <a href="https://www.virtualbox.org/manual/ch04.html">VirtualBox Guest Additions</a> from the distribution's apt repository.</p>
 <ul><li>Supports Debian, Ubuntu, Linux Mint, Pop!_OS, and Kali</li><li>Installs <code>virtualbox-guest-x11</code> and <code>virtualbox-guest-utils</code></li><li>Reminds the user to reboot to activate the additions</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-maintenance-set-bashrc-default-sh">
 <h3><code>maintenance/set-bashrc-default.sh</code></h3>
@@ -933,6 +1004,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Restores <code>~/.bashrc</code> to the distro default.</p>
 <ul><li>Backs up the current <code>~/.bashrc</code> with a timestamp before overwriting</li><li>Restores the file from <code>/etc/skel/.bashrc</code></li><li>Requires explicit confirmation before making changes</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-maintenance-system-cleanup-sh">
 <h3><code>maintenance/system-cleanup.sh</code></h3>
@@ -943,6 +1015,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Frees up disk space by clearing caches, logs, and other safe-to-remove files.</p>
 <ul><li>Runs <code>apt-get autoremove</code>, <code>autoclean</code>, and <code>clean</code></li><li>Detects and optionally removes <strong>old kernel packages</strong> while keeping the running kernel</li><li>Vacuums <code>journald</code> logs and removes rotated/compressed logs in <code>/var/log</code> older than 7 days</li><li>Clears stale files from <code>/tmp</code> and <code>/var/tmp</code></li><li>Optionally prunes Docker images, containers, networks, and volumes with separate confirmations</li><li>Clears thumbnail caches for all home directories</li><li>Prints a summary of freed disk space at the end</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-maintenance-ufw-firewalld-migration-sh">
 <h3><code>maintenance/ufw-firewalld-migration.sh</code></h3>
@@ -954,6 +1027,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Replaces UFW with <strong><a href="https://firewalld.org">Firewalld</a></strong> on Debian/Ubuntu systems.</p>
 <ul><li>Disables and removes UFW</li><li>Installs Firewalld and enables it on boot</li><li>Opens SSH in the default zone before finishing so the session is not dropped</li></ul>
 <blockquote>⚠️ <strong>Idempotency caveat:</strong> safe to run on a system that still has UFW, but a no-op if UFW is already gone and Firewalld is already running — it will not reconfigure an existing Firewalld setup.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-network"><code>network/</code></h2>
 <div class="script-card" id="script-network-bandwidth-summary-sh">
 <h3><code>network/bandwidth-summary.sh</code></h3>
@@ -964,6 +1038,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>Per-interface link speed, duplex, carrier state, and MTU</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-connectivity-sh">
 <h3><code>network/connectivity.sh</code></h3>
@@ -974,6 +1049,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>Same checks as <code>network-summary.sh</code> plus DNS query time and IPv6 internet reachability</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-dns-info-sh">
 <h3><code>network/dns-info.sh</code></h3>
@@ -984,6 +1060,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li><code>resolvectl</code> status or <code>/etc/resolv.conf</code>, active nameservers, and search domains</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-established-connections-sh">
 <h3><code>network/established-connections.sh</code></h3>
@@ -995,6 +1072,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>Established TCP connections with local/remote endpoints and owning process</li></ul>
 <blockquote>Running as <code>sudo</code> gives fuller process detail on this script; it still works without root, but with a warning and reduced detail.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-firewall-status-sh">
 <h3><code>network/firewall-status.sh</code></h3>
@@ -1006,6 +1084,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>Status across UFW, Firewalld, nftables, and iptables — whichever are installed</li></ul>
 <blockquote>Running as <code>sudo</code> gives fuller process detail on this script; it still works without root, but with a warning and reduced detail.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-interface-statistics-sh">
 <h3><code>network/interface-statistics.sh</code></h3>
@@ -1016,6 +1095,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>Per-interface RX/TX bytes, packets, errors, drops, and collisions from <code>/sys/class/net</code></li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-listening-ports-sh">
 <h3><code>network/listening-ports.sh</code></h3>
@@ -1027,6 +1107,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>Listening TCP/UDP ports with the owning process, via <code>ss</code></li></ul>
 <blockquote>Running as <code>sudo</code> gives fuller process detail on this script; it still works without root, but with a warning and reduced detail.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-neighbors-sh">
 <h3><code>network/neighbors.sh</code></h3>
@@ -1037,6 +1118,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>ARP table (IPv4) and neighbor cache (IPv6)</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-network-interfaces-sh">
 <h3><code>network/network-interfaces.sh</code></h3>
@@ -1047,6 +1129,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>Per-interface state, MAC, MTU, driver, speed, and IPv4/IPv6 addresses</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-network-services-sh">
 <h3><code>network/network-services.sh</code></h3>
@@ -1057,6 +1140,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>Active state of NetworkManager, systemd-networkd/-resolved, dhcpcd, wpa_supplicant, iwd</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-network-statistics-sh">
 <h3><code>network/network-statistics.sh</code></h3>
@@ -1067,6 +1151,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>TCP congestion control algorithm, IPv4/IPv6 forwarding, and BBR status via <code>sysctl</code></li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-network-summary-sh">
 <h3><code>network/network-summary.sh</code></h3>
@@ -1077,6 +1162,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>One-shot pass/fail overview: gateway, DNS, internet, public IPv4/IPv6</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-public-ip-sh">
 <h3><code>network/public-ip.sh</code></h3>
@@ -1087,6 +1173,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>Public IPv4/IPv6 via ipify, falling back to ifconfig.me/ifconfig.co</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-routing-sh">
 <h3><code>network/routing.sh</code></h3>
@@ -1097,6 +1184,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>IPv4/IPv6 routing tables and the default gateway/interface</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-system-info-sh">
 <h3><code>network/system-info.sh</code></h3>
@@ -1107,6 +1195,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>Hostname, OS, kernel, architecture, and uptime</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-vpn-status-sh">
 <h3><code>network/vpn-status.sh</code></h3>
@@ -1117,6 +1206,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>WireGuard/TUN/TAP interfaces, Tailscale status, and ZeroTier status</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-network-wifi-status-sh">
 <h3><code>network/wifi-status.sh</code></h3>
@@ -1127,6 +1217,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script — does not modify system configuration. Works without root; colored output degrades gracefully to plain text when not attached to a terminal.</p>
 <ul><li>SSID, signal, bitrate, and frequency for wireless interfaces via <code>iw</code> or <code>nmcli</code></li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-nvidia"><code>nvidia/</code></h2>
 <div class="script-card" id="script-nvidia-install-nvidia-driver-sh">
 <h3><code>nvidia/install-nvidia-driver.sh</code></h3>
@@ -1138,6 +1229,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs an NVIDIA GPU driver, either from the distro's apt repository or from a legacy/manual <code>.run</code> installer.</p>
 <ul><li>Usage: <code>sudo ./install-nvidia-driver.sh --detect</code> (auto-detects the recommended package via <code>ubuntu-drivers</code> or <code>nvidia-detect</code>), <code>--package &lt;nvidia-driver-XXX&gt;</code>, or <code>--run &lt;path-to-.run&gt;</code></li><li>Blacklists the <code>nouveau</code> driver and refreshes <code>initramfs</code> before installing</li><li>Stops the display manager and switches to <code>multi-user.target</code> so X/Wayland is fully down before the driver installs or builds — asks for confirmation first</li><li>Warns if a process is still holding <code>/dev/nvidia*</code> before proceeding</li><li>Installs via <code>apt-get install</code> (package mode) or runs the <code>.run</code> file with <code>--silent --dkms --no-x-check</code> (manual mode)</li><li>Offers to reboot at the end, or prints how to return to <code>graphical.target</code> manually</li></ul>
 <blockquote>⚠️ <strong>Idempotency caveat:</strong> re-running always stops the graphical session and prompts for a reboot again, even if the driver is already installed — run it from an SSH session or TTY, not from inside the graphical session it's about to stop.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-pipx"><code>pipx/</code></h2>
 <div class="script-card" id="script-pipx-install-gallery-dl-sh">
 <h3><code>pipx/install-gallery-dl.sh</code></h3>
@@ -1147,6 +1239,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://github.com/mikf/gallery-dl">gallery-dl</a>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-pipx-install-pipx-sh">
 <h3><code>pipx/install-pipx.sh</code></h3>
@@ -1156,6 +1249,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <a href="https://github.com/pypa/pipx">pipx</a> and ensures <code>~/.local/bin</code> is on PATH.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-pipx-install-spotdl-sh">
 <h3><code>pipx/install-spotdl.sh</code></h3>
@@ -1165,6 +1259,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://github.com/spotDL/spotify-downloader">spotdl</a>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-pipx-install-yt-dlp-sh">
 <h3><code>pipx/install-yt-dlp.sh</code></h3>
@@ -1174,6 +1269,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-qol"><code>qol/</code></h2>
 <div class="script-card" id="script-qol-bash-qol-demo-sh">
 <h3><code>qol/bash-qol-demo.sh</code></h3>
@@ -1184,6 +1280,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>A standalone demonstration of the Bash QOL terminal styling.</p>
 <ul><li>Creates a temporary sandbox with sample files</li><li>Shows off formatted output and terminal UI behavior</li><li>Useful as a preview before committing to <code>bash-qol.sh</code></li><li>No root required</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-qol-bash-qol-sh">
 <h3><code>qol/bash-qol.sh</code></h3>
@@ -1195,6 +1292,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs shell quality-of-life tools and configures the current user's Bash environment.</p>
 <ul><li>Installs <a href="https://github.com/junegunn/fzf">fzf</a>, <a href="https://github.com/ajeetdsouza/zoxide">zoxide</a>, <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a>, <a href="https://github.com/sharkdp/bat">bat</a>, <a href="https://github.com/eza-community/eza">eza</a>, and <code>bash-completion</code></li><li>Adds the official <code>eza</code> apt repository when the package is not available in distro repos</li><li>Updates <code>~/.bashrc</code> and <code>~/.inputrc</code> with a managed block</li><li>Adds aliases, completion tweaks, and history improvements</li><li>Designed to be re-run safely</li></ul>
 <blockquote>Modifies shell startup files such as <code>~/.bashrc</code>.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-qol-oh-my-bash-sh">
 <h3><code>qol/oh-my-bash.sh</code></h3>
@@ -1206,6 +1304,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <strong><a href="https://github.com/ohmybash/oh-my-bash">oh-my-bash</a></strong> and lets the user pick a theme via an interactive preview.</p>
 <ul><li>Uses theme screenshots rendered in the terminal with <a href="https://github.com/hpjansson/chafa">chafa</a></li><li>Supports both upstream installation and a manual integration mode</li><li>Preserves existing Bash customizations in manual mode</li><li>Updates only the managed block when re-run</li><li>Requires <code>git</code> and <code>chafa</code></li></ul>
 <blockquote>Modifies shell startup files such as <code>~/.bashrc</code>.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-server"><code>server/</code></h2>
 <div class="script-card" id="script-server-deploy-grafana-sh">
 <h3><code>server/deploy-grafana.sh</code></h3>
@@ -1218,6 +1317,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul><li>Managed via <strong><a href="https://docs.docker.com/compose/">Docker Compose</a></strong></li><li>Uses a dedicated secret for the Grafana admin password</li><li>Pre-configures Prometheus to scrape Node Exporter metrics</li><li>Attempts to auto-import the <strong><a href="https://grafana.com/grafana/dashboards/19937">Node Exporter Full</a></strong> dashboard (ID 19937)</li><li>Persists data under <code>/opt/grafana-stack/</code></li></ul>
 <blockquote><strong>Default binding:</strong> <code>127.0.0.1:3000</code> — use <code>deploy-nginx.sh</code> to expose it externally.<br><br><strong>Change the default admin password immediately after first login.</strong></blockquote>
 <blockquote>Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-server-deploy-nginx-sh">
 <h3><code>server/deploy-nginx.sh</code></h3>
@@ -1229,6 +1329,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Deploys a hardened, production-ready <strong><a href="https://nginx.org">Nginx</a></strong> web server.</p>
 <ul><li>Installs Nginx with optional <strong><a href="https://www.php.net/manual/en/install.fpm.php">PHP-FPM</a></strong> integration</li><li>Generates a clean virtual host with security headers and other baseline best practices</li><li>Optionally installs <strong><a href="https://avahi.org">avahi-daemon</a></strong> for mDNS / <code>.local</code> hostname resolution on the LAN</li><li>Can add reverse proxies for <strong>Grafana</strong> at <code>/grafana</code> and <strong>Portainer</strong> at <code>/portainer</code></li><li>Configures <strong>Firewalld</strong> for HTTP, HTTPS, and mDNS</li><li>Creates a clean default <code>index.html</code></li></ul>
 <blockquote>Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-server-deploy-portainer-sh">
 <h3><code>server/deploy-portainer.sh</code></h3>
@@ -1241,6 +1342,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul><li>Managed via <strong><a href="https://docs.docker.com/compose/">Docker Compose</a></strong></li><li>Uses a dedicated secret for the Portainer admin password</li><li>Stores data under <code>/opt/portainer-stack/</code></li></ul>
 <blockquote><strong>Default binding:</strong> <code>127.0.0.1:9000</code> — use <code>deploy-nginx.sh</code> to expose it externally.<br><br><strong>Change the default admin password immediately after first login.</strong></blockquote>
 <blockquote>Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-server-deploy-ssh-sh">
 <h3><code>server/deploy-ssh.sh</code></h3>
@@ -1252,6 +1354,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs and enables <strong><a href="https://www.openssh.com">OpenSSH Server</a></strong>, with optional firewall configuration.</p>
 <ul><li>Installs <code>openssh-server</code> and enables the <code>ssh</code> service</li><li>Optionally installs <strong>Firewalld</strong> and opens the SSH service in the <code>public</code> zone</li><li>Validates <code>sshd</code> configuration with <code>sshd -t</code> before restarting the service — aborts on a bad config instead of dropping the session</li><li>Prints a summary of service status, startup state, and firewall configuration</li></ul>
 <blockquote>Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-server-server-bootstrap-sh">
 <h3><code>server/server-bootstrap.sh</code></h3>
@@ -1262,6 +1365,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Initial hardening and configuration for a fresh server.</p>
 <ul><li>Installs essential admin tools such as <code>htop</code>, <code>ranger</code>, <code>git</code>, <code>curl</code>, <code>wget</code>, and more</li><li>Offers optional hardware diagnostic utilities</li><li>Creates and configures a sudo-enabled user account</li><li>Sets up <strong><a href="https://firewalld.org">Firewalld</a></strong> with sensible default rules</li><li>Configures <strong><a href="https://github.com/fail2ban/fail2ban">Fail2Ban</a></strong> for SSH brute-force protection</li><li>Prints a full system summary at the end</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-server-server-report-sh">
 <h3><code>server/server-report.sh</code></h3>
@@ -1272,6 +1376,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Generates a comprehensive server inventory report, saved locally and archived.</p>
 <ul><li>Collects hardware specs, OS info, network interfaces, active users, running services, Docker containers, Nginx config, and firewall rules</li><li>Saves all data to <code>~/server-report/</code></li><li>Packages everything into <code>server-report.tar.gz</code> for easy transfer</li><li>Displays a color-coded console summary with key metrics</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-server-update-stacks-sh">
 <h3><code>server/update-stacks.sh</code></h3>
@@ -1282,6 +1387,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Updates and redeploys every Docker Compose stack found under <code>/opt/*</code>.</p>
 <ul><li>Lists currently running containers before starting</li><li>Detects <code>docker-compose.yml</code>, <code>compose.yml</code>, <code>compose.yaml</code>, and <code>docker-compose.yaml</code></li><li>Runs <code>docker compose pull</code> followed by <code>docker compose up -d</code> for each stack</li><li>Detects whether new images were actually pulled</li><li>Skips directories with no compose file or where the pull fails</li><li>Prints a final summary of updated, unchanged, and skipped stacks</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-showcase"><code>showcase/</code></h2>
 <div class="script-card" id="script-showcase-git-fetch-sh">
 <h3><code>showcase/git-fetch.sh</code></h3>
@@ -1292,6 +1398,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>A fastfetch-style terminal portfolio card with live GitHub stats, rendered in 24-bit ANSI color.</p>
 <ul><li>Displays identity, role, focus, and tech stack as <a href="https://www.nerdfonts.com">Nerd Fonts</a> pill badges</li><li>Fetches live data from the GitHub API: repo count, total stars, forks, followers, last push date</li><li>Computes top languages by byte count across all public repos and shows them with percentage and icon</li><li>Uses a dot spinner while API requests are in flight</li><li>Displays a 16-color palette at the bottom using the project's brand colors</li><li>Requires <strong><a href="https://www.nerdfonts.com">Nerd Fonts</a></strong> to render the pill badge glyphs correctly</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-utilities"><code>utilities/</code></h2>
 <div class="script-card" id="script-utilities-discord-attachments-dl-sh">
 <h3><code>utilities/discord-attachments-dl.sh</code></h3>
@@ -1302,6 +1409,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Downloads media attachments from a local <strong>Discord data export</strong>.</p>
 <ul><li>Scans all <code>c*/</code> channel folders inside the export directory</li><li>Parses <code>messages.json</code> using <a href="https://jqlang.github.io/jq/">jq</a> to extract attachment URLs</li><li>Downloads files to an <code>attachments/</code> subdirectory per channel</li><li>Skips already-downloaded files</li><li>Logs failed downloads for review</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-utilities-download-java-sh">
 <h3><code>utilities/download-java.sh</code></h3>
@@ -1313,6 +1421,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Downloads and installs multiple <strong><a href="https://adoptium.net">Eclipse Temurin (Adoptium)</a></strong> JDK/JRE builds.</p>
 <ul><li>Supported versions: <strong>8, 17, 21, 25</strong></li><li>Downloads both <strong>JDK</strong> and <strong>JRE</strong> for each version</li><li>Installs to <code>/opt/java/temurin/</code></li><li>Updates shell configuration so the installed Java versions can be used easily</li></ul>
 <blockquote>⚠️ <strong>Idempotency caveat:</strong> hardcodes <code>x64</code> in the Adoptium API URL — will fail on ARM. Re-running will re-download and overwrite existing installations without prompting.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-utilities-git-clone-all-sh">
 <h3><code>utilities/git-clone-all.sh</code></h3>
@@ -1323,6 +1432,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Clones every public repository belonging to a GitHub user or organization.</p>
 <ul><li>Usage: <code>./git-clone-all.sh &lt;github-username-or-url&gt; [target-dir]</code></li><li>Accepts either a bare username or a full <code>github.com/&lt;user&gt;</code> URL</li><li>Paginates through the GitHub API to fetch all repositories</li><li>Clones each repo into the target directory (default <code>./repos</code>)</li><li>Skips repositories that are already cloned locally</li><li>No root required</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-utilities-prompt-cli-sh">
 <h3><code>utilities/prompt-cli.sh</code></h3>
@@ -1333,6 +1443,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>A terminal-based assistant client for the <strong><a href="https://ai.google.dev">Google Gemini API</a></strong> with markdown rendering.</p>
 <ul><li>Usage: <code>ask [--model NAME] &lt;prompt text&gt;</code></li><li>Self-installs into <code>~/.local/bin/</code> on first run</li><li>Stores the API key in <code>~/.config/prompt-cli/keys.env</code></li><li>Renders markdown directly in the terminal</li><li>Includes <code>--setup</code>, <code>--reset</code>, <code>--uninstall</code>, and <code>--help</code></li><li>Uses the <code>ask</code> command name because <code>prompt</code> is already taken by oh-my-bash</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-workflows-deploy-server"><code>workflows/deploy-server/</code></h2>
 <div class="script-card" id="script-workflows-deploy-server-deploy-server-sh">
 <h3><code>workflows/deploy-server/deploy-server.sh</code></h3>
@@ -1344,6 +1455,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Orchestrates a full server deployment by running four scripts in sequence from a single <code>.env</code> config file.</p>
 <ul><li>Validates all <code>.env</code> variables before starting — fails fast with clear errors</li><li>Pipes answers to each subscript via <code>printf</code>, safely handling special characters in credentials</li><li>Handles sudo user creation between the bootstrap and Nginx steps</li><li>Prints a deployment plan before running and confirms before proceeding</li><li>Located in <code>workflows/deploy-server/</code> alongside its <code>.env.example</code> config template</li></ul>
 <blockquote>Designed for <strong>fresh deployments only</strong> — re-running on an existing system breaks prompt ordering in the subscripts.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-server-server-bootstrap-sh"><code>server/server-bootstrap.sh</code></a></li><li><a href="#script-server-deploy-nginx-sh"><code>server/deploy-nginx.sh</code></a></li><li><a href="#script-server-deploy-grafana-sh"><code>server/deploy-grafana.sh</code></a></li><li><a href="#script-server-deploy-portainer-sh"><code>server/deploy-portainer.sh</code></a></li></ul></div>
 </div><h2 id="dir-workflows-setup-dev"><code>workflows/setup-dev/</code></h2>
 <div class="script-card" id="script-workflows-setup-dev-setup-dev-sh">
 <h3><code>workflows/setup-dev/setup-dev.sh</code></h3>
@@ -1354,6 +1466,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs a complete development environment by chaining scripts from <code>apt/</code> and <code>lsp/</code>.</p>
 <ul><li>Runs in order: <code>install-cpp.sh</code>, <code>install-python.sh</code>, <code>install-php.sh</code>, <code>install-kate.sh</code>, <code>install-kdevelop.sh</code>, <code>install-npm.sh</code>, <code>install-ghostwriter.sh</code>, <code>install-docker.sh</code></li><li>Then installs <code>install-bash-language-server.sh</code>, <code>install-markdown-language-server.sh</code> and <code>install-python-language-server.sh</code></li><li>Each subscript is executed individually so a failure is isolated and traceable</li><li>Located in <code>workflows/setup-dev/</code></li></ul>
+<div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-apt-cli-install-cpp-sh"><code>apt/cli/install-cpp.sh</code></a></li><li><a href="#script-apt-cli-install-python-sh"><code>apt/cli/install-python.sh</code></a></li><li><a href="#script-apt-cli-install-php-sh"><code>apt/cli/install-php.sh</code></a></li><li><a href="#script-apt-cli-install-npm-sh"><code>apt/cli/install-npm.sh</code></a></li><li><a href="#script-apt-cli-install-docker-sh"><code>apt/cli/install-docker.sh</code></a></li><li><a href="#script-apt-gui-install-kate-sh"><code>apt/gui/install-kate.sh</code></a></li><li><a href="#script-apt-gui-install-kdevelop-sh"><code>apt/gui/install-kdevelop.sh</code></a></li><li><a href="#script-apt-gui-install-ghostwriter-sh"><code>apt/gui/install-ghostwriter.sh</code></a></li><li><a href="#script-lsp-install-bash-language-server-sh"><code>lsp/install-bash-language-server.sh</code></a></li><li><a href="#script-lsp-install-markdown-language-server-sh"><code>lsp/install-markdown-language-server.sh</code></a></li><li><a href="#script-lsp-install-python-language-server-sh"><code>lsp/install-python-language-server.sh</code></a></li></ul></div>
 </div><h2 id="dir-workflows-setup-flatpak"><code>workflows/setup-flatpak/</code></h2>
 <div class="script-card" id="script-workflows-setup-flatpak-setup-flatpak-sh">
 <h3><code>workflows/setup-flatpak/setup-flatpak.sh</code></h3>
@@ -1364,6 +1477,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs <a href="https://flatpak.org">Flatpak</a> and a standard set of GUI applications in one step.</p>
 <ul><li>Runs in order: <code>install-flatpak.sh</code> (Flatpak + Flathub), <code>install-telegram.sh</code>, <code>install-discord.sh</code>, <code>install-steam.sh</code></li><li>Located in <code>workflows/setup-flatpak/</code></li></ul>
+<div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-flatpak-install-flatpak-sh"><code>flatpak/install-flatpak.sh</code></a></li><li><a href="#script-flatpak-install-telegram-sh"><code>flatpak/install-telegram.sh</code></a></li><li><a href="#script-flatpak-install-discord-sh"><code>flatpak/install-discord.sh</code></a></li><li><a href="#script-flatpak-install-steam-sh"><code>flatpak/install-steam.sh</code></a></li></ul></div>
 </div><h2 id="dir-workflows-setup-pipx"><code>workflows/setup-pipx/</code></h2>
 <div class="script-card" id="script-workflows-setup-pipx-setup-pipx-sh">
 <h3><code>workflows/setup-pipx/setup-pipx.sh</code></h3>
@@ -1374,6 +1488,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs a curated set of Python CLI tools via <a href="https://github.com/pypa/pipx">pipx</a> in one step.</p>
 <ul><li>Runs in order: <code>install-gallery-dl.sh</code>, <code>install-yt-dlp.sh</code>, <code>install-spotdl.sh</code></li><li>Located in <code>workflows/setup-pipx/</code></li></ul>
+<div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-pipx-install-gallery-dl-sh"><code>pipx/install-gallery-dl.sh</code></a></li><li><a href="#script-pipx-install-yt-dlp-sh"><code>pipx/install-yt-dlp.sh</code></a></li><li><a href="#script-pipx-install-spotdl-sh"><code>pipx/install-spotdl.sh</code></a></li></ul></div>
 </div><h2 id="dir-yt-dlp"><code>yt-dlp/</code></h2>
 <div class="script-card" id="script-yt-dlp-yt-dlp-all-formats-sh">
 <h3><code>yt-dlp/yt-dlp-all-formats.sh</code></h3>
@@ -1384,6 +1499,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>All three scripts share the same conventions: they install <a href="https://jqlang.github.io/jq/">jq</a> and <code>wget</code> if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID. No root required.</p>
 <ul><li>Usage: <code>./yt-dlp-all-formats.sh &lt;URL&gt; [extra yt-dlp options]</code></li><li>Targets 480p, 720p, 1080p, 1440p, 2160p (4K), and 4320p (8K) with <code>bestaudio[ext=m4a]</code></li><li>Falls back to <code>best[ext=mp4]</code> / <code>best</code> if no matching tier is available</li><li>Output filename also includes the resolution</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-yt-dlp-yt-dlp-audio-only-sh">
 <h3><code>yt-dlp/yt-dlp-audio-only.sh</code></h3>
@@ -1394,6 +1510,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>All three scripts share the same conventions: they install <a href="https://jqlang.github.io/jq/">jq</a> and <code>wget</code> if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID. No root required.</p>
 <ul><li>Usage: <code>./yt-dlp-audio-only.sh &lt;URL&gt; [extra yt-dlp options]</code></li><li>Extracts audio at the best available quality (<code>--audio-quality 0</code>) and converts to MP3</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-yt-dlp-yt-dlp-best-format-sh">
 <h3><code>yt-dlp/yt-dlp-best-format.sh</code></h3>
@@ -1404,9 +1521,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>All three scripts share the same conventions: they install <a href="https://jqlang.github.io/jq/">jq</a> and <code>wget</code> if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID. No root required.</p>
 <ul><li>Usage: <code>./yt-dlp-best-format.sh &lt;URL&gt; [extra yt-dlp options]</code></li><li>Prefers <code>bestvideo[ext=mp4]+bestaudio[ext=m4a]</code>, falling back to the best overall format</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-18 17:01 UTC &middot;
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-19 17:51 UTC &middot;
 95 scripts documented.</p>
 
 </div>
