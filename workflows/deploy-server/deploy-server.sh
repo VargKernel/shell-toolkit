@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ---DOC-START---
-# summary: Full-stack orchestrator: bootstrap → nginx → grafana → portainer from a single .env.
+# summary: Full-stack workflow: bootstrap → nginx → grafana → portainer from a single .env.
 # description: |
 #   Orchestrates a full server deployment by running four scripts in sequence from a single `.env` config file.
 #
