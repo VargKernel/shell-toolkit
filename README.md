@@ -38,7 +38,7 @@
 
 Every script carries its own documentation as a metadata block right after the shebang
 (`summary`, `description`, `sudo`, `interactive`, `idempotent`, `dependencies` — see
-[`docs/documentation-metadata-guidelines.md`](docs/documentation-metadata-guidelines.md)).
+[`docs/metadata-guidelines.md`](docs/metadata-guidelines.md)).
 
 That metadata is the single source of truth for what each script does. It's rendered into a
 static page at **[`docs/index.html`](docs/index.html)** — a summary table of every script, a
@@ -171,7 +171,7 @@ monitoring, deployment, shell tooling, or useful automation), feel free to open 
 
 Please follow the existing code style: colored output, safety prompts, and inline English
 comments. Every new script needs a `# ---DOC-START--- ... # ---DOC-END---` metadata block — see
-[`docs/documentation-metadata-guidelines.md`](docs/documentation-metadata-guidelines.md) — and
+[`docs/metadata-guidelines.md`](docs/metadata-guidelines.md) — and
 should regenerate cleanly with `./generate-docs.py --strict`.
 
 ## License

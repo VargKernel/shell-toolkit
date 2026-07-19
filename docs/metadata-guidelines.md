@@ -1,4 +1,4 @@
-# Documentation Metadata Guidelines
+# Metadata Guidelines
 
 Every script must contain a documentation metadata block immediately after the shebang. This block is used to automatically generate project documentation, including README files, HTML pages, and summary tables.
 
@@ -51,7 +51,7 @@ Every script must contain a documentation metadata block immediately after the s
 # ---DOC-END---
 ```
 
-Example for an orchestrator script that runs other scripts from this repo:
+Example for an workflow script that runs other scripts from this repo:
 
 ```bash
 #!/bin/bash
