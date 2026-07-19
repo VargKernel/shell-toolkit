@@ -57,13 +57,21 @@ Example for an workflow script that runs other scripts from this repo:
 #!/bin/bash
 
 # ---DOC-START---
-# summary: Install yt-dlp, gallery-dl, spotdl via pipx in one step.
+# summary: Full-stack workflow: bootstrap → nginx → grafana → portainer from a single .env.
 # description: |
-#   Installs a curated set of Python CLI tools via pipx in one step.
-# sudo: false
-# interactive: false
-# idempotent: true
-# dependencies: pipx/install-gallery-dl.sh, pipx/install-yt-dlp.sh, pipx/install-spotdl.sh
+#   Orchestrates a full server deployment by running four scripts in sequence from a single `.env` config file.
+#
+#   - Validates all `.env` variables before starting — fails fast with clear errors
+#   - Pipes answers to each subscript via `printf`, safely handling special characters in credentials
+#   - Handles sudo user creation between the bootstrap and Nginx steps
+#   - Prints a deployment plan before running and confirms before proceeding
+#   - Located in `workflows/deploy-server/` alongside its `.env.example` config template
+#
+#   > Designed for **fresh deployments only** — re-running on an existing system breaks prompt ordering in the subscripts.
+# sudo: true
+# interactive: true
+# idempotent: false
+# dependencies: standalone/server/server-bootstrap.sh, standalone/server/deploy-nginx.sh, standalone/server/deploy-grafana.sh, standalone/server/deploy-portainer.sh
 # ---DOC-END---
 ```
 
