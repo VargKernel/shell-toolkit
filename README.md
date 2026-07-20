@@ -94,8 +94,8 @@ sudo ./server/deploy-grafana.sh
 sudo ./server/deploy-portainer.sh
 
 # 7. Check connectivity, open ports, and firewall status at any time
-./network/get-network-summary.sh
-./network/get-firewall-status.sh
+./imvemtory/network/get-network-summary.sh
+./inventory/network/get-firewall-status.sh
 ```
 
 **Option B — deploy the full server stack in one step** using the orchestrator:
