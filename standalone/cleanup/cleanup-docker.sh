@@ -7,7 +7,7 @@
 # sudo: true
 # interactive: true
 # idempotent: true
-# dependencies: docker
+# dependencies:
 # ---DOC-END---
 
 set -euo pipefail
