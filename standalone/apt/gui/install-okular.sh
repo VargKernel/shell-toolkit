@@ -6,7 +6,7 @@
 #   Installs the [Okular](https://okular.kde.org) document viewer.
 # sudo: true
 # interactive: false
-# idempotent: mostly
+# idempotent: true
 # dependencies: none
 # ---DOC-END---
 
