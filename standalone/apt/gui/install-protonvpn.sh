@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # ---DOC-START---
-# summary: Install the ProtonVPN CLI from the official Proton apt repository.
+# summary: Install the ProtonVPN from the official Proton apt repository.
 # description: |
-#   Installs the [ProtonVPN](https://protonvpn.com) CLI from the official Proton apt repository.
+#   Installs the [ProtonVPN](https://protonvpn.com) from the official Proton apt repository.
 # sudo: true
 # interactive: true
 # idempotent: mostly
@@ -19,6 +19,8 @@ if [[ $EUID -ne 0 ]]; then
     echo "[!] Please log in as root and run this script."
     exit 1
 fi
+
+echo "==> Installing ProtonVPN"
 
 PKG="protonvpn-stable-release_1.0.8_all.deb"
 URL="https://repo.protonvpn.com/debian/dists/stable/main/binary-all/${PKG}"

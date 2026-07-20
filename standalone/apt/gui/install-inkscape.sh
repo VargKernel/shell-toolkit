@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # ---DOC-START---
 # summary: Install Inkscape from the distribution repositories.
 # description: |
@@ -8,6 +9,7 @@
 # idempotent: true
 # dependencies: none
 # ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export DEBIAN_FRONTEND=noninteractive
@@ -17,10 +19,10 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo "---------------Installing Inkscape---------------"
+echo "==> Installing Inkscape"
 
 if command -v inkscape >/dev/null 2>&1; then
-    echo "[i] Inkscape is already installed, skipping."
+    echo "[i] Inkscape is already installed, skipping..."
     exit 0
 fi
 

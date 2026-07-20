@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # ---DOC-START---
 # summary: Install zoxide (smarter cd command) from the distribution repositories.
 # description: |
@@ -14,6 +15,7 @@
 # idempotent: true
 # dependencies: none
 # ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export DEBIAN_FRONTEND=noninteractive
@@ -23,10 +25,10 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo "----------------Installing zoxide----------------"
+echo "==> Installing zoxide"
 
 if command -v zoxide >/dev/null 2>&1; then
-    echo "[i] zoxide is already installed, skipping."
+    echo "[i] zoxide is already installed, skipping..."
     exit 0
 fi
 

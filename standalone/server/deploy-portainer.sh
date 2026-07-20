@@ -68,7 +68,7 @@ if [[ -d "$DEPLOY_DIR" ]]; then
     echo ""
 fi
 
-echo "-------------Installing dependencies-------------"
+echo "==> Installing dependencies"
 echo "[*] Updating system packages..."
 apt-get update -q
 
@@ -79,7 +79,7 @@ echo "[*] Enabling Docker service..."
 systemctl enable --now docker
 echo "[+] Docker is running."
 
-echo "------------Portainer credentials setup----------"
+echo "==> Portainer credentials setup"
 # Portainer CE's built-in admin account is always named 'admin'.
 # The --admin-password-file flag sets the password for this account on first run.
 echo "[i] Note: Portainer CE admin username is always 'admin'."
@@ -93,7 +93,7 @@ if [[ -z "$PORTAINER_PASSWORD" ]]; then
     DEFAULT_PASSWORD=true
 fi
 
-echo "----------------------Domain---------------------"
+echo "==> Domain"
 read -rp "[?] Domain for Portainer URL (e.g. example.com) [leave blank for localhost]: " PORTAINER_DOMAIN
 PORTAINER_DOMAIN="${PORTAINER_DOMAIN:-}"
 
@@ -103,7 +103,7 @@ else
     NGINX_HINT=true
 fi
 
-echo "-----------------Directory setup-----------------"
+echo "==> Directory setup"
 echo "[*] Creating directory structure at $DEPLOY_DIR..."
 mkdir -p "$DEPLOY_DIR"/{data,secrets}
 echo "[+] Directories created."
@@ -113,7 +113,7 @@ printf '%s' "$PORTAINER_PASSWORD" > "$DEPLOY_DIR/secrets/portainer_admin_passwor
 chmod 600 "$DEPLOY_DIR/secrets/portainer_admin_password.txt"
 echo "[+] Secrets saved."
 
-echo "----------------Generating configs---------------"
+echo "==> Generating configs"
 
 # Note: single-quoted heredoc — no shell expansion inside
 cat > "$DEPLOY_DIR/compose.yaml" <<'COMPOSE'
@@ -149,7 +149,7 @@ COMPOSE
 
 echo "[+] Configs written."
 
-echo "----------------Starting the stack---------------"
+echo "==> Starting the stack"
 cd "$DEPLOY_DIR"
 
 echo "[*] Pulling images..."
@@ -159,7 +159,7 @@ echo "[*] Starting containers..."
 docker compose up -d --remove-orphans
 echo "[+] Containers started."
 
-echo "------------Waiting for Portainer health---------"
+echo "==> Waiting for Portainer health"
 echo "[*] Polling Portainer API (up to 60s)..."
 PORTAINER_READY=false
 for i in $(seq 1 30); do
@@ -180,12 +180,12 @@ fi
 
 echo ""
 docker compose ps
+
+echo ""
+echo "==> Summary"
 echo ""
 
-echo "-----------------Setup Complete!-----------------"
-
 if [[ "$DEFAULT_PASSWORD" == true ]]; then
-    echo ""
     echo -e "${RED}╔═══════════════════════════════════════════════════╗${NC}"
     echo -e "${RED}║     [!]  C R I T I C A L   W A R N I N G  [!]     ║${NC}"
     echo -e "${RED}╠═══════════════════════════════════════════════════╣${NC}"
@@ -196,10 +196,9 @@ if [[ "$DEFAULT_PASSWORD" == true ]]; then
     echo -e "${RED}║    My Account → Change Password                   ║${NC}"
     echo -e "${RED}║                                                   ║${NC}"
     echo -e "${RED}╚═══════════════════════════════════════════════════╝${NC}"
-    echo ""
 fi
 
-echo "[SUCCESS]"
+echo ""
 echo "Stack info:"
 echo "  Deploy dir:     $DEPLOY_DIR"
 echo "  Admin user:     admin"
