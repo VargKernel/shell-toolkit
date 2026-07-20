@@ -6,7 +6,7 @@
 #   Installs `flatpak`, adds the [Flathub](https://flathub.org) remote, optionally enables KDE Discover integration.
 # sudo: true
 # interactive: false
-# idempotent: mostly
+# idempotent: true
 # dependencies: none
 # ---DOC-END---
 
