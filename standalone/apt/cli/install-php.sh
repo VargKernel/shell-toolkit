@@ -6,7 +6,7 @@
 #   Installs `php`, `php-cli`, `php-fpm`, and common PHP extensions.
 # sudo: true
 # interactive: false
-# idempotent: mostly
+# idempotent: true
 # dependencies: none
 # ---DOC-END---
 
