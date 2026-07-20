@@ -242,19 +242,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>96</td></tr>
+<tr><td>Total scripts</td><td>99</td></tr>
 <tr><td>Directories</td><td>16</td></tr>
-<tr><td>Require root / sudo</td><td>61 / 96</td></tr>
-<tr><td>Interactive</td><td>19 / 96</td></tr>
+<tr><td>Require root / sudo</td><td>64 / 99</td></tr>
+<tr><td>Interactive</td><td>19 / 99</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>74 / 20 / 2</td></tr>
-<tr><td>Scripts with dependencies</td><td>4 / 96</td></tr>
+    <td>77 / 20 / 2</td></tr>
+<tr><td>Scripts with dependencies</td><td>6 / 99</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/apt/cli</td><td>15</td></tr><tr><td class='dir-tag'>standalone/apt/gui</td><td>20</td></tr><tr><td class='dir-tag'>standalone/flatpak</td><td>4</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/lsp</td><td>3</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/network</td><td>17</td></tr><tr><td class='dir-tag'>standalone/nvidia</td><td>1</td></tr><tr><td class='dir-tag'>standalone/pipx</td><td>4</td></tr><tr><td class='dir-tag'>standalone/qol</td><td>3</td></tr><tr><td class='dir-tag'>standalone/server</td><td>7</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>3</td></tr><tr><td class='dir-tag'>workflows</td><td>3</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
+<tr><td class='dir-tag'>standalone/apt/cli</td><td>16</td></tr><tr><td class='dir-tag'>standalone/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/docker</td><td>2</td></tr><tr><td class='dir-tag'>standalone/flatpak</td><td>4</td></tr><tr><td class='dir-tag'>standalone/git</td><td>3</td></tr><tr><td class='dir-tag'>standalone/lsp</td><td>3</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/network</td><td>17</td></tr><tr><td class='dir-tag'>standalone/nvidia</td><td>1</td></tr><tr><td class='dir-tag'>standalone/pipx</td><td>4</td></tr><tr><td class='dir-tag'>standalone/server</td><td>6</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>3</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
 </tbody>
 </table>
 
@@ -271,11 +271,12 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   ├── cli/
 │   │   │   ├── install-bash-completion.sh
 │   │   │   ├── install-bat.sh
+│   │   │   ├── install-chafa.sh
 │   │   │   ├── install-cpp.sh
-│   │   │   ├── install-docker.sh
 │   │   │   ├── install-eza.sh
 │   │   │   ├── install-firewalld-cli.sh
 │   │   │   ├── install-fzf.sh
+│   │   │   ├── install-git.sh
 │   │   │   ├── install-htop.sh
 │   │   │   ├── install-npm.sh
 │   │   │   ├── install-php.sh
@@ -300,11 +301,15 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │       ├── install-okular.sh
 │   │       ├── install-protonvpn.sh
 │   │       ├── install-qbittorrent.sh
+│   │       ├── install-qwinff.sh
 │   │       ├── install-remmina.sh
 │   │       ├── install-tor-browser.sh
 │   │       ├── install-veracrypt-gui.sh
 │   │       ├── install-virtualbox.sh
 │   │       └── install-vlc.sh
+│   ├── docker/
+│   │   ├── install-docker.sh
+│   │   └── update-docker-compose-stacks.sh
 │   ├── flatpak/
 │   │   ├── install-discord.sh
 │   │   ├── install-flatpak.sh
@@ -312,6 +317,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   └── install-telegram.sh
 │   ├── git/
 │   │   ├── git-clone-all.sh
+│   │   ├── git-fetch-portfolio.sh
 │   │   └── git-rewrite-identity.sh
 │   ├── lsp/
 │   │   ├── install-bash-language-server.sh
@@ -352,20 +358,15 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   ├── install-pipx.sh
 │   │   ├── install-spotdl.sh
 │   │   └── install-yt-dlp.sh
-│   ├── qol/
-│   │   ├── bash-qol-demo.sh
-│   │   ├── oh-my-bash.sh
-│   │   └── setup-bash-qol.sh
 │   ├── server/
 │   │   ├── deploy-grafana.sh
 │   │   ├── deploy-nginx.sh
 │   │   ├── deploy-portainer.sh
 │   │   ├── deploy-ssh.sh
 │   │   ├── server-bootstrap.sh
-│   │   ├── server-report.sh
-│   │   └── update-stacks.sh
+│   │   └── server-report.sh
 │   ├── showcase/
-│   │   └── git-fetch.sh
+│   │   └── bash-qol-demo.sh
 │   ├── utilities/
 │   │   ├── discord-attachments-dl.sh
 │   │   ├── download-java.sh
@@ -378,8 +379,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   ├── deploy-server/
 │   │   ├── .env.example
 │   │   └── deploy-server.sh
+│   ├── setup-bash-qol.sh
 │   ├── setup-dev-env.sh
 │   ├── setup-flatpak.sh
+│   ├── setup-oh-my-bash.sh
 │   └── setup-pipx.sh
 ├── LICENSE
 ├── README.md
@@ -395,11 +398,12 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tbody>
 <tr data-search="standalone/apt/cli install-bash-completion.sh install bash-completion from the distribution repositories."><td class="dir-tag">standalone/apt/cli</td><td><a href="#script-standalone-apt-cli-install-bash-completion-sh"><code>install-bash-completion.sh</code></a></td><td>Install bash-completion from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/cli install-bat.sh install bat (cat clone with syntax highlighting) from the distribution repositories."><td class="dir-tag">standalone/apt/cli</td><td><a href="#script-standalone-apt-cli-install-bat-sh"><code>install-bat.sh</code></a></td><td>Install bat (cat clone with syntax highlighting) from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="standalone/apt/cli install-chafa.sh install chafa (terminal image/gif viewer) from the distribution repositories."><td class="dir-tag">standalone/apt/cli</td><td><a href="#script-standalone-apt-cli-install-chafa-sh"><code>install-chafa.sh</code></a></td><td>Install chafa (terminal image/GIF viewer) from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/cli install-cpp.sh install the c and c++ development environment."><td class="dir-tag">standalone/apt/cli</td><td><a href="#script-standalone-apt-cli-install-cpp-sh"><code>install-cpp.sh</code></a></td><td>Install the C and C++ development environment.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
-<tr data-search="standalone/apt/cli install-docker.sh install docker engine and the docker compose plugin."><td class="dir-tag">standalone/apt/cli</td><td><a href="#script-standalone-apt-cli-install-docker-sh"><code>install-docker.sh</code></a></td><td>Install Docker Engine and the Docker Compose plugin.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/cli install-eza.sh install eza (modern ls replacement), adding the official apt repo if needed."><td class="dir-tag">standalone/apt/cli</td><td><a href="#script-standalone-apt-cli-install-eza-sh"><code>install-eza.sh</code></a></td><td>Install eza (modern ls replacement), adding the official apt repo if needed.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/cli install-firewalld-cli.sh install firewalld."><td class="dir-tag">standalone/apt/cli</td><td><a href="#script-standalone-apt-cli-install-firewalld-cli-sh"><code>install-firewalld-cli.sh</code></a></td><td>Install firewalld.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/cli install-fzf.sh install fzf from the distribution repositories."><td class="dir-tag">standalone/apt/cli</td><td><a href="#script-standalone-apt-cli-install-fzf-sh"><code>install-fzf.sh</code></a></td><td>Install fzf from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="standalone/apt/cli install-git.sh install git from the distribution repositories."><td class="dir-tag">standalone/apt/cli</td><td><a href="#script-standalone-apt-cli-install-git-sh"><code>install-git.sh</code></a></td><td>Install git from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/cli install-htop.sh install htop from the distribution repositories."><td class="dir-tag">standalone/apt/cli</td><td><a href="#script-standalone-apt-cli-install-htop-sh"><code>install-htop.sh</code></a></td><td>Install htop from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/cli install-npm.sh install node.js and npm."><td class="dir-tag">standalone/apt/cli</td><td><a href="#script-standalone-apt-cli-install-npm-sh"><code>install-npm.sh</code></a></td><td>Install Node.js and npm.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/cli install-php.sh install php and common extensions."><td class="dir-tag">standalone/apt/cli</td><td><a href="#script-standalone-apt-cli-install-php-sh"><code>install-php.sh</code></a></td><td>Install PHP and common extensions.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
@@ -421,18 +425,22 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/apt/gui install-krusader.sh install krusader from the distribution repositories."><td class="dir-tag">standalone/apt/gui</td><td><a href="#script-standalone-apt-gui-install-krusader-sh"><code>install-krusader.sh</code></a></td><td>Install Krusader from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/gui install-obs-studio.sh install obs studio from the distribution repositories."><td class="dir-tag">standalone/apt/gui</td><td><a href="#script-standalone-apt-gui-install-obs-studio-sh"><code>install-obs-studio.sh</code></a></td><td>Install OBS Studio from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/gui install-okular.sh install the okular document viewer."><td class="dir-tag">standalone/apt/gui</td><td><a href="#script-standalone-apt-gui-install-okular-sh"><code>install-okular.sh</code></a></td><td>Install the Okular document viewer.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
-<tr data-search="standalone/apt/gui install-protonvpn.sh install the protonvpn cli from the official proton apt repository."><td class="dir-tag">standalone/apt/gui</td><td><a href="#script-standalone-apt-gui-install-protonvpn-sh"><code>install-protonvpn.sh</code></a></td><td>Install the ProtonVPN CLI from the official Proton apt repository.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="standalone/apt/gui install-protonvpn.sh install the protonvpn from the official proton apt repository."><td class="dir-tag">standalone/apt/gui</td><td><a href="#script-standalone-apt-gui-install-protonvpn-sh"><code>install-protonvpn.sh</code></a></td><td>Install the ProtonVPN from the official Proton apt repository.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/gui install-qbittorrent.sh install qbittorrent from the distribution repositories."><td class="dir-tag">standalone/apt/gui</td><td><a href="#script-standalone-apt-gui-install-qbittorrent-sh"><code>install-qbittorrent.sh</code></a></td><td>Install qBittorrent from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="standalone/apt/gui install-qwinff.sh install qwinff from the distribution repositories."><td class="dir-tag">standalone/apt/gui</td><td><a href="#script-standalone-apt-gui-install-qwinff-sh"><code>install-qwinff.sh</code></a></td><td>Install QwinFF from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/gui install-remmina.sh install remmina from the distribution repositories."><td class="dir-tag">standalone/apt/gui</td><td><a href="#script-standalone-apt-gui-install-remmina-sh"><code>install-remmina.sh</code></a></td><td>Install Remmina from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/gui install-tor-browser.sh install tor browser via the official tor project apt repository."><td class="dir-tag">standalone/apt/gui</td><td><a href="#script-standalone-apt-gui-install-tor-browser-sh"><code>install-tor-browser.sh</code></a></td><td>Install Tor Browser via the official Tor Project apt repository.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/gui install-veracrypt-gui.sh install veracrypt gui from the official ppa."><td class="dir-tag">standalone/apt/gui</td><td><a href="#script-standalone-apt-gui-install-veracrypt-gui-sh"><code>install-veracrypt-gui.sh</code></a></td><td>Install VeraCrypt GUI from the official PPA.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/gui install-virtualbox.sh install virtualbox from the official oracle apt repository."><td class="dir-tag">standalone/apt/gui</td><td><a href="#script-standalone-apt-gui-install-virtualbox-sh"><code>install-virtualbox.sh</code></a></td><td>Install VirtualBox from the official Oracle apt repository.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/apt/gui install-vlc.sh install vlc from the distribution repositories."><td class="dir-tag">standalone/apt/gui</td><td><a href="#script-standalone-apt-gui-install-vlc-sh"><code>install-vlc.sh</code></a></td><td>Install VLC from the distribution repositories.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="standalone/docker install-docker.sh install docker engine and the docker compose plugin."><td class="dir-tag">standalone/docker</td><td><a href="#script-standalone-docker-install-docker-sh"><code>install-docker.sh</code></a></td><td>Install Docker Engine and the Docker Compose plugin.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
+<tr data-search="standalone/docker update-docker-compose-stacks.sh pull and redeploy all docker compose stacks under `/opt/*`."><td class="dir-tag">standalone/docker</td><td><a href="#script-standalone-docker-update-docker-compose-stacks-sh"><code>update-docker-compose-stacks.sh</code></a></td><td>Pull and redeploy all Docker Compose stacks under <code>/opt/*</code>.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/flatpak install-discord.sh install discord from flathub."><td class="dir-tag">standalone/flatpak</td><td><a href="#script-standalone-flatpak-install-discord-sh"><code>install-discord.sh</code></a></td><td>Install Discord from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/flatpak install-flatpak.sh install flatpak, add the flathub remote, optionally enable kde discover integration."><td class="dir-tag">standalone/flatpak</td><td><a href="#script-standalone-flatpak-install-flatpak-sh"><code>install-flatpak.sh</code></a></td><td>Install flatpak, add the Flathub remote, optionally enable KDE Discover integration.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/flatpak install-steam.sh install steam from flathub."><td class="dir-tag">standalone/flatpak</td><td><a href="#script-standalone-flatpak-install-steam-sh"><code>install-steam.sh</code></a></td><td>Install Steam from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/flatpak install-telegram.sh install telegram desktop from flathub."><td class="dir-tag">standalone/flatpak</td><td><a href="#script-standalone-flatpak-install-telegram-sh"><code>install-telegram.sh</code></a></td><td>Install Telegram Desktop from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/git git-clone-all.sh clone all public repositories from a github user/profile."><td class="dir-tag">standalone/git</td><td><a href="#script-standalone-git-git-clone-all-sh"><code>git-clone-all.sh</code></a></td><td>Clone all public repositories from a GitHub user/profile.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="standalone/git git-fetch-portfolio.sh fastfetch-style terminal portfolio card with live github stats."><td class="dir-tag">standalone/git</td><td><a href="#script-standalone-git-git-fetch-portfolio-sh"><code>git-fetch-portfolio.sh</code></a></td><td>Fastfetch-style terminal portfolio card with live GitHub stats.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/git git-rewrite-identity.sh rewrite author/committer name and email across all commits in a git repository."><td class="dir-tag">standalone/git</td><td><a href="#script-standalone-git-git-rewrite-identity-sh"><code>git-rewrite-identity.sh</code></a></td><td>Rewrite author/committer name and email across all commits in a Git repository.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">❌</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/lsp install-bash-language-server.sh install bash-language-server via npm for editor/ide lsp integration."><td class="dir-tag">standalone/lsp</td><td><a href="#script-standalone-lsp-install-bash-language-server-sh"><code>install-bash-language-server.sh</code></a></td><td>Install bash-language-server via npm for editor/IDE LSP integration.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/lsp install-markdown-language-server.sh install markdown-language-server via npm for editor/ide lsp integration."><td class="dir-tag">standalone/lsp</td><td><a href="#script-standalone-lsp-install-markdown-language-server-sh"><code>install-markdown-language-server.sh</code></a></td><td>Install markdown-language-server via npm for editor/IDE LSP integration.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
@@ -468,17 +476,13 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/pipx install-pipx.sh install pipx and ensure ~/.local/bin is on path."><td class="dir-tag">standalone/pipx</td><td><a href="#script-standalone-pipx-install-pipx-sh"><code>install-pipx.sh</code></a></td><td>Install pipx and ensure ~/.local/bin is on PATH.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/pipx install-spotdl.sh install spotdl via pipx."><td class="dir-tag">standalone/pipx</td><td><a href="#script-standalone-pipx-install-spotdl-sh"><code>install-spotdl.sh</code></a></td><td>Install spotdl via pipx.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/pipx install-yt-dlp.sh install yt-dlp via pipx."><td class="dir-tag">standalone/pipx</td><td><a href="#script-standalone-pipx-install-yt-dlp-sh"><code>install-yt-dlp.sh</code></a></td><td>Install yt-dlp via pipx.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
-<tr data-search="standalone/qol bash-qol-demo.sh demo for the bash qol terminal styling."><td class="dir-tag">standalone/qol</td><td><a href="#script-standalone-qol-bash-qol-demo-sh"><code>bash-qol-demo.sh</code></a></td><td>Demo for the Bash QOL terminal styling.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
-<tr data-search="standalone/qol oh-my-bash.sh install oh-my-bash with interactive theme selection."><td class="dir-tag">standalone/qol</td><td><a href="#script-standalone-qol-oh-my-bash-sh"><code>oh-my-bash.sh</code></a></td><td>Install oh-my-bash with interactive theme selection.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
-<tr data-search="standalone/qol setup-bash-qol.sh install shell quality-of-life tools and configure bash."><td class="dir-tag">standalone/qol</td><td><a href="#script-standalone-qol-setup-bash-qol-sh"><code>setup-bash-qol.sh</code></a></td><td>Install shell quality-of-life tools and configure Bash.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/server deploy-grafana.sh grafana + prometheus + node exporter via docker."><td class="dir-tag">standalone/server</td><td><a href="#script-standalone-server-deploy-grafana-sh"><code>deploy-grafana.sh</code></a></td><td>Grafana + Prometheus + Node Exporter via Docker.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/server deploy-nginx.sh production nginx + optional php-fpm, grafana &amp; portainer proxy."><td class="dir-tag">standalone/server</td><td><a href="#script-standalone-server-deploy-nginx-sh"><code>deploy-nginx.sh</code></a></td><td>Production Nginx + optional PHP-FPM, Grafana &amp; Portainer proxy.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/server deploy-portainer.sh portainer ce container management ui via docker."><td class="dir-tag">standalone/server</td><td><a href="#script-standalone-server-deploy-portainer-sh"><code>deploy-portainer.sh</code></a></td><td>Portainer CE container management UI via Docker.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/server deploy-ssh.sh install &amp; harden openssh server, optional firewalld rule."><td class="dir-tag">standalone/server</td><td><a href="#script-standalone-server-deploy-ssh-sh"><code>deploy-ssh.sh</code></a></td><td>Install &amp; harden OpenSSH Server, optional Firewalld rule.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/server server-bootstrap.sh initial server hardening and configuration."><td class="dir-tag">standalone/server</td><td><a href="#script-standalone-server-server-bootstrap-sh"><code>server-bootstrap.sh</code></a></td><td>Initial server hardening and configuration.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/server server-report.sh full system inventory report + archive."><td class="dir-tag">standalone/server</td><td><a href="#script-standalone-server-server-report-sh"><code>server-report.sh</code></a></td><td>Full system inventory report + archive.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
-<tr data-search="standalone/server update-stacks.sh pull and redeploy all docker compose stacks under `/opt/*`."><td class="dir-tag">standalone/server</td><td><a href="#script-standalone-server-update-stacks-sh"><code>update-stacks.sh</code></a></td><td>Pull and redeploy all Docker Compose stacks under <code>/opt/*</code>.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
-<tr data-search="standalone/showcase git-fetch.sh fastfetch-style terminal portfolio card with live github stats."><td class="dir-tag">standalone/showcase</td><td><a href="#script-standalone-showcase-git-fetch-sh"><code>git-fetch.sh</code></a></td><td>Fastfetch-style terminal portfolio card with live GitHub stats.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="standalone/showcase bash-qol-demo.sh demo for the bash qol terminal styling."><td class="dir-tag">standalone/showcase</td><td><a href="#script-standalone-showcase-bash-qol-demo-sh"><code>bash-qol-demo.sh</code></a></td><td>Demo for the Bash QOL terminal styling.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/utilities discord-attachments-dl.sh download attachments from a discord data export."><td class="dir-tag">standalone/utilities</td><td><a href="#script-standalone-utilities-discord-attachments-dl-sh"><code>discord-attachments-dl.sh</code></a></td><td>Download attachments from a Discord data export.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/utilities download-java.sh eclipse temurin jdk/jre installer (v8, 17, 21, 25)."><td class="dir-tag">standalone/utilities</td><td><a href="#script-standalone-utilities-download-java-sh"><code>download-java.sh</code></a></td><td>Eclipse Temurin JDK/JRE installer (v8, 17, 21, 25).</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/utilities prompt-cli.sh gemini-based cli assistant with markdown rendering; exposed as ask."><td class="dir-tag">standalone/utilities</td><td><a href="#script-standalone-utilities-prompt-cli-sh"><code>prompt-cli.sh</code></a></td><td>Gemini-based CLI assistant with markdown rendering; exposed as ask.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
@@ -486,8 +490,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/yt-dlp yt-dlp-audio-only.sh download audio only as mp3 via yt-dlp."><td class="dir-tag">standalone/yt-dlp</td><td><a href="#script-standalone-yt-dlp-yt-dlp-audio-only-sh"><code>yt-dlp-audio-only.sh</code></a></td><td>Download audio only as MP3 via yt-dlp.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/yt-dlp yt-dlp-best-format.sh download best quality video as mp4 via yt-dlp."><td class="dir-tag">standalone/yt-dlp</td><td><a href="#script-standalone-yt-dlp-yt-dlp-best-format-sh"><code>yt-dlp-best-format.sh</code></a></td><td>Download best quality video as MP4 via yt-dlp.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="workflows/deploy-server deploy-server.sh full-stack workflow: bootstrap → nginx → grafana → portainer from a single .env."><td class="dir-tag">workflows/deploy-server</td><td><a href="#script-workflows-deploy-server-deploy-server-sh"><code>deploy-server.sh</code></a></td><td>Full-stack workflow: bootstrap → nginx → grafana → portainer from a single .env.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">❌</td><td class="deps-count">4</td></tr>
+<tr data-search="workflows setup-bash-qol.sh install shell quality-of-life tools and configure bash."><td class="dir-tag">workflows</td><td><a href="#script-workflows-setup-bash-qol-sh"><code>setup-bash-qol.sh</code></a></td><td>Install shell quality-of-life tools and configure Bash.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">6</td></tr>
 <tr data-search="workflows setup-dev-env.sh install a full c++/python/php/node dev environment + lsp servers in one step."><td class="dir-tag">workflows</td><td><a href="#script-workflows-setup-dev-env-sh"><code>setup-dev-env.sh</code></a></td><td>Install a full C++/Python/PHP/Node dev environment + LSP servers in one step.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">11</td></tr>
 <tr data-search="workflows setup-flatpak.sh install flatpak + flathub + discord, steam, telegram in one step."><td class="dir-tag">workflows</td><td><a href="#script-workflows-setup-flatpak-sh"><code>setup-flatpak.sh</code></a></td><td>Install Flatpak + Flathub + Discord, Steam, Telegram in one step.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">4</td></tr>
+<tr data-search="workflows setup-oh-my-bash.sh install oh-my-bash with interactive theme selection."><td class="dir-tag">workflows</td><td><a href="#script-workflows-setup-oh-my-bash-sh"><code>setup-oh-my-bash.sh</code></a></td><td>Install oh-my-bash with interactive theme selection.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">2</td></tr>
 <tr data-search="workflows setup-pipx.sh install yt-dlp, gallery-dl, spotdl via pipx in one step."><td class="dir-tag">workflows</td><td><a href="#script-workflows-setup-pipx-sh"><code>setup-pipx.sh</code></a></td><td>Install yt-dlp, gallery-dl, spotdl via pipx in one step.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">3</td></tr>
 </tbody>
 </table>
@@ -515,6 +521,16 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>with an unrelated <code>bat</code> package). This script adds a <code>bat</code> symlink to <code>/usr/local/bin/bat</code> when only <code>batcat</code> is present, so <code>bat</code> works out of the box.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
+<div class="script-card" id="script-standalone-apt-cli-install-chafa-sh">
+<h3><code>standalone/apt/cli/install-chafa.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://github.com/hpjansson/chafa">chafa</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+</div>
 <div class="script-card" id="script-standalone-apt-cli-install-cpp-sh">
 <h3><code>standalone/apt/cli/install-cpp.sh</code></h3>
 <div class="meta-row">
@@ -523,16 +539,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
 <p>Installs <code>build-essential</code>, <code>gcc</code>, <code>g++</code>, <code>clang</code>, <code>cmake</code>, <code>ninja-build</code>, <code>gdb</code>, <code>lldb</code>.</p>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-</div>
-<div class="script-card" id="script-standalone-apt-cli-install-docker-sh">
-<h3><code>standalone/apt/cli/install-docker.sh</code></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ⚠️ (mostly)</span>
-</div>
-<p>Installs <a href="https://www.docker.com">Docker</a> Engine (<code>docker.io</code>) and the Docker Compose plugin; enables and starts the service.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-apt-cli-install-eza-sh">
@@ -567,6 +573,16 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://github.com/junegunn/fzf">fzf</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-apt-cli-install-git-sh">
+<h3><code>standalone/apt/cli/install-git.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://git-scm.com">git</a> via apt.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-apt-cli-install-htop-sh">
@@ -794,7 +810,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Interactive: ✅</span>
 <span class="badge">Idempotent: ⚠️ (mostly)</span>
 </div>
-<p>Installs the <a href="https://protonvpn.com">ProtonVPN</a> CLI from the official Proton apt repository.</p>
+<p>Installs the <a href="https://protonvpn.com">ProtonVPN</a> from the official Proton apt repository.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-apt-gui-install-qbittorrent-sh">
@@ -805,6 +821,16 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://www.qbittorrent.org">qBittorrent</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-apt-gui-install-qwinff-sh">
+<h3><code>standalone/apt/gui/install-qwinff.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://qwinff.github.io">QwinFF</a> via apt.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-apt-gui-install-remmina-sh">
@@ -856,6 +882,27 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs <a href="https://www.videolan.org/vlc/">VLC</a> via apt.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+</div><h2 id="dir-standalone-docker"><code>standalone/docker/</code></h2>
+<div class="script-card" id="script-standalone-docker-install-docker-sh">
+<h3><code>standalone/docker/install-docker.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ⚠️ (mostly)</span>
+</div>
+<p>Installs <a href="https://www.docker.com">Docker</a> Engine (<code>docker.io</code>) and the Docker Compose plugin; enables and starts the service.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-docker-update-docker-compose-stacks-sh">
+<h3><code>standalone/docker/update-docker-compose-stacks.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Updates and redeploys every Docker Compose stack found under <code>/opt/*</code>.</p>
+<ul><li>Lists currently running containers before starting</li><li>Detects <code>docker-compose.yml</code>, <code>compose.yml</code>, <code>compose.yaml</code>, and <code>docker-compose.yaml</code></li><li>Runs <code>docker compose pull</code> followed by <code>docker compose up -d</code> for each stack</li><li>Detects whether new images were actually pulled</li><li>Skips directories with no compose file or where the pull fails</li><li>Prints a final summary of updated, unchanged, and skipped stacks</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-flatpak"><code>standalone/flatpak/</code></h2>
 <div class="script-card" id="script-standalone-flatpak-install-discord-sh">
 <h3><code>standalone/flatpak/install-discord.sh</code></h3>
@@ -906,6 +953,17 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Clones every public repository belonging to a GitHub user or organization.</p>
 <ul><li>Usage: <code>./git-clone-all.sh &lt;github-username-or-url&gt; [target-dir]</code></li><li>Accepts either a bare username or a full <code>github.com/&lt;user&gt;</code> URL</li><li>Paginates through the GitHub API to fetch all repositories</li><li>Clones each repo into the target directory (default <code>./repos</code>)</li><li>Skips repositories that are already cloned locally</li><li>No root required</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-git-git-fetch-portfolio-sh">
+<h3><code>standalone/git/git-fetch-portfolio.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>A fastfetch-style terminal portfolio card with live GitHub stats, rendered in 24-bit ANSI color.</p>
+<ul><li>Displays identity, role, focus, and tech stack as <a href="https://www.nerdfonts.com">Nerd Fonts</a> pill badges</li><li>Fetches live data from the GitHub API: repo count, total stars, forks, followers, last push date</li><li>Computes top languages by byte count across all public repos and shows them with percentage and icon</li><li>Uses a dot spinner while API requests are in flight</li><li>Displays a 16-color palette at the bottom using the project's brand colors</li><li>Requires <strong><a href="https://www.nerdfonts.com">Nerd Fonts</a></strong> to render the pill badge glyphs correctly</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-git-git-rewrite-identity-sh">
@@ -1292,41 +1350,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a>.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-</div><h2 id="dir-standalone-qol"><code>standalone/qol/</code></h2>
-<div class="script-card" id="script-standalone-qol-bash-qol-demo-sh">
-<h3><code>standalone/qol/bash-qol-demo.sh</code></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ❌</span>
-<span class="badge">Interactive: ✅</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>A standalone demonstration of the Bash QOL terminal styling.</p>
-<ul><li>Creates a temporary sandbox with sample files</li><li>Shows off formatted output and terminal UI behavior</li><li>Useful as a preview before committing to <code>bash-qol.sh</code></li><li>No root required</li></ul>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-</div>
-<div class="script-card" id="script-standalone-qol-oh-my-bash-sh">
-<h3><code>standalone/qol/oh-my-bash.sh</code></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ✅</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs <strong><a href="https://github.com/ohmybash/oh-my-bash">oh-my-bash</a></strong> and lets the user pick a theme via an interactive preview.</p>
-<ul><li>Uses theme screenshots rendered in the terminal with <a href="https://github.com/hpjansson/chafa">chafa</a></li><li>Supports both upstream installation and a manual integration mode</li><li>Preserves existing Bash customizations in manual mode</li><li>Updates only the managed block when re-run</li><li>Requires <code>git</code> and <code>chafa</code></li></ul>
-<blockquote>Modifies shell startup files such as <code>~/.bashrc</code>.</blockquote>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-</div>
-<div class="script-card" id="script-standalone-qol-setup-bash-qol-sh">
-<h3><code>standalone/qol/setup-bash-qol.sh</code></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs shell quality-of-life tools and configures the current user's Bash environment.</p>
-<ul><li>Installs <a href="https://github.com/junegunn/fzf">fzf</a>, <a href="https://github.com/ajeetdsouza/zoxide">zoxide</a>, <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a>, <a href="https://github.com/sharkdp/bat">bat</a>, <a href="https://github.com/eza-community/eza">eza</a>, and <code>bash-completion</code></li><li>Adds the official <code>eza</code> apt repository when the package is not available in distro repos</li><li>Updates <code>~/.bashrc</code> and <code>~/.inputrc</code> with a managed block</li><li>Adds aliases, completion tweaks, and history improvements</li><li>Designed to be re-run safely</li></ul>
-<blockquote>Modifies shell startup files such as <code>~/.bashrc</code>.</blockquote>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-server"><code>standalone/server/</code></h2>
 <div class="script-card" id="script-standalone-server-deploy-grafana-sh">
 <h3><code>standalone/server/deploy-grafana.sh</code></h3>
@@ -1399,27 +1422,16 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Generates a comprehensive server inventory report, saved locally and archived.</p>
 <ul><li>Collects hardware specs, OS info, network interfaces, active users, running services, Docker containers, Nginx config, and firewall rules</li><li>Saves all data to <code>~/server-report/</code></li><li>Packages everything into <code>server-report.tar.gz</code> for easy transfer</li><li>Displays a color-coded console summary with key metrics</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-</div>
-<div class="script-card" id="script-standalone-server-update-stacks-sh">
-<h3><code>standalone/server/update-stacks.sh</code></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Updates and redeploys every Docker Compose stack found under <code>/opt/*</code>.</p>
-<ul><li>Lists currently running containers before starting</li><li>Detects <code>docker-compose.yml</code>, <code>compose.yml</code>, <code>compose.yaml</code>, and <code>docker-compose.yaml</code></li><li>Runs <code>docker compose pull</code> followed by <code>docker compose up -d</code> for each stack</li><li>Detects whether new images were actually pulled</li><li>Skips directories with no compose file or where the pull fails</li><li>Prints a final summary of updated, unchanged, and skipped stacks</li></ul>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-showcase"><code>standalone/showcase/</code></h2>
-<div class="script-card" id="script-standalone-showcase-git-fetch-sh">
-<h3><code>standalone/showcase/git-fetch.sh</code></h3>
+<div class="script-card" id="script-standalone-showcase-bash-qol-demo-sh">
+<h3><code>standalone/showcase/bash-qol-demo.sh</code></h3>
 <div class="meta-row">
 <span class="badge">Sudo: ❌</span>
-<span class="badge">Interactive: ❌</span>
+<span class="badge">Interactive: ✅</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>A fastfetch-style terminal portfolio card with live GitHub stats, rendered in 24-bit ANSI color.</p>
-<ul><li>Displays identity, role, focus, and tech stack as <a href="https://www.nerdfonts.com">Nerd Fonts</a> pill badges</li><li>Fetches live data from the GitHub API: repo count, total stars, forks, followers, last push date</li><li>Computes top languages by byte count across all public repos and shows them with percentage and icon</li><li>Uses a dot spinner while API requests are in flight</li><li>Displays a 16-color palette at the bottom using the project's brand colors</li><li>Requires <strong><a href="https://www.nerdfonts.com">Nerd Fonts</a></strong> to render the pill badge glyphs correctly</li></ul>
+<p>A standalone demonstration of the Bash QOL terminal styling.</p>
+<ul><li>Creates a temporary sandbox with sample files</li><li>Shows off formatted output and terminal UI behavior</li><li>Useful as a preview before committing to <code>bash-qol.sh</code></li><li>No root required</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-utilities"><code>standalone/utilities/</code></h2>
 <div class="script-card" id="script-standalone-utilities-discord-attachments-dl-sh">
@@ -1489,6 +1501,20 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul><li>Usage: <code>./yt-dlp-best-format.sh &lt;URL&gt; [extra yt-dlp options]</code></li><li>Prefers <code>bestvideo[ext=mp4]+bestaudio[ext=m4a]</code>, falling back to the best overall format</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-workflows"><code>workflows/</code></h2>
+<div class="script-card" id="script-workflows-setup-bash-qol-sh">
+<h3><code>workflows/setup-bash-qol.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs shell quality-of-life tools and configures the current user's Bash environment.</p>
+<ul><li>Runs <code>install-bash-completion.sh</code>, <code>install-fzf.sh</code>, <code>install-zoxide.sh</code>,</li></ul>
+<p><code>install-ripgrep.sh</code>, <code>install-bat.sh</code>, <code>install-eza.sh</code> from <code>standalone/apt/cli/</code></p>
+<ul><li>Updates <code>~/.bashrc</code> and <code>~/.inputrc</code> with a managed block</li><li>Adds aliases, completion tweaks, and history improvements</li><li>Designed to be re-run safely</li><li>Located in <code>workflows/</code></li></ul>
+<blockquote>Modifies shell startup files such as <code>~/.bashrc</code>.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-apt-cli-install-bash-completion-sh"><code>standalone/apt/cli/install-bash-completion.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-fzf-sh"><code>standalone/apt/cli/install-fzf.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-zoxide-sh"><code>standalone/apt/cli/install-zoxide.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-ripgrep-sh"><code>standalone/apt/cli/install-ripgrep.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-bat-sh"><code>standalone/apt/cli/install-bat.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-eza-sh"><code>standalone/apt/cli/install-eza.sh</code></a></li></ul></div>
+</div>
 <div class="script-card" id="script-workflows-setup-dev-env-sh">
 <h3><code>workflows/setup-dev-env.sh</code></h3>
 <div class="meta-row">
@@ -1498,7 +1524,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs a complete development environment by chaining scripts from <code>apt/</code> and <code>lsp/</code>.</p>
 <ul><li>Runs in order: <code>install-cpp.sh</code>, <code>install-python.sh</code>, <code>install-php.sh</code>, <code>install-kate.sh</code>, <code>install-kdevelop.sh</code>, <code>install-npm.sh</code>, <code>install-ghostwriter.sh</code>, <code>install-docker.sh</code></li><li>Then installs <code>install-bash-language-server.sh</code>, <code>install-markdown-language-server.sh</code> and <code>install-python-language-server.sh</code></li><li>Each subscript is executed individually so a failure is isolated and traceable</li><li>Located in <code>workflows/</code></li></ul>
-<div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-apt-cli-install-cpp-sh"><code>standalone/apt/cli/install-cpp.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-python-sh"><code>standalone/apt/cli/install-python.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-php-sh"><code>standalone/apt/cli/install-php.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-npm-sh"><code>standalone/apt/cli/install-npm.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-docker-sh"><code>standalone/apt/cli/install-docker.sh</code></a></li><li><a href="#script-standalone-apt-gui-install-kate-sh"><code>standalone/apt/gui/install-kate.sh</code></a></li><li><a href="#script-standalone-apt-gui-install-kdevelop-sh"><code>standalone/apt/gui/install-kdevelop.sh</code></a></li><li><a href="#script-standalone-apt-gui-install-ghostwriter-sh"><code>standalone/apt/gui/install-ghostwriter.sh</code></a></li><li><a href="#script-standalone-lsp-install-bash-language-server-sh"><code>standalone/lsp/install-bash-language-server.sh</code></a></li><li><a href="#script-standalone-lsp-install-markdown-language-server-sh"><code>standalone/lsp/install-markdown-language-server.sh</code></a></li><li><a href="#script-standalone-lsp-install-python-language-server-sh"><code>standalone/lsp/install-python-language-server.sh</code></a></li></ul></div>
+<div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-apt-cli-install-cpp-sh"><code>standalone/apt/cli/install-cpp.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-python-sh"><code>standalone/apt/cli/install-python.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-php-sh"><code>standalone/apt/cli/install-php.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-npm-sh"><code>standalone/apt/cli/install-npm.sh</code></a></li><li><a href="#script-standalone-docker-install-docker-sh"><code>standalone/docker/install-docker.sh</code></a></li><li><a href="#script-standalone-apt-gui-install-kate-sh"><code>standalone/apt/gui/install-kate.sh</code></a></li><li><a href="#script-standalone-apt-gui-install-kdevelop-sh"><code>standalone/apt/gui/install-kdevelop.sh</code></a></li><li><a href="#script-standalone-apt-gui-install-ghostwriter-sh"><code>standalone/apt/gui/install-ghostwriter.sh</code></a></li><li><a href="#script-standalone-lsp-install-bash-language-server-sh"><code>standalone/lsp/install-bash-language-server.sh</code></a></li><li><a href="#script-standalone-lsp-install-markdown-language-server-sh"><code>standalone/lsp/install-markdown-language-server.sh</code></a></li><li><a href="#script-standalone-lsp-install-python-language-server-sh"><code>standalone/lsp/install-python-language-server.sh</code></a></li></ul></div>
 </div>
 <div class="script-card" id="script-workflows-setup-flatpak-sh">
 <h3><code>workflows/setup-flatpak.sh</code></h3>
@@ -1510,6 +1536,18 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <a href="https://flatpak.org">Flatpak</a> and a standard set of GUI applications in one step.</p>
 <ul><li>Runs in order: <code>install-flatpak.sh</code> (Flatpak + Flathub), <code>install-telegram.sh</code>, <code>install-discord.sh</code>, <code>install-steam.sh</code></li><li>Located in <code>workflows/</code></li></ul>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-flatpak-install-flatpak-sh"><code>standalone/flatpak/install-flatpak.sh</code></a></li><li><a href="#script-standalone-flatpak-install-telegram-sh"><code>standalone/flatpak/install-telegram.sh</code></a></li><li><a href="#script-standalone-flatpak-install-discord-sh"><code>standalone/flatpak/install-discord.sh</code></a></li><li><a href="#script-standalone-flatpak-install-steam-sh"><code>standalone/flatpak/install-steam.sh</code></a></li></ul></div>
+</div>
+<div class="script-card" id="script-workflows-setup-oh-my-bash-sh">
+<h3><code>workflows/setup-oh-my-bash.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ✅</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <strong><a href="https://github.com/ohmybash/oh-my-bash">oh-my-bash</a></strong> and lets the user pick a theme via an interactive preview.</p>
+<ul><li>Runs <code>install-chafa.sh</code> and <code>install-git.sh</code> from <code>standalone/apt/cli/</code> for dependencies</li><li>Uses theme screenshots rendered in the terminal with <a href="https://github.com/hpjansson/chafa">chafa</a></li><li>Supports both upstream installation and a manual integration mode</li><li>Preserves existing Bash customizations in manual mode</li><li>Updates only the managed block when re-run</li><li>Located in <code>workflows/</code></li></ul>
+<blockquote>Modifies shell startup files such as <code>~/.bashrc</code>.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-apt-cli-install-chafa-sh"><code>standalone/apt/cli/install-chafa.sh</code></a></li><li><a href="#script-standalone-apt-cli-install-git-sh"><code>standalone/apt/cli/install-git.sh</code></a></li></ul></div>
 </div>
 <div class="script-card" id="script-workflows-setup-pipx-sh">
 <h3><code>workflows/setup-pipx.sh</code></h3>
@@ -1535,8 +1573,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-server-server-bootstrap-sh"><code>standalone/server/server-bootstrap.sh</code></a></li><li><a href="#script-standalone-server-deploy-nginx-sh"><code>standalone/server/deploy-nginx.sh</code></a></li><li><a href="#script-standalone-server-deploy-grafana-sh"><code>standalone/server/deploy-grafana.sh</code></a></li><li><a href="#script-standalone-server-deploy-portainer-sh"><code>standalone/server/deploy-portainer.sh</code></a></li></ul></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-19 19:01 UTC &middot;
-96 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-20 11:55 UTC &middot;
+99 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -1544,7 +1582,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-apt-cli">standalone/apt/cli/<span class="toc-count"> (15)</span></a></li><li><a href="#dir-standalone-apt-gui">standalone/apt/gui/<span class="toc-count"> (20)</span></a></li><li><a href="#dir-standalone-flatpak">standalone/flatpak/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-lsp">standalone/lsp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-network">standalone/network/<span class="toc-count"> (17)</span></a></li><li><a href="#dir-standalone-nvidia">standalone/nvidia/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-pipx">standalone/pipx/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-qol">standalone/qol/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-server">standalone/server/<span class="toc-count"> (7)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
+<li><a href="#dir-standalone-apt-cli">standalone/apt/cli/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-apt-gui">standalone/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-docker">standalone/docker/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-flatpak">standalone/flatpak/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-lsp">standalone/lsp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-network">standalone/network/<span class="toc-count"> (17)</span></a></li><li><a href="#dir-standalone-nvidia">standalone/nvidia/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-pipx">standalone/pipx/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-server">standalone/server/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
