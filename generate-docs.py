@@ -49,30 +49,6 @@ EXCLUDED_DIRS = {".git", "docs", "node_modules", ".github"}
 # unlike EXCLUDED_DIRS above, the tree does want to show docs/ and .github/).
 TREE_EXCLUDE = {".git", "__pycache__", "node_modules", ".DS_Store"}
 
-# One-line purpose comments for top-level (and a couple of second-level) directories,
-# shown next to the directory name in the generated repository structure tree.
-# This is the only hand-maintained piece of the tree -- everything else (which files
-# and subdirectories actually exist) is discovered by walking the filesystem.
-DIR_PURPOSE = {
-    "server": "Server deployment, monitoring, and maintenance",
-    "network": "Read-only network diagnostics and status checks",
-    "workflows": "Multi-step orchestrators and their config",
-    "maintenance": "System utilities and one-off admin tasks",
-    "apt": "Individual apt package installers",
-    "apt/cli": "CLI tools",
-    "apt/gui": "GUI apps",
-    "flatpak": "Flatpak app installers",
-    "pipx": "pipx-based tool installers",
-    "lsp": "Language server installations",
-    "utilities": "General-purpose standalone tools",
-    "yt-dlp": "Video and audio download helpers",
-    "qol": "Bash quality-of-life and terminal customization",
-    "showcase": "Terminal portfolio and visual scripts",
-    "nvidia": "NVIDIA GPU driver installation",
-    "docs": "Generated documentation + metadata guidelines",
-    ".github": "CI workflows",
-}
-
 TOP_KEY_RE = re.compile(r"^# ([a-zA-Z_]+): ?(.*)$")
 
 
@@ -293,10 +269,6 @@ def build_tree_text(root: str) -> str:
             display = name + "/" if is_dir else name
             child_rel = f"{rel}/{name}" if rel else name
             line = prefix + connector + display
-            purpose = DIR_PURPOSE.get(child_rel) if is_dir else None
-            if purpose:
-                pad = max(1, 42 - len(line))
-                line += " " * pad + f"# {purpose}"
             lines.append(line)
             if is_dir:
                 extension = "    " if is_last else "\u2502   "
