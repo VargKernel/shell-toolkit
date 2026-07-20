@@ -6,7 +6,7 @@
 #   Installs the [Ghostwriter](https://ghostwriter.kde.org) Markdown editor.
 # sudo: true
 # interactive: false
-# idempotent: mostly
+# idempotent: true
 # dependencies: none
 # ---DOC-END---
 
