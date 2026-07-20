@@ -242,19 +242,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>98</td></tr>
+<tr><td>Total scripts</td><td>99</td></tr>
 <tr><td>Directories</td><td>16</td></tr>
-<tr><td>Require root / sudo</td><td>64 / 98</td></tr>
-<tr><td>Interactive</td><td>19 / 98</td></tr>
+<tr><td>Require root / sudo</td><td>65 / 99</td></tr>
+<tr><td>Interactive</td><td>20 / 99</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>76 / 20 / 2</td></tr>
-<tr><td>Scripts with dependencies</td><td>6 / 98</td></tr>
+    <td>77 / 20 / 2</td></tr>
+<tr><td>Scripts with dependencies</td><td>6 / 99</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/apt/cli</td><td>16</td></tr><tr><td class='dir-tag'>standalone/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/docker</td><td>2</td></tr><tr><td class='dir-tag'>standalone/flatpak</td><td>4</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/lsp</td><td>3</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/network</td><td>17</td></tr><tr><td class='dir-tag'>standalone/nvidia</td><td>1</td></tr><tr><td class='dir-tag'>standalone/pipx</td><td>4</td></tr><tr><td class='dir-tag'>standalone/server</td><td>6</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>3</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
+<tr><td class='dir-tag'>standalone/apt/cli</td><td>16</td></tr><tr><td class='dir-tag'>standalone/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/docker</td><td>2</td></tr><tr><td class='dir-tag'>standalone/flatpak</td><td>4</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/lsp</td><td>3</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/network</td><td>17</td></tr><tr><td class='dir-tag'>standalone/nvidia</td><td>1</td></tr><tr><td class='dir-tag'>standalone/pipx</td><td>4</td></tr><tr><td class='dir-tag'>standalone/server</td><td>7</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>3</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
 </tbody>
 </table>
 
@@ -359,7 +359,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   ├── install-spotdl.sh
 │   │   └── install-yt-dlp.sh
 │   ├── server/
-│   │   ├── deploy-filebrowser
+│   │   ├── deploy-filebrowser.sh
 │   │   ├── deploy-grafana.sh
 │   │   ├── deploy-nginx.sh
 │   │   ├── deploy-portainer.sh
@@ -476,6 +476,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/pipx install-pipx.sh install pipx and ensure ~/.local/bin is on path."><td class="dir-tag">standalone/pipx</td><td><a href="#script-standalone-pipx-install-pipx-sh"><code>install-pipx.sh</code></a></td><td>Install pipx and ensure ~/.local/bin is on PATH.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">⚠️</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/pipx install-spotdl.sh install spotdl via pipx."><td class="dir-tag">standalone/pipx</td><td><a href="#script-standalone-pipx-install-spotdl-sh"><code>install-spotdl.sh</code></a></td><td>Install spotdl via pipx.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/pipx install-yt-dlp.sh install yt-dlp via pipx."><td class="dir-tag">standalone/pipx</td><td><a href="#script-standalone-pipx-install-yt-dlp-sh"><code>install-yt-dlp.sh</code></a></td><td>Install yt-dlp via pipx.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
+<tr data-search="standalone/server deploy-filebrowser.sh file browser web file manager via docker."><td class="dir-tag">standalone/server</td><td><a href="#script-standalone-server-deploy-filebrowser-sh"><code>deploy-filebrowser.sh</code></a></td><td>File Browser web file manager via Docker.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/server deploy-grafana.sh grafana + prometheus + node exporter via docker."><td class="dir-tag">standalone/server</td><td><a href="#script-standalone-server-deploy-grafana-sh"><code>deploy-grafana.sh</code></a></td><td>Grafana + Prometheus + Node Exporter via Docker.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/server deploy-nginx.sh production nginx + optional php-fpm, grafana &amp; portainer proxy."><td class="dir-tag">standalone/server</td><td><a href="#script-standalone-server-deploy-nginx-sh"><code>deploy-nginx.sh</code></a></td><td>Production Nginx + optional PHP-FPM, Grafana &amp; Portainer proxy.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/server deploy-portainer.sh portainer ce container management ui via docker."><td class="dir-tag">standalone/server</td><td><a href="#script-standalone-server-deploy-portainer-sh"><code>deploy-portainer.sh</code></a></td><td>Portainer CE container management UI via Docker.</td><td class="badge">✅</td><td class="badge">✅</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
@@ -1340,6 +1341,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a>.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-server"><code>standalone/server/</code></h2>
+<div class="script-card" id="script-standalone-server-deploy-filebrowser-sh">
+<h3><code>standalone/server/deploy-filebrowser.sh</code></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ✅</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Deploys <strong><a href="https://github.com/filebrowser/filebrowser">File Browser</a></strong> — a lightweight web UI for browsing and managing files on the server.</p>
+<ul><li>Managed via <strong><a href="https://docs.docker.com/compose/">Docker Compose</a></strong>, using the official <strong><a href="https://hub.docker.com/r/filebrowser/filebrowser">filebrowser/filebrowser</a></strong> image</li><li>Bootstraps the database and admin account via the <code>filebrowser</code> CLI before first start, instead of relying on the image's auto-generated one-time password</li><li>Uses a dedicated secret for the admin password</li><li>Persists data under <code>/opt/filebrowser-stack/</code></li><li>Served files live under <code>/opt/filebrowser-stack/srv/</code></li></ul>
+<blockquote><strong>Default binding:</strong> <code>127.0.0.1:8080</code> — use <code>deploy-nginx.sh</code> to expose it externally.<br><br><strong>Change the default admin password immediately after first login.</strong></blockquote>
+<blockquote>Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+</div>
 <div class="script-card" id="script-standalone-server-deploy-grafana-sh">
 <h3><code>standalone/server/deploy-grafana.sh</code></h3>
 <div class="meta-row">
@@ -1562,8 +1576,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-server-server-bootstrap-sh"><code>standalone/server/server-bootstrap.sh</code></a></li><li><a href="#script-standalone-server-deploy-nginx-sh"><code>standalone/server/deploy-nginx.sh</code></a></li><li><a href="#script-standalone-server-deploy-grafana-sh"><code>standalone/server/deploy-grafana.sh</code></a></li><li><a href="#script-standalone-server-deploy-portainer-sh"><code>standalone/server/deploy-portainer.sh</code></a></li></ul></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-20 14:08 UTC &middot;
-98 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-20 14:09 UTC &middot;
+99 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -1571,7 +1585,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-apt-cli">standalone/apt/cli/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-apt-gui">standalone/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-docker">standalone/docker/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-flatpak">standalone/flatpak/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-lsp">standalone/lsp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-network">standalone/network/<span class="toc-count"> (17)</span></a></li><li><a href="#dir-standalone-nvidia">standalone/nvidia/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-pipx">standalone/pipx/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-server">standalone/server/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
+<li><a href="#dir-standalone-apt-cli">standalone/apt/cli/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-apt-gui">standalone/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-docker">standalone/docker/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-flatpak">standalone/flatpak/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-lsp">standalone/lsp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-network">standalone/network/<span class="toc-count"> (17)</span></a></li><li><a href="#dir-standalone-nvidia">standalone/nvidia/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-pipx">standalone/pipx/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-server">standalone/server/<span class="toc-count"> (7)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
