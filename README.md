@@ -126,7 +126,7 @@ sudo ./workflows/setup-dev.sh
 ./workflows/setup-pipx.sh
 
 # Shell quality-of-life tools (fzf, zoxide, eza, bat, ripgrep)
-sudo ./workflows/bash-qol.sh
+sudo ./workflows/setup-bash-qol.sh
 ```
 
 Each script is self-contained and can be run independently at any time.
