@@ -6,7 +6,7 @@
 #   Installs [Docker](https://www.docker.com) Engine (`docker.io`) and the Docker Compose plugin; enables and starts the service.
 # sudo: true
 # interactive: false
-# idempotent: mostly
+# idempotent: true
 # dependencies: none
 # ---DOC-END---
 
