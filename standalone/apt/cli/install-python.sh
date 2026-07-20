@@ -6,7 +6,7 @@
 #   Installs `python3`, `python3-pip`, `python3-venv`.
 # sudo: true
 # interactive: false
-# idempotent: mostly
+# idempotent: true
 # dependencies: none
 # ---DOC-END---
 
