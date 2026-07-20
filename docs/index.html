@@ -242,19 +242,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>99</td></tr>
+<tr><td>Total scripts</td><td>98</td></tr>
 <tr><td>Directories</td><td>16</td></tr>
-<tr><td>Require root / sudo</td><td>64 / 99</td></tr>
-<tr><td>Interactive</td><td>19 / 99</td></tr>
+<tr><td>Require root / sudo</td><td>64 / 98</td></tr>
+<tr><td>Interactive</td><td>19 / 98</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>77 / 20 / 2</td></tr>
-<tr><td>Scripts with dependencies</td><td>6 / 99</td></tr>
+    <td>76 / 20 / 2</td></tr>
+<tr><td>Scripts with dependencies</td><td>6 / 98</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/apt/cli</td><td>16</td></tr><tr><td class='dir-tag'>standalone/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/docker</td><td>2</td></tr><tr><td class='dir-tag'>standalone/flatpak</td><td>4</td></tr><tr><td class='dir-tag'>standalone/git</td><td>3</td></tr><tr><td class='dir-tag'>standalone/lsp</td><td>3</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/network</td><td>17</td></tr><tr><td class='dir-tag'>standalone/nvidia</td><td>1</td></tr><tr><td class='dir-tag'>standalone/pipx</td><td>4</td></tr><tr><td class='dir-tag'>standalone/server</td><td>6</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>3</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
+<tr><td class='dir-tag'>standalone/apt/cli</td><td>16</td></tr><tr><td class='dir-tag'>standalone/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/docker</td><td>2</td></tr><tr><td class='dir-tag'>standalone/flatpak</td><td>4</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/lsp</td><td>3</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/network</td><td>17</td></tr><tr><td class='dir-tag'>standalone/nvidia</td><td>1</td></tr><tr><td class='dir-tag'>standalone/pipx</td><td>4</td></tr><tr><td class='dir-tag'>standalone/server</td><td>6</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>3</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
 </tbody>
 </table>
 
@@ -262,7 +262,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <pre><code>shell-toolkit/
 ├── .github/
 │   └── workflows/
-│       └── docs.yml
+│       ├── bash-syntax-check.yml
+│       └── generate-documentation.yml
 ├── docs/
 │   ├── index.html
 │   └── metadata-guidelines.md
@@ -317,7 +318,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   └── install-telegram.sh
 │   ├── git/
 │   │   ├── git-clone-all.sh
-│   │   ├── git-fetch-portfolio.sh
 │   │   └── git-rewrite-identity.sh
 │   ├── lsp/
 │   │   ├── install-bash-language-server.sh
@@ -440,7 +440,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/flatpak install-steam.sh install steam from flathub."><td class="dir-tag">standalone/flatpak</td><td><a href="#script-standalone-flatpak-install-steam-sh"><code>install-steam.sh</code></a></td><td>Install Steam from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/flatpak install-telegram.sh install telegram desktop from flathub."><td class="dir-tag">standalone/flatpak</td><td><a href="#script-standalone-flatpak-install-telegram-sh"><code>install-telegram.sh</code></a></td><td>Install Telegram Desktop from Flathub.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/git git-clone-all.sh clone all public repositories from a github user/profile."><td class="dir-tag">standalone/git</td><td><a href="#script-standalone-git-git-clone-all-sh"><code>git-clone-all.sh</code></a></td><td>Clone all public repositories from a GitHub user/profile.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
-<tr data-search="standalone/git git-fetch-portfolio.sh fastfetch-style terminal portfolio card with live github stats."><td class="dir-tag">standalone/git</td><td><a href="#script-standalone-git-git-fetch-portfolio-sh"><code>git-fetch-portfolio.sh</code></a></td><td>Fastfetch-style terminal portfolio card with live GitHub stats.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/git git-rewrite-identity.sh rewrite author/committer name and email across all commits in a git repository."><td class="dir-tag">standalone/git</td><td><a href="#script-standalone-git-git-rewrite-identity-sh"><code>git-rewrite-identity.sh</code></a></td><td>Rewrite author/committer name and email across all commits in a Git repository.</td><td class="badge">❌</td><td class="badge">✅</td><td class="badge">❌</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/lsp install-bash-language-server.sh install bash-language-server via npm for editor/ide lsp integration."><td class="dir-tag">standalone/lsp</td><td><a href="#script-standalone-lsp-install-bash-language-server-sh"><code>install-bash-language-server.sh</code></a></td><td>Install bash-language-server via npm for editor/IDE LSP integration.</td><td class="badge">❌</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
 <tr data-search="standalone/lsp install-markdown-language-server.sh install markdown-language-server via npm for editor/ide lsp integration."><td class="dir-tag">standalone/lsp</td><td><a href="#script-standalone-lsp-install-markdown-language-server-sh"><code>install-markdown-language-server.sh</code></a></td><td>Install markdown-language-server via npm for editor/IDE LSP integration.</td><td class="badge">✅</td><td class="badge">❌</td><td class="badge">✅</td><td class="deps-count">—</td></tr>
@@ -953,17 +952,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Clones every public repository belonging to a GitHub user or organization.</p>
 <ul><li>Usage: <code>./git-clone-all.sh &lt;github-username-or-url&gt; [target-dir]</code></li><li>Accepts either a bare username or a full <code>github.com/&lt;user&gt;</code> URL</li><li>Paginates through the GitHub API to fetch all repositories</li><li>Clones each repo into the target directory (default <code>./repos</code>)</li><li>Skips repositories that are already cloned locally</li><li>No root required</li></ul>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-</div>
-<div class="script-card" id="script-standalone-git-git-fetch-portfolio-sh">
-<h3><code>standalone/git/git-fetch-portfolio.sh</code></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ❌</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>A fastfetch-style terminal portfolio card with live GitHub stats, rendered in 24-bit ANSI color.</p>
-<ul><li>Displays identity, role, focus, and tech stack as <a href="https://www.nerdfonts.com">Nerd Fonts</a> pill badges</li><li>Fetches live data from the GitHub API: repo count, total stars, forks, followers, last push date</li><li>Computes top languages by byte count across all public repos and shows them with percentage and icon</li><li>Uses a dot spinner while API requests are in flight</li><li>Displays a 16-color palette at the bottom using the project's brand colors</li><li>Requires <strong><a href="https://www.nerdfonts.com">Nerd Fonts</a></strong> to render the pill badge glyphs correctly</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-git-git-rewrite-identity-sh">
@@ -1573,8 +1561,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-server-server-bootstrap-sh"><code>standalone/server/server-bootstrap.sh</code></a></li><li><a href="#script-standalone-server-deploy-nginx-sh"><code>standalone/server/deploy-nginx.sh</code></a></li><li><a href="#script-standalone-server-deploy-grafana-sh"><code>standalone/server/deploy-grafana.sh</code></a></li><li><a href="#script-standalone-server-deploy-portainer-sh"><code>standalone/server/deploy-portainer.sh</code></a></li></ul></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-20 12:03 UTC &middot;
-99 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-20 13:46 UTC &middot;
+98 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -1582,7 +1570,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-apt-cli">standalone/apt/cli/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-apt-gui">standalone/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-docker">standalone/docker/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-flatpak">standalone/flatpak/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-lsp">standalone/lsp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-network">standalone/network/<span class="toc-count"> (17)</span></a></li><li><a href="#dir-standalone-nvidia">standalone/nvidia/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-pipx">standalone/pipx/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-server">standalone/server/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
+<li><a href="#dir-standalone-apt-cli">standalone/apt/cli/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-apt-gui">standalone/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-docker">standalone/docker/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-flatpak">standalone/flatpak/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-lsp">standalone/lsp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-network">standalone/network/<span class="toc-count"> (17)</span></a></li><li><a href="#dir-standalone-nvidia">standalone/nvidia/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-pipx">standalone/pipx/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-server">standalone/server/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
