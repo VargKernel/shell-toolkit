@@ -6,7 +6,7 @@
 #   Installs `nodejs`, `npm`.
 # sudo: true
 # interactive: false
-# idempotent: mostly
+# idempotent: true
 # dependencies: none
 # ---DOC-END---
 
