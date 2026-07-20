@@ -7,7 +7,7 @@
 #   official plugin collection (`kate-plugins`).
 # sudo: true
 # interactive: false
-# idempotent: mostly
+# idempotent: true
 # dependencies: none
 # ---DOC-END---
 
