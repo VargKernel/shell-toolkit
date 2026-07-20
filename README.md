@@ -94,14 +94,8 @@ sudo ./server/deploy-grafana.sh
 sudo ./server/deploy-portainer.sh
 
 # 7. Check connectivity, open ports, and firewall status at any time
-./network/network-summary.sh
-./network/firewall-status.sh
-
-# 8. Periodically free up disk space
-sudo ./maintenance/system-cleanup.sh
-
-# 9. Periodically pull and redeploy updated Docker stacks
-sudo ./docker/update-docker-compose-stacks.sh
+./network/get-network-summary.sh
+./network/get-firewall-status.sh
 ```
 
 **Option B — deploy the full server stack in one step** using the orchestrator:

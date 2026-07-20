@@ -12,7 +12,7 @@
 # sudo: true
 # interactive: false
 # idempotent: true
-# dependencies: standalone/apt/cli/install-cpp.sh, standalone/apt/cli/install-python.sh, standalone/apt/cli/install-php.sh, standalone/apt/cli/install-npm.sh, standalone/docker/install-docker.sh, standalone/apt/gui/install-kate.sh, standalone/apt/gui/install-kdevelop.sh, standalone/apt/gui/install-ghostwriter.sh, standalone/lsp/install-bash-language-server.sh, standalone/lsp/install-markdown-language-server.sh, standalone/lsp/install-python-language-server.sh
+# dependencies: standalone/apt/cli/install-cpp.sh, standalone/apt/cli/install-python.sh, standalone/apt/cli/install-php.sh, standalone/apt/cli/install-npm.sh, standalone/cli/install-docker.sh, standalone/apt/gui/install-kate.sh, standalone/apt/gui/install-kdevelop.sh, standalone/apt/gui/install-ghostwriter.sh, standalone/lsp/install-bash-language-server.sh, standalone/lsp/install-markdown-language-server.sh, standalone/lsp/install-python-language-server.sh
 # ---DOC-END---
 
 set -euo pipefail
