@@ -101,7 +101,7 @@ sudo ./server/deploy-portainer.sh
 sudo ./maintenance/system-cleanup.sh
 
 # 9. Periodically pull and redeploy updated Docker stacks
-sudo ./server/update-stacks.sh
+sudo ./docker/update-docker-compose-stacks.sh
 ```
 
 **Option B — deploy the full server stack in one step** using the orchestrator:
@@ -117,16 +117,16 @@ sudo ./deploy-server.sh
 
 ```bash
 # Full dev environment (C++, Python, PHP, Node, Docker, KDevelop, LSP servers)
-sudo ./workflows/setup-dev/setup-dev.sh
+sudo ./workflows/setup-dev.sh
 
 # Flatpak apps (Telegram, Discord, Steam)
-./workflows/setup-flatpak/setup-flatpak.sh
+./workflows/setup-flatpak.sh
 
 # Python CLI tools via pipx (yt-dlp, gallery-dl, spotdl)
-./workflows/setup-pipx/setup-pipx.sh
+./workflows/setup-pipx.sh
 
 # Shell quality-of-life tools (fzf, zoxide, eza, bat, ripgrep)
-sudo ./qol/bash-qol.sh
+sudo ./workflows/bash-qol.sh
 ```
 
 Each script is self-contained and can be run independently at any time.

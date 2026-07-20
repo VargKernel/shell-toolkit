@@ -5,17 +5,18 @@
 # description: |
 #   Installs **[oh-my-bash](https://github.com/ohmybash/oh-my-bash)** and lets the user pick a theme via an interactive preview.
 #
+#   - Runs `install-chafa.sh` and `install-git.sh` from `standalone/apt/cli/` for dependencies
 #   - Uses theme screenshots rendered in the terminal with [chafa](https://github.com/hpjansson/chafa)
 #   - Supports both upstream installation and a manual integration mode
 #   - Preserves existing Bash customizations in manual mode
 #   - Updates only the managed block when re-run
-#   - Requires `git` and `chafa`
+#   - Located in `workflows/`
 #
 #   > Modifies shell startup files such as `~/.bashrc`.
 # sudo: true
 # interactive: true
 # idempotent: true
-# dependencies: none
+# dependencies: standalone/apt/cli/install-chafa.sh, standalone/apt/cli/install-git.sh
 # ---DOC-END---
 
 set -euo pipefail
@@ -24,6 +25,9 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 RED='\033[0;31m'
 NC='\033[0m'
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CLI_DIR="$(cd "$SCRIPT_DIR/../standalone/apt/cli" && pwd)"
+
 BASHRC="$HOME/.bashrc"
 OSH="$HOME/.oh-my-bash"
 TS="$(date +%Y%m%d_%H%M%S)"
@@ -31,11 +35,16 @@ MARK_START="# >>> oh-my-bash >>>"
 MARK_END="# <<< oh-my-bash <<<"
 
 echo "---------------Installing packages---------------"
-echo "[*] Updating package lists..."
-sudo apt update -qq
 
-echo "[*] Installing: chafa, git"
-sudo apt install -y chafa git
+for script in install-chafa.sh install-git.sh; do
+    if [[ ! -f "$CLI_DIR/$script" ]]; then
+        echo "[!] Missing $script in $CLI_DIR"
+        exit 1
+    fi
+    echo "[*] Running $script"
+    sudo bash "$CLI_DIR/$script"
+done
+
 echo "[+] Packages installed."
 
 echo "-------------------Oh My Bash--------------------"
@@ -199,7 +208,7 @@ echo "          Mode       : $MODE"
 echo "          Theme      : $OMB_THEME"
 if [[ "$MODE" == "official" ]]; then
     echo "          ~/.bashrc was REPLACED by the installer."
-    echo "          Re-run bash-qol.sh to restore its managed block if needed."
+    echo "          Re-run setup-bash-qol.sh to restore its managed block if needed."
 else
     echo "          ~/.bashrc was only prepended; the bash-qol block is untouched."
 fi

@@ -1,11 +1,11 @@
 #!/bin/bash
 # ---DOC-START---
-# summary: Install the Okular document viewer.
+# summary: Install git from the distribution repositories.
 # description: |
-#   Installs the [Okular](https://okular.kde.org) document viewer.
+#   Installs [git](https://git-scm.com) via apt.
 # sudo: true
 # interactive: false
-# idempotent: mostly
+# idempotent: true
 # dependencies: none
 # ---DOC-END---
 set -euo pipefail
@@ -17,15 +17,18 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+echo "------------------Installing git-----------------"
+
+if command -v git >/dev/null 2>&1; then
+    echo "[i] git is already installed, skipping."
+    exit 0
+fi
+
 echo "[*] Updating package lists..."
 apt update -q
 
-echo "[*] Installing Okular and additional backends..."
-apt install -y \
-    okular \
-    okular-doc \
-    okular-extra-backends \
-    okular-backend-odt \
-    okular-backend-odp
+echo "[*] Installing git..."
+apt install -y git
 
-echo "[+] Okular installed successfully."
+echo ""
+echo "[+] git installed successfully."

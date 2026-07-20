@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # ---DOC-START---
 # summary: Install kio-admin for Dolphin root access.
 # description: |
@@ -9,10 +8,8 @@
 # idempotent: mostly
 # dependencies: none
 # ---DOC-END---
-
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
 export DEBIAN_FRONTEND=noninteractive
 
 if [[ $EUID -ne 0 ]]; then
@@ -20,16 +17,16 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo "[INFO] KIO Admin is a protocol that allows users to manage files"
-echo "       with administrative privileges using the admin:// URL scheme,"
-echo "       which operates over D-Bus to perform file operations in a root context."
-echo "       It is commonly used in KDE environments to facilitate"
-echo "       administrative tasks within file managers like Dolphin."
+echo "[i] KIO Admin is a protocol that allows users to manage files"
+echo "    with administrative privileges using the admin:// URL scheme,"
+echo "    which operates over D-Bus to perform file operations in a root context."
+echo "    It is commonly used in KDE environments to facilitate"
+echo "    administrative tasks within file managers like Dolphin."
 
 echo "[*] Updating package lists..."
-apt update
+apt update -q
 
 echo "[*] Installing kio-admin..."
-apt install kio-admin
+apt install -y kio-admin
 
 echo "[+] kio-admin installed successfully."

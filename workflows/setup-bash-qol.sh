@@ -5,21 +5,25 @@
 # description: |
 #   Installs shell quality-of-life tools and configures the current user's Bash environment.
 #
-#   - Installs [fzf](https://github.com/junegunn/fzf), [zoxide](https://github.com/ajeetdsouza/zoxide), [ripgrep](https://github.com/BurntSushi/ripgrep), [bat](https://github.com/sharkdp/bat), [eza](https://github.com/eza-community/eza), and `bash-completion`
-#   - Adds the official `eza` apt repository when the package is not available in distro repos
+#   - Runs `install-bash-completion.sh`, `install-fzf.sh`, `install-zoxide.sh`,
+#     `install-ripgrep.sh`, `install-bat.sh`, `install-eza.sh` from `standalone/apt/cli/`
 #   - Updates `~/.bashrc` and `~/.inputrc` with a managed block
 #   - Adds aliases, completion tweaks, and history improvements
 #   - Designed to be re-run safely
+#   - Located in `workflows/`
 #
 #   > Modifies shell startup files such as `~/.bashrc`.
 # sudo: true
 # interactive: false
 # idempotent: true
-# dependencies: none
+# dependencies: standalone/apt/cli/install-bash-completion.sh, standalone/apt/cli/install-fzf.sh, standalone/apt/cli/install-zoxide.sh, standalone/apt/cli/install-ripgrep.sh, standalone/apt/cli/install-bat.sh, standalone/apt/cli/install-eza.sh
 # ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CLI_DIR="$(cd "$SCRIPT_DIR/../standalone/apt/cli" && pwd)"
 
 MARK_START="# >>> bash-qol >>>"
 MARK_END="# <<< bash-qol <<<"
@@ -29,33 +33,14 @@ TS="$(date +%Y%m%d_%H%M%S)"
 
 echo "---------------Installing packages---------------"
 
-PKGS=(bash-completion fzf zoxide ripgrep bat)
-
-echo "[*] Updating package lists..."
-sudo apt update -qq
-
-echo "[*] Installing: ${PKGS[*]}"
-sudo apt install -y "${PKGS[@]}"
-
-# eza is not in Debian's repos; add the official eza apt repo if needed
-if ! command -v eza >/dev/null 2>&1; then
-    echo "[i] eza not found, adding eza apt repository..."
-    sudo mkdir -p /etc/apt/keyrings
-    wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc \
-        | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
-    echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" \
-        | sudo tee /etc/apt/sources.list.d/gierens.list >/dev/null
-    sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
-    sudo apt update -qq
-    sudo apt install -y eza
-fi
-
-# Debian ships the bat binary as batcat to avoid a name clash
-if command -v batcat >/dev/null 2>&1 && ! command -v bat >/dev/null 2>&1; then
-    BAT_ALIAS="alias bat='batcat'"
-else
-    BAT_ALIAS=""
-fi
+for script in install-bash-completion.sh install-fzf.sh install-zoxide.sh install-ripgrep.sh install-bat.sh install-eza.sh; do
+    if [[ ! -f "$CLI_DIR/$script" ]]; then
+        echo "[!] Missing $script in $CLI_DIR"
+        exit 1
+    fi
+    echo "[*] Running $script"
+    sudo bash "$CLI_DIR/$script"
+done
 
 echo "[+] Packages installed."
 
@@ -115,9 +100,6 @@ alias update='sudo apt update && sudo apt upgrade'
 alias ports='ss -tulpen'
 alias dfh='df -h'
 EOF
-    if [[ -n "$BAT_ALIAS" ]]; then
-        echo "$BAT_ALIAS"
-    fi
     cat <<'EOF'
 
 # zoxide (smart cd)
@@ -166,10 +148,10 @@ echo "================================================="
 echo "                     SUMMARY                     "
 echo "================================================="
 echo "[INFO] Installed: bash-completion, fzf, zoxide, ripgrep, bat, eza"
-echo "       eza source: deb.gierens.de apt repository"
+echo "       Packages installed via standalone/apt/cli/install-*.sh"
 echo "       ~/.bashrc managed block: $MARK_START ... $MARK_END"
 echo "       ~/.inputrc: replaced (backup saved if it existed)"
-echo "       For oh-my-bash, run oh-my-bash.sh separately (it edits ~/.bashrc)"
+echo "       For oh-my-bash, run setup-oh-my-bash.sh separately (it edits ~/.bashrc)"
 echo ""
 echo "---------------------Aliases---------------------"
 printf "  %-10s %-20s %s\n" "ll"     "ls -lah"               "long list, all files, human sizes"
@@ -179,9 +161,6 @@ printf "  %-10s %-20s %s\n" "grep"   "grep --color=auto"     "highlight matches"
 printf "  %-10s %-20s %s\n" "update" "apt update && upgrade" "system update"
 printf "  %-10s %-20s %s\n" "ports"  "ss -tulpen"            "listening ports + processes"
 printf "  %-10s %-20s %s\n" "dfh"    "df -h"                 "disk usage, human-readable"
-if [[ -n "$BAT_ALIAS" ]]; then
-    printf "  %-10s %-20s %s\n" "bat" "batcat" "Debian ships the binary as batcat"
-fi
 echo ""
 echo "-------------------Keybindings-------------------"
 printf "  %-12s %s\n" "Tab"     "cycle through completions (menu-complete)"
@@ -206,11 +185,7 @@ echo "--------------------New tools--------------------"
 printf "  %-12s %s\n" "z <name>"   "zoxide: jump to a frequent directory"
 printf "  %-12s %s\n" "zi"         "zoxide: interactive directory picker"
 printf "  %-12s %s\n" "rg <text>"  "ripgrep: fast recursive text search"
-if [[ -n "$BAT_ALIAS" ]]; then
-    printf "  %-12s %s\n" "bat <file>" "syntax-highlighted 'cat' (-> batcat)"
-else
-    printf "  %-12s %s\n" "bat <file>" "syntax-highlighted 'cat'"
-fi
+printf "  %-12s %s\n" "bat <file>" "syntax-highlighted 'cat'"
 printf "  %-12s %s\n" "eza"    "modern 'ls' (icons, git status, tree)"
 printf "  %-12s %s\n" "eza -T" "tree view of a directory"
 echo "================================================="
