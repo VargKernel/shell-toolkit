@@ -6,7 +6,7 @@
 #   Installs the [KDevelop](https://kdevelop.org) IDE.
 # sudo: true
 # interactive: false
-# idempotent: mostly
+# idempotent: true
 # dependencies: none
 # ---DOC-END---
 
