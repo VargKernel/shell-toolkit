@@ -1,14 +1,12 @@
 #!/bin/bash
 
 # ---DOC-START---
-# summary: System hostname, OS release, kernel, uptime, and kernel parameters.
+# summary: Hostname, OS release, kernel version, and uptime.
 # description: |
 #   Read-only status and diagnostic script — does not modify system configuration.
-#   Works without root; colored output degrades gracefully to plain text when not attached to a terminal.
+#   Works without root.
 #
-#   - Collects hostnamectl, OS release info, uname, uptime, sysctl, and dmesg.
-#
-#   > Running as `sudo` is required to read `dmesg` and some `sysctl` parameters.
+#   - Collects `hostnamectl`, `/etc/os-release`, `uname -a`, and `uptime`.
 # sudo: false
 # interactive: false
 # idempotent: true
@@ -37,11 +35,7 @@ if [[ ${#missing[@]} -gt 0 ]]; then
     exit 1
 fi
 
-if [[ $EUID -ne 0 ]]; then
-    echo -e "${YELLOW}Warning: Running as non-root. `dmesg` and `sysctl` output will be limited or denied.${NC}\n"
-fi
-
-printf "\n${YELLOW}SYSTEM INFORMATION:${NC}\n\n"
+printf "\n${YELLOW}HOST INFORMATION:${NC}\n\n"
 
 echo -e "${YELLOW}Hostnamectl:${NC}"
 hostnamectl || true
@@ -54,12 +48,5 @@ uname -a
 
 echo -e "\n${YELLOW}Uptime:${NC}"
 uptime
-
-echo -e "\n${YELLOW}Sysctl (Partial/All):${NC}"
-sysctl -a 2>/dev/null | head -n 20
-echo "(... output truncated for readability ...)"
-
-echo -e "\n${YELLOW}Dmesg (Last 20 lines):${NC}"
-dmesg 2>/dev/null | tail -n 20 || echo "Permission denied or unavailable."
 
 echo ""
