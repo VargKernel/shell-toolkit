@@ -6,7 +6,7 @@
 #   Installs `build-essential`, `gcc`, `g++`, `clang`, `cmake`, `ninja-build`, `gdb`, `lldb`.
 # sudo: true
 # interactive: false
-# idempotent: mostly
+# idempotent: true
 # dependencies: none
 # ---DOC-END---
 
