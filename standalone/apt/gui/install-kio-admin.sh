@@ -6,7 +6,7 @@
 #   Installs `kio-admin` for Dolphin root access.
 # sudo: true
 # interactive: false
-# idempotent: mostly
+# idempotent: true
 # dependencies: none
 # ---DOC-END---
 
