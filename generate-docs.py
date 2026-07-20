@@ -61,6 +61,11 @@ def dir_anchor(directory: str) -> str:
     return f"dir-{slug}" if slug else "dir-root"
 
 
+def permalink_html(anchor: str) -> str:
+    """A small '#' link that only appears on hover, for grabbing a direct URL to a heading."""
+    return f'<a class="permalink" href="#{anchor}" aria-label="Link to this section">#</a>'
+
+
 @dataclass
 class ScriptDoc:
     relpath: str  # e.g. "server/deploy-nginx.sh"
@@ -313,6 +318,55 @@ def find_missing_dependencies(docs: list[ScriptDoc]) -> dict[str, list[str]]:
     return missing
 
 
+def build_reverse_dependencies(docs: list[ScriptDoc]) -> dict[str, list[str]]:
+    """Map relpath -> list of scripts that declare it as a dependency ("used by")."""
+    docs_by_path = {d.relpath: d for d in docs}
+    reverse: dict[str, list[str]] = {}
+    for d in docs:
+        for dep in d.dependencies:
+            if dep in docs_by_path:  # only resolve real, documented targets
+                reverse.setdefault(dep, []).append(d.relpath)
+    for relpath in reverse:
+        reverse[relpath].sort()
+    return reverse
+
+
+def find_circular_dependencies(docs: list[ScriptDoc]) -> list[list[str]]:
+    """Find dependency cycles across the whole graph.
+
+    Returns a de-duplicated list of cycles, each expressed as the ordered chain of
+    relpaths that make up the loop (first and last entries are the same script).
+    """
+    docs_by_path = {d.relpath: d for d in docs}
+    cycles: list[list[str]] = []
+    seen_cycle_sets: set[frozenset[str]] = set()
+
+    def dfs(relpath: str, stack: list[str], on_stack: set[str]):
+        if relpath in on_stack:
+            start = stack.index(relpath)
+            chain = stack[start:] + [relpath]
+            key = frozenset(chain[:-1])
+            if key not in seen_cycle_sets:
+                seen_cycle_sets.add(key)
+                cycles.append(chain)
+            return
+        doc = docs_by_path.get(relpath)
+        if doc is None:
+            return
+        stack.append(relpath)
+        on_stack.add(relpath)
+        for dep in doc.dependencies:
+            if dep in docs_by_path:
+                dfs(dep, stack, on_stack)
+        stack.pop()
+        on_stack.discard(relpath)
+
+    for d in docs:
+        dfs(d.relpath, [], set())
+
+    return cycles
+
+
 def render_dependency_tree(doc: ScriptDoc, docs_by_path: dict[str, ScriptDoc],
                             stack: tuple[str, ...] = ()) -> str:
     """Recursively render this script's dependencies as a nested <ul> tree.
@@ -351,17 +405,64 @@ def build_dependency_section(doc: ScriptDoc, docs_by_path: dict[str, ScriptDoc])
     tree = render_dependency_tree(doc, docs_by_path)
     return f'<div class="dep-section"><strong>Dependencies:</strong>{tree}</div>'
 
+
+def build_used_by_section(doc: ScriptDoc, reverse_deps: dict[str, list[str]],
+                           docs_by_path: dict[str, ScriptDoc]) -> str:
+    users = reverse_deps.get(doc.relpath)
+    if not users:
+        return '<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">nothing (in this repo)</span></div>'
+    items = []
+    for user in users:
+        user_doc = docs_by_path.get(user)
+        if user_doc is not None:
+            items.append(f'<li><a href="#{user_doc.anchor}"><code>{html.escape(user)}</code></a></li>')
+        else:
+            items.append(f'<li><code>{html.escape(user)}</code></li>')
+    return f'<div class="dep-section"><strong>Used by:</strong><ul class="dep-tree">{"".join(items)}</ul></div>'
+
 # HTML rendering
 
 CSS = """
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #1f2328;
+  --muted: #59636e;
+  --border: #d1d9e0;
+  --link: #0969da;
+  --code-bg: #f6f8fa;
+  --row-alt: #f6f8fa;
+  --missing-fg: #9a6700;
+  --missing-bg: #fff8c5;
+  --cycle-fg: #cf222e;
+  --cycle-bg: #ffebe9;
+  --chip-bg: #f6f8fa;
+  --chip-active-bg: #0969da;
+  --chip-active-fg: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --fg: #e6edf3;
+    --muted: #8b949e;
+    --border: #30363d;
+    --link: #4493f8;
+    --code-bg: #161b22;
+    --row-alt: #161b22;
+    --missing-fg: #f0c674;
+    --missing-bg: #3b2f00;
+    --cycle-fg: #ff7b72;
+    --cycle-bg: #3b0d0c;
+    --chip-bg: #161b22;
+    --chip-active-bg: #4493f8;
+    --chip-active-fg: #0d1117;
+  }
 }
 * { box-sizing: border-box; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  color: #1f2328;
-  background: #ffffff;
+  color: var(--fg);
+  background: var(--bg);
   max-width: 1320px;
   margin: 0 auto;
   padding: 32px 24px 80px;
@@ -370,32 +471,33 @@ body {
 h1, h2, h3 { line-height: 1.25; }
 h1 {
   font-size: 2em;
-  border-bottom: 1px solid #d1d9e0;
+  border-bottom: 1px solid var(--border);
   padding-bottom: .3em;
 }
 h2 {
   font-size: 1.5em;
-  border-bottom: 1px solid #d1d9e0;
+  border-bottom: 1px solid var(--border);
   padding-bottom: .3em;
   margin-top: 2em;
 }
+h2, h3 { position: relative; }
 h3 {
   font-size: 1.15em;
   margin-top: 1.6em;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 p { margin: .6em 0; }
-a { color: #0969da; text-decoration: none; }
+a { color: var(--link); text-decoration: none; }
 a:hover { text-decoration: underline; }
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  background: #f6f8fa;
+  background: var(--code-bg);
   padding: .15em .4em;
   border-radius: 6px;
   font-size: .9em;
 }
 pre {
-  background: #f6f8fa;
+  background: var(--code-bg);
   border-radius: 6px;
   padding: 16px;
   overflow-x: auto;
@@ -409,8 +511,8 @@ pre code {
 blockquote {
   margin: .8em 0;
   padding: 0 1em;
-  color: #59636e;
-  border-left: .25em solid #d1d9e0;
+  color: var(--muted);
+  border-left: .25em solid var(--border);
 }
 ul { padding-left: 1.4em; }
 li { margin: .2em 0; }
@@ -421,34 +523,80 @@ table {
   font-size: .95em;
 }
 th, td {
-  border: 1px solid #d1d9e0;
+  border: 1px solid var(--border);
   padding: 6px 10px;
   text-align: left;
   vertical-align: top;
 }
-th { background: #f6f8fa; }
-tr:nth-child(2n) { background: #f6f8fa; }
+th { background: var(--code-bg); }
+tr:nth-child(2n) { background: var(--row-alt); }
+th.sortable { cursor: pointer; user-select: none; white-space: nowrap; }
+th.sortable:hover { color: var(--link); }
+.sort-indicator::after {
+  content: "\\2195";
+  display: inline-block;
+  margin-left: .35em;
+  color: var(--muted);
+  font-size: .85em;
+}
+th.sort-asc .sort-indicator::after { content: "\\2191"; color: var(--link); }
+th.sort-desc .sort-indicator::after { content: "\\2193"; color: var(--link); }
 .badge { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-.meta-row { margin: .8em 0; font-size: .95em; color: #59636e; }
+.meta-row { margin: .8em 0; font-size: .95em; color: var(--muted); }
 .meta-row span { margin-right: 1.4em; }
 .script-card {
-  border: 1px solid #d1d9e0;
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 16px 20px;
   margin: 1em 0 1.6em;
 }
+.script-card.filtered-out, .dir-heading.filtered-out, tr.filtered-out { display: none; }
 .dir-tag {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  color: #59636e;
+  color: var(--muted);
   font-size: .85em;
 }
 .generated-note {
-  color: #59636e;
+  color: var(--muted);
   font-size: .9em;
   margin-top: 3em;
-  border-top: 1px solid #d1d9e0;
+  border-top: 1px solid var(--border);
   padding-top: 1em;
 }
+.permalink {
+  opacity: 0;
+  margin-left: .5em;
+  color: var(--muted);
+  font-weight: 400;
+  text-decoration: none;
+  font-size: .85em;
+}
+h2:hover .permalink, h3:hover .permalink { opacity: 1; }
+.permalink:hover { color: var(--link); text-decoration: none; }
+.copy-btn {
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: var(--muted);
+  border-radius: 5px;
+  font-size: .8em;
+  line-height: 1;
+  padding: .3em .5em;
+  margin-left: .6em;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.copy-btn:hover { color: var(--link); border-color: var(--link); }
+.copy-btn.copied { color: #1a7f37; border-color: #1a7f37; }
+.issue-block { margin: .8em 0 1.4em; }
+.issue-title {
+  display: inline-block;
+  padding: .15em .5em;
+  border-radius: 5px;
+  margin-bottom: .4em;
+}
+.issue-title.dep-missing { color: var(--missing-fg); background: var(--missing-bg); }
+.issue-title.dep-cycle { color: var(--cycle-fg); background: var(--cycle-bg); }
+.toc-issues-link { color: var(--cycle-fg) !important; }
 
 /* Two-column layout: main content + sticky right-hand table of contents */
 .layout {
@@ -467,7 +615,7 @@ tr:nth-child(2n) { background: #f6f8fa; }
   max-height: calc(100vh - 40px);
   overflow-y: auto;
   font-size: .85em;
-  border-left: 1px solid #d1d9e0;
+  border-left: 1px solid var(--border);
   padding-left: 16px;
 }
 .toc-title {
@@ -475,7 +623,7 @@ tr:nth-child(2n) { background: #f6f8fa; }
   text-transform: uppercase;
   letter-spacing: .04em;
   font-size: .78em;
-  color: #59636e;
+  color: var(--muted);
   margin-bottom: .6em;
 }
 .toc ul {
@@ -486,31 +634,31 @@ tr:nth-child(2n) { background: #f6f8fa; }
 .toc li { margin: 0; }
 .toc a {
   display: block;
-  color: #59636e;
+  color: var(--muted);
   padding: 3px 0 3px 10px;
   border-left: 2px solid transparent;
 }
 .toc a:hover {
-  color: #0969da;
+  color: var(--link);
   text-decoration: none;
 }
 .toc a.active {
-  color: #0969da;
-  border-left-color: #0969da;
+  color: var(--link);
+  border-left-color: var(--link);
   font-weight: 600;
 }
 .toc .toc-divider {
   margin-top: 1em;
   padding-top: .6em;
-  border-top: 1px solid #d1d9e0;
+  border-top: 1px solid var(--border);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .04em;
   font-size: .78em;
-  color: #59636e;
+  color: var(--muted);
 }
 .toc .toc-count {
-  color: #8c959f;
+  color: var(--muted);
   font-size: .9em;
 }
 .toc-back-to-top {
@@ -525,20 +673,43 @@ tr:nth-child(2n) { background: #f6f8fa; }
   width: 100%;
   padding: 8px 12px;
   font-size: .95em;
-  border: 1px solid #d1d9e0;
+  border: 1px solid var(--border);
   border-radius: 6px;
   font-family: inherit;
+  background: var(--bg);
+  color: var(--fg);
 }
 .filter-box input:focus {
   outline: none;
-  border-color: #0969da;
+  border-color: var(--link);
+}
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: .6em;
+}
+.filter-chip {
+  border: 1px solid var(--border);
+  background: var(--chip-bg);
+  color: var(--fg);
+  border-radius: 999px;
+  padding: .3em .9em;
+  font-size: .85em;
+  cursor: pointer;
+  font-family: inherit;
+}
+.filter-chip:hover { border-color: var(--link); }
+.filter-chip.active {
+  background: var(--chip-active-bg);
+  border-color: var(--chip-active-bg);
+  color: var(--chip-active-fg);
 }
 .filter-hint {
   font-size: .82em;
-  color: #59636e;
-  margin-top: .3em;
+  color: var(--muted);
+  margin-top: .5em;
 }
-tr.filtered-out { display: none; }
 
 .dep-section { margin: .8em 0; font-size: .95em; }
 .dep-tree, .dep-tree ul {
@@ -548,18 +719,18 @@ tr.filtered-out { display: none; }
 }
 .dep-tree li {
   margin: .15em 0;
-  border-left: 1px dashed #d1d9e0;
+  border-left: 1px dashed var(--border);
   padding-left: .8em;
 }
-.dep-none { color: #59636e; }
+.dep-none { color: var(--muted); }
 .dep-flag {
   font-size: .82em;
   padding: 0 .4em;
   border-radius: 4px;
   margin-left: .3em;
 }
-.dep-missing { color: #9a6700; background: #fff8c5; }
-.dep-cycle { color: #cf222e; background: #ffebe9; }
+.dep-missing { color: var(--missing-fg); background: var(--missing-bg); }
+.dep-cycle { color: var(--cycle-fg); background: var(--cycle-bg); }
 .deps-count { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
 
 @media (max-width: 900px) {
@@ -569,7 +740,7 @@ tr.filtered-out { display: none; }
     max-height: none;
     width: 100%;
     border-left: none;
-    border-top: 1px solid #d1d9e0;
+    border-top: 1px solid var(--border);
     padding-left: 0;
     padding-top: 16px;
     margin-bottom: 1em;
@@ -581,34 +752,62 @@ IDEMPOTENT_BADGE = {"true": "\u2705", "false": "\u274c", "mostly": "\u26a0\ufe0f
 BOOL_BADGE = {True: "\u2705", False: "\u274c"}
 
 
+IDEMPOTENT_SORT_ORDER = {"true": 2, "mostly": 1, "false": 0}
+
+
 def build_summary_table(docs: list[ScriptDoc]) -> str:
     rows = []
     for d in docs:
         search_blob = html.escape(f"{d.directory} {d.filename} {d.summary}".lower(), quote=True)
+        deps_count = len(d.dependencies)
         rows.append(
-            f'<tr data-search="{search_blob}">'
-            f'<td class="dir-tag">{html.escape(d.directory)}</td>'
-            f'<td><a href="#{d.anchor}"><code>{html.escape(d.filename)}</code></a></td>'
+            f'<tr data-search="{search_blob}" data-sudo="{1 if d.sudo else 0}" '
+            f'data-interactive="{1 if d.interactive else 0}" data-hasdeps="{1 if deps_count else 0}">'
+            f'<td class="dir-tag" data-value="{html.escape(d.directory, quote=True)}">{html.escape(d.directory)}</td>'
+            f'<td data-value="{html.escape(d.filename, quote=True)}">'
+            f'<a href="#{d.anchor}"><code>{html.escape(d.filename)}</code></a></td>'
             f"<td>{render_inline(d.summary)}</td>"
-            f'<td class="badge">{BOOL_BADGE[d.sudo]}</td>'
-            f'<td class="badge">{BOOL_BADGE[d.interactive]}</td>'
-            f'<td class="badge">{IDEMPOTENT_BADGE.get(d.idempotent, "\u274c")}</td>'
-            f'<td class="deps-count">{len(d.dependencies) if d.dependencies else "\u2014"}</td>'
+            f'<td class="badge" data-value="{1 if d.sudo else 0}">{BOOL_BADGE[d.sudo]}</td>'
+            f'<td class="badge" data-value="{1 if d.interactive else 0}">{BOOL_BADGE[d.interactive]}</td>'
+            f'<td class="badge" data-value="{IDEMPOTENT_SORT_ORDER.get(d.idempotent, 0)}">'
+            f'{IDEMPOTENT_BADGE.get(d.idempotent, "\u274c")}</td>'
+            f'<td class="deps-count" data-value="{deps_count}">{deps_count if deps_count else "\u2014"}</td>'
             "</tr>"
         )
+
+    headers = [
+        ("Directory", "text", True),
+        ("Script", "text", True),
+        ("Summary", "text", False),
+        ("Sudo", "num", True),
+        ("Interactive", "num", True),
+        ("Idempotent", "num", True),
+        ("Deps", "num", True),
+    ]
+    head_cells = "".join(
+        f'<th data-col="{i}" data-type="{col_type}" class="sortable">{label}'
+        f'<span class="sort-indicator"></span></th>'
+        if sortable else f"<th>{label}</th>"
+        for i, (label, col_type, sortable) in enumerate(headers)
+    )
+
     return (
-        '<table id="all-scripts-table">\n<thead><tr>'
-        "<th>Directory</th><th>Script</th><th>Summary</th>"
-        "<th>Sudo</th><th>Interactive</th><th>Idempotent</th><th>Deps</th>"
-        "</tr></thead>\n<tbody>\n" + "\n".join(rows) + "\n</tbody>\n</table>"
+        '<table id="all-scripts-table">\n<thead><tr>' + head_cells + "</tr></thead>\n<tbody>\n"
+        + "\n".join(rows) + "\n</tbody>\n</table>"
     )
 
 
-def build_script_card(d: ScriptDoc, docs_by_path: dict[str, ScriptDoc]) -> str:
+def build_script_card(d: ScriptDoc, docs_by_path: dict[str, ScriptDoc],
+                       reverse_deps: dict[str, list[str]]) -> str:
     desc_html = render_description(d.description)
     deps_html = build_dependency_section(d, docs_by_path)
-    return f"""<div class="script-card" id="{d.anchor}">
-<h3><code>{html.escape(d.relpath)}</code></h3>
+    used_by_html = build_used_by_section(d, reverse_deps, docs_by_path)
+    search_blob = html.escape(f"{d.directory} {d.filename} {d.summary}".lower(), quote=True)
+    return f"""<div class="script-card" id="{d.anchor}" data-search="{search_blob}" \
+data-sudo="{1 if d.sudo else 0}" data-interactive="{1 if d.interactive else 0}" \
+data-hasdeps="{1 if d.dependencies else 0}">
+<h3><code>{html.escape(d.relpath)}</code>{permalink_html(d.anchor)}<button type="button" class="copy-btn" \
+data-path="{html.escape(d.relpath, quote=True)}" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
 <span class="badge">Sudo: {BOOL_BADGE[d.sudo]}</span>
 <span class="badge">Interactive: {BOOL_BADGE[d.interactive]}</span>
@@ -616,7 +815,49 @@ def build_script_card(d: ScriptDoc, docs_by_path: dict[str, ScriptDoc]) -> str:
 </div>
 {desc_html}
 {deps_html}
+{used_by_html}
 </div>"""
+
+
+def build_issues_section(missing_deps: dict[str, list[str]], cycles: list[list[str]],
+                          docs_by_path: dict[str, ScriptDoc]) -> str:
+    """Render a top-of-page summary of anything wrong with the dependency graph.
+
+    Returns "" (no section at all) when there are no issues -- most repo states won't
+    have any, and there is no value in showing an empty "no issues" banner every time.
+    """
+    if not missing_deps and not cycles:
+        return ""
+
+    parts = ['<h2 id="issues">Issues</h2>']
+
+    if missing_deps:
+        rows = []
+        for relpath, bad in sorted(missing_deps.items()):
+            doc = docs_by_path.get(relpath)
+            link = f'<a href="#{doc.anchor}"><code>{html.escape(relpath)}</code></a>' if doc else html.escape(relpath)
+            bad_list = ", ".join(f"<code>{html.escape(b)}</code>" for b in bad)
+            rows.append(f"<li>{link} &rarr; {bad_list}</li>")
+        parts.append(
+            '<div class="issue-block"><strong class="issue-title dep-missing">'
+            f'Missing dependencies ({len(missing_deps)})</strong><ul>{"".join(rows)}</ul></div>'
+        )
+
+    if cycles:
+        rows = []
+        for chain in cycles:
+            chain_html = " &rarr; ".join(
+                (f'<a href="#{docs_by_path[c].anchor}"><code>{html.escape(c)}</code></a>'
+                 if c in docs_by_path else f"<code>{html.escape(c)}</code>")
+                for c in chain
+            )
+            rows.append(f"<li>{chain_html}</li>")
+        parts.append(
+            '<div class="issue-block"><strong class="issue-title dep-cycle">'
+            f'Circular references ({len(cycles)})</strong><ul>{"".join(rows)}</ul></div>'
+        )
+
+    return "\n".join(parts)
 
 
 def build_stats_block(stats: dict) -> str:
@@ -646,9 +887,13 @@ def build_stats_block(stats: dict) -> str:
 </table>"""
 
 
-def build_toc(by_dir: dict[str, list[ScriptDoc]]) -> str:
+def build_toc(by_dir: dict[str, list[ScriptDoc]], has_issues: bool = False) -> str:
     top_links = [
         '<li><a href="#at-a-glance">At a Glance</a></li>',
+    ]
+    if has_issues:
+        top_links.append('<li><a href="#issues" class="toc-issues-link">Issues</a></li>')
+    top_links += [
         '<li><a href="#repository-structure">Repository Structure</a></li>',
         '<li><a href="#all-scripts">All Scripts</a></li>',
     ]
@@ -674,17 +919,23 @@ def build_html(docs: list[ScriptDoc], repo_root: str) -> str:
         by_dir.setdefault(d.directory, []).append(d)
 
     docs_by_path = {d.relpath: d for d in docs}
+    reverse_deps = build_reverse_dependencies(docs)
 
     sections = []
     for directory in sorted(by_dir):
-        cards = "\n".join(build_script_card(d, docs_by_path) for d in by_dir[directory])
+        cards = "\n".join(build_script_card(d, docs_by_path, reverse_deps) for d in by_dir[directory])
+        anchor = dir_anchor(directory)
         sections.append(
-            f'<h2 id="{dir_anchor(directory)}"><code>{html.escape(directory)}/</code></h2>\n{cards}'
+            f'<h2 id="{anchor}" class="dir-heading"><code>{html.escape(directory)}/</code>'
+            f'{permalink_html(anchor)}</h2>\n{cards}'
         )
 
     generated_at = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     stats = compute_stats(docs)
     tree_text = build_tree_text(repo_root)
+    missing_deps = find_missing_dependencies(docs)
+    cycles = find_circular_dependencies(docs)
+    issues_html = build_issues_section(missing_deps, cycles, docs_by_path)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -706,12 +957,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 
 {build_stats_block(stats)}
 
+{issues_html}
+
 <h2 id="repository-structure">Repository Structure</h2>
 <pre><code>{html.escape(tree_text)}</code></pre>
 
 <h2 id="all-scripts">All Scripts</h2>
 <div class="filter-box">
 <input type="text" id="script-filter" placeholder="Filter scripts by name, summary, or directory…" autocomplete="off">
+<div class="filter-chips">
+<button type="button" class="filter-chip" data-chip="sudo">Sudo only</button>
+<button type="button" class="filter-chip" data-chip="interactive">Interactive only</button>
+<button type="button" class="filter-chip" data-chip="hasdeps">Has deps</button>
+</div>
 <div class="filter-hint" id="filter-hint"></div>
 </div>
 {build_summary_table(docs)}
@@ -722,29 +980,121 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 {len(docs)} scripts documented.</p>
 
 </div>
-{build_toc(by_dir)}
+{build_toc(by_dir, has_issues=bool(missing_deps or cycles))}
 </div>
 
 <script>
 (function() {{
-  // --- Live filter for the "All Scripts" summary table ---
+  // --- Live filter (text + chips), applied to both the summary table AND the
+  // detailed script cards below it, so the two views never disagree. ---
   var input = document.getElementById('script-filter');
   var hint = document.getElementById('filter-hint');
-  var rows = Array.prototype.slice.call(
-    document.querySelectorAll('#all-scripts-table tbody tr')
-  );
-  if (input) {{
-    input.addEventListener('input', function() {{
-      var q = input.value.trim().toLowerCase();
-      var shown = 0;
-      rows.forEach(function(row) {{
-        var match = !q || (row.getAttribute('data-search') || '').indexOf(q) !== -1;
-        row.classList.toggle('filtered-out', !match);
-        if (match) shown++;
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.filter-chip'));
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#all-scripts-table tbody tr'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.script-card'));
+  var dirHeadings = Array.prototype.slice.call(document.querySelectorAll('.dir-heading'));
+  var chipState = {{ sudo: false, interactive: false, hasdeps: false }};
+
+  function matches(el, q) {{
+    if (q && (el.getAttribute('data-search') || '').indexOf(q) === -1) return false;
+    if (chipState.sudo && el.getAttribute('data-sudo') !== '1') return false;
+    if (chipState.interactive && el.getAttribute('data-interactive') !== '1') return false;
+    if (chipState.hasdeps && el.getAttribute('data-hasdeps') !== '1') return false;
+    return true;
+  }}
+
+  function applyFilters() {{
+    var q = input ? input.value.trim().toLowerCase() : '';
+    var shown = 0;
+    rows.forEach(function(row) {{
+      var match = matches(row, q);
+      row.classList.toggle('filtered-out', !match);
+      if (match) shown++;
+    }});
+    cards.forEach(function(card) {{
+      card.classList.toggle('filtered-out', !matches(card, q));
+    }});
+    // Hide a directory heading once every card underneath it is filtered out.
+    dirHeadings.forEach(function(heading) {{
+      var sib = heading.nextElementSibling;
+      var anyVisible = false;
+      while (sib && !sib.classList.contains('dir-heading')) {{
+        if (sib.classList.contains('script-card') && !sib.classList.contains('filtered-out')) {{
+          anyVisible = true;
+        }}
+        sib = sib.nextElementSibling;
+      }}
+      heading.classList.toggle('filtered-out', !anyVisible);
+    }});
+    var active = q || chipState.sudo || chipState.interactive || chipState.hasdeps;
+    if (hint) hint.textContent = active ? (shown + ' of ' + rows.length + ' scripts match') : '';
+  }}
+
+  if (input) input.addEventListener('input', applyFilters);
+  chips.forEach(function(chip) {{
+    chip.addEventListener('click', function() {{
+      var key = chip.getAttribute('data-chip');
+      chipState[key] = !chipState[key];
+      chip.classList.toggle('active', chipState[key]);
+      applyFilters();
+    }});
+  }});
+  applyFilters();
+
+  // --- Sortable summary table: click a sortable header to sort by that column. ---
+  var table = document.getElementById('all-scripts-table');
+  if (table) {{
+    var tbody = table.querySelector('tbody');
+    var sortState = {{ col: null, dir: 1 }};
+    Array.prototype.slice.call(table.querySelectorAll('th.sortable')).forEach(function(th) {{
+      th.addEventListener('click', function() {{
+        var col = parseInt(th.getAttribute('data-col'), 10);
+        var type = th.getAttribute('data-type');
+        sortState.dir = (sortState.col === col) ? -sortState.dir : 1;
+        sortState.col = col;
+
+        Array.prototype.slice.call(table.querySelectorAll('th.sortable')).forEach(function(h) {{
+          h.classList.remove('sort-asc', 'sort-desc');
+        }});
+        th.classList.add(sortState.dir === 1 ? 'sort-asc' : 'sort-desc');
+
+        var sorted = rows.slice().sort(function(a, b) {{
+          var av = a.children[col].getAttribute('data-value') || '';
+          var bv = b.children[col].getAttribute('data-value') || '';
+          if (type === 'num') {{
+            return (parseFloat(av) - parseFloat(bv)) * sortState.dir;
+          }}
+          return av.localeCompare(bv) * sortState.dir;
+        }});
+        sorted.forEach(function(row) {{ tbody.appendChild(row); }});
       }});
-      hint.textContent = q ? (shown + ' of ' + rows.length + ' scripts match') : '';
     }});
   }}
+
+  // --- Copy-path buttons on each script card ---
+  document.querySelectorAll('.copy-btn').forEach(function(btn) {{
+    btn.addEventListener('click', function() {{
+      var path = btn.getAttribute('data-path');
+      var reset = function() {{ btn.classList.remove('copied'); btn.title = 'Copy path'; }};
+      var onCopied = function() {{
+        btn.classList.add('copied');
+        btn.title = 'Copied!';
+        setTimeout(reset, 1200);
+      }};
+      if (navigator.clipboard && navigator.clipboard.writeText) {{
+        navigator.clipboard.writeText(path).then(onCopied, function() {{}});
+      }} else {{
+        var tmp = document.createElement('textarea');
+        tmp.value = path;
+        tmp.style.position = 'fixed';
+        tmp.style.opacity = '0';
+        document.body.appendChild(tmp);
+        tmp.select();
+        try {{ document.execCommand('copy'); onCopied(); }} catch (e) {{}}
+        document.body.removeChild(tmp);
+      }}
+    }});
+  }});
 
   // --- Scrollspy: highlight the current section in the TOC while scrolling ---
   var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
