@@ -9,31 +9,28 @@
 
 ## Structure
 
-Scripts are organized into three tiers:
+Scripts are organized into two tiers:
 
 - **`standalone/`** — self-contained scripts, each doing one thing.
 - **`workflows/`** — scripts that chain standalones together toward a goal.
 
-The full, current tree — every script, every subdirectory — is in
-[`docs/index.html`](docs/index.html), not here, so it never goes stale.
+More detailed information about the project structure is available in
+[`docs/index.html`](docs/index.html).
 
 ## Documentation
 
-Every script carries its own documentation as a metadata block right after the shebang
-(`summary`, `description`, `sudo`, `interactive`, `idempotent`, `dependencies` — see
-[`docs/metadata-guidelines.md`](docs/metadata-guidelines.md)). That metadata is the single
-source of truth for what each script does, what it needs, and what it depends on.
+Every script includes a metadata block immediately after the shebang describing its purpose,
+requirements, privileges, dependencies, and other properties (`summary`, `description`,
+`sudo`, `interactive`, `idempotent`, `dependencies`).
 
-It's rendered into **[`docs/index.html`](docs/index.html)** by [`generate-docs.py`](generate-docs.py)
-(dependency-free, standard library only):
+More detailed documentation, dependency trees, and the complete script index are available in
+**[`docs/index.html`](docs/index.html)**.
+
+To regenerate the documentation locally:
 
 ```bash
 ./generate-docs.py
 ```
-
-`docs/index.html` is regenerated automatically by GitHub Actions on every push, so it always
-reflects what's in the scripts themselves — including a searchable/sortable summary table,
-per-script dependency trees, and any dependency issues. Don't hand-edit it.
 
 ## Features
 
@@ -56,8 +53,10 @@ From there:
 - **Run a workflow** to chain several standalones toward a larger goal.
 
 Always review a script's source and its metadata block before running it with `sudo` on a
-production machine. Browse [`docs/index.html`](docs/index.html) for the current list of
-scripts, what each one does, what it requires, and how they depend on each other.
+production machine.
+
+More detailed information about available scripts is available in
+[`docs/index.html`](docs/index.html).
 
 ## Requirements
 
@@ -65,8 +64,9 @@ scripts, what each one does, what it requires, and how they depend on each other
 - Root/`sudo` access for system-level scripts, and an internet connection for package/image
   downloads
 - `python3` to run `generate-docs.py` (standard library only, no pip packages)
-- A handful of scripts need extra tools (Docker, `jq`, `pipx`, `flatpak`, `npm`, etc.) — these
-  are called out per-script in [`docs/index.html`](docs/index.html), not duplicated here
+- Some scripts require additional tools (`Docker`, `jq`, `pipx`, `flatpak`, `npm`, etc.).
+  See [`docs/index.html`](docs/index.html) for per-script requirements and optional
+  dependencies.
 
 ## Contributing
 
@@ -74,9 +74,9 @@ Issues and Pull Requests are welcome. If a script fits the collection's scope (s
 monitoring, deployment, shell tooling, or useful automation), feel free to open a PR.
 
 Follow the existing code style: colored output, safety prompts, inline English comments. Every
-new script needs a `# ---DOC-START--- ... # ---DOC-END---` metadata block — see
-[`docs/metadata-guidelines.md`](docs/metadata-guidelines.md) — and should regenerate cleanly
-with `./generate-docs.py --strict`.
+new script must include a `# ---DOC-START--- ... # ---DOC-END---` metadata block (see
+[`docs/metadata-guidelines.md`](docs/metadata-guidelines.md)) and pass
+`./generate-docs.py --strict`.
 
 ## License
 
