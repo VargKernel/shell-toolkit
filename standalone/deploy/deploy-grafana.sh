@@ -13,6 +13,7 @@
 #
 #   > **Default binding:** `127.0.0.1:3000` — use `deploy-nginx.sh` to expose it externally.
 #   >
+#   > If the health check times out, the service may still become available later.
 #   > **Change the default admin password immediately after first login.**
 #
 #   > Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.
@@ -311,6 +312,8 @@ echo "==> Summary"
 echo ""
 
 if [[ "$DEFAULT_PASSWORD" == true ]]; then
+    echo -e "${RED}It looks like the health check timed out.${NC}"
+    echo -e "${RED}The service may still become available with the default credentials.${NC}"
     echo -e "${RED}You are using the DEFAULT password: 'admin'${NC}"
     echo -e "${RED}This is EXTREMELY INSECURE.${NC}"
     echo -e "${RED}Change it immediately after first login:${NC}"
