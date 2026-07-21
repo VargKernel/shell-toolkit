@@ -9,7 +9,7 @@
 # sudo: true
 # interactive: false
 # idempotent: true
-# dependencies: flatpak
+# dependencies: none
 # ---DOC-END---
 
 set -euo pipefail
