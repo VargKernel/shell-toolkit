@@ -358,6 +358,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 ├── .github/
 │   └── workflows/
 │       ├── bash-syntax-check.yml
+│       ├── chmod.yml
 │       └── generate-documentation.yml
 ├── docs/
 │   ├── index.html
@@ -881,7 +882,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Deploys <strong><a href="https://github.com/filebrowser/filebrowser">File Browser</a></strong> — a lightweight web UI for browsing and managing files on the server.</p>
 <ul><li>Managed via <strong><a href="https://docs.docker.com/compose/">Docker Compose</a></strong>, using the official <strong><a href="https://hub.docker.com/r/filebrowser/filebrowser">filebrowser/filebrowser</a></strong> image</li><li>Bootstraps the database and admin account via the <code>filebrowser</code> CLI before first start, instead of relying on the image's auto-generated one-time password</li><li>Uses a dedicated secret for the admin password</li><li>Persists data under <code>/opt/filebrowser-stack/</code></li><li>Served files live under <code>/opt/filebrowser-stack/srv/</code></li></ul>
-<blockquote><strong>Default binding:</strong> <code>127.0.0.1:8080</code> — use <code>deploy-nginx.sh</code> to expose it externally.<br><br><strong>Change the default admin password immediately after first login.</strong></blockquote>
+<blockquote><strong>Default binding:</strong> <code>127.0.0.1:8080</code> — use <code>deploy-nginx.sh</code> to expose it externally.<br><br>If the health check times out, the service may still become available later.<br><strong>Change the default admin password immediately after first login.</strong></blockquote>
 <blockquote>Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.</blockquote>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
@@ -895,7 +896,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Deploys a full observability stack: <strong><a href="https://grafana.com">Grafana</a></strong> + <strong><a href="https://prometheus.io">Prometheus</a></strong> + <strong><a href="https://github.com/prometheus/node_exporter">Node Exporter</a></strong>.</p>
 <ul><li>Managed via <strong><a href="https://docs.docker.com/compose/">Docker Compose</a></strong></li><li>Uses a dedicated secret for the Grafana admin password</li><li>Pre-configures Prometheus to scrape Node Exporter metrics</li><li>Attempts to auto-import the <strong><a href="https://grafana.com/grafana/dashboards/19937">Node Exporter Full</a></strong> dashboard (ID 19937)</li><li>Persists data under <code>/opt/grafana-stack/</code></li></ul>
-<blockquote><strong>Default binding:</strong> <code>127.0.0.1:3000</code> — use <code>deploy-nginx.sh</code> to expose it externally.<br><br><strong>Change the default admin password immediately after first login.</strong></blockquote>
+<blockquote><strong>Default binding:</strong> <code>127.0.0.1:3000</code> — use <code>deploy-nginx.sh</code> to expose it externally.<br><br>If the health check times out, the service may still become available later.<br><strong>Change the default admin password immediately after first login.</strong></blockquote>
 <blockquote>Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.</blockquote>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-deploy-server-deploy-server-sh"><code>workflows/deploy-server/deploy-server.sh</code></a></li></ul></div>
@@ -922,7 +923,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Deploys <strong><a href="https://github.com/portainer/portainer">Portainer CE</a></strong> — a lightweight web UI for managing Docker containers.</p>
 <ul><li>Managed via <strong><a href="https://docs.docker.com/compose/">Docker Compose</a></strong></li><li>Uses a dedicated secret for the Portainer admin password</li><li>Stores data under <code>/opt/portainer-stack/</code></li></ul>
-<blockquote><strong>Default binding:</strong> <code>127.0.0.1:9000</code> — use <code>deploy-nginx.sh</code> to expose it externally.<br><br><strong>Change the default admin password immediately after first login.</strong></blockquote>
+<blockquote><strong>Default binding:</strong> <code>127.0.0.1:9000</code> — use <code>deploy-nginx.sh</code> to expose it externally.<br><br>If the health check times out, the service may still become available later.<br><strong>Change the default admin password immediately after first login.</strong></blockquote>
 <blockquote>Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.</blockquote>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-deploy-server-deploy-server-sh"><code>workflows/deploy-server/deploy-server.sh</code></a></li></ul></div>
@@ -2254,7 +2255,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-21 19:07 UTC &middot;
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-21 19:17 UTC &middot;
 134 scripts documented.</p>
 
 </div>
