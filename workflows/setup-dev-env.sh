@@ -12,7 +12,7 @@
 # sudo: true
 # interactive: false
 # idempotent: true
-# dependencies: standalone/apt/cli/install-cpp.sh, standalone/apt/cli/install-python.sh, standalone/apt/cli/install-php.sh, standalone/apt/cli/install-npm.sh, standalone/apt/cli/install-docker.sh, standalone/apt/gui/install-kate.sh, standalone/apt/gui/install-kdevelop.sh, standalone/apt/gui/install-ghostwriter.sh, standalone/lsp/install-bash-language-server.sh, standalone/lsp/install-markdown-language-server.sh, standalone/lsp/install-python-language-server.sh
+# dependencies: standalone/install/apt/cli/install-cpp.sh, standalone/install/apt/cli/install-python.sh, standalone/install/apt/cli/install-php.sh, standalone/install/apt/cli/install-npm.sh, standalone/install/apt/cli/install-docker.sh, standalone/install/apt/gui/install-kate.sh, standalone/install/apt/gui/install-kdevelop.sh, standalone/install/apt/gui/install-ghostwriter.sh, standalone/install/lsp/install-bash-language-server.sh, standalone/install/lsp/install-markdown-language-server.sh, standalone/install/lsp/install-python-language-server.sh
 # ---DOC-END---
 
 set -euo pipefail
@@ -25,9 +25,9 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-CLI_DIR="$(cd "$SCRIPT_DIR/../standalone/apt/cli" && pwd)"
-GUI_DIR="$(cd "$SCRIPT_DIR/../standalone/apt/gui" && pwd)"
-LSP_DIR="$(cd "$SCRIPT_DIR/../standalone/lsp" && pwd)"
+CLI_DIR="$(cd "$SCRIPT_DIR/../standalone/install/apt/cli" && pwd)"
+GUI_DIR="$(cd "$SCRIPT_DIR/../standalone/install/apt/gui" && pwd)"
+LSP_DIR="$(cd "$SCRIPT_DIR/../standalone/install/lsp" && pwd)"
 
 run_scripts() {
     local dir="$1"

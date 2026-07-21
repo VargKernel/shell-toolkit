@@ -16,7 +16,7 @@
 # sudo: true
 # interactive: true
 # idempotent: true
-# dependencies: standalone/apt/cli/install-chafa.sh, standalone/apt/cli/install-git.sh
+# dependencies: standalone/install/apt/cli/install-chafa.sh, standalone/install/apt/cli/install-git.sh
 # ---DOC-END---
 
 set -euo pipefail
@@ -26,7 +26,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CLI_DIR="$(cd "$SCRIPT_DIR/../standalone/apt/cli" && pwd)"
+CLI_DIR="$(cd "$SCRIPT_DIR/../standalone/install/apt/cli" && pwd)"
 
 BASHRC="$HOME/.bashrc"
 OSH="$HOME/.oh-my-bash"

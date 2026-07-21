@@ -10,15 +10,15 @@
 # sudo: false
 # interactive: false
 # idempotent: true
-# dependencies: standalone/apt/cli/install-flatpak.sh, standalone/flatpak/install-telegram.sh, standalone/flatpak/install-discord.sh, standalone/flatpak/install-steam.sh
+# dependencies: standalone/install/apt/cli/install-flatpak.sh, standalone/install/flatpak/install-telegram.sh, standalone/install/flatpak/install-discord.sh, standalone/install/flatpak/install-steam.sh
 # ---DOC-END---
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-APT_CLI_DIR="$(cd "$SCRIPT_DIR/../standalone/apt/cli" && pwd)"
-FLATPAK_DIR="$(cd "$SCRIPT_DIR/../standalone/flatpak" && pwd)"
+APT_CLI_DIR="$(cd "$SCRIPT_DIR/../standalone/install/apt/cli" && pwd)"
+FLATPAK_DIR="$(cd "$SCRIPT_DIR/../standalone/install/flatpak" && pwd)"
 
 echo "[*] Running install-flatpak.sh"
 bash "$APT_CLI_DIR/install-flatpak.sh"

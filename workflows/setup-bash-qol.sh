@@ -16,14 +16,14 @@
 # sudo: true
 # interactive: false
 # idempotent: true
-# dependencies: standalone/apt/cli/install-bash-completion.sh, standalone/apt/cli/install-fzf.sh, standalone/apt/cli/install-zoxide.sh, standalone/apt/cli/install-ripgrep.sh, standalone/apt/cli/install-bat.sh, standalone/apt/cli/install-eza.sh
+# dependencies: standalone/install/apt/cli/install-bash-completion.sh, standalone/install/apt/cli/install-fzf.sh, standalone/install/apt/cli/install-zoxide.sh, standalone/install/apt/cli/install-ripgrep.sh, standalone/install/apt/cli/install-bat.sh, standalone/install/apt/cli/install-eza.sh
 # ---DOC-END---
 
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CLI_DIR="$(cd "$SCRIPT_DIR/../standalone/apt/cli" && pwd)"
+CLI_DIR="$(cd "$SCRIPT_DIR/../standalone/install/apt/cli" && pwd)"
 
 MARK_START="# >>> bash-qol >>>"
 MARK_END="# <<< bash-qol <<<"
