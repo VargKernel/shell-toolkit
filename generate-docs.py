@@ -410,7 +410,7 @@ def build_used_by_section(doc: ScriptDoc, reverse_deps: dict[str, list[str]],
                            docs_by_path: dict[str, ScriptDoc]) -> str:
     users = reverse_deps.get(doc.relpath)
     if not users:
-        return '<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">nothing (in this repo)</span></div>'
+        return '<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>'
     items = []
     for user in users:
         user_doc = docs_by_path.get(user)
@@ -436,9 +436,7 @@ CSS = """
   --missing-bg: #fff8c5;
   --cycle-fg: #cf222e;
   --cycle-bg: #ffebe9;
-  --chip-bg: #f6f8fa;
-  --chip-active-bg: #0969da;
-  --chip-active-fg: #ffffff;
+  --btn-bg: #f6f8fa;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -453,9 +451,7 @@ CSS = """
     --missing-bg: #3b2f00;
     --cycle-fg: #ff7b72;
     --cycle-bg: #3b0d0c;
-    --chip-bg: #161b22;
-    --chip-active-bg: #4493f8;
-    --chip-active-fg: #0d1117;
+    --btn-bg: #161b22;
   }
 }
 * { box-sizing: border-box; }
@@ -668,9 +664,13 @@ h2:hover .permalink, h3:hover .permalink { opacity: 1; }
 
 .filter-box {
   margin: 1em 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
 }
 .filter-box input {
-  width: 100%;
+  flex: 1 1 260px;
   padding: 8px 12px;
   font-size: .95em;
   border: 1px solid var(--border);
@@ -683,32 +683,23 @@ h2:hover .permalink, h3:hover .permalink { opacity: 1; }
   outline: none;
   border-color: var(--link);
 }
-.filter-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: .6em;
-}
-.filter-chip {
+.filter-reset {
+  flex: 0 0 auto;
   border: 1px solid var(--border);
-  background: var(--chip-bg);
+  background: var(--btn-bg);
   color: var(--fg);
-  border-radius: 999px;
-  padding: .3em .9em;
-  font-size: .85em;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: .9em;
   cursor: pointer;
   font-family: inherit;
 }
-.filter-chip:hover { border-color: var(--link); }
-.filter-chip.active {
-  background: var(--chip-active-bg);
-  border-color: var(--chip-active-bg);
-  color: var(--chip-active-fg);
-}
+.filter-reset:hover { border-color: var(--link); color: var(--link); }
 .filter-hint {
+  flex: 1 0 100%;
   font-size: .82em;
   color: var(--muted);
-  margin-top: .5em;
+  margin-top: .2em;
 }
 
 .dep-section { margin: .8em 0; font-size: .95em; }
@@ -766,7 +757,7 @@ def build_summary_table(docs: list[ScriptDoc]) -> str:
             f'<td class="dir-tag" data-value="{html.escape(d.directory, quote=True)}">{html.escape(d.directory)}</td>'
             f'<td data-value="{html.escape(d.filename, quote=True)}">'
             f'<a href="#{d.anchor}"><code>{html.escape(d.filename)}</code></a></td>'
-            f"<td>{render_inline(d.summary)}</td>"
+            f'<td data-value="{html.escape(d.summary.lower(), quote=True)}">{render_inline(d.summary)}</td>'
             f'<td class="badge" data-value="{1 if d.sudo else 0}">{BOOL_BADGE[d.sudo]}</td>'
             f'<td class="badge" data-value="{1 if d.interactive else 0}">{BOOL_BADGE[d.interactive]}</td>'
             f'<td class="badge" data-value="{IDEMPOTENT_SORT_ORDER.get(d.idempotent, 0)}">'
@@ -778,7 +769,7 @@ def build_summary_table(docs: list[ScriptDoc]) -> str:
     headers = [
         ("Directory", "text", True),
         ("Script", "text", True),
-        ("Summary", "text", False),
+        ("Summary", "text", True),
         ("Sudo", "num", True),
         ("Interactive", "num", True),
         ("Idempotent", "num", True),
@@ -965,11 +956,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <h2 id="all-scripts">All Scripts</h2>
 <div class="filter-box">
 <input type="text" id="script-filter" placeholder="Filter scripts by name, summary, or directory…" autocomplete="off">
-<div class="filter-chips">
-<button type="button" class="filter-chip" data-chip="sudo">Sudo only</button>
-<button type="button" class="filter-chip" data-chip="interactive">Interactive only</button>
-<button type="button" class="filter-chip" data-chip="hasdeps">Has deps</button>
-</div>
+<button type="button" id="filter-reset" class="filter-reset">Reset filter</button>
 <div class="filter-hint" id="filter-hint"></div>
 </div>
 {build_summary_table(docs)}
@@ -985,22 +972,17 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 
 <script>
 (function() {{
-  // --- Live filter (text + chips), applied to both the summary table AND the
-  // detailed script cards below it, so the two views never disagree. ---
+  // --- Live text filter, applied to both the summary table AND the detailed
+  // script cards below it, so the two views never disagree. ---
   var input = document.getElementById('script-filter');
+  var resetBtn = document.getElementById('filter-reset');
   var hint = document.getElementById('filter-hint');
-  var chips = Array.prototype.slice.call(document.querySelectorAll('.filter-chip'));
   var rows = Array.prototype.slice.call(document.querySelectorAll('#all-scripts-table tbody tr'));
   var cards = Array.prototype.slice.call(document.querySelectorAll('.script-card'));
   var dirHeadings = Array.prototype.slice.call(document.querySelectorAll('.dir-heading'));
-  var chipState = {{ sudo: false, interactive: false, hasdeps: false }};
 
   function matches(el, q) {{
-    if (q && (el.getAttribute('data-search') || '').indexOf(q) === -1) return false;
-    if (chipState.sudo && el.getAttribute('data-sudo') !== '1') return false;
-    if (chipState.interactive && el.getAttribute('data-interactive') !== '1') return false;
-    if (chipState.hasdeps && el.getAttribute('data-hasdeps') !== '1') return false;
-    return true;
+    return !q || (el.getAttribute('data-search') || '').indexOf(q) !== -1;
   }}
 
   function applyFilters() {{
@@ -1026,19 +1008,17 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
       }}
       heading.classList.toggle('filtered-out', !anyVisible);
     }});
-    var active = q || chipState.sudo || chipState.interactive || chipState.hasdeps;
-    if (hint) hint.textContent = active ? (shown + ' of ' + rows.length + ' scripts match') : '';
+    if (hint) hint.textContent = q ? (shown + ' of ' + rows.length + ' scripts match') : '';
   }}
 
   if (input) input.addEventListener('input', applyFilters);
-  chips.forEach(function(chip) {{
-    chip.addEventListener('click', function() {{
-      var key = chip.getAttribute('data-chip');
-      chipState[key] = !chipState[key];
-      chip.classList.toggle('active', chipState[key]);
+  if (resetBtn) {{
+    resetBtn.addEventListener('click', function() {{
+      if (input) input.value = '';
       applyFilters();
+      if (input) input.focus();
     }});
-  }});
+  }}
   applyFilters();
 
   // --- Sortable summary table: click a sortable header to sort by that column. ---
