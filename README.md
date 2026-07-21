@@ -44,6 +44,13 @@ To regenerate the documentation locally:
 ```bash
 git clone https://github.com/rebootless/shell-toolkit.git
 cd shell-toolkit
+```
+
+All shell scripts in this repository are tracked with the executable bit and automatically corrected by GitHub Actions if necessary.
+
+If your local checkout loses executable permissions (for example, after extracting a ZIP archive or copying files to a filesystem that does not preserve Unix permissions), restore them with:
+
+```bash
 find . -type f -name "*.sh" -exec chmod +x {} \;
 ```
 
