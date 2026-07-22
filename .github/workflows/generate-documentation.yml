@@ -11,11 +11,18 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: repository-writes
+  cancel-in-progress: false
+
 jobs:
   generate-documentation:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -28,10 +35,21 @@ jobs:
         run: python3 generate-docs.py --strict
 
       - name: Commit updated docs
+        shell: bash
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
           git add docs/index.html
-          git diff --cached --quiet && echo "No changes to commit" && exit 0
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
           git commit -m "docs: regenerate docs/index.html [skip ci]"
-          git push
+
+          git pull --rebase origin main
+          git push origin HEAD:main
