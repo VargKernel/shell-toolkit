@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # ---DOC-START---
-# summary: Pull and redeploy all Docker Compose stacks under `/opt/*`.
+# summary: Pull and redeploy all Docker Compose stacks.
 # description: |
-#   Updates and redeploys every Docker Compose stack found under `/opt/*`.
+#   Updates and redeploys every Docker Compose stack detected on the system.
 #
 #   - Lists currently running containers before starting
-#   - Detects `docker-compose.yml`, `compose.yml`, `compose.yaml`, and `docker-compose.yaml`
+#   - Automatically discovers Docker Compose projects via Docker labels
 #   - Runs `docker compose pull` followed by `docker compose up -d` for each stack
 #   - Detects whether new images were actually pulled
-#   - Skips directories with no compose file or where the pull fails
+#   - Skips stacks where the pull fails
 #   - Prints a final summary of updated, unchanged, and skipped stacks
 # sudo: true
 # interactive: false
@@ -25,7 +25,6 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-BASE_DIR="/opt"
 UPDATED=()
 UNCHANGED=()
 SKIPPED=()
@@ -33,21 +32,27 @@ SKIPPED=()
 echo "==> Current Containers"
 docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'
 
+echo "==> Discovering Compose stacks"
+
+mapfile -t STACKS < <(
+    docker ps -a \
+        --format '{{.Label "com.docker.compose.project.working_dir"}}' |
+    grep -v '^$' |
+    sort -u
+)
+
+if [[ ${#STACKS[@]} -eq 0 ]]; then
+    echo "[i] No Docker Compose stacks found."
+    exit 0
+fi
+
 echo "==> Updating Stacks"
 
-for dir in "$BASE_DIR"/*/; do
+for dir in "${STACKS[@]}"; do
     stack="$(basename "$dir")"
 
-    compose_file=""
-    for f in docker-compose.yml compose.yml compose.yaml docker-compose.yaml; do
-        if [[ -f "$dir$f" ]]; then
-            compose_file="$f"
-            break
-        fi
-    done
-
-    if [[ -z "$compose_file" ]]; then
-        echo "[i] $stack: no compose file found, skipping"
+    if [[ ! -d "$dir" ]]; then
+        echo "[!] $stack: working directory not found, skipping"
         SKIPPED+=("$stack")
         continue
     fi
@@ -60,8 +65,6 @@ for dir in "$BASE_DIR"/*/; do
         continue
     }
 
-    # "up to date" lines mean no change for that image; anything else
-    # ("Pulled", "Downloaded newer image", etc.) means an update happened
     if grep -qiE 'Pulled|Downloaded newer image' <<< "$pull_output"; then
         is_updated=true
     else
@@ -69,7 +72,7 @@ for dir in "$BASE_DIR"/*/; do
     fi
 
     echo "[*] $stack: applying (up -d)"
-    (cd "$dir" && docker compose up -d) > /dev/null
+    (cd "$dir" && docker compose up -d) >/dev/null
 
     if [[ "$is_updated" == true ]]; then
         echo "[+] $stack: updated"
