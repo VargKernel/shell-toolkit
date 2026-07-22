@@ -15,7 +15,7 @@
 # sudo: true
 # interactive: true
 # idempotent: true
-# dependencies: virtualbox
+# dependencies: none
 # ---DOC-END---
 
 set -euo pipefail
