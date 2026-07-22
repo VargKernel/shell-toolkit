@@ -335,19 +335,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>138</td></tr>
-<tr><td>Directories</td><td>18</td></tr>
-<tr><td>Require root / sudo</td><td>83 / 138</td></tr>
-<tr><td>Interactive</td><td>23 / 138</td></tr>
+<tr><td>Total scripts</td><td>154</td></tr>
+<tr><td>Directories</td><td>19</td></tr>
+<tr><td>Require root / sudo</td><td>99 / 154</td></tr>
+<tr><td>Interactive</td><td>25 / 154</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>127 / 9 / 2</td></tr>
-<tr><td>Scripts with dependencies</td><td>6 / 138</td></tr>
+    <td>143 / 9 / 2</td></tr>
+<tr><td>Scripts with dependencies</td><td>6 / 154</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/deploy</td><td>5</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>3</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>5</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>3</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/deploy</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/groups</td><td>2</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>28</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>3</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
 </tbody>
 </table>
 
@@ -385,6 +385,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   ├── cleanup-temp.sh
 │   │   └── cleanup-thumbnails.sh
 │   ├── deploy/
+│   │   ├── deploy-fail2ban.sh
 │   │   ├── deploy-filebrowser.sh
 │   │   ├── deploy-grafana.sh
 │   │   ├── deploy-nginx.sh
@@ -393,20 +394,27 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   ├── git/
 │   │   ├── git-clone-all.sh
 │   │   └── git-rewrite-identity.sh
+│   ├── groups/
+│   │   ├── grant-sudo.sh
+│   │   └── grant-vboxusers.sh
 │   ├── install/
 │   │   ├── apt/
 │   │   │   ├── cli/
 │   │   │   │   ├── install-bash-completion.sh
 │   │   │   │   ├── install-bat.sh
+│   │   │   │   ├── install-ca-certificates.sh
 │   │   │   │   ├── install-chafa.sh
 │   │   │   │   ├── install-cpp.sh
+│   │   │   │   ├── install-curl.sh
 │   │   │   │   ├── install-docker.sh
 │   │   │   │   ├── install-eza.sh
 │   │   │   │   ├── install-firewalld-cli.sh
 │   │   │   │   ├── install-flatpak.sh
 │   │   │   │   ├── install-fzf.sh
 │   │   │   │   ├── install-git.sh
+│   │   │   │   ├── install-gnupg.sh
 │   │   │   │   ├── install-htop.sh
+│   │   │   │   ├── install-nano.sh
 │   │   │   │   ├── install-npm.sh
 │   │   │   │   ├── install-nvidia-driver.sh
 │   │   │   │   ├── install-php.sh
@@ -414,8 +422,11 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   │   │   ├── install-python.sh
 │   │   │   │   ├── install-ranger.sh
 │   │   │   │   ├── install-ripgrep.sh
+│   │   │   │   ├── install-sudo.sh
+│   │   │   │   ├── install-ufw.sh
 │   │   │   │   ├── install-veracrypt-cli.sh
 │   │   │   │   ├── install-virtualbox-guest-additions.sh
+│   │   │   │   ├── install-wget.sh
 │   │   │   │   └── install-zoxide.sh
 │   │   │   └── gui/
 │   │   │       ├── install-blender.sh
@@ -445,6 +456,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   │   └── install-telegram.sh
 │   │   ├── lsp/
 │   │   │   ├── install-bash-language-server.sh
+│   │   │   ├── install-clang-language-server.sh
 │   │   │   ├── install-markdown-language-server.sh
 │   │   │   └── install-python-language-server.sh
 │   │   └── pipx/
@@ -495,10 +507,14 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │       └── get-user-crontab.sh
 │   ├── maintenance/
 │   │   ├── create-swap-file.sh
-│   │   ├── grant-sudo.sh
-│   │   ├── server-bootstrap.sh
-│   │   ├── set-bashrc-default.sh
-│   │   └── ufw-firewalld-migration.sh
+│   │   ├── create-user.sh
+│   │   ├── disable-firewalld.sh
+│   │   ├── disable-ufw.sh
+│   │   ├── enable-firewalld.sh
+│   │   ├── enable-ufw.sh
+│   │   ├── remove-firewalld.sh
+│   │   ├── remove-ufw.sh
+│   │   └── restore-bashrc.sh
 │   ├── showcase/
 │   │   └── showcase-bash-qol.sh
 │   ├── update/
@@ -514,7 +530,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   └── yt-dlp/
 │       ├── yt-dlp-all-formats.sh
 │       ├── yt-dlp-audio-only.sh
-│       └── yt-dlp-best-format.sh
+│       ├── yt-dlp-best-format.sh
+│       └── yt-dlp-playlist-480p.sh
 ├── workflows/
 │   ├── deploy-server/
 │   │   ├── .env.example
@@ -555,24 +572,31 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/cleanup cleanup-logs.sh clean old journald logs and rotated logs." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/cleanup">standalone/cleanup</td><td data-value="cleanup-logs.sh"><a href="#script-standalone-cleanup-cleanup-logs-sh"><code>cleanup-logs.sh</code></a></td><td data-value="clean old journald logs and rotated logs.">Clean old journald logs and rotated logs.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/cleanup cleanup-temp.sh clean temporary files in /tmp and /var/tmp." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/cleanup">standalone/cleanup</td><td data-value="cleanup-temp.sh"><a href="#script-standalone-cleanup-cleanup-temp-sh"><code>cleanup-temp.sh</code></a></td><td data-value="clean temporary files in /tmp and /var/tmp.">Clean temporary files in /tmp and /var/tmp.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/cleanup cleanup-thumbnails.sh clear thumbnail caches for all users." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/cleanup">standalone/cleanup</td><td data-value="cleanup-thumbnails.sh"><a href="#script-standalone-cleanup-cleanup-thumbnails-sh"><code>cleanup-thumbnails.sh</code></a></td><td data-value="clear thumbnail caches for all users.">Clear thumbnail caches for all users.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/deploy deploy-fail2ban.sh install and configure fail2ban for ssh protection." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/deploy">standalone/deploy</td><td data-value="deploy-fail2ban.sh"><a href="#script-standalone-deploy-deploy-fail2ban-sh"><code>deploy-fail2ban.sh</code></a></td><td data-value="install and configure fail2ban for ssh protection.">Install and configure Fail2Ban for SSH protection.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">⚠️</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/deploy deploy-filebrowser.sh file browser web file manager via docker." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/deploy">standalone/deploy</td><td data-value="deploy-filebrowser.sh"><a href="#script-standalone-deploy-deploy-filebrowser-sh"><code>deploy-filebrowser.sh</code></a></td><td data-value="file browser web file manager via docker.">File Browser web file manager via Docker.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/deploy deploy-grafana.sh grafana + prometheus + node exporter via docker." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/deploy">standalone/deploy</td><td data-value="deploy-grafana.sh"><a href="#script-standalone-deploy-deploy-grafana-sh"><code>deploy-grafana.sh</code></a></td><td data-value="grafana + prometheus + node exporter via docker.">Grafana + Prometheus + Node Exporter via Docker.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/deploy deploy-nginx.sh production nginx + optional php-fpm, grafana &amp; portainer proxy." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/deploy">standalone/deploy</td><td data-value="deploy-nginx.sh"><a href="#script-standalone-deploy-deploy-nginx-sh"><code>deploy-nginx.sh</code></a></td><td data-value="production nginx + optional php-fpm, grafana &amp; portainer proxy.">Production Nginx + optional PHP-FPM, Grafana &amp; Portainer proxy.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/deploy deploy-portainer.sh portainer ce container management ui via docker." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/deploy">standalone/deploy</td><td data-value="deploy-portainer.sh"><a href="#script-standalone-deploy-deploy-portainer-sh"><code>deploy-portainer.sh</code></a></td><td data-value="portainer ce container management ui via docker.">Portainer CE container management UI via Docker.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/deploy deploy-ssh.sh install &amp; harden openssh server, optional firewalld rule." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/deploy">standalone/deploy</td><td data-value="deploy-ssh.sh"><a href="#script-standalone-deploy-deploy-ssh-sh"><code>deploy-ssh.sh</code></a></td><td data-value="install &amp; harden openssh server, optional firewalld rule.">Install &amp; harden OpenSSH Server, optional Firewalld rule.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/deploy deploy-ssh.sh install and configure openssh server, optional firewalld rule." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/deploy">standalone/deploy</td><td data-value="deploy-ssh.sh"><a href="#script-standalone-deploy-deploy-ssh-sh"><code>deploy-ssh.sh</code></a></td><td data-value="install and configure openssh server, optional firewalld rule.">Install and configure OpenSSH Server, optional Firewalld rule.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/git git-clone-all.sh clone all public repositories from a github user/profile." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="git-clone-all.sh"><a href="#script-standalone-git-git-clone-all-sh"><code>git-clone-all.sh</code></a></td><td data-value="clone all public repositories from a github user/profile.">Clone all public repositories from a GitHub user/profile.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/git git-rewrite-identity.sh rewrite author/committer name and email across all commits in a git repository." data-sudo="0" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="git-rewrite-identity.sh"><a href="#script-standalone-git-git-rewrite-identity-sh"><code>git-rewrite-identity.sh</code></a></td><td data-value="rewrite author/committer name and email across all commits in a git repository.">Rewrite author/committer name and email across all commits in a Git repository.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/groups grant-sudo.sh add an existing user to the sudo group." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/groups">standalone/groups</td><td data-value="grant-sudo.sh"><a href="#script-standalone-groups-grant-sudo-sh"><code>grant-sudo.sh</code></a></td><td data-value="add an existing user to the sudo group.">Add an existing user to the sudo group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/groups grant-vboxusers.sh add an existing user to the vboxusers group." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/groups">standalone/groups</td><td data-value="grant-vboxusers.sh"><a href="#script-standalone-groups-grant-vboxusers-sh"><code>grant-vboxusers.sh</code></a></td><td data-value="add an existing user to the vboxusers group.">Add an existing user to the vboxusers group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-bash-completion.sh install bash-completion from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-bash-completion.sh"><a href="#script-standalone-install-apt-cli-install-bash-completion-sh"><code>install-bash-completion.sh</code></a></td><td data-value="install bash-completion from the distribution repositories.">Install bash-completion from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-bat.sh install bat (cat clone with syntax highlighting) from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-bat.sh"><a href="#script-standalone-install-apt-cli-install-bat-sh"><code>install-bat.sh</code></a></td><td data-value="install bat (cat clone with syntax highlighting) from the distribution repositories.">Install bat (cat clone with syntax highlighting) from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-ca-certificates.sh install ca certificates from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-ca-certificates.sh"><a href="#script-standalone-install-apt-cli-install-ca-certificates-sh"><code>install-ca-certificates.sh</code></a></td><td data-value="install ca certificates from the distribution repositories.">Install CA certificates from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-chafa.sh install chafa (terminal image/gif viewer) from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-chafa.sh"><a href="#script-standalone-install-apt-cli-install-chafa-sh"><code>install-chafa.sh</code></a></td><td data-value="install chafa (terminal image/gif viewer) from the distribution repositories.">Install chafa (terminal image/GIF viewer) from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-cpp.sh install the c and c++ development environment." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-cpp.sh"><a href="#script-standalone-install-apt-cli-install-cpp-sh"><code>install-cpp.sh</code></a></td><td data-value="install the c and c++ development environment.">Install the C and C++ development environment.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-curl.sh install curl from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-curl.sh"><a href="#script-standalone-install-apt-cli-install-curl-sh"><code>install-curl.sh</code></a></td><td data-value="install curl from the distribution repositories.">Install curl from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-docker.sh install docker engine and the docker compose plugin." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-docker.sh"><a href="#script-standalone-install-apt-cli-install-docker-sh"><code>install-docker.sh</code></a></td><td data-value="install docker engine and the docker compose plugin.">Install Docker Engine and the Docker Compose plugin.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-eza.sh install eza (modern ls replacement), adding the official apt repo if needed." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-eza.sh"><a href="#script-standalone-install-apt-cli-install-eza-sh"><code>install-eza.sh</code></a></td><td data-value="install eza (modern ls replacement), adding the official apt repo if needed.">Install eza (modern ls replacement), adding the official apt repo if needed.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-firewalld-cli.sh install firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-firewalld-cli.sh"><a href="#script-standalone-install-apt-cli-install-firewalld-cli-sh"><code>install-firewalld-cli.sh</code></a></td><td data-value="install firewalld.">Install firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-flatpak.sh install flatpak, add the flathub remote, optionally enable kde discover integration." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-flatpak.sh"><a href="#script-standalone-install-apt-cli-install-flatpak-sh"><code>install-flatpak.sh</code></a></td><td data-value="install flatpak, add the flathub remote, optionally enable kde discover integration.">Install flatpak, add the Flathub remote, optionally enable KDE Discover integration.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-fzf.sh install fzf from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-fzf.sh"><a href="#script-standalone-install-apt-cli-install-fzf-sh"><code>install-fzf.sh</code></a></td><td data-value="install fzf from the distribution repositories.">Install fzf from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-git.sh install git from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-git.sh"><a href="#script-standalone-install-apt-cli-install-git-sh"><code>install-git.sh</code></a></td><td data-value="install git from the distribution repositories.">Install git from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-gnupg.sh install gnupg from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-gnupg.sh"><a href="#script-standalone-install-apt-cli-install-gnupg-sh"><code>install-gnupg.sh</code></a></td><td data-value="install gnupg from the distribution repositories.">Install GnuPG from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-htop.sh install htop from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-htop.sh"><a href="#script-standalone-install-apt-cli-install-htop-sh"><code>install-htop.sh</code></a></td><td data-value="install htop from the distribution repositories.">Install htop from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-nano.sh install gnu nano from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-nano.sh"><a href="#script-standalone-install-apt-cli-install-nano-sh"><code>install-nano.sh</code></a></td><td data-value="install gnu nano from the distribution repositories.">Install GNU nano from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-npm.sh install node.js and npm." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-npm.sh"><a href="#script-standalone-install-apt-cli-install-npm-sh"><code>install-npm.sh</code></a></td><td data-value="install node.js and npm.">Install Node.js and npm.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-nvidia-driver.sh nvidia gpu driver install (auto-detect, apt package, or .run), with nouveau blacklist." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-nvidia-driver.sh"><a href="#script-standalone-install-apt-cli-install-nvidia-driver-sh"><code>install-nvidia-driver.sh</code></a></td><td data-value="nvidia gpu driver install (auto-detect, apt package, or .run), with nouveau blacklist.">NVIDIA GPU driver install (auto-detect, apt package, or .run), with nouveau blacklist.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">⚠️</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-php.sh install php and common extensions." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-php.sh"><a href="#script-standalone-install-apt-cli-install-php-sh"><code>install-php.sh</code></a></td><td data-value="install php and common extensions.">Install PHP and common extensions.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -580,8 +604,11 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/install/apt/cli install-python.sh install the python development environment." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-python.sh"><a href="#script-standalone-install-apt-cli-install-python-sh"><code>install-python.sh</code></a></td><td data-value="install the python development environment.">Install the Python development environment.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-ranger.sh install ranger from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-ranger.sh"><a href="#script-standalone-install-apt-cli-install-ranger-sh"><code>install-ranger.sh</code></a></td><td data-value="install ranger from the distribution repositories.">Install ranger from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-ripgrep.sh install ripgrep from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-ripgrep.sh"><a href="#script-standalone-install-apt-cli-install-ripgrep-sh"><code>install-ripgrep.sh</code></a></td><td data-value="install ripgrep from the distribution repositories.">Install ripgrep from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-sudo.sh install sudo from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-sudo.sh"><a href="#script-standalone-install-apt-cli-install-sudo-sh"><code>install-sudo.sh</code></a></td><td data-value="install sudo from the distribution repositories.">Install sudo from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-ufw.sh install ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-ufw.sh"><a href="#script-standalone-install-apt-cli-install-ufw-sh"><code>install-ufw.sh</code></a></td><td data-value="install ufw.">Install UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-veracrypt-cli.sh install veracrypt cli from the official ppa." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-veracrypt-cli.sh"><a href="#script-standalone-install-apt-cli-install-veracrypt-cli-sh"><code>install-veracrypt-cli.sh</code></a></td><td data-value="install veracrypt cli from the official ppa.">Install VeraCrypt CLI from the official PPA.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">⚠️</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-virtualbox-guest-additions.sh install virtualbox guest additions from apt." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-virtualbox-guest-additions.sh"><a href="#script-standalone-install-apt-cli-install-virtualbox-guest-additions-sh"><code>install-virtualbox-guest-additions.sh</code></a></td><td data-value="install virtualbox guest additions from apt.">Install VirtualBox Guest Additions from apt.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-wget.sh install wget from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-wget.sh"><a href="#script-standalone-install-apt-cli-install-wget-sh"><code>install-wget.sh</code></a></td><td data-value="install wget from the distribution repositories.">Install wget from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-zoxide.sh install zoxide (smarter cd command) from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-zoxide.sh"><a href="#script-standalone-install-apt-cli-install-zoxide-sh"><code>install-zoxide.sh</code></a></td><td data-value="install zoxide (smarter cd command) from the distribution repositories.">Install zoxide (smarter cd command) from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/gui install-blender.sh install blender from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-blender.sh"><a href="#script-standalone-install-apt-gui-install-blender-sh"><code>install-blender.sh</code></a></td><td data-value="install blender from the distribution repositories.">Install Blender from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/gui install-firefox.sh install firefox from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-firefox.sh"><a href="#script-standalone-install-apt-gui-install-firefox-sh"><code>install-firefox.sh</code></a></td><td data-value="install firefox from the distribution repositories.">Install Firefox from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -608,6 +635,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/install/flatpak install-steam.sh install steam from flathub." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/flatpak">standalone/install/flatpak</td><td data-value="install-steam.sh"><a href="#script-standalone-install-flatpak-install-steam-sh"><code>install-steam.sh</code></a></td><td data-value="install steam from flathub.">Install Steam from Flathub.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/flatpak install-telegram.sh install telegram desktop from flathub." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/flatpak">standalone/install/flatpak</td><td data-value="install-telegram.sh"><a href="#script-standalone-install-flatpak-install-telegram-sh"><code>install-telegram.sh</code></a></td><td data-value="install telegram desktop from flathub.">Install Telegram Desktop from Flathub.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/lsp install-bash-language-server.sh install bash-language-server via npm for editor/ide lsp integration." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/lsp">standalone/install/lsp</td><td data-value="install-bash-language-server.sh"><a href="#script-standalone-install-lsp-install-bash-language-server-sh"><code>install-bash-language-server.sh</code></a></td><td data-value="install bash-language-server via npm for editor/ide lsp integration.">Install bash-language-server via npm for editor/IDE LSP integration.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/lsp install-clang-language-server.sh install clangd (llvm c/c++ language server) for editor/ide lsp integration." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/lsp">standalone/install/lsp</td><td data-value="install-clang-language-server.sh"><a href="#script-standalone-install-lsp-install-clang-language-server-sh"><code>install-clang-language-server.sh</code></a></td><td data-value="install clangd (llvm c/c++ language server) for editor/ide lsp integration.">Install clangd (LLVM C/C++ language server) for editor/IDE LSP integration.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/lsp install-markdown-language-server.sh install markdown-language-server via npm for editor/ide lsp integration." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/lsp">standalone/install/lsp</td><td data-value="install-markdown-language-server.sh"><a href="#script-standalone-install-lsp-install-markdown-language-server-sh"><code>install-markdown-language-server.sh</code></a></td><td data-value="install markdown-language-server via npm for editor/ide lsp integration.">Install markdown-language-server via npm for editor/IDE LSP integration.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/lsp install-python-language-server.sh install python-lsp-server (pylsp) via pipx for editor/ide lsp integration." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/lsp">standalone/install/lsp</td><td data-value="install-python-language-server.sh"><a href="#script-standalone-install-lsp-install-python-language-server-sh"><code>install-python-language-server.sh</code></a></td><td data-value="install python-lsp-server (pylsp) via pipx for editor/ide lsp integration.">Install python-lsp-server (pylsp) via pipx for editor/IDE LSP integration.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/pipx install-gallery-dl.sh install gallery-dl via pipx." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/pipx">standalone/install/pipx</td><td data-value="install-gallery-dl.sh"><a href="#script-standalone-install-pipx-install-gallery-dl-sh"><code>install-gallery-dl.sh</code></a></td><td data-value="install gallery-dl via pipx.">Install gallery-dl via pipx.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -653,10 +681,14 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/inventory/system get-usb-devices.sh usb device inventory." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-usb-devices.sh"><a href="#script-standalone-inventory-system-get-usb-devices-sh"><code>get-usb-devices.sh</code></a></td><td data-value="usb device inventory.">USB device inventory.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-user-crontab.sh current user&#x27;s crontab entries." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-user-crontab.sh"><a href="#script-standalone-inventory-system-get-user-crontab-sh"><code>get-user-crontab.sh</code></a></td><td data-value="current user&#x27;s crontab entries.">Current user's crontab entries.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance create-swap-file.sh create and activate a swap file of any size." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="create-swap-file.sh"><a href="#script-standalone-maintenance-create-swap-file-sh"><code>create-swap-file.sh</code></a></td><td data-value="create and activate a swap file of any size.">Create and activate a swap file of any size.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/maintenance grant-sudo.sh add a user to the sudo group." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="grant-sudo.sh"><a href="#script-standalone-maintenance-grant-sudo-sh"><code>grant-sudo.sh</code></a></td><td data-value="add a user to the sudo group.">Add a user to the sudo group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/maintenance server-bootstrap.sh initial server hardening and configuration." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="server-bootstrap.sh"><a href="#script-standalone-maintenance-server-bootstrap-sh"><code>server-bootstrap.sh</code></a></td><td data-value="initial server hardening and configuration.">Initial server hardening and configuration.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/maintenance set-bashrc-default.sh reset ~/.bashrc to the distribution default." data-sudo="0" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="set-bashrc-default.sh"><a href="#script-standalone-maintenance-set-bashrc-default-sh"><code>set-bashrc-default.sh</code></a></td><td data-value="reset ~/.bashrc to the distribution default.">Reset ~/.bashrc to the distribution default.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/maintenance ufw-firewalld-migration.sh remove ufw and replace it with firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="ufw-firewalld-migration.sh"><a href="#script-standalone-maintenance-ufw-firewalld-migration-sh"><code>ufw-firewalld-migration.sh</code></a></td><td data-value="remove ufw and replace it with firewalld.">Remove UFW and replace it with Firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">⚠️</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/maintenance create-user.sh create a new local user." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="create-user.sh"><a href="#script-standalone-maintenance-create-user-sh"><code>create-user.sh</code></a></td><td data-value="create a new local user.">Create a new local user.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/maintenance disable-firewalld.sh disable firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="disable-firewalld.sh"><a href="#script-standalone-maintenance-disable-firewalld-sh"><code>disable-firewalld.sh</code></a></td><td data-value="disable firewalld.">Disable Firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/maintenance disable-ufw.sh disable ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="disable-ufw.sh"><a href="#script-standalone-maintenance-disable-ufw-sh"><code>disable-ufw.sh</code></a></td><td data-value="disable ufw.">Disable UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/maintenance enable-firewalld.sh enable firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="enable-firewalld.sh"><a href="#script-standalone-maintenance-enable-firewalld-sh"><code>enable-firewalld.sh</code></a></td><td data-value="enable firewalld.">Enable Firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/maintenance enable-ufw.sh enable ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="enable-ufw.sh"><a href="#script-standalone-maintenance-enable-ufw-sh"><code>enable-ufw.sh</code></a></td><td data-value="enable ufw.">Enable UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/maintenance remove-firewalld.sh disable and remove firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="remove-firewalld.sh"><a href="#script-standalone-maintenance-remove-firewalld-sh"><code>remove-firewalld.sh</code></a></td><td data-value="disable and remove firewalld.">Disable and remove Firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/maintenance remove-ufw.sh disable and remove ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="remove-ufw.sh"><a href="#script-standalone-maintenance-remove-ufw-sh"><code>remove-ufw.sh</code></a></td><td data-value="disable and remove ufw.">Disable and remove UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/maintenance restore-bashrc.sh reset ~/.bashrc to the distribution default." data-sudo="0" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="restore-bashrc.sh"><a href="#script-standalone-maintenance-restore-bashrc-sh"><code>restore-bashrc.sh</code></a></td><td data-value="reset ~/.bashrc to the distribution default.">Reset ~/.bashrc to the distribution default.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/showcase showcase-bash-qol.sh demo for the bash qol terminal styling." data-sudo="0" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/showcase">standalone/showcase</td><td data-value="showcase-bash-qol.sh"><a href="#script-standalone-showcase-showcase-bash-qol-sh"><code>showcase-bash-qol.sh</code></a></td><td data-value="demo for the bash qol terminal styling.">Demo for the Bash QOL terminal styling.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/update update-docker-compose-stacks.sh pull and redeploy all docker compose stacks." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/update">standalone/update</td><td data-value="update-docker-compose-stacks.sh"><a href="#script-standalone-update-update-docker-compose-stacks-sh"><code>update-docker-compose-stacks.sh</code></a></td><td data-value="pull and redeploy all docker compose stacks.">Pull and redeploy all Docker Compose stacks.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/update update-flatpak.sh updates all installed flatpak applications and runtimes." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/update">standalone/update</td><td data-value="update-flatpak.sh"><a href="#script-standalone-update-update-flatpak-sh"><code>update-flatpak.sh</code></a></td><td data-value="updates all installed flatpak applications and runtimes.">Updates all installed Flatpak applications and runtimes.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -669,7 +701,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/yt-dlp yt-dlp-all-formats.sh download every resolution tier (480p-8k) via yt-dlp." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/yt-dlp">standalone/yt-dlp</td><td data-value="yt-dlp-all-formats.sh"><a href="#script-standalone-yt-dlp-yt-dlp-all-formats-sh"><code>yt-dlp-all-formats.sh</code></a></td><td data-value="download every resolution tier (480p-8k) via yt-dlp.">Download every resolution tier (480p-8K) via yt-dlp.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/yt-dlp yt-dlp-audio-only.sh download audio only as mp3 via yt-dlp." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/yt-dlp">standalone/yt-dlp</td><td data-value="yt-dlp-audio-only.sh"><a href="#script-standalone-yt-dlp-yt-dlp-audio-only-sh"><code>yt-dlp-audio-only.sh</code></a></td><td data-value="download audio only as mp3 via yt-dlp.">Download audio only as MP3 via yt-dlp.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/yt-dlp yt-dlp-best-format.sh download best quality video as mp4 via yt-dlp." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/yt-dlp">standalone/yt-dlp</td><td data-value="yt-dlp-best-format.sh"><a href="#script-standalone-yt-dlp-yt-dlp-best-format-sh"><code>yt-dlp-best-format.sh</code></a></td><td data-value="download best quality video as mp4 via yt-dlp.">Download best quality video as MP4 via yt-dlp.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="workflows/deploy-server deploy-server.sh full-stack workflow: bootstrap → nginx → grafana → portainer from a single .env." data-sudo="1" data-interactive="1" data-hasdeps="1"><td class="dir-tag" data-value="workflows/deploy-server">workflows/deploy-server</td><td data-value="deploy-server.sh"><a href="#script-workflows-deploy-server-deploy-server-sh"><code>deploy-server.sh</code></a></td><td data-value="full-stack workflow: bootstrap → nginx → grafana → portainer from a single .env.">Full-stack workflow: bootstrap → nginx → grafana → portainer from a single .env.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="deps-count" data-value="4">4</td></tr>
+<tr data-search="standalone/yt-dlp yt-dlp-playlist-480p.sh download playlists up to 480p via yt-dlp." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/yt-dlp">standalone/yt-dlp</td><td data-value="yt-dlp-playlist-480p.sh"><a href="#script-standalone-yt-dlp-yt-dlp-playlist-480p-sh"><code>yt-dlp-playlist-480p.sh</code></a></td><td data-value="download playlists up to 480p via yt-dlp.">Download playlists up to 480p via yt-dlp.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="workflows/deploy-server deploy-server.sh full-stack workflow: firewall → ssh → fail2ban → user → nginx → grafana → portainer → file browser, each independently toggleable from a single .env." data-sudo="1" data-interactive="1" data-hasdeps="1"><td class="dir-tag" data-value="workflows/deploy-server">workflows/deploy-server</td><td data-value="deploy-server.sh"><a href="#script-workflows-deploy-server-deploy-server-sh"><code>deploy-server.sh</code></a></td><td data-value="full-stack workflow: firewall → ssh → fail2ban → user → nginx → grafana → portainer → file browser, each independently toggleable from a single .env.">Full-stack workflow: firewall → SSH → Fail2Ban → user → Nginx → Grafana → Portainer → File Browser, each independently toggleable from a single .env.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="deps-count" data-value="9">9</td></tr>
 <tr data-search="workflows setup-bash-qol.sh install shell quality-of-life tools and configure bash." data-sudo="1" data-interactive="0" data-hasdeps="1"><td class="dir-tag" data-value="workflows">workflows</td><td data-value="setup-bash-qol.sh"><a href="#script-workflows-setup-bash-qol-sh"><code>setup-bash-qol.sh</code></a></td><td data-value="install shell quality-of-life tools and configure bash.">Install shell quality-of-life tools and configure Bash.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="6">6</td></tr>
 <tr data-search="workflows setup-dev-env.sh install a full c++/python/php/node dev environment + lsp servers in one step." data-sudo="1" data-interactive="0" data-hasdeps="1"><td class="dir-tag" data-value="workflows">workflows</td><td data-value="setup-dev-env.sh"><a href="#script-workflows-setup-dev-env-sh"><code>setup-dev-env.sh</code></a></td><td data-value="install a full c++/python/php/node dev environment + lsp servers in one step.">Install a full C++/Python/PHP/Node dev environment + LSP servers in one step.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="11">11</td></tr>
 <tr data-search="workflows setup-flatpak.sh install flatpak + flathub + discord, steam, telegram in one step." data-sudo="0" data-interactive="0" data-hasdeps="1"><td class="dir-tag" data-value="workflows">workflows</td><td data-value="setup-flatpak.sh"><a href="#script-workflows-setup-flatpak-sh"><code>setup-flatpak.sh</code></a></td><td data-value="install flatpak + flathub + discord, steam, telegram in one step.">Install Flatpak + Flathub + Discord, Steam, Telegram in one step.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="4">4</td></tr>
@@ -881,6 +914,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-deploy" class="dir-heading"><code>standalone/deploy/</code><a class="permalink" href="#dir-standalone-deploy" aria-label="Link to this section">#</a></h2>
+<div class="script-card" id="script-standalone-deploy-deploy-fail2ban-sh" data-search="standalone/deploy deploy-fail2ban.sh install and configure fail2ban for ssh protection." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/deploy/deploy-fail2ban.sh</code><a class="permalink" href="#script-standalone-deploy-deploy-fail2ban-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/deploy/deploy-fail2ban.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ⚠️ (mostly)</span>
+</div>
+<p>Installs and configures <strong>Fail2Ban</strong> with a basic SSH jail.</p>
+<ul><li>Installs <code>fail2ban</code></li><li>Creates <code>/etc/fail2ban/jail.local</code></li><li>Enables the <code>sshd</code> jail</li><li>Enables and starts the <code>fail2ban</code> service</li><li>Validates the configuration before restarting the service</li><li>Prints a deployment summary</li></ul>
+<p>Existing <code>jail.local</code> will be replaced.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-deploy-server-deploy-server-sh"><code>workflows/deploy-server/deploy-server.sh</code></a></li></ul></div>
+</div>
 <div class="script-card" id="script-standalone-deploy-deploy-filebrowser-sh" data-search="standalone/deploy deploy-filebrowser.sh file browser web file manager via docker." data-sudo="1" data-interactive="1" data-hasdeps="0">
 <h3><code>standalone/deploy/deploy-filebrowser.sh</code><a class="permalink" href="#script-standalone-deploy-deploy-filebrowser-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/deploy/deploy-filebrowser.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -893,7 +939,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <blockquote><strong>Default binding:</strong> <code>127.0.0.1:8080</code> — use <code>deploy-nginx.sh</code> to expose it externally.<br><br>If the health check times out, the service may still become available later.<br><strong>Change the default admin password immediately after first login.</strong></blockquote>
 <blockquote>Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.</blockquote>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-deploy-server-deploy-server-sh"><code>workflows/deploy-server/deploy-server.sh</code></a></li></ul></div>
 </div>
 <div class="script-card" id="script-standalone-deploy-deploy-grafana-sh" data-search="standalone/deploy deploy-grafana.sh grafana + prometheus + node exporter via docker." data-sudo="1" data-interactive="1" data-hasdeps="0">
 <h3><code>standalone/deploy/deploy-grafana.sh</code><a class="permalink" href="#script-standalone-deploy-deploy-grafana-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/deploy/deploy-grafana.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -917,7 +963,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Deploys a hardened, production-ready <strong><a href="https://nginx.org">Nginx</a></strong> web server.</p>
-<ul><li>Installs Nginx with optional <strong><a href="https://www.php.net/manual/en/install.fpm.php">PHP-FPM</a></strong> integration</li><li>Generates a clean virtual host with security headers and other baseline best practices</li><li>Optionally installs <strong><a href="https://avahi.org">avahi-daemon</a></strong> for mDNS / <code>.local</code> hostname resolution on the LAN</li><li>Can add reverse proxies for <strong>Grafana</strong> at <code>/grafana</code> and <strong>Portainer</strong> at <code>/portainer</code></li><li>Configures <strong>Firewalld</strong> for HTTP, HTTPS, and mDNS</li><li>Creates a clean default <code>index.html</code></li></ul>
+<ul><li>Installs Nginx with optional <strong><a href="https://www.php.net/manual/en/install.fpm.php">PHP-FPM</a></strong> integration</li><li>Generates a clean virtual host with security headers and other baseline best practices</li><li>Optionally installs <strong><a href="https://avahi.org">avahi-daemon</a></strong> for mDNS / <code>.local</code> hostname resolution on the LAN</li><li>Can add reverse proxies for <strong>Grafana</strong> at <code>/grafana</code>, <strong>Portainer</strong> at <code>/portainer</code>, and <strong>File Browser</strong> at <code>/files</code></li><li>Configures <strong>Firewalld</strong> for HTTP, HTTPS, and mDNS</li><li>Creates a clean default <code>index.html</code></li></ul>
 <blockquote>Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.</blockquote>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-deploy-server-deploy-server-sh"><code>workflows/deploy-server/deploy-server.sh</code></a></li></ul></div>
@@ -936,18 +982,18 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-deploy-server-deploy-server-sh"><code>workflows/deploy-server/deploy-server.sh</code></a></li></ul></div>
 </div>
-<div class="script-card" id="script-standalone-deploy-deploy-ssh-sh" data-search="standalone/deploy deploy-ssh.sh install &amp; harden openssh server, optional firewalld rule." data-sudo="1" data-interactive="1" data-hasdeps="0">
+<div class="script-card" id="script-standalone-deploy-deploy-ssh-sh" data-search="standalone/deploy deploy-ssh.sh install and configure openssh server, optional firewalld rule." data-sudo="1" data-interactive="1" data-hasdeps="0">
 <h3><code>standalone/deploy/deploy-ssh.sh</code><a class="permalink" href="#script-standalone-deploy-deploy-ssh-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/deploy/deploy-ssh.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
 <span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ✅</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>Installs and enables <strong><a href="https://www.openssh.com">OpenSSH Server</a></strong>, with optional firewall configuration.</p>
-<ul><li>Installs <code>openssh-server</code> and enables the <code>ssh</code> service</li><li>Optionally installs <strong>Firewalld</strong> and opens the SSH service in the <code>public</code> zone</li><li>Validates <code>sshd</code> configuration with <code>sshd -t</code> before restarting the service — aborts on a bad config instead of dropping the session</li><li>Prints a summary of service status, startup state, and firewall configuration</li></ul>
+<p>Installs and enables <strong>OpenSSH Server</strong> with optional Firewalld configuration.</p>
+<ul><li>Installs <code>openssh-server</code></li><li>Enables the <code>ssh</code> service</li><li>Optionally opens the SSH service in Firewalld if Firewalld is already installed and running</li><li>Validates the SSH configuration before restarting the service</li><li>Prints a deployment summary</li></ul>
 <blockquote>Recommended for Debian 12/13 and Ubuntu 22.04/24.04 LTS.</blockquote>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-deploy-server-deploy-server-sh"><code>workflows/deploy-server/deploy-server.sh</code></a></li></ul></div>
 </div><h2 id="dir-standalone-git" class="dir-heading"><code>standalone/git/</code><a class="permalink" href="#dir-standalone-git" aria-label="Link to this section">#</a></h2>
 <div class="script-card" id="script-standalone-git-git-clone-all-sh" data-search="standalone/git git-clone-all.sh clone all public repositories from a github user/profile." data-sudo="0" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/git/git-clone-all.sh</code><a class="permalink" href="#script-standalone-git-git-clone-all-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/git/git-clone-all.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -969,6 +1015,34 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ❌ (false)</span>
 </div>
 <p>Uses git-filter-repo to replace a given author/committer name and/or email with new values across the entire commit history of a repository. Useful when commits were made under an OS-level username instead of the intended account identity. Rewrites all refs; commit hashes change. The 'origin' remote is removed by git-filter-repo as a safety measure and is automatically re-added at the end if it was present.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div><h2 id="dir-standalone-groups" class="dir-heading"><code>standalone/groups/</code><a class="permalink" href="#dir-standalone-groups" aria-label="Link to this section">#</a></h2>
+<div class="script-card" id="script-standalone-groups-grant-sudo-sh" data-search="standalone/groups grant-sudo.sh add an existing user to the sudo group." data-sudo="1" data-interactive="1" data-hasdeps="0">
+<h3><code>standalone/groups/grant-sudo.sh</code><a class="permalink" href="#script-standalone-groups-grant-sudo-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/groups/grant-sudo.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ✅</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Adds an existing local user to the sudo group.</p>
+<p>Input (stdin): 1. Username</p>
+<p>If stdin is not provided, the script prompts for the username.</p>
+<p>Safe to re-run — users already in the sudo group are skipped.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-deploy-server-deploy-server-sh"><code>workflows/deploy-server/deploy-server.sh</code></a></li></ul></div>
+</div>
+<div class="script-card" id="script-standalone-groups-grant-vboxusers-sh" data-search="standalone/groups grant-vboxusers.sh add an existing user to the vboxusers group." data-sudo="1" data-interactive="1" data-hasdeps="0">
+<h3><code>standalone/groups/grant-vboxusers.sh</code><a class="permalink" href="#script-standalone-groups-grant-vboxusers-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/groups/grant-vboxusers.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ✅</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Adds an existing local user to the vboxusers group required by VirtualBox for accessing USB devices and other VirtualBox features without root.</p>
+<p>Input (stdin): 1. Username</p>
+<p>If stdin is not provided, the script prompts for the username.</p>
+<p>Safe to re-run — users already in the vboxusers group are skipped.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-install-apt-cli" class="dir-heading"><code>standalone/install/apt/cli/</code><a class="permalink" href="#dir-standalone-install-apt-cli" aria-label="Link to this section">#</a></h2>
@@ -996,6 +1070,17 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-bash-qol-sh"><code>workflows/setup-bash-qol.sh</code></a></li></ul></div>
 </div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-ca-certificates-sh" data-search="standalone/install/apt/cli install-ca-certificates.sh install ca certificates from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-ca-certificates.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-ca-certificates-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-ca-certificates.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs the ca-certificates package via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-chafa-sh" data-search="standalone/install/apt/cli install-chafa.sh install chafa (terminal image/gif viewer) from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-chafa.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-chafa-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-chafa.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -1017,6 +1102,17 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <code>build-essential</code>, <code>gcc</code>, <code>g++</code>, <code>clang</code>, <code>cmake</code>, <code>ninja-build</code>, <code>gdb</code>, <code>lldb</code>.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-dev-env-sh"><code>workflows/setup-dev-env.sh</code></a></li></ul></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-curl-sh" data-search="standalone/install/apt/cli install-curl.sh install curl from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-curl.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-curl-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-curl.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs curl via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-docker-sh" data-search="standalone/install/apt/cli install-docker.sh install docker engine and the docker compose plugin." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-docker.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-docker-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-docker.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -1053,7 +1149,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul><li>Enables and starts the <code>firewalld</code> service.</li><li>Note: if <code>ufw</code> is active, it should be disabled to avoid conflicting</li></ul>
 <p>netfilter rules; this script does not do that automatically.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-deploy-server-deploy-server-sh"><code>workflows/deploy-server/deploy-server.sh</code></a></li></ul></div>
 </div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-flatpak-sh" data-search="standalone/install/apt/cli install-flatpak.sh install flatpak, add the flathub remote, optionally enable kde discover integration." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-flatpak.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-flatpak-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-flatpak.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -1088,6 +1184,17 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-oh-my-bash-sh"><code>workflows/setup-oh-my-bash.sh</code></a></li></ul></div>
 </div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-gnupg-sh" data-search="standalone/install/apt/cli install-gnupg.sh install gnupg from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-gnupg.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-gnupg-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-gnupg.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs the gnupg package via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-htop-sh" data-search="standalone/install/apt/cli install-htop.sh install htop from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-htop.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-htop-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-htop.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -1096,6 +1203,17 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://htop.dev">htop</a> via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-nano-sh" data-search="standalone/install/apt/cli install-nano.sh install gnu nano from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-nano.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-nano-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-nano.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs GNU nano via apt.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -1178,6 +1296,30 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-bash-qol-sh"><code>workflows/setup-bash-qol.sh</code></a></li></ul></div>
 </div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-sudo-sh" data-search="standalone/install/apt/cli install-sudo.sh install sudo from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-sudo.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-sudo-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-sudo.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs sudo via apt.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-ufw-sh" data-search="standalone/install/apt/cli install-ufw.sh install ufw." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-ufw.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-ufw-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-ufw.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <strong>UFW</strong>.</p>
+<ul><li>Enables and starts UFW.</li><li>Opens SSH before enabling the firewall to avoid locking out remote access.</li><li>Note: if Firewalld is active, it should be disabled to avoid conflicting</li></ul>
+<p>netfilter rules; this script does not do that automatically.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-veracrypt-cli-sh" data-search="standalone/install/apt/cli install-veracrypt-cli.sh install veracrypt cli from the official ppa." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-veracrypt-cli.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-veracrypt-cli-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-veracrypt-cli.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -1198,6 +1340,17 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs <a href="https://www.virtualbox.org/manual/ch04.html">VirtualBox Guest Additions</a> from the distribution's apt repository.</p>
 <ul><li>Supports Debian, Ubuntu, Linux Mint, Pop!_OS, and Kali</li><li>Installs <code>virtualbox-guest-x11</code> and <code>virtualbox-guest-utils</code></li><li>Reminds the user to reboot to activate the additions</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-wget-sh" data-search="standalone/install/apt/cli install-wget.sh install wget from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-wget.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-wget-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-wget.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs wget via apt.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -1495,6 +1648,18 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul><li>Idempotent — uses a marker block in <code>~/.bashrc</code> and skips installation if the server is already present</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-dev-env-sh"><code>workflows/setup-dev-env.sh</code></a></li></ul></div>
+</div>
+<div class="script-card" id="script-standalone-install-lsp-install-clang-language-server-sh" data-search="standalone/install/lsp install-clang-language-server.sh install clangd (llvm c/c++ language server) for editor/ide lsp integration." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/lsp/install-clang-language-server.sh</code><a class="permalink" href="#script-standalone-install-lsp-install-clang-language-server-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/lsp/install-clang-language-server.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs the LLVM Clang Language Server (<code>clangd</code>) from the Debian repositories.</p>
+<ul><li>Installs via <code>apt</code></li><li>Provides LSP support for C, C++, Objective-C and Objective-C++</li><li>Idempotent — skips installation if <code>clangd</code> is already available</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-install-lsp-install-markdown-language-server-sh" data-search="standalone/install/lsp install-markdown-language-server.sh install markdown-language-server via npm for editor/ide lsp integration." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/lsp/install-markdown-language-server.sh</code><a class="permalink" href="#script-standalone-install-lsp-install-markdown-language-server-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/lsp/install-markdown-language-server.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -2057,32 +2222,98 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
-<div class="script-card" id="script-standalone-maintenance-grant-sudo-sh" data-search="standalone/maintenance grant-sudo.sh add a user to the sudo group." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/maintenance/grant-sudo.sh</code><a class="permalink" href="#script-standalone-maintenance-grant-sudo-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/grant-sudo.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Adds an existing user to the <code>sudo</code> group.</p>
-<ul><li>Usage: <code>./grant-sudo.sh &lt;username&gt;</code> or run as <code>sudo</code> (inherits <code>SUDO_USER</code> automatically)</li><li>Validates that the target user exists and is not <code>root</code></li></ul>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
-</div>
-<div class="script-card" id="script-standalone-maintenance-server-bootstrap-sh" data-search="standalone/maintenance server-bootstrap.sh initial server hardening and configuration." data-sudo="1" data-interactive="1" data-hasdeps="0">
-<h3><code>standalone/maintenance/server-bootstrap.sh</code><a class="permalink" href="#script-standalone-maintenance-server-bootstrap-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/server-bootstrap.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="script-card" id="script-standalone-maintenance-create-user-sh" data-search="standalone/maintenance create-user.sh create a new local user." data-sudo="1" data-interactive="1" data-hasdeps="0">
+<h3><code>standalone/maintenance/create-user.sh</code><a class="permalink" href="#script-standalone-maintenance-create-user-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/create-user.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
 <span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ✅</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>Initial hardening and configuration for a fresh server.</p>
-<ul><li>Installs essential admin tools such as <code>htop</code>, <code>ranger</code>, <code>git</code>, <code>curl</code>, <code>wget</code>, and more</li><li>Offers optional hardware diagnostic utilities</li><li>Creates and configures a sudo-enabled user account</li><li>Sets up <strong><a href="https://firewalld.org">Firewalld</a></strong> with sensible default rules</li><li>Configures <strong><a href="https://github.com/fail2ban/fail2ban">Fail2Ban</a></strong> for SSH brute-force protection</li><li>Prints a full system summary at the end</li></ul>
+<p>Creates a new local user and optionally sets a password.</p>
+<p>Input (stdin): 1. Username 2. Password (optional)</p>
+<p>If stdin is not provided, the script prompts for the required values.</p>
+<p>Safe to re-run — existing users are skipped.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-deploy-server-deploy-server-sh"><code>workflows/deploy-server/deploy-server.sh</code></a></li></ul></div>
 </div>
-<div class="script-card" id="script-standalone-maintenance-set-bashrc-default-sh" data-search="standalone/maintenance set-bashrc-default.sh reset ~/.bashrc to the distribution default." data-sudo="0" data-interactive="1" data-hasdeps="0">
-<h3><code>standalone/maintenance/set-bashrc-default.sh</code><a class="permalink" href="#script-standalone-maintenance-set-bashrc-default-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/set-bashrc-default.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="script-card" id="script-standalone-maintenance-disable-firewalld-sh" data-search="standalone/maintenance disable-firewalld.sh disable firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/maintenance/disable-firewalld.sh</code><a class="permalink" href="#script-standalone-maintenance-disable-firewalld-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/disable-firewalld.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Stops the <strong>Firewalld</strong> service and disables it from starting at boot.</p>
+<p>Safe to run multiple times.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-maintenance-disable-ufw-sh" data-search="standalone/maintenance disable-ufw.sh disable ufw." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/maintenance/disable-ufw.sh</code><a class="permalink" href="#script-standalone-maintenance-disable-ufw-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/disable-ufw.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Disables <strong>UFW</strong>.</p>
+<p>Safe to run multiple times.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-maintenance-enable-firewalld-sh" data-search="standalone/maintenance enable-firewalld.sh enable firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/maintenance/enable-firewalld.sh</code><a class="permalink" href="#script-standalone-maintenance-enable-firewalld-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/enable-firewalld.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Enables and starts <strong>Firewalld</strong>.</p>
+<ul><li>Enables the Firewalld service to start at boot.</li><li>Starts the Firewalld service immediately.</li><li>Note: if UFW is active, it should be disabled to avoid conflicting</li></ul>
+<p>netfilter rules; this script does not do that automatically.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-maintenance-enable-ufw-sh" data-search="standalone/maintenance enable-ufw.sh enable ufw." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/maintenance/enable-ufw.sh</code><a class="permalink" href="#script-standalone-maintenance-enable-ufw-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/enable-ufw.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Enables <strong>UFW (Uncomplicated Firewall)</strong>.</p>
+<ul><li>Allows SSH before enabling the firewall to avoid locking out remote access.</li><li>Enables UFW immediately.</li><li>Note: if Firewalld is active, it should be disabled to avoid conflicting</li></ul>
+<p>netfilter rules; this script does not do that automatically.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-maintenance-remove-firewalld-sh" data-search="standalone/maintenance remove-firewalld.sh disable and remove firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/maintenance/remove-firewalld.sh</code><a class="permalink" href="#script-standalone-maintenance-remove-firewalld-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/remove-firewalld.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Disables and completely removes <strong>Firewalld</strong>.</p>
+<ul><li>Stops the Firewalld service</li><li>Disables Firewalld from starting at boot</li><li>Removes the Firewalld package</li><li>Removes automatically installed unused dependencies</li></ul>
+<p>Safe to run multiple times.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-maintenance-remove-ufw-sh" data-search="standalone/maintenance remove-ufw.sh disable and remove ufw." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/maintenance/remove-ufw.sh</code><a class="permalink" href="#script-standalone-maintenance-remove-ufw-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/remove-ufw.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Disables and completely removes <strong>UFW</strong>.</p>
+<ul><li>Disables the firewall if it is enabled</li><li>Resets all UFW rules</li><li>Removes the UFW package</li><li>Removes automatically installed unused dependencies</li></ul>
+<p>Safe to run multiple times.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-maintenance-restore-bashrc-sh" data-search="standalone/maintenance restore-bashrc.sh reset ~/.bashrc to the distribution default." data-sudo="0" data-interactive="1" data-hasdeps="0">
+<h3><code>standalone/maintenance/restore-bashrc.sh</code><a class="permalink" href="#script-standalone-maintenance-restore-bashrc-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/restore-bashrc.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
 <span class="badge">Sudo: ❌</span>
 <span class="badge">Interactive: ✅</span>
@@ -2090,19 +2321,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Restores <code>~/.bashrc</code> to the distro default.</p>
 <ul><li>Backs up the current <code>~/.bashrc</code> with a timestamp before overwriting</li><li>Restores the file from <code>/etc/skel/.bashrc</code></li><li>Requires explicit confirmation before making changes</li></ul>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
-</div>
-<div class="script-card" id="script-standalone-maintenance-ufw-firewalld-migration-sh" data-search="standalone/maintenance ufw-firewalld-migration.sh remove ufw and replace it with firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/maintenance/ufw-firewalld-migration.sh</code><a class="permalink" href="#script-standalone-maintenance-ufw-firewalld-migration-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/ufw-firewalld-migration.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ⚠️ (mostly)</span>
-</div>
-<p>Replaces UFW with <strong><a href="https://firewalld.org">Firewalld</a></strong> on Debian/Ubuntu systems.</p>
-<ul><li>Disables and removes UFW</li><li>Installs Firewalld and enables it on boot</li><li>Opens SSH in the default zone before finishing so the session is not dropped</li></ul>
-<blockquote>⚠️ <strong>Idempotency caveat:</strong> safe to run on a system that still has UFW, but a no-op if UFW is already gone and Firewalld is already running — it will not reconfigure an existing Firewalld setup.</blockquote>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-showcase" class="dir-heading"><code>standalone/showcase/</code><a class="permalink" href="#dir-standalone-showcase" aria-label="Link to this section">#</a></h2>
@@ -2218,7 +2436,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>All three scripts share the same conventions: they install <a href="https://jqlang.github.io/jq/">jq</a> and <code>wget</code> if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID. No root required.</p>
+<p>Install <a href="https://jqlang.github.io/jq/">jq</a> and <code>wget</code> if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID.</p>
 <ul><li>Usage: <code>./yt-dlp-all-formats.sh &lt;URL&gt; [extra yt-dlp options]</code></li><li>Targets 480p, 720p, 1080p, 1440p, 2160p (4K), and 4320p (8K) with <code>bestaudio[ext=m4a]</code></li><li>Falls back to <code>best[ext=mp4]</code> / <code>best</code> if no matching tier is available</li><li>Output filename also includes the resolution</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
@@ -2230,7 +2448,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>All three scripts share the same conventions: they install <a href="https://jqlang.github.io/jq/">jq</a> and <code>wget</code> if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID. No root required.</p>
+<p>Install <a href="https://jqlang.github.io/jq/">jq</a> and <code>wget</code> if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID.</p>
 <ul><li>Usage: <code>./yt-dlp-audio-only.sh &lt;URL&gt; [extra yt-dlp options]</code></li><li>Extracts audio at the best available quality (<code>--audio-quality 0</code>) and converts to MP3</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
@@ -2242,8 +2460,20 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>All three scripts share the same conventions: they install <a href="https://jqlang.github.io/jq/">jq</a> and <code>wget</code> if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID. No root required.</p>
+<p>Install <a href="https://jqlang.github.io/jq/">jq</a> and <code>wget</code> if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID.</p>
 <ul><li>Usage: <code>./yt-dlp-best-format.sh &lt;URL&gt; [extra yt-dlp options]</code></li><li>Prefers <code>bestvideo[ext=mp4]+bestaudio[ext=m4a]</code>, falling back to the best overall format</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-yt-dlp-yt-dlp-playlist-480p-sh" data-search="standalone/yt-dlp yt-dlp-playlist-480p.sh download playlists up to 480p via yt-dlp." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/yt-dlp/yt-dlp-playlist-480p.sh</code><a class="permalink" href="#script-standalone-yt-dlp-yt-dlp-playlist-480p-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/yt-dlp/yt-dlp-playlist-480p.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Install <a href="https://jqlang.github.io/jq/">jq</a> and <code>wget</code> if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID where applicable.</p>
+<ul><li>Usage: <code>./yt-dlp-playlist-480p.sh &lt;URL&gt; [extra yt-dlp options]</code></li><li>Downloads every video in a playlist</li><li>Limits video quality to 480p or lower</li><li>Prefers separate video/audio streams, falling back to the best available format</li><li>Saves videos into a directory named after the playlist</li><li>Prefixes filenames with the playlist index</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-workflows" class="dir-heading"><code>workflows/</code><a class="permalink" href="#dir-workflows" aria-label="Link to this section">#</a></h2>
@@ -2311,22 +2541,32 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-install-apt-cli-install-pipx-sh"><code>standalone/install/apt/cli/install-pipx.sh</code></a></li><li><a href="#script-standalone-install-pipx-install-gallery-dl-sh"><code>standalone/install/pipx/install-gallery-dl.sh</code></a></li><li><a href="#script-standalone-install-pipx-install-yt-dlp-sh"><code>standalone/install/pipx/install-yt-dlp.sh</code></a></li><li><a href="#script-standalone-install-pipx-install-spotdl-sh"><code>standalone/install/pipx/install-spotdl.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-workflows-deploy-server" class="dir-heading"><code>workflows/deploy-server/</code><a class="permalink" href="#dir-workflows-deploy-server" aria-label="Link to this section">#</a></h2>
-<div class="script-card" id="script-workflows-deploy-server-deploy-server-sh" data-search="workflows/deploy-server deploy-server.sh full-stack workflow: bootstrap → nginx → grafana → portainer from a single .env." data-sudo="1" data-interactive="1" data-hasdeps="1">
+<div class="script-card" id="script-workflows-deploy-server-deploy-server-sh" data-search="workflows/deploy-server deploy-server.sh full-stack workflow: firewall → ssh → fail2ban → user → nginx → grafana → portainer → file browser, each independently toggleable from a single .env." data-sudo="1" data-interactive="1" data-hasdeps="1">
 <h3><code>workflows/deploy-server/deploy-server.sh</code><a class="permalink" href="#script-workflows-deploy-server-deploy-server-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="workflows/deploy-server/deploy-server.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
 <span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ✅</span>
 <span class="badge">Idempotent: ❌ (false)</span>
 </div>
-<p>Orchestrates a full server deployment by running four scripts in sequence from a single <code>.env</code> config file.</p>
-<ul><li>Validates all <code>.env</code> variables before starting — fails fast with clear errors</li><li>Pipes answers to each subscript via <code>printf</code>, safely handling special characters in credentials</li><li>Handles sudo user creation between the bootstrap and Nginx steps</li><li>Prints a deployment plan before running and confirms before proceeding</li><li>Located in <code>workflows/deploy-server/</code> alongside its <code>.env.example</code> config template</li></ul>
-<blockquote>Designed for <strong>fresh deployments only</strong> — re-running on an existing system breaks prompt ordering in the subscripts.</blockquote>
-<div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-maintenance-server-bootstrap-sh"><code>standalone/maintenance/server-bootstrap.sh</code></a></li><li><a href="#script-standalone-deploy-deploy-nginx-sh"><code>standalone/deploy/deploy-nginx.sh</code></a></li><li><a href="#script-standalone-deploy-deploy-grafana-sh"><code>standalone/deploy/deploy-grafana.sh</code></a></li><li><a href="#script-standalone-deploy-deploy-portainer-sh"><code>standalone/deploy/deploy-portainer.sh</code></a></li></ul></div>
+<p>Orchestrates a full server deployment by running up to eight scripts in sequence from a single <code>.env</code> config file. Every step is independently toggleable — set the matching <code>DEPLOY_*</code>/<code>CREATE_*</code> variable to <code>n</code> to skip that step entirely; the corresponding config variables for a disabled step are not validated.</p>
+<ul><li>Validates <code>.env</code> before starting: toggle values, then step-specific</li></ul>
+<p>variables only for steps that are enabled — fails fast with clear errors</p>
+<ul><li>Pipes answers to each subscript via <code>printf</code>, safely handling special</li></ul>
+<p>characters in credentials</p>
+<ul><li>Deploy-user creation is its own toggleable step, delegating to</li></ul>
+<p><code>create-user.sh</code> + <code>grant-sudo.sh</code> instead of inline <code>useradd</code> logic</p>
+<ul><li>Warns (non-fatal) when an Nginx reverse-proxy toggle is enabled for a</li></ul>
+<p>backend step that is itself disabled in the same run</p>
+<ul><li>Prints a deployment plan reflecting only the enabled steps and confirms</li></ul>
+<p>before proceeding</p>
+<ul><li>Located in <code>workflows/deploy-server/</code> alongside its <code>.env.example</code></li></ul>
+<blockquote>Designed for <strong>fresh deployments only</strong> — re-running on an existing<br>system breaks prompt ordering in the subscripts.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-install-apt-cli-install-firewalld-cli-sh"><code>standalone/install/apt/cli/install-firewalld-cli.sh</code></a></li><li><a href="#script-standalone-deploy-deploy-ssh-sh"><code>standalone/deploy/deploy-ssh.sh</code></a></li><li><a href="#script-standalone-deploy-deploy-fail2ban-sh"><code>standalone/deploy/deploy-fail2ban.sh</code></a></li><li><a href="#script-standalone-maintenance-create-user-sh"><code>standalone/maintenance/create-user.sh</code></a></li><li><a href="#script-standalone-groups-grant-sudo-sh"><code>standalone/groups/grant-sudo.sh</code></a></li><li><a href="#script-standalone-deploy-deploy-nginx-sh"><code>standalone/deploy/deploy-nginx.sh</code></a></li><li><a href="#script-standalone-deploy-deploy-grafana-sh"><code>standalone/deploy/deploy-grafana.sh</code></a></li><li><a href="#script-standalone-deploy-deploy-portainer-sh"><code>standalone/deploy/deploy-portainer.sh</code></a></li><li><a href="#script-standalone-deploy-deploy-filebrowser-sh"><code>standalone/deploy/deploy-filebrowser.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-22 11:09 UTC &middot;
-138 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-22 19:48 UTC &middot;
+154 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -2334,7 +2574,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-deploy">standalone/deploy/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-deploy">standalone/deploy/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-groups">standalone/groups/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (28)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
