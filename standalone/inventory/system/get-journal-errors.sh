@@ -8,7 +8,7 @@
 #   - Collects the last 15 critical/error priority events via `journalctl -p 3 -xb`.
 #
 #   > Running as `sudo` is required to read full system journal logs.
-# sudo: false
+# sudo: true
 # interactive: false
 # idempotent: true
 # dependencies: none

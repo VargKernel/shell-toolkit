@@ -8,7 +8,7 @@
 #   - Listening TCP/UDP ports with the owning process, via `ss`
 #
 #   > Running as `sudo` gives fuller process detail on this script; it still works without root, but with a warning and reduced detail.
-# sudo: false
+# sudo: true
 # interactive: false
 # idempotent: true
 # dependencies: none

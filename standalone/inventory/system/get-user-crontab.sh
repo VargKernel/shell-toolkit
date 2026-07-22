@@ -8,7 +8,7 @@
 #   - Collects the crontab entries for the current user via `crontab -l`.
 #
 #   > Running as `sudo` reads root's crontab instead of the invoking user's.
-# sudo: false
+# sudo: true
 # interactive: false
 # idempotent: true
 # dependencies: none

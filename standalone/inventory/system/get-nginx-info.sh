@@ -8,7 +8,7 @@
 #   - Collects nginx -V and checks config syntax.
 #
 #   > Running as `sudo` is required to read SSL certificates or specific config files during `nginx -t`.
-# sudo: false
+# sudo: true
 # interactive: false
 # idempotent: true
 # dependencies: none

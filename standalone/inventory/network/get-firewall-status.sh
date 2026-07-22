@@ -8,7 +8,7 @@
 #   - Status across UFW, Firewalld, nftables, and iptables — whichever are installed
 #
 #   > Running as `sudo` gives fuller process detail on this script; it still works without root, but with a warning and reduced detail.
-# sudo: false
+# sudo: true
 # interactive: false
 # idempotent: true
 # dependencies: none

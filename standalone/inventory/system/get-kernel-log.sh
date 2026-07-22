@@ -8,7 +8,7 @@
 #   - Collects the last 20 lines of `dmesg`.
 #
 #   > Running as `sudo` is required on systems with `kernel.dmesg_restrict` enabled.
-# sudo: false
+# sudo: true
 # interactive: false
 # idempotent: true
 # dependencies: none

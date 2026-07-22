@@ -8,7 +8,7 @@
 #   - Displays a 2-level deep tree for /srv, /opt, and /var/www.
 #
 #   > Running as `sudo` prevents "Permission denied" errors in restricted folders.
-# sudo: false
+# sudo: true
 # interactive: false
 # idempotent: true
 # dependencies: none

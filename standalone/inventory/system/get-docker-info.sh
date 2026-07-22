@@ -8,7 +8,7 @@
 #   - Collects docker ps, network ls, volume ls, and docker info.
 #
 #   > Running as `sudo` is required unless the user is part of the `docker` group.
-# sudo: false
+# sudo: true
 # interactive: false
 # idempotent: true
 # dependencies: none
