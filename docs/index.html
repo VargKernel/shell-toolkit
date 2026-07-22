@@ -335,19 +335,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>134</td></tr>
+<tr><td>Total scripts</td><td>138</td></tr>
 <tr><td>Directories</td><td>18</td></tr>
-<tr><td>Require root / sudo</td><td>73 / 134</td></tr>
-<tr><td>Interactive</td><td>23 / 134</td></tr>
+<tr><td>Require root / sudo</td><td>83 / 138</td></tr>
+<tr><td>Interactive</td><td>23 / 138</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>123 / 9 / 2</td></tr>
-<tr><td>Scripts with dependencies</td><td>6 / 134</td></tr>
+    <td>127 / 9 / 2</td></tr>
+<tr><td>Scripts with dependencies</td><td>6 / 138</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/deploy</td><td>5</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>3</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>19</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>5</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>3</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/deploy</td><td>5</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>3</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>5</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>3</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
 </tbody>
 </table>
 
@@ -358,7 +358,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 ├── .github/
 │   └── workflows/
 │       ├── bash-syntax-check.yml
-│       ├── chmod.yml
+│       ├── chmod-add.yml
 │       └── generate-documentation.yml
 ├── docs/
 │   ├── index.html
@@ -472,8 +472,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   └── system/
 │   │       ├── get-cpu-info.sh
 │   │       ├── get-directory-tree.sh
+│   │       ├── get-disk-health.sh
 │   │       ├── get-dmi-info.sh
 │   │       ├── get-docker-info.sh
+│   │       ├── get-gpu-info.sh
 │   │       ├── get-host-info.sh
 │   │       ├── get-installed-packages.sh
 │   │       ├── get-journal-errors.sh
@@ -485,7 +487,9 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │       ├── get-nginx-info.sh
 │   │       ├── get-pci-devices.sh
 │   │       ├── get-services-info.sh
+│   │       ├── get-ssl-cert-expiry.sh
 │   │       ├── get-storage-info.sh
+│   │       ├── get-systemd-timers.sh
 │   │       ├── get-top-processes.sh
 │   │       ├── get-usb-devices.sh
 │   │       └── get-user-crontab.sh
@@ -612,10 +616,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/inventory/network get-bandwidth-summary.sh per-interface link speed, duplex, carrier state, and mtu." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-bandwidth-summary.sh"><a href="#script-standalone-inventory-network-get-bandwidth-summary-sh"><code>get-bandwidth-summary.sh</code></a></td><td data-value="per-interface link speed, duplex, carrier state, and mtu.">Per-interface link speed, duplex, carrier state, and MTU.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/network get-connectivity.sh same checks as network-summary.sh plus dns query time and ipv6 internet reachability." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-connectivity.sh"><a href="#script-standalone-inventory-network-get-connectivity-sh"><code>get-connectivity.sh</code></a></td><td data-value="same checks as network-summary.sh plus dns query time and ipv6 internet reachability.">Same checks as network-summary.sh plus DNS query time and IPv6 internet reachability.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/network get-dns-info.sh resolvectl status or /etc/resolv.conf, active nameservers, and search domains." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-dns-info.sh"><a href="#script-standalone-inventory-network-get-dns-info-sh"><code>get-dns-info.sh</code></a></td><td data-value="resolvectl status or /etc/resolv.conf, active nameservers, and search domains.">resolvectl status or /etc/resolv.conf, active nameservers, and search domains.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/inventory/network get-established-connections.sh established tcp connections with local/remote endpoints and owning process." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-established-connections.sh"><a href="#script-standalone-inventory-network-get-established-connections-sh"><code>get-established-connections.sh</code></a></td><td data-value="established tcp connections with local/remote endpoints and owning process.">Established TCP connections with local/remote endpoints and owning process.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/inventory/network get-firewall-status.sh status across ufw, firewalld, nftables, and iptables — whichever are installed." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-firewall-status.sh"><a href="#script-standalone-inventory-network-get-firewall-status-sh"><code>get-firewall-status.sh</code></a></td><td data-value="status across ufw, firewalld, nftables, and iptables — whichever are installed.">Status across UFW, Firewalld, nftables, and iptables — whichever are installed.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/network get-established-connections.sh established tcp connections with local/remote endpoints and owning process." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-established-connections.sh"><a href="#script-standalone-inventory-network-get-established-connections-sh"><code>get-established-connections.sh</code></a></td><td data-value="established tcp connections with local/remote endpoints and owning process.">Established TCP connections with local/remote endpoints and owning process.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/network get-firewall-status.sh status across ufw, firewalld, nftables, and iptables — whichever are installed." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-firewall-status.sh"><a href="#script-standalone-inventory-network-get-firewall-status-sh"><code>get-firewall-status.sh</code></a></td><td data-value="status across ufw, firewalld, nftables, and iptables — whichever are installed.">Status across UFW, Firewalld, nftables, and iptables — whichever are installed.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/network get-interface-statistics.sh per-interface rx/tx bytes, packets, errors, drops, and collisions." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-interface-statistics.sh"><a href="#script-standalone-inventory-network-get-interface-statistics-sh"><code>get-interface-statistics.sh</code></a></td><td data-value="per-interface rx/tx bytes, packets, errors, drops, and collisions.">Per-interface RX/TX bytes, packets, errors, drops, and collisions.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/inventory/network get-listening-ports.sh listening tcp/udp ports with the owning process, via ss." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-listening-ports.sh"><a href="#script-standalone-inventory-network-get-listening-ports-sh"><code>get-listening-ports.sh</code></a></td><td data-value="listening tcp/udp ports with the owning process, via ss.">Listening TCP/UDP ports with the owning process, via ss.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/network get-listening-ports.sh listening tcp/udp ports with the owning process, via ss." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-listening-ports.sh"><a href="#script-standalone-inventory-network-get-listening-ports-sh"><code>get-listening-ports.sh</code></a></td><td data-value="listening tcp/udp ports with the owning process, via ss.">Listening TCP/UDP ports with the owning process, via ss.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/network get-neighbors.sh arp table (ipv4) and neighbor cache (ipv6)." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-neighbors.sh"><a href="#script-standalone-inventory-network-get-neighbors-sh"><code>get-neighbors.sh</code></a></td><td data-value="arp table (ipv4) and neighbor cache (ipv6).">ARP table (IPv4) and neighbor cache (IPv6).</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/network get-network-interfaces.sh per-interface state, mac, mtu, driver, speed, and ipv4/ipv6 addresses." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-network-interfaces.sh"><a href="#script-standalone-inventory-network-get-network-interfaces-sh"><code>get-network-interfaces.sh</code></a></td><td data-value="per-interface state, mac, mtu, driver, speed, and ipv4/ipv6 addresses.">Per-interface state, MAC, MTU, driver, speed, and IPv4/IPv6 addresses.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/network get-network-services.sh active state of networkmanager, systemd-networkd/-resolved, dhcpcd, wpa_supplicant, iwd." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-network-services.sh"><a href="#script-standalone-inventory-network-get-network-services-sh"><code>get-network-services.sh</code></a></td><td data-value="active state of networkmanager, systemd-networkd/-resolved, dhcpcd, wpa_supplicant, iwd.">Active state of NetworkManager, systemd-networkd/-resolved, dhcpcd, wpa_supplicant, iwd.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -626,24 +630,28 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/inventory/network get-vpn-status.sh wireguard/tun/tap interfaces, tailscale status, and zerotier status." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-vpn-status.sh"><a href="#script-standalone-inventory-network-get-vpn-status-sh"><code>get-vpn-status.sh</code></a></td><td data-value="wireguard/tun/tap interfaces, tailscale status, and zerotier status.">WireGuard/TUN/TAP interfaces, Tailscale status, and ZeroTier status.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/network get-wifi-status.sh ssid, signal, bitrate, and frequency for wireless interfaces via iw or nmcli." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-wifi-status.sh"><a href="#script-standalone-inventory-network-get-wifi-status-sh"><code>get-wifi-status.sh</code></a></td><td data-value="ssid, signal, bitrate, and frequency for wireless interfaces via iw or nmcli.">SSID, signal, bitrate, and frequency for wireless interfaces via iw or nmcli.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-cpu-info.sh cpu architecture, model, core, and thread information." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-cpu-info.sh"><a href="#script-standalone-inventory-system-get-cpu-info-sh"><code>get-cpu-info.sh</code></a></td><td data-value="cpu architecture, model, core, and thread information.">CPU architecture, model, core, and thread information.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/inventory/system get-directory-tree.sh displays structural hierarchy of common server directories." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-directory-tree.sh"><a href="#script-standalone-inventory-system-get-directory-tree-sh"><code>get-directory-tree.sh</code></a></td><td data-value="displays structural hierarchy of common server directories.">Displays structural hierarchy of common server directories.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/system get-directory-tree.sh displays structural hierarchy of common server directories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-directory-tree.sh"><a href="#script-standalone-inventory-system-get-directory-tree-sh"><code>get-directory-tree.sh</code></a></td><td data-value="displays structural hierarchy of common server directories.">Displays structural hierarchy of common server directories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/system get-disk-health.sh smart health status for all detected physical disks." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-disk-health.sh"><a href="#script-standalone-inventory-system-get-disk-health-sh"><code>get-disk-health.sh</code></a></td><td data-value="smart health status for all detected physical disks.">SMART health status for all detected physical disks.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-dmi-info.sh system-level dmi/smbios hardware component info." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-dmi-info.sh"><a href="#script-standalone-inventory-system-get-dmi-info-sh"><code>get-dmi-info.sh</code></a></td><td data-value="system-level dmi/smbios hardware component info.">System-level DMI/SMBIOS hardware component info.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/inventory/system get-docker-info.sh docker containers, networks, volumes, and system info." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-docker-info.sh"><a href="#script-standalone-inventory-system-get-docker-info-sh"><code>get-docker-info.sh</code></a></td><td data-value="docker containers, networks, volumes, and system info.">Docker containers, networks, volumes, and system info.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/system get-docker-info.sh docker containers, networks, volumes, and system info." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-docker-info.sh"><a href="#script-standalone-inventory-system-get-docker-info-sh"><code>get-docker-info.sh</code></a></td><td data-value="docker containers, networks, volumes, and system info.">Docker containers, networks, volumes, and system info.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/system get-gpu-info.sh gpu hardware detection and live nvidia driver metrics." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-gpu-info.sh"><a href="#script-standalone-inventory-system-get-gpu-info-sh"><code>get-gpu-info.sh</code></a></td><td data-value="gpu hardware detection and live nvidia driver metrics.">GPU hardware detection and live NVIDIA driver metrics.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-host-info.sh hostname, os release, kernel version, and uptime." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-host-info.sh"><a href="#script-standalone-inventory-system-get-host-info-sh"><code>get-host-info.sh</code></a></td><td data-value="hostname, os release, kernel version, and uptime.">Hostname, OS release, kernel version, and uptime.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-installed-packages.sh count of installed os packages (dpkg or rpm)." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-installed-packages.sh"><a href="#script-standalone-inventory-system-get-installed-packages-sh"><code>get-installed-packages.sh</code></a></td><td data-value="count of installed os packages (dpkg or rpm).">Count of installed OS packages (dpkg or rpm).</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/inventory/system get-journal-errors.sh recent critical/error entries from the system journal." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-journal-errors.sh"><a href="#script-standalone-inventory-system-get-journal-errors-sh"><code>get-journal-errors.sh</code></a></td><td data-value="recent critical/error entries from the system journal.">Recent critical/error entries from the system journal.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/inventory/system get-kernel-log.sh recent kernel ring buffer messages (dmesg)." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-kernel-log.sh"><a href="#script-standalone-inventory-system-get-kernel-log-sh"><code>get-kernel-log.sh</code></a></td><td data-value="recent kernel ring buffer messages (dmesg).">Recent kernel ring buffer messages (dmesg).</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/system get-journal-errors.sh recent critical/error entries from the system journal." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-journal-errors.sh"><a href="#script-standalone-inventory-system-get-journal-errors-sh"><code>get-journal-errors.sh</code></a></td><td data-value="recent critical/error entries from the system journal.">Recent critical/error entries from the system journal.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/system get-kernel-log.sh recent kernel ring buffer messages (dmesg)." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-kernel-log.sh"><a href="#script-standalone-inventory-system-get-kernel-log-sh"><code>get-kernel-log.sh</code></a></td><td data-value="recent kernel ring buffer messages (dmesg).">Recent kernel ring buffer messages (dmesg).</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-kernel-parameters.sh kernel runtime parameters via sysctl (truncated preview)." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-kernel-parameters.sh"><a href="#script-standalone-inventory-system-get-kernel-parameters-sh"><code>get-kernel-parameters.sh</code></a></td><td data-value="kernel runtime parameters via sysctl (truncated preview).">Kernel runtime parameters via sysctl (truncated preview).</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-local-users.sh non-system local user accounts from /etc/passwd." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-local-users.sh"><a href="#script-standalone-inventory-system-get-local-users-sh"><code>get-local-users.sh</code></a></td><td data-value="non-system local user accounts from /etc/passwd.">Non-system local user accounts from /etc/passwd.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-logged-in-users.sh currently logged-in users and recent login history." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-logged-in-users.sh"><a href="#script-standalone-inventory-system-get-logged-in-users-sh"><code>get-logged-in-users.sh</code></a></td><td data-value="currently logged-in users and recent login history.">Currently logged-in users and recent login history.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-memory-info.sh system memory usage (ram and swap)." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-memory-info.sh"><a href="#script-standalone-inventory-system-get-memory-info-sh"><code>get-memory-info.sh</code></a></td><td data-value="system memory usage (ram and swap).">System memory usage (RAM and swap).</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/inventory/system get-nginx-info.sh nginx version, compilation flags, and configuration check." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-nginx-info.sh"><a href="#script-standalone-inventory-system-get-nginx-info-sh"><code>get-nginx-info.sh</code></a></td><td data-value="nginx version, compilation flags, and configuration check.">Nginx version, compilation flags, and configuration check.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/system get-nginx-info.sh nginx version, compilation flags, and configuration check." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-nginx-info.sh"><a href="#script-standalone-inventory-system-get-nginx-info-sh"><code>get-nginx-info.sh</code></a></td><td data-value="nginx version, compilation flags, and configuration check.">Nginx version, compilation flags, and configuration check.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-pci-devices.sh pci device inventory." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-pci-devices.sh"><a href="#script-standalone-inventory-system-get-pci-devices-sh"><code>get-pci-devices.sh</code></a></td><td data-value="pci device inventory.">PCI device inventory.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-services-info.sh running and enabled systemd services." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-services-info.sh"><a href="#script-standalone-inventory-system-get-services-info-sh"><code>get-services-info.sh</code></a></td><td data-value="running and enabled systemd services.">Running and enabled Systemd services.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/system get-ssl-cert-expiry.sh ssl/tls certificate expiry status for one or more domains." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-ssl-cert-expiry.sh"><a href="#script-standalone-inventory-system-get-ssl-cert-expiry-sh"><code>get-ssl-cert-expiry.sh</code></a></td><td data-value="ssl/tls certificate expiry status for one or more domains.">SSL/TLS certificate expiry status for one or more domains.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-storage-info.sh disk usage per mount point and block device layout." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-storage-info.sh"><a href="#script-standalone-inventory-system-get-storage-info-sh"><code>get-storage-info.sh</code></a></td><td data-value="disk usage per mount point and block device layout.">Disk usage per mount point and block device layout.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/system get-systemd-timers.sh all systemd timers and the health of the units they activate." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-systemd-timers.sh"><a href="#script-standalone-inventory-system-get-systemd-timers-sh"><code>get-systemd-timers.sh</code></a></td><td data-value="all systemd timers and the health of the units they activate.">All systemd timers and the health of the units they activate.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-top-processes.sh top 10 processes by cpu usage." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-top-processes.sh"><a href="#script-standalone-inventory-system-get-top-processes-sh"><code>get-top-processes.sh</code></a></td><td data-value="top 10 processes by cpu usage.">Top 10 processes by CPU usage.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-usb-devices.sh usb device inventory." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-usb-devices.sh"><a href="#script-standalone-inventory-system-get-usb-devices-sh"><code>get-usb-devices.sh</code></a></td><td data-value="usb device inventory.">USB device inventory.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/inventory/system get-user-crontab.sh current user&#x27;s crontab entries." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-user-crontab.sh"><a href="#script-standalone-inventory-system-get-user-crontab-sh"><code>get-user-crontab.sh</code></a></td><td data-value="current user&#x27;s crontab entries.">Current user's crontab entries.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/inventory/system get-user-crontab.sh current user&#x27;s crontab entries." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-user-crontab.sh"><a href="#script-standalone-inventory-system-get-user-crontab-sh"><code>get-user-crontab.sh</code></a></td><td data-value="current user&#x27;s crontab entries.">Current user's crontab entries.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance create-swap-file.sh create and activate a swap file of any size." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="create-swap-file.sh"><a href="#script-standalone-maintenance-create-swap-file-sh"><code>create-swap-file.sh</code></a></td><td data-value="create and activate a swap file of any size.">Create and activate a swap file of any size.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance grant-sudo.sh add a user to the sudo group." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="grant-sudo.sh"><a href="#script-standalone-maintenance-grant-sudo-sh"><code>grant-sudo.sh</code></a></td><td data-value="add a user to the sudo group.">Add a user to the sudo group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance server-bootstrap.sh initial server hardening and configuration." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="server-bootstrap.sh"><a href="#script-standalone-maintenance-server-bootstrap-sh"><code>server-bootstrap.sh</code></a></td><td data-value="initial server hardening and configuration.">Initial server hardening and configuration.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -1581,10 +1589,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
-<div class="script-card" id="script-standalone-inventory-network-get-established-connections-sh" data-search="standalone/inventory/network get-established-connections.sh established tcp connections with local/remote endpoints and owning process." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<div class="script-card" id="script-standalone-inventory-network-get-established-connections-sh" data-search="standalone/inventory/network get-established-connections.sh established tcp connections with local/remote endpoints and owning process." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/inventory/network/get-established-connections.sh</code><a class="permalink" href="#script-standalone-inventory-network-get-established-connections-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/network/get-established-connections.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
-<span class="badge">Sudo: ❌</span>
+<span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
@@ -1594,10 +1602,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
-<div class="script-card" id="script-standalone-inventory-network-get-firewall-status-sh" data-search="standalone/inventory/network get-firewall-status.sh status across ufw, firewalld, nftables, and iptables — whichever are installed." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<div class="script-card" id="script-standalone-inventory-network-get-firewall-status-sh" data-search="standalone/inventory/network get-firewall-status.sh status across ufw, firewalld, nftables, and iptables — whichever are installed." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/inventory/network/get-firewall-status.sh</code><a class="permalink" href="#script-standalone-inventory-network-get-firewall-status-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/network/get-firewall-status.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
-<span class="badge">Sudo: ❌</span>
+<span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
@@ -1619,10 +1627,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
-<div class="script-card" id="script-standalone-inventory-network-get-listening-ports-sh" data-search="standalone/inventory/network get-listening-ports.sh listening tcp/udp ports with the owning process, via ss." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<div class="script-card" id="script-standalone-inventory-network-get-listening-ports-sh" data-search="standalone/inventory/network get-listening-ports.sh listening tcp/udp ports with the owning process, via ss." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/inventory/network/get-listening-ports.sh</code><a class="permalink" href="#script-standalone-inventory-network-get-listening-ports-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/network/get-listening-ports.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
-<span class="badge">Sudo: ❌</span>
+<span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
@@ -1752,16 +1760,32 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
-<div class="script-card" id="script-standalone-inventory-system-get-directory-tree-sh" data-search="standalone/inventory/system get-directory-tree.sh displays structural hierarchy of common server directories." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<div class="script-card" id="script-standalone-inventory-system-get-directory-tree-sh" data-search="standalone/inventory/system get-directory-tree.sh displays structural hierarchy of common server directories." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/inventory/system/get-directory-tree.sh</code><a class="permalink" href="#script-standalone-inventory-system-get-directory-tree-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/system/get-directory-tree.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
-<span class="badge">Sudo: ❌</span>
+<span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Read-only status and diagnostic script. Works without root.</p>
 <ul><li>Displays a 2-level deep tree for /srv, /opt, and /var/www.</li></ul>
 <blockquote>Running as <code>sudo</code> prevents "Permission denied" errors in restricted folders.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-inventory-system-get-disk-health-sh" data-search="standalone/inventory/system get-disk-health.sh smart health status for all detected physical disks." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/inventory/system/get-disk-health.sh</code><a class="permalink" href="#script-standalone-inventory-system-get-disk-health-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/system/get-disk-health.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Read-only status and diagnostic script.</p>
+<ul><li>Enumerates physical disks via <code>lsblk</code> and reports SMART overall</li></ul>
+<p>health, temperature, power-on hours, and reallocated/pending sector counts via <code>smartctl</code> (SATA, SAS, and NVMe).</p>
+<ul><li>Complements <code>get-storage-info.sh</code>, which reports filesystem usage</li></ul>
+<p>rather than drive health.</p>
+<blockquote>Running as <code>sudo</code> is required; <code>smartctl</code> returns limited or no<br>data for non-root users.</blockquote>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -1778,16 +1802,30 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
-<div class="script-card" id="script-standalone-inventory-system-get-docker-info-sh" data-search="standalone/inventory/system get-docker-info.sh docker containers, networks, volumes, and system info." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<div class="script-card" id="script-standalone-inventory-system-get-docker-info-sh" data-search="standalone/inventory/system get-docker-info.sh docker containers, networks, volumes, and system info." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/inventory/system/get-docker-info.sh</code><a class="permalink" href="#script-standalone-inventory-system-get-docker-info-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/system/get-docker-info.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
-<span class="badge">Sudo: ❌</span>
+<span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Read-only status and diagnostic script.</p>
 <ul><li>Collects docker ps, network ls, volume ls, and docker info.</li></ul>
 <blockquote>Running as <code>sudo</code> is required unless the user is part of the <code>docker</code> group.</blockquote>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-inventory-system-get-gpu-info-sh" data-search="standalone/inventory/system get-gpu-info.sh gpu hardware detection and live nvidia driver metrics." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/inventory/system/get-gpu-info.sh</code><a class="permalink" href="#script-standalone-inventory-system-get-gpu-info-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/system/get-gpu-info.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Read-only status and diagnostic script. Works without root.</p>
+<ul><li>Detects GPU devices via <code>lspci</code> (VGA/3D/display controllers).</li><li>If <code>nvidia-smi</code> is present, also shows driver/CUDA version, per-GPU</li></ul>
+<p>temperature, utilization, memory usage, power draw, and active compute processes.</p>
+<blockquote>If no NVIDIA driver is found, run <code>install-nvidia-driver.sh</code> first.</blockquote>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -1815,10 +1853,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
-<div class="script-card" id="script-standalone-inventory-system-get-journal-errors-sh" data-search="standalone/inventory/system get-journal-errors.sh recent critical/error entries from the system journal." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<div class="script-card" id="script-standalone-inventory-system-get-journal-errors-sh" data-search="standalone/inventory/system get-journal-errors.sh recent critical/error entries from the system journal." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/inventory/system/get-journal-errors.sh</code><a class="permalink" href="#script-standalone-inventory-system-get-journal-errors-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/system/get-journal-errors.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
-<span class="badge">Sudo: ❌</span>
+<span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
@@ -1828,10 +1866,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
-<div class="script-card" id="script-standalone-inventory-system-get-kernel-log-sh" data-search="standalone/inventory/system get-kernel-log.sh recent kernel ring buffer messages (dmesg)." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<div class="script-card" id="script-standalone-inventory-system-get-kernel-log-sh" data-search="standalone/inventory/system get-kernel-log.sh recent kernel ring buffer messages (dmesg)." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/inventory/system/get-kernel-log.sh</code><a class="permalink" href="#script-standalone-inventory-system-get-kernel-log-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/system/get-kernel-log.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
-<span class="badge">Sudo: ❌</span>
+<span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
@@ -1889,10 +1927,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
-<div class="script-card" id="script-standalone-inventory-system-get-nginx-info-sh" data-search="standalone/inventory/system get-nginx-info.sh nginx version, compilation flags, and configuration check." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<div class="script-card" id="script-standalone-inventory-system-get-nginx-info-sh" data-search="standalone/inventory/system get-nginx-info.sh nginx version, compilation flags, and configuration check." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/inventory/system/get-nginx-info.sh</code><a class="permalink" href="#script-standalone-inventory-system-get-nginx-info-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/system/get-nginx-info.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
-<span class="badge">Sudo: ❌</span>
+<span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
@@ -1926,6 +1964,21 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
+<div class="script-card" id="script-standalone-inventory-system-get-ssl-cert-expiry-sh" data-search="standalone/inventory/system get-ssl-cert-expiry.sh ssl/tls certificate expiry status for one or more domains." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/inventory/system/get-ssl-cert-expiry.sh</code><a class="permalink" href="#script-standalone-inventory-system-get-ssl-cert-expiry-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/system/get-ssl-cert-expiry.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Read-only status and diagnostic script. Works without root.</p>
+<ul><li>Connects to each domain (default port 443, or <code>host:port</code>) via</li></ul>
+<p><code>openssl s_client</code> and reports the certificate's expiry date and days remaining.</p>
+<ul><li>Domains are given as CLI arguments, or edited into the <code>domains</code></li></ul>
+<p>array at the top of the script.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
 <div class="script-card" id="script-standalone-inventory-system-get-storage-info-sh" data-search="standalone/inventory/system get-storage-info.sh disk usage per mount point and block device layout." data-sudo="0" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/inventory/system/get-storage-info.sh</code><a class="permalink" href="#script-standalone-inventory-system-get-storage-info-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/system/get-storage-info.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -1935,6 +1988,23 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Read-only status and diagnostic script. Works without root.</p>
 <ul><li>Collects filesystem usage via <code>df -h</code> and block device layout via <code>lsblk</code>.</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-inventory-system-get-systemd-timers-sh" data-search="standalone/inventory/system get-systemd-timers.sh all systemd timers and the health of the units they activate." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/inventory/system/get-systemd-timers.sh</code><a class="permalink" href="#script-standalone-inventory-system-get-systemd-timers-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/system/get-systemd-timers.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Read-only status and diagnostic script. Works without root.</p>
+<ul><li>Lists every systemd timer via <code>systemctl list-timers</code>, showing next</li></ul>
+<p>and last run times and the unit each one activates.</p>
+<ul><li>Cross-checks each activated unit and flags any currently in a</li></ul>
+<p>failed state.</p>
+<ul><li>Complements crontab-based scheduling reports, which do not cover</li></ul>
+<p>systemd timers.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -1962,10 +2032,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
-<div class="script-card" id="script-standalone-inventory-system-get-user-crontab-sh" data-search="standalone/inventory/system get-user-crontab.sh current user&#x27;s crontab entries." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<div class="script-card" id="script-standalone-inventory-system-get-user-crontab-sh" data-search="standalone/inventory/system get-user-crontab.sh current user&#x27;s crontab entries." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/inventory/system/get-user-crontab.sh</code><a class="permalink" href="#script-standalone-inventory-system-get-user-crontab-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/inventory/system/get-user-crontab.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
-<span class="badge">Sudo: ❌</span>
+<span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
@@ -2255,8 +2325,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-21 19:17 UTC &middot;
-134 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-22 10:40 UTC &middot;
+138 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -2264,7 +2334,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-deploy">standalone/deploy/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (19)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-deploy">standalone/deploy/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
