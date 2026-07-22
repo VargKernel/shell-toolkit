@@ -3,7 +3,7 @@
 # ---DOC-START---
 # summary: Download audio only as MP3 via yt-dlp.
 # description: |
-#   All three scripts share the same conventions: they install [jq](https://jqlang.github.io/jq/) and `wget` if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID. No root required.
+#   Install [jq](https://jqlang.github.io/jq/) and `wget` if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID.
 #
 #   - Usage: `./yt-dlp-audio-only.sh <URL> [extra yt-dlp options]`
 #   - Extracts audio at the best available quality (`--audio-quality 0`) and converts to MP3

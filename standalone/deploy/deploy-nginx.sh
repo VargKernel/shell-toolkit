@@ -8,7 +8,7 @@
 #   - Installs Nginx with optional **[PHP-FPM](https://www.php.net/manual/en/install.fpm.php)** integration
 #   - Generates a clean virtual host with security headers and other baseline best practices
 #   - Optionally installs **[avahi-daemon](https://avahi.org)** for mDNS / `.local` hostname resolution on the LAN
-#   - Can add reverse proxies for **Grafana** at `/grafana` and **Portainer** at `/portainer`
+#   - Can add reverse proxies for **Grafana** at `/grafana`, **Portainer** at `/portainer`, and **File Browser** at `/files`
 #   - Configures **Firewalld** for HTTP, HTTPS, and mDNS
 #   - Creates a clean default `index.html`
 #
@@ -176,6 +176,40 @@ case "${PORTAINER_CHOICE,,}" in
         ;;
 esac
 
+echo "==> File Browser setup"
+
+FILEBROWSER_BLOCK=""
+read -rp "[?] Configure File Browser reverse proxy at /files? [y/N]: " FILEBROWSER_CHOICE
+
+case "${FILEBROWSER_CHOICE,,}" in
+    y|yes)
+        echo "[*] Preparing File Browser proxy configuration..."
+        FILEBROWSER_BLOCK="
+    location = /files {
+        return 301 /files/;
+    }
+
+    location /files/ {
+        proxy_http_version 1.1;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Connection \"upgrade\";
+        # Trailing slash strips /files/ prefix before forwarding to File Browser
+        proxy_pass http://127.0.0.1:8080/;
+    }"
+        echo "[+] Done."
+        ;;
+    n|no|"")
+        echo "[i] File Browser proxy skipped"
+        ;;
+    *)
+        echo "[!] Invalid input -> skipping File Browser proxy setup"
+        ;;
+esac
+
 echo "==> Firewall setup"
 
 read -rp "[?] Install Firewalld? [y/N]: " FIREWALL_CHOICE
@@ -307,6 +341,8 @@ server {
     $GRAFANA_BLOCK
 
     $PORTAINER_BLOCK
+
+    $FILEBROWSER_BLOCK
 
     $PHP_BLOCK
 

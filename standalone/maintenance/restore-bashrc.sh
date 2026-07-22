@@ -30,17 +30,10 @@ if [[ ! -f "$SKEL_BASHRC" ]]; then
 fi
 
 echo ""
-echo -e "${RED}╔═══════════════════════════════════════════════════╗${NC}"
-echo -e "${RED}║        [!]  R E S E T   W A R N I N G  [!]        ║${NC}"
-echo -e "${RED}╠═══════════════════════════════════════════════════╣${NC}"
-echo -e "${RED}║                                                   ║${NC}"
-echo -e "${RED}║  This will replace ~/.bashrc with the default:    ║${NC}"
-echo -e "${RED}║  $SKEL_BASHRC                                ║${NC}" # SKEL_BASHRC="/etc/skel/.bashrc"
-echo -e "${RED}║                                                   ║${NC}"
-echo -e "${RED}║  All customizations (bash-qol, oh-my-bash,        ║${NC}"
-echo -e "${RED}║  aliases, etc.) will be REMOVED from ~/.bashrc.   ║${NC}"
-echo -e "${RED}║                                                   ║${NC}"
-echo -e "${RED}╚═══════════════════════════════════════════════════╝${NC}"
+echo -e "${RED}This will replace ~/.bashrc with the default:${NC}"
+echo -e "${RED}$SKEL_BASHRC${NC}" # SKEL_BASHRC="/etc/skel/.bashrc"
+echo -e "${RED}All customizations (bash-qol, oh-my-bash,${NC}"
+echo -e "${RED}aliases, etc.) will be REMOVED from ~/.bashrc.${NC}"
 echo ""
 
 read -rp "[?] Reset ~/.bashrc to the default? [y/N]: " CONFIRM
