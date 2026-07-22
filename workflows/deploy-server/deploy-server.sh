@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ---DOC-START---
-# summary: Full-stack workflow: firewall → SSH → Fail2Ban → user → Nginx → Grafana → Portainer → File Browser, each independently toggleable from a single .env.
+# summary: Full-stack workflow: firewall -> SSH -> Fail2Ban -> user -> Nginx -> Grafana -> Portainer -> File Browser, each independently toggleable from a single .env.
 # description: |
 #   Orchestrates a full server deployment by running up to eight scripts in
 #   sequence from a single `.env` config file. Every step is independently
