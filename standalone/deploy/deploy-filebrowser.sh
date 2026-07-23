@@ -126,6 +126,8 @@ services:
     command:
       - -d
       - /database/filebrowser.db
+      - --baseurl
+      - /files
     volumes:
       - ./srv:/srv
       - ./database:/database
