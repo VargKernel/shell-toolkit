@@ -7,46 +7,21 @@
 [![Debian](https://img.shields.io/badge/Debian-Supported-A81D33?logo=debian&logoColor=white)](https://www.debian.org)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-Supported-E95420?logo=ubuntu&logoColor=white)](https://ubuntu.com)
 
-## Structure
+Scripts are organized into two directories:
 
-Scripts are organized into two tiers:
-
-- **`standalone/`** — self-contained scripts, each doing one thing.
-- **`workflows/`** — scripts that chain standalones together toward a goal.
-
-More detailed information about the project structure is available in
-[`docs/index.html`](docs/index.html).
-
-## Documentation
-
-Every script includes a metadata block immediately after the shebang describing its purpose,
-requirements, privileges, dependencies, and other properties (`summary`, `description`,
-`sudo`, `interactive`, `idempotent`, `dependencies`).
-
-More detailed documentation, dependency trees, and the complete script index are available in
-**[`docs/index.html`](docs/index.html)**.
-
-To regenerate the documentation locally:
-
-```bash
-./generate-docs.py
-```
-
-## Features
-
-- Colored, consistent output with clear progress and status messages
-- Interactive prompts with safety confirmations before destructive actions
-- Idempotent where the script's scope allows it
-- Automatic backups of configuration files before modification
+- **`standalone/`** — self-contained scripts, each performing a single task.
+- **`workflows/`** — higher-level scripts that chain standalones together to accomplish a larger goal.
 
 ## Quick Start
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/rebootless/shell-toolkit.git
 cd shell-toolkit
 ```
 
-All shell scripts in this repository are tracked with the executable bit and automatically corrected by GitHub Actions if necessary.
+All shell scripts are tracked with the executable bit and automatically corrected by GitHub Actions if necessary.
 
 If your local checkout loses executable permissions (for example, after extracting a ZIP archive or copying files to a filesystem that does not preserve Unix permissions), restore them with:
 
@@ -54,41 +29,72 @@ If your local checkout loses executable permissions (for example, after extracti
 find . -type f -name "*.sh" -exec chmod +x {} \;
 ```
 
-From there:
+Then either run an individual script from `standalone/` or execute a workflow from `workflows/`.
 
-- **Run a standalone script directly** for a single, focused task.
-- **Run a workflow** to chain several standalones toward a larger goal.
+A dry run in a disposable VM or non-production environment is always a good idea before using scripts on production systems.
 
-Always review a script's source and its metadata block before running it with `sudo` on a
-production machine.
+## Fresh VPS Deployment
 
-More detailed information about available scripts is available in
-[`docs/index.html`](docs/index.html).
+For a fresh Debian installation with only **Standard system utilities** and **OpenSSH server** selected:
+
+Run as `root`:
+
+```bash
+apt update && apt install -y git && \
+git clone https://github.com/rebootless/shell-toolkit && \
+cd shell-toolkit/workflows/deploy-server && \
+cp .env.example .env && \
+nano .env
+```
+
+After configuring `.env`, start the deployment:
+
+```bash
+./deploy-server
+```
+
+## Documentation
+
+Every script includes a metadata block immediately after the shebang describing its purpose,
+requirements, privileges, dependencies, and other properties (`summary`, `description`,
+`sudo`, `interactive`, `idempotent`, `dependencies`).
+- **[`docs/index.html`](docs/index.html)**
+
+To regenerate the documentation locally:
+
+```bash
+./generate-docs.py
+```
 
 ## Requirements
 
-- Debian-based **x86_64** Linux system, Bash 5.0+
-- Root/`sudo` access for system-level scripts, and an internet connection for package/image
-  downloads
-- `python3` to run `generate-docs.py` (standard library only, no pip packages)
-- Some scripts require additional tools (`Docker`, `jq`, `pipx`, `flatpak`, `npm`, etc.).
-  See [`docs/index.html`](docs/index.html) for per-script requirements and optional
-  dependencies.
+- Debian-based **x86_64** Linux system with Bash 5.0+
+- Root/`sudo` access for system-level scripts
+- Internet connection for package and image downloads
+- `python3` (standard library only) to run `generate-docs.py`
+- Some scripts require additional software such as `Docker`, `jq`, `pipx`, `flatpak`, or `npm` (see the documentation for details)
 
 ## Contributing
 
-Issues and Pull Requests are welcome. If a script fits the collection's scope (server ops,
-monitoring, deployment, shell tooling, or useful automation), feel free to open a PR.
+Issues and Pull Requests are welcome.
 
-Follow the existing code style: colored output, safety prompts, inline English comments. Every
-new script must include a `# ---DOC-START--- ... # ---DOC-END---` metadata block (see
-[`docs/metadata-guidelines.md`](docs/metadata-guidelines.md)) and pass
-`./generate-docs.py --strict`.
+Please follow the rules:
+
+- English comments and documentation
+- Metadata block (`# ---DOC-START--- ... # ---DOC-END---`) for every new script
+
+Before submitting a Pull Request, ensure that documentation generation succeeds:
+
+```bash
+./generate-docs.py --strict
+```
 
 ## License
 
 Distributed under the [GNU General Public License v3.0](LICENSE).
 
 <div align="center">
+
 Built for self-hosted infrastructure, automation, and observability.
+
 </div>
