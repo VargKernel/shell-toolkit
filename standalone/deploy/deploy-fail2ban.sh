@@ -8,8 +8,9 @@
 #   - Installs `fail2ban`
 #   - Creates `/etc/fail2ban/jail.local`
 #   - Enables the `sshd` jail
-#   - Enables and starts the `fail2ban` service
-#   - Validates the configuration before restarting the service
+#   - Validates the configuration
+#   - Enables and starts the service
+#   - Waits until the daemon is fully ready
 #   - Prints a deployment summary
 #
 #   Existing `jail.local` will be replaced.
@@ -29,12 +30,13 @@ fi
 
 echo "==> Installing dependencies"
 
-echo "[*] Updating system packages..."
+echo "[*] Updating package index..."
 apt-get update
 
 echo "[*] Installing Fail2Ban..."
 apt-get install -y fail2ban
 
+echo ""
 echo "==> Configuring Fail2Ban"
 
 cat >/etc/fail2ban/jail.local <<'EOF'
@@ -46,17 +48,16 @@ backend = systemd
 
 [sshd]
 enabled = true
+backend = systemd
 EOF
 
+echo ""
 echo "==> Validation"
 
 if fail2ban-client -t >/dev/null 2>&1; then
     echo "[+] Fail2Ban configuration is valid."
 else
-    echo "//////////////////////////////////////////////////"
-    echo "Configuration error found."
-    echo "Fail2Ban service was NOT started."
-    echo "//////////////////////////////////////////////////"
+    echo "[!] Fail2Ban configuration is invalid."
     exit 1
 fi
 
@@ -65,6 +66,28 @@ systemctl enable fail2ban
 
 echo "[*] Restarting Fail2Ban service..."
 systemctl restart fail2ban
+
+echo "[*] Waiting for Fail2Ban..."
+
+READY=false
+
+for _ in {1..20}; do
+    if fail2ban-client ping >/dev/null 2>&1; then
+        READY=true
+        break
+    fi
+    sleep 0.5
+done
+
+if [[ "$READY" != true ]]; then
+    echo ""
+    echo "[!] Fail2Ban failed to become ready."
+    echo ""
+    systemctl status fail2ban --no-pager || true
+    echo ""
+    journalctl -u fail2ban --no-pager -n 30 || true
+    exit 1
+fi
 
 FAIL2BAN_STATUS=$(systemctl is-active fail2ban)
 FAIL2BAN_ENABLED=$(systemctl is-enabled fail2ban)
