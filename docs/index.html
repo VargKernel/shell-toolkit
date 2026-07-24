@@ -335,19 +335,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>154</td></tr>
+<tr><td>Total scripts</td><td>155</td></tr>
 <tr><td>Directories</td><td>19</td></tr>
-<tr><td>Require root / sudo</td><td>99 / 154</td></tr>
-<tr><td>Interactive</td><td>25 / 154</td></tr>
+<tr><td>Require root / sudo</td><td>100 / 155</td></tr>
+<tr><td>Interactive</td><td>25 / 155</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>143 / 9 / 2</td></tr>
-<tr><td>Scripts with dependencies</td><td>6 / 154</td></tr>
+    <td>144 / 9 / 2</td></tr>
+<tr><td>Scripts with dependencies</td><td>6 / 155</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/deploy</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/groups</td><td>2</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>28</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>3</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/deploy</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/groups</td><td>2</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>29</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>3</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
 </tbody>
 </table>
 
@@ -420,6 +420,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   │   │   ├── install-php.sh
 │   │   │   │   ├── install-pipx.sh
 │   │   │   │   ├── install-python.sh
+│   │   │   │   ├── install-qemu-kvm.sh
 │   │   │   │   ├── install-ranger.sh
 │   │   │   │   ├── install-ripgrep.sh
 │   │   │   │   ├── install-sudo.sh
@@ -602,6 +603,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/install/apt/cli install-php.sh install php and common extensions." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-php.sh"><a href="#script-standalone-install-apt-cli-install-php-sh"><code>install-php.sh</code></a></td><td data-value="install php and common extensions.">Install PHP and common extensions.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-pipx.sh install pipx and ensure ~/.local/bin is on path." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pipx.sh"><a href="#script-standalone-install-apt-cli-install-pipx-sh"><code>install-pipx.sh</code></a></td><td data-value="install pipx and ensure ~/.local/bin is on path.">Install pipx and ensure ~/.local/bin is on PATH.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-python.sh install the python development environment." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-python.sh"><a href="#script-standalone-install-apt-cli-install-python-sh"><code>install-python.sh</code></a></td><td data-value="install the python development environment.">Install the Python development environment.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-qemu-kvm.sh install the qemu/kvm virtualization stack." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-qemu-kvm.sh"><a href="#script-standalone-install-apt-cli-install-qemu-kvm-sh"><code>install-qemu-kvm.sh</code></a></td><td data-value="install the qemu/kvm virtualization stack.">Install the QEMU/KVM virtualization stack.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-ranger.sh install ranger from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-ranger.sh"><a href="#script-standalone-install-apt-cli-install-ranger-sh"><code>install-ranger.sh</code></a></td><td data-value="install ranger from the distribution repositories.">Install ranger from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-ripgrep.sh install ripgrep from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-ripgrep.sh"><a href="#script-standalone-install-apt-cli-install-ripgrep-sh"><code>install-ripgrep.sh</code></a></td><td data-value="install ripgrep from the distribution repositories.">Install ripgrep from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-sudo.sh install sudo from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-sudo.sh"><a href="#script-standalone-install-apt-cli-install-sudo-sh"><code>install-sudo.sh</code></a></td><td data-value="install sudo from the distribution repositories.">Install sudo from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -1273,6 +1275,20 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <code>python3</code>, <code>python3-pip</code>, <code>python3-venv</code>.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-dev-env-sh"><code>workflows/setup-dev-env.sh</code></a></li></ul></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-qemu-kvm-sh" data-search="standalone/install/apt/cli install-qemu-kvm.sh install the qemu/kvm virtualization stack." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-qemu-kvm.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-qemu-kvm-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-qemu-kvm.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs the complete QEMU/KVM virtualization environment.</p>
+<p>Includes:</p>
+<ul><li>QEMU system emulator and utilities</li><li>libvirt daemon and client tools</li><li>Virt-Manager GUI</li><li>UEFI firmware (OVMF) and SeaBIOS</li><li>SPICE support</li><li>TPM emulator (swtpm)</li><li>Network bridge utilities</li><li>Cloud image utilities</li></ul>
+<p>Enables and starts the <code>libvirtd</code> service after installation.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-ranger-sh" data-search="standalone/install/apt/cli install-ranger.sh install ranger from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-ranger.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-ranger-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-ranger.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -2565,8 +2581,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-23 14:51 UTC &middot;
-154 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-24 07:57 UTC &middot;
+155 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -2574,7 +2590,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-deploy">standalone/deploy/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-groups">standalone/groups/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (28)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-deploy">standalone/deploy/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-groups">standalone/groups/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (29)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
