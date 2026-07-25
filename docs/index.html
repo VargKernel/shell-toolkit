@@ -335,19 +335,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>157</td></tr>
-<tr><td>Directories</td><td>19</td></tr>
-<tr><td>Require root / sudo</td><td>102 / 157</td></tr>
-<tr><td>Interactive</td><td>27 / 157</td></tr>
+<tr><td>Total scripts</td><td>161</td></tr>
+<tr><td>Directories</td><td>20</td></tr>
+<tr><td>Require root / sudo</td><td>105 / 161</td></tr>
+<tr><td>Interactive</td><td>30 / 161</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>146 / 9 / 2</td></tr>
-<tr><td>Scripts with dependencies</td><td>6 / 157</td></tr>
+    <td>150 / 9 / 2</td></tr>
+<tr><td>Scripts with dependencies</td><td>6 / 161</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/deploy</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/groups</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>29</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>3</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/deploy</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/groups</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>29</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>3</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
 </tbody>
 </table>
 
@@ -520,6 +520,11 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   └── restore-bashrc.sh
 │   ├── showcase/
 │   │   └── showcase-bash-qol.sh
+│   ├── sources/
+│   │   ├── edit-sources-list-d-list.sh
+│   │   ├── edit-sources-list-d-sources.sh
+│   │   ├── edit-sources-list.sh
+│   │   └── get-sources-list.sh
 │   ├── update/
 │   │   ├── update-docker-compose-stacks.sh
 │   │   ├── update-flatpak.sh
@@ -696,6 +701,10 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/maintenance remove-ufw.sh disable and remove ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="remove-ufw.sh"><a href="#script-standalone-maintenance-remove-ufw-sh"><code>remove-ufw.sh</code></a></td><td data-value="disable and remove ufw.">Disable and remove UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance restore-bashrc.sh reset ~/.bashrc to the distribution default." data-sudo="0" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="restore-bashrc.sh"><a href="#script-standalone-maintenance-restore-bashrc-sh"><code>restore-bashrc.sh</code></a></td><td data-value="reset ~/.bashrc to the distribution default.">Reset ~/.bashrc to the distribution default.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/showcase showcase-bash-qol.sh demo for the bash qol terminal styling." data-sudo="0" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/showcase">standalone/showcase</td><td data-value="showcase-bash-qol.sh"><a href="#script-standalone-showcase-showcase-bash-qol-sh"><code>showcase-bash-qol.sh</code></a></td><td data-value="demo for the bash qol terminal styling.">Demo for the Bash QOL terminal styling.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/sources edit-sources-list-d-list.sh open all .list files in /etc/apt/sources.list.d/." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/sources">standalone/sources</td><td data-value="edit-sources-list-d-list.sh"><a href="#script-standalone-sources-edit-sources-list-d-list-sh"><code>edit-sources-list-d-list.sh</code></a></td><td data-value="open all .list files in /etc/apt/sources.list.d/.">Open all .list files in /etc/apt/sources.list.d/.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/sources edit-sources-list-d-sources.sh open all .sources files in /etc/apt/sources.list.d/." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/sources">standalone/sources</td><td data-value="edit-sources-list-d-sources.sh"><a href="#script-standalone-sources-edit-sources-list-d-sources-sh"><code>edit-sources-list-d-sources.sh</code></a></td><td data-value="open all .sources files in /etc/apt/sources.list.d/.">Open all .sources files in /etc/apt/sources.list.d/.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/sources edit-sources-list.sh open /etc/apt/sources.list in nano." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/sources">standalone/sources</td><td data-value="edit-sources-list.sh"><a href="#script-standalone-sources-edit-sources-list-sh"><code>edit-sources-list.sh</code></a></td><td data-value="open /etc/apt/sources.list in nano.">Open /etc/apt/sources.list in Nano.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/sources get-sources-list.sh display all configured apt repositories." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/sources">standalone/sources</td><td data-value="get-sources-list.sh"><a href="#script-standalone-sources-get-sources-list-sh"><code>get-sources-list.sh</code></a></td><td data-value="display all configured apt repositories.">Display all configured APT repositories.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/update update-docker-compose-stacks.sh pull and redeploy all docker compose stacks." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/update">standalone/update</td><td data-value="update-docker-compose-stacks.sh"><a href="#script-standalone-update-update-docker-compose-stacks-sh"><code>update-docker-compose-stacks.sh</code></a></td><td data-value="pull and redeploy all docker compose stacks.">Pull and redeploy all Docker Compose stacks.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/update update-flatpak.sh updates all installed flatpak applications and runtimes." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/update">standalone/update</td><td data-value="update-flatpak.sh"><a href="#script-standalone-update-update-flatpak-sh"><code>update-flatpak.sh</code></a></td><td data-value="updates all installed flatpak applications and runtimes.">Updates all installed Flatpak applications and runtimes.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/update update-grub.sh update the grub bootloader configuration." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/update">standalone/update</td><td data-value="update-grub.sh"><a href="#script-standalone-update-update-grub-sh"><code>update-grub.sh</code></a></td><td data-value="update the grub bootloader configuration.">Update the GRUB bootloader configuration.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -2383,6 +2392,54 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul><li>Creates a temporary sandbox with sample files</li><li>Shows off formatted output and terminal UI behavior</li><li>Useful as a preview before committing to <code>bash-qol.sh</code></li><li>No root required</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div><h2 id="dir-standalone-sources" class="dir-heading"><code>standalone/sources/</code><a class="permalink" href="#dir-standalone-sources" aria-label="Link to this section">#</a></h2>
+<div class="script-card" id="script-standalone-sources-edit-sources-list-d-list-sh" data-search="standalone/sources edit-sources-list-d-list.sh open all .list files in /etc/apt/sources.list.d/." data-sudo="1" data-interactive="1" data-hasdeps="0">
+<h3><code>standalone/sources/edit-sources-list-d-list.sh</code><a class="permalink" href="#script-standalone-sources-edit-sources-list-d-list-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/sources/edit-sources-list-d-list.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ✅</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens every APT source file with the .list extension found in /etc/apt/sources.list.d/ using the Nano text editor.</p>
+<ul><li>Verifies the script is run as root</li><li>Verifies that Nano is installed</li><li>Verifies that at least one .list file exists</li><li>Opens all matching files in Nano</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-sources-edit-sources-list-d-sources-sh" data-search="standalone/sources edit-sources-list-d-sources.sh open all .sources files in /etc/apt/sources.list.d/." data-sudo="1" data-interactive="1" data-hasdeps="0">
+<h3><code>standalone/sources/edit-sources-list-d-sources.sh</code><a class="permalink" href="#script-standalone-sources-edit-sources-list-d-sources-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/sources/edit-sources-list-d-sources.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ✅</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens every APT source file with the .sources extension found in /etc/apt/sources.list.d/ using the Nano text editor.</p>
+<ul><li>Verifies the script is run as root</li><li>Verifies that Nano is installed</li><li>Verifies that at least one .sources file exists</li><li>Opens all matching files in Nano</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-sources-edit-sources-list-sh" data-search="standalone/sources edit-sources-list.sh open /etc/apt/sources.list in nano." data-sudo="1" data-interactive="1" data-hasdeps="0">
+<h3><code>standalone/sources/edit-sources-list.sh</code><a class="permalink" href="#script-standalone-sources-edit-sources-list-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/sources/edit-sources-list.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ✅</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the main APT sources file in the Nano text editor.</p>
+<ul><li>Verifies the script is run as root</li><li>Verifies that Nano is installed</li><li>Verifies that the sources.list file exists</li><li>Opens the file in Nano</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-sources-get-sources-list-sh" data-search="standalone/sources get-sources-list.sh display all configured apt repositories." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/sources/get-sources-list.sh</code><a class="permalink" href="#script-standalone-sources-get-sources-list-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/sources/get-sources-list.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Displays every configured APT repository from the standard source locations.</p>
+<ul><li>Shows the contents of /etc/apt/sources.list</li><li>Shows every .list file in /etc/apt/sources.list.d/</li><li>Shows every .sources file in /etc/apt/sources.list.d/</li><li>Skips files that do not exist</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-update" class="dir-heading"><code>standalone/update/</code><a class="permalink" href="#dir-standalone-update" aria-label="Link to this section">#</a></h2>
 <div class="script-card" id="script-standalone-update-update-docker-compose-stacks-sh" data-search="standalone/update update-docker-compose-stacks.sh pull and redeploy all docker compose stacks." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/update/update-docker-compose-stacks.sh</code><a class="permalink" href="#script-standalone-update-update-docker-compose-stacks-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/update/update-docker-compose-stacks.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -2613,8 +2670,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-24 08:01 UTC &middot;
-157 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-25 19:15 UTC &middot;
+161 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -2622,7 +2679,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-deploy">standalone/deploy/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-groups">standalone/groups/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (29)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-deploy">standalone/deploy/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-groups">standalone/groups/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (29)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
