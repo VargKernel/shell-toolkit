@@ -13,7 +13,7 @@
 # sudo: false
 # interactive: false
 # idempotent: true
-# dependencies:
+# dependencies: none
 # ---DOC-END---
 
 set -euo pipefail

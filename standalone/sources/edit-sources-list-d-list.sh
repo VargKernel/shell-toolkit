@@ -14,7 +14,7 @@
 # sudo: true
 # interactive: true
 # idempotent: true
-# dependencies: nano
+# dependencies: none
 # ---DOC-END---
 
 set -euo pipefail
