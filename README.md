@@ -91,7 +91,7 @@ Before submitting a Pull Request, ensure that documentation generation succeeds:
 
 ## License
 
-Distributed under the [GNU General Public License v3.0](LICENSE).
+This project is licensed under the **GNU General Public License v3.0** — see the [LICENSE](LICENSE) file for details.
 
 <div align="center">
 
