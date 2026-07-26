@@ -335,19 +335,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>162</td></tr>
+<tr><td>Total scripts</td><td>164</td></tr>
 <tr><td>Directories</td><td>20</td></tr>
-<tr><td>Require root / sudo</td><td>106 / 162</td></tr>
-<tr><td>Interactive</td><td>30 / 162</td></tr>
+<tr><td>Require root / sudo</td><td>106 / 164</td></tr>
+<tr><td>Interactive</td><td>30 / 164</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>151 / 9 / 2</td></tr>
-<tr><td>Scripts with dependencies</td><td>6 / 162</td></tr>
+    <td>153 / 9 / 2</td></tr>
+<tr><td>Scripts with dependencies</td><td>6 / 164</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/deploy</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/groups</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>30</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>3</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/deploy</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/groups</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>30</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>9</td></tr><tr><td class='dir-tag'>standalone/showcase</td><td>1</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/utilities</td><td>3</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>5</td></tr><tr><td class='dir-tag'>workflows/deploy-server</td><td>1</td></tr>
 </tbody>
 </table>
 
@@ -464,7 +464,9 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   │   ├── install-markdown-language-server.sh
 │   │   │   └── install-python-language-server.sh
 │   │   └── pipx/
+│   │       ├── install-ansible.sh
 │   │       ├── install-gallery-dl.sh
+│   │       ├── install-git-filter-repo.sh
 │   │       ├── install-spotdl.sh
 │   │       └── install-yt-dlp.sh
 │   ├── inventory/
@@ -651,7 +653,9 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/install/lsp install-clang-language-server.sh install clangd (llvm c/c++ language server) for editor/ide lsp integration." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/lsp">standalone/install/lsp</td><td data-value="install-clang-language-server.sh"><a href="#script-standalone-install-lsp-install-clang-language-server-sh"><code>install-clang-language-server.sh</code></a></td><td data-value="install clangd (llvm c/c++ language server) for editor/ide lsp integration.">Install clangd (LLVM C/C++ language server) for editor/IDE LSP integration.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/lsp install-markdown-language-server.sh install markdown-language-server via npm for editor/ide lsp integration." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/lsp">standalone/install/lsp</td><td data-value="install-markdown-language-server.sh"><a href="#script-standalone-install-lsp-install-markdown-language-server-sh"><code>install-markdown-language-server.sh</code></a></td><td data-value="install markdown-language-server via npm for editor/ide lsp integration.">Install markdown-language-server via npm for editor/IDE LSP integration.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/lsp install-python-language-server.sh install python-lsp-server (pylsp) via pipx for editor/ide lsp integration." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/lsp">standalone/install/lsp</td><td data-value="install-python-language-server.sh"><a href="#script-standalone-install-lsp-install-python-language-server-sh"><code>install-python-language-server.sh</code></a></td><td data-value="install python-lsp-server (pylsp) via pipx for editor/ide lsp integration.">Install python-lsp-server (pylsp) via pipx for editor/IDE LSP integration.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/pipx install-ansible.sh install ansible via pipx." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/pipx">standalone/install/pipx</td><td data-value="install-ansible.sh"><a href="#script-standalone-install-pipx-install-ansible-sh"><code>install-ansible.sh</code></a></td><td data-value="install ansible via pipx.">Install Ansible via pipx.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/pipx install-gallery-dl.sh install gallery-dl via pipx." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/pipx">standalone/install/pipx</td><td data-value="install-gallery-dl.sh"><a href="#script-standalone-install-pipx-install-gallery-dl-sh"><code>install-gallery-dl.sh</code></a></td><td data-value="install gallery-dl via pipx.">Install gallery-dl via pipx.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/pipx install-git-filter-repo.sh install git-filter-repo via pipx." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/pipx">standalone/install/pipx</td><td data-value="install-git-filter-repo.sh"><a href="#script-standalone-install-pipx-install-git-filter-repo-sh"><code>install-git-filter-repo.sh</code></a></td><td data-value="install git-filter-repo via pipx.">Install git-filter-repo via pipx.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/pipx install-spotdl.sh install spotdl via pipx." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/pipx">standalone/install/pipx</td><td data-value="install-spotdl.sh"><a href="#script-standalone-install-pipx-install-spotdl-sh"><code>install-spotdl.sh</code></a></td><td data-value="install spotdl via pipx.">Install spotdl via pipx.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/pipx install-yt-dlp.sh install yt-dlp via pipx." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/pipx">standalone/install/pipx</td><td data-value="install-yt-dlp.sh"><a href="#script-standalone-install-pipx-install-yt-dlp-sh"><code>install-yt-dlp.sh</code></a></td><td data-value="install yt-dlp via pipx.">Install yt-dlp via pipx.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/network get-bandwidth-summary.sh per-interface link speed, duplex, carrier state, and mtu." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/network">standalone/inventory/network</td><td data-value="get-bandwidth-summary.sh"><a href="#script-standalone-inventory-network-get-bandwidth-summary-sh"><code>get-bandwidth-summary.sh</code></a></td><td data-value="per-interface link speed, duplex, carrier state, and mtu.">Per-interface link speed, duplex, carrier state, and MTU.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -1755,6 +1759,18 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-dev-env-sh"><code>workflows/setup-dev-env.sh</code></a></li></ul></div>
 </div><h2 id="dir-standalone-install-pipx" class="dir-heading"><code>standalone/install/pipx/</code><a class="permalink" href="#dir-standalone-install-pipx" aria-label="Link to this section">#</a></h2>
+<div class="script-card" id="script-standalone-install-pipx-install-ansible-sh" data-search="standalone/install/pipx install-ansible.sh install ansible via pipx." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/pipx/install-ansible.sh</code><a class="permalink" href="#script-standalone-install-pipx-install-ansible-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/pipx/install-ansible.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs the latest Ansible using pipx with all command-line tools exposed, including ansible-playbook, ansible-galaxy, ansible-vault, ansible-config, ansible-doc, ansible-console, ansible-inventory, ansible-pull, and ansible-test.</p>
+<p>If Ansible is already installed via pipx, it is removed and reinstalled with --include-deps to ensure all CLI tools are available.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
 <div class="script-card" id="script-standalone-install-pipx-install-gallery-dl-sh" data-search="standalone/install/pipx install-gallery-dl.sh install gallery-dl via pipx." data-sudo="0" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/pipx/install-gallery-dl.sh</code><a class="permalink" href="#script-standalone-install-pipx-install-gallery-dl-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/pipx/install-gallery-dl.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -1765,6 +1781,17 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <a href="https://github.com/mikf/gallery-dl">gallery-dl</a>.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-pipx-sh"><code>workflows/setup-pipx.sh</code></a></li></ul></div>
+</div>
+<div class="script-card" id="script-standalone-install-pipx-install-git-filter-repo-sh" data-search="standalone/install/pipx install-git-filter-repo.sh install git-filter-repo via pipx." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/pipx/install-git-filter-repo.sh</code><a class="permalink" href="#script-standalone-install-pipx-install-git-filter-repo-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/pipx/install-git-filter-repo.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <a href="https://github.com/newren/git-filter-repo">git-filter-repo</a>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-install-pipx-install-spotdl-sh" data-search="standalone/install/pipx install-spotdl.sh install spotdl via pipx." data-sudo="0" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/pipx/install-spotdl.sh</code><a class="permalink" href="#script-standalone-install-pipx-install-spotdl-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/pipx/install-spotdl.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -2681,8 +2708,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-26 13:04 UTC &middot;
-162 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-26 17:51 UTC &middot;
+164 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -2690,7 +2717,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-deploy">standalone/deploy/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-groups">standalone/groups/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (30)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-deploy">standalone/deploy/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-groups">standalone/groups/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (30)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (9)</span></a></li><li><a href="#dir-standalone-showcase">standalone/showcase/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-utilities">standalone/utilities/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-workflows-deploy-server">workflows/deploy-server/<span class="toc-count"> (1)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
