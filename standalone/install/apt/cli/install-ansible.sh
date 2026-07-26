@@ -3,7 +3,11 @@
 # ---DOC-START---
 # summary: Install Ansible and related tools.
 # description: |
-#   Installs Ansible (Ansible Core) and Ansible Lint.
+#   Installs Ansible, Ansible Core, and Ansible Lint from the distribution
+#   repositories.
+#
+#   > **Installing Ansible via pipx is preferred**, as distribution packages are
+#   > typically outdated and may not support the latest collections or features.
 # sudo: true
 # interactive: false
 # idempotent: true
