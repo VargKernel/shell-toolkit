@@ -30,4 +30,5 @@ apt install -y \
     kate \
     kate-plugins
 
+echo ""
 echo "[+] Kate installed successfully."

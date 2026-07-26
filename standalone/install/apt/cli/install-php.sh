@@ -39,4 +39,5 @@ apt install -y \
     php-gd \
     php-xdebug
 
+echo ""
 echo "[+] PHP development environment installed successfully."

@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # ---DOC-START---
-# summary: Install Node.js and npm.
+# summary: Install Ansible and related tools.
 # description: |
-#   Installs `nodejs`, `npm`.
+#   Installs Ansible (Ansible Core) and Ansible Lint.
 # sudo: true
 # interactive: false
 # idempotent: true
@@ -19,13 +19,16 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo "==> Installing Node.js + npm"
+echo "==> Installing Ansible"
 
 echo "[*] Updating package lists..."
 apt update -q
 
-echo "[*] Installing Node.js + npm..."
-apt install -y nodejs npm
+echo "[*] Installing Ansible and related tools..."
+apt install -y \
+    ansible \
+    ansible-core \
+    ansible-lint
 
 echo ""
-echo "[+] Node.js + npm installed successfully."
+echo "[+] Ansible installed successfully."

@@ -32,4 +32,5 @@ apt update -q
 echo "[*] Installing kio-admin..."
 apt install -y kio-admin
 
+echo ""
 echo "[+] kio-admin installed successfully."
