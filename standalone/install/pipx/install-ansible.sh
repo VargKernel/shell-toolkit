@@ -3,15 +3,17 @@
 # ---DOC-START---
 # summary: Install Ansible via pipx.
 # description: |
-#   Installs the latest Ansible with all CLI applications exposed
-#   (ansible-playbook, ansible-galaxy, ansible-vault, etc.) using pipx.
+#   Installs the latest Ansible using pipx with all command-line tools
+#   exposed, including ansible-playbook, ansible-galaxy, ansible-vault,
+#   ansible-config, ansible-doc, ansible-console, ansible-inventory,
+#   ansible-pull, and ansible-test.
 #
-#   If an older pipx installation exists, it is removed first to ensure
-#   the full CLI is installed with --include-deps.
+#   If Ansible is already installed via pipx, it is removed and reinstalled
+#   with --include-deps to ensure all CLI tools are available.
 # sudo: false
 # interactive: false
 # idempotent: true
-# dependencies: pipx
+# dependencies: none
 # ---DOC-END---
 
 set -euo pipefail
