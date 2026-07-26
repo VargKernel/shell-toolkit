@@ -40,7 +40,7 @@ For a fresh Debian installation with only **Standard system utilities** and **Op
 Run as `root`:
 
 ```bash
-apt update && apt install -y git && \
+apt update && apt install -y git nano && \
 git clone https://github.com/rebootless/shell-toolkit && \
 cd shell-toolkit/workflows/deploy-server && \
 cp .env.example .env && \
