@@ -1,3 +1,5 @@
+# shell-toolkit (refactor in progress...)
+
 > **A personal collection of Bash scripts for Debian-based x86_64 systems.**
 > Server bootstrapping, monitoring stack deployment, web server setup, shell quality-of-life
 > tweaks, media downloads, and day-to-day automation.
