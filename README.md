@@ -1,6 +1,6 @@
 # Shell-Toolkit
 
-**A collection of standalone Bash utilities and reusable workflows for Debian- and Ubuntu-based systems.**
+**A collection of standalone Bash utilities and reusable workflows for Debian- and Ubuntu-based systems.** Focused on system administration and automation.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Bash](https://img.shields.io/badge/Bash-5.0%2B-4EAA25?logo=gnubash&logoColor=white)](https://www.gnu.org/software/bash/)
@@ -20,10 +20,7 @@ Clone the repository:
 git clone https://github.com/rebootless/shell-toolkit.git
 cd shell-toolkit
 ```
-
-All shell scripts are tracked with the executable bit and automatically corrected by GitHub Actions if necessary.
-
-If your local checkout loses executable permissions (for example, after extracting a ZIP archive or copying files to a filesystem that does not preserve Unix permissions), restore them with:
+All shell scripts are tracked with the executable bit. If your local checkout loses executable permissions (for example, after extracting a ZIP archive or copying files to a filesystem that does not preserve Unix permissions), restore them with:
 
 ```bash
 find . -type f -name "*.sh" -exec chmod +x {} \;
@@ -35,9 +32,7 @@ A dry run in a disposable VM or non-production environment is always a good idea
 
 ## Documentation
 
-Every script includes a metadata block immediately after the shebang describing its purpose,
-requirements, privileges, dependencies, and other properties (`summary`, `description`,
-`sudo`, `interactive`, `idempotent`, `dependencies`).
+Every script includes a metadata block immediately after the shebang describing its purpose, requirements, privileges, dependencies, and other properties (`summary`, `description`, `sudo`, `interactive`, `idempotent`, `dependencies`).
 - **[`docs/index.html`](docs/index.html)**
 
 To regenerate the documentation locally:
