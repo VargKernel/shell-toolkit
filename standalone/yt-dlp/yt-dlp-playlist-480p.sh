@@ -3,7 +3,10 @@
 # ---DOC-START---
 # summary: Download playlists up to 480p via yt-dlp.
 # description: |
-#   Install [jq](https://jqlang.github.io/jq/) and `wget` if missing, use Firefox cookies and a Node.js JS runtime for restricted videos, and retry up to 100 times with randomized sleep intervals. Output filenames always include uploader, upload date, title, and video ID where applicable.
+#   Checks that `yt-dlp` is installed, uses Firefox cookies and a Node.js JS
+#   runtime for restricted videos, and retries up to 100 times with
+#   randomized sleep intervals. Output filenames always include uploader,
+#   upload date, title, and video ID where applicable.
 #
 #   - Usage: `./yt-dlp-playlist-480p.sh <URL> [extra yt-dlp options]`
 #   - Downloads every video in a playlist
@@ -11,7 +14,7 @@
 #   - Prefers separate video/audio streams, falling back to the best available format
 #   - Saves videos into a directory named after the playlist
 #   - Prefixes filenames with the playlist index
-# sudo: true
+# sudo: false
 # interactive: false
 # idempotent: true
 # dependencies: none
@@ -19,8 +22,12 @@
 
 set -euo pipefail
 
-echo "[*] Installing required dependencies..."
-sudo apt-get install -y jq wget
+if ! command -v yt-dlp &>/dev/null; then
+    echo "Error: yt-dlp is not installed." >&2
+    echo "Install it first, e.g.:" >&2
+    echo "  sudo pipx install yt-dlp" >&2
+    exit 1
+fi
 
 yt-dlp \
   -f "bv*[height<=480]+ba/b[height<=480]/bv+ba/b" \

@@ -15,16 +15,16 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export DEBIAN_FRONTEND=noninteractive
 
 if [[ $EUID -ne 0 ]]; then
-    echo "[!] Please log in as root and run this script."
+    echo "Please log in as root and run this script."
     exit 1
 fi
 
 echo "==> Installing kdevelop"
 
-echo "[*] Updating package lists..."
+echo "Updating package lists..."
 apt update -q
 
-echo "[*] Installing kdevelop..."
+echo "Installing kdevelop..."
 apt install -y \
     git \
     kdevelop \
@@ -32,4 +32,4 @@ apt install -y \
     kdevelop-php
 
 echo ""
-echo "[+] Development tools installed successfully."
+echo "Development tools installed successfully."

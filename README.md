@@ -1,18 +1,16 @@
-# shell-toolkit (refactor in progress...)
+# Shell-Toolkit
 
-> **A personal collection of Bash scripts for Debian-based x86_64 systems.**
-> Server bootstrapping, monitoring stack deployment, web server setup, shell quality-of-life
-> tweaks, media downloads, and day-to-day automation.
+**A collection of standalone Bash utilities and reusable workflows for Debian- and Ubuntu-based systems.**
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Bash](https://img.shields.io/badge/Bash-5.0%2B-4EAA25?logo=gnubash&logoColor=white)](https://www.gnu.org/software/bash/)
 [![Debian](https://img.shields.io/badge/Debian-Supported-A81D33?logo=debian&logoColor=white)](https://www.debian.org)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-Supported-E95420?logo=ubuntu&logoColor=white)](https://ubuntu.com)
 
-Scripts are organized into two directories:
+Scripts are organized into two categories:
 
-- **`standalone/`** — self-contained scripts, each performing a single task.
-- **`workflows/`** — higher-level scripts that chain standalones together to accomplish a larger goal.
+- **standalone/** — self-contained scripts that perform a single task.
+- **workflows/** — scripts that orchestrate multiple standalone utilities to accomplish a larger task.
 
 ## Quick Start
 
@@ -35,26 +33,6 @@ Then either run an individual script from `standalone/` or execute a workflow fr
 
 A dry run in a disposable VM or non-production environment is always a good idea before using scripts on production systems.
 
-## Fresh VPS Deployment
-
-For a fresh Debian installation with only **Standard system utilities** and **OpenSSH server** selected:
-
-Run as `root`:
-
-```bash
-apt update && apt install -y git nano && \
-git clone https://github.com/rebootless/shell-toolkit && \
-cd shell-toolkit/workflows/deploy-server && \
-cp .env.example .env && \
-nano .env
-```
-
-After configuring `.env`, start the deployment:
-
-```bash
-./deploy-server
-```
-
 ## Documentation
 
 Every script includes a metadata block immediately after the shebang describing its purpose,
@@ -74,7 +52,11 @@ To regenerate the documentation locally:
 - Root/`sudo` access for system-level scripts
 - Internet connection for package and image downloads
 - `python3` (standard library only) to run `generate-docs.py`
-- Some scripts require additional software such as `Docker`, `jq`, `pipx`, `flatpak`, or `npm` (see the documentation for details)
+- Some scripts require additional software such as `pipx`, `flatpak`, or `npm` (see the documentation for details)
+
+## Related Projects
+
+- [ansible-playbook](https://github.com/rebootless/ansible-playbook) — Ansible playbook for provisioning and configuring complete servers.
 
 ## Contributing
 
@@ -94,9 +76,3 @@ Before submitting a Pull Request, ensure that documentation generation succeeds:
 ## License
 
 This project is licensed under the **GNU General Public License v3.0** — see the [LICENSE](LICENSE) file for details.
-
-<div align="center">
-
-Built for self-hosted infrastructure, automation, and observability.
-
-</div>

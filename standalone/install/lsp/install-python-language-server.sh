@@ -28,10 +28,10 @@ mkdir -p "$INSTALL_DIR"
 
 # --- install pylsp ---
 if ! command -v pylsp >/dev/null 2>&1; then
-    echo "[*] Installing python-lsp-server (pylsp)..."
+    echo "Installing python-lsp-server (pylsp)..."
     pipx install "python-lsp-server[all]"
 else
-    echo "[*] pylsp already installed, skipping."
+    echo "pylsp already installed, skipping."
 fi
 
 # --- bashrc ---
@@ -51,7 +51,8 @@ $MARK_END
 EOF
 
 echo ""
-echo "[+] Python LSP installed successfully."
+echo "Python LSP installed successfully."
+
 echo ""
-echo "[NOTE] Log out and log back into your session"
-echo "       (or reboot) for the updated PATH to take effect."
+echo "Log out and log back into your session"
+echo "(or reboot) for the updated PATH to take effect."
