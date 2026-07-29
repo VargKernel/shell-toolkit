@@ -48,7 +48,7 @@ To regenerate the documentation locally:
 
 ## Requirements
 
-- Debian-based **x86_64** Linux system with Bash 5.0+
+- Debian- or Ubuntu-based Linux system with Bash 5.0+
 - Root/`sudo` access for system-level scripts
 - Internet connection for package and image downloads
 - `python3` (standard library only) to run `generate-docs.py`
