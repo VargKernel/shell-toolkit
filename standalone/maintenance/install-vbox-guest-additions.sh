@@ -7,11 +7,8 @@
 #   by running the vendor installer from the mounted Guest Additions ISO.
 #
 #   - **Run this inside the guest VM**, not on the host.
-#   - **Before running**: mount the Guest Additions ISO first. In the
-#     VirtualBox VM window, use `Devices -> Insert Guest Additions CD image...`
-#     (or attach `VBoxGuestAdditions.iso` manually), then re-run this script.
-#   - Installs `dkms`, `build-essential`, and a matching kernel headers package
-#     via apt, then runs the vendor installer from the mounted image.
+#   - **Before running**: mount the Guest Additions ISO first. In the VirtualBox VM window, use `Devices -> Insert Guest Additions CD image...` (or attach `VBoxGuestAdditions.iso` manually), then re-run this script.
+#   - Installs `dkms`, `build-essential`, and a matching kernel headers package via apt, then runs the vendor installer from the mounted image.
 # sudo: true
 # interactive: false
 # idempotent: true
