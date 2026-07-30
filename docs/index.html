@@ -335,19 +335,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>158</td></tr>
+<tr><td>Total scripts</td><td>160</td></tr>
 <tr><td>Directories</td><td>18</td></tr>
-<tr><td>Require root / sudo</td><td>90 / 158</td></tr>
-<tr><td>Interactive</td><td>28 / 158</td></tr>
+<tr><td>Require root / sudo</td><td>90 / 160</td></tr>
+<tr><td>Interactive</td><td>29 / 160</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>150 / 7 / 1</td></tr>
-<tr><td>Scripts with dependencies</td><td>12 / 158</td></tr>
+    <td>152 / 7 / 1</td></tr>
+<tr><td>Scripts with dependencies</td><td>13 / 160</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>19</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>4</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>12</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>3</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>19</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>4</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
 </tbody>
 </table>
 
@@ -392,6 +392,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   ├── remove-firewalld.sh
 │   │   └── remove-ufw.sh
 │   ├── git/
+│   │   ├── bootstrap-git.sh
 │   │   ├── git-clone-all.sh
 │   │   └── git-rewrite-identity.sh
 │   ├── group-management/
@@ -534,6 +535,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   ├── setup-development-environment.sh
 │   ├── setup-downloaders.sh
 │   ├── setup-firewalld.sh
+│   ├── setup-git.sh
 │   ├── setup-proprietary-software.sh
 │   ├── setup-qemu-kvm.sh
 │   ├── setup-ranger.sh
@@ -579,6 +581,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/firewall enable-ufw.sh enable ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall">standalone/firewall</td><td data-value="enable-ufw.sh"><a href="#script-standalone-firewall-enable-ufw-sh"><code>enable-ufw.sh</code></a></td><td data-value="enable ufw.">Enable UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/firewall remove-firewalld.sh remove firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall">standalone/firewall</td><td data-value="remove-firewalld.sh"><a href="#script-standalone-firewall-remove-firewalld-sh"><code>remove-firewalld.sh</code></a></td><td data-value="remove firewalld.">Remove Firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/firewall remove-ufw.sh remove ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall">standalone/firewall</td><td data-value="remove-ufw.sh"><a href="#script-standalone-firewall-remove-ufw-sh"><code>remove-ufw.sh</code></a></td><td data-value="remove ufw.">Remove UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/git bootstrap-git.sh bootstrap git configuration for a github account." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="bootstrap-git.sh"><a href="#script-standalone-git-bootstrap-git-sh"><code>bootstrap-git.sh</code></a></td><td data-value="bootstrap git configuration for a github account.">Bootstrap Git configuration for a GitHub account.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/git git-clone-all.sh clone all public repositories from a github user/profile." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="git-clone-all.sh"><a href="#script-standalone-git-git-clone-all-sh"><code>git-clone-all.sh</code></a></td><td data-value="clone all public repositories from a github user/profile.">Clone all public repositories from a GitHub user/profile.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/git git-rewrite-identity.sh rewrite author/committer name and email across all commits in a git repository." data-sudo="0" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="git-rewrite-identity.sh"><a href="#script-standalone-git-git-rewrite-identity-sh"><code>git-rewrite-identity.sh</code></a></td><td data-value="rewrite author/committer name and email across all commits in a git repository.">Rewrite author/committer name and email across all commits in a Git repository.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/group-management grant-kvm.sh add an existing user to the kvm group." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/group-management">standalone/group-management</td><td data-value="grant-kvm.sh"><a href="#script-standalone-group-management-grant-kvm-sh"><code>grant-kvm.sh</code></a></td><td data-value="add an existing user to the kvm group.">Add an existing user to the kvm group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -705,6 +708,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="workflows setup-development-environment.sh install a full c++/python/php/node dev environment + lsp servers in one step." data-sudo="0" data-interactive="0" data-hasdeps="1"><td class="dir-tag" data-value="workflows">workflows</td><td data-value="setup-development-environment.sh"><a href="#script-workflows-setup-development-environment-sh"><code>setup-development-environment.sh</code></a></td><td data-value="install a full c++/python/php/node dev environment + lsp servers in one step.">Install a full C++/Python/PHP/Node dev environment + LSP servers in one step.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="11">11</td></tr>
 <tr data-search="workflows setup-downloaders.sh install yt-dlp, gallery-dl, spotdl via pipx in one step." data-sudo="0" data-interactive="0" data-hasdeps="1"><td class="dir-tag" data-value="workflows">workflows</td><td data-value="setup-downloaders.sh"><a href="#script-workflows-setup-downloaders-sh"><code>setup-downloaders.sh</code></a></td><td data-value="install yt-dlp, gallery-dl, spotdl via pipx in one step.">Install yt-dlp, gallery-dl, spotdl via pipx in one step.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="4">4</td></tr>
 <tr data-search="workflows setup-firewalld.sh install and enable firewalld." data-sudo="1" data-interactive="0" data-hasdeps="1"><td class="dir-tag" data-value="workflows">workflows</td><td data-value="setup-firewalld.sh"><a href="#script-workflows-setup-firewalld-sh"><code>setup-firewalld.sh</code></a></td><td data-value="install and enable firewalld.">Install and enable Firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="2">2</td></tr>
+<tr data-search="workflows setup-git.sh install git and perform the initial git configuration." data-sudo="0" data-interactive="1" data-hasdeps="1"><td class="dir-tag" data-value="workflows">workflows</td><td data-value="setup-git.sh"><a href="#script-workflows-setup-git-sh"><code>setup-git.sh</code></a></td><td data-value="install git and perform the initial git configuration.">Install Git and perform the initial Git configuration.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="2">2</td></tr>
 <tr data-search="workflows setup-proprietary-software.sh install flatpak + flathub + discord, steam, telegram in one step." data-sudo="0" data-interactive="0" data-hasdeps="1"><td class="dir-tag" data-value="workflows">workflows</td><td data-value="setup-proprietary-software.sh"><a href="#script-workflows-setup-proprietary-software-sh"><code>setup-proprietary-software.sh</code></a></td><td data-value="install flatpak + flathub + discord, steam, telegram in one step.">Install Flatpak + Flathub + Discord, Steam, Telegram in one step.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="4">4</td></tr>
 <tr data-search="workflows setup-qemu-kvm.sh install qemu/kvm and grant required group memberships." data-sudo="1" data-interactive="1" data-hasdeps="1"><td class="dir-tag" data-value="workflows">workflows</td><td data-value="setup-qemu-kvm.sh"><a href="#script-workflows-setup-qemu-kvm-sh"><code>setup-qemu-kvm.sh</code></a></td><td data-value="install qemu/kvm and grant required group memberships.">Install QEMU/KVM and grant required group memberships.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="3">3</td></tr>
 <tr data-search="workflows setup-ranger.sh install and configure ranger with nerd fonts and ranger_devicons." data-sudo="0" data-interactive="0" data-hasdeps="1"><td class="dir-tag" data-value="workflows">workflows</td><td data-value="setup-ranger.sh"><a href="#script-workflows-setup-ranger-sh"><code>setup-ranger.sh</code></a></td><td data-value="install and configure ranger with nerd fonts and ranger_devicons.">Install and configure ranger with Nerd Fonts and ranger_devicons.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="3">3</td></tr>
@@ -1005,6 +1009,18 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-uninstall-ufw-sh"><code>workflows/uninstall-ufw.sh</code></a></li></ul></div>
 </div><h2 id="dir-standalone-git" class="dir-heading"><code>standalone/git/</code><a class="permalink" href="#dir-standalone-git" aria-label="Link to this section">#</a></h2>
+<div class="script-card" id="script-standalone-git-bootstrap-git-sh" data-search="standalone/git bootstrap-git.sh bootstrap git configuration for a github account." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/git/bootstrap-git.sh</code><a class="permalink" href="#script-standalone-git-bootstrap-git-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/git/bootstrap-git.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Configures Git user identity and optionally stores GitHub HTTPS credentials for automatic authentication.</p>
+<ul><li>Sets global user name and email.</li><li>Sets the default branch name.</li><li>Optionally enables credential.helper store.</li><li>Optionally stores a GitHub Personal Access Token (PAT).</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-git-sh"><code>workflows/setup-git.sh</code></a></li></ul></div>
+</div>
 <div class="script-card" id="script-standalone-git-git-clone-all-sh" data-search="standalone/git git-clone-all.sh clone all public repositories from a github user/profile." data-sudo="0" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/git/git-clone-all.sh</code><a class="permalink" href="#script-standalone-git-git-clone-all-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/git/git-clone-all.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -1248,7 +1264,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 </div>
 <p>Installs <a href="https://git-scm.com">git</a> via apt.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-git-sh"><code>workflows/setup-git.sh</code></a></li></ul></div>
 </div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-htop-sh" data-search="standalone/install/apt/cli install-htop.sh install htop from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-htop.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-htop-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-htop.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -2519,6 +2535,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-install-apt-cli-install-firewalld-cli-sh"><code>standalone/install/apt/cli/install-firewalld-cli.sh</code></a></li><li><a href="#script-standalone-firewall-enable-firewalld-sh"><code>standalone/firewall/enable-firewalld.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
+<div class="script-card" id="script-workflows-setup-git-sh" data-search="workflows setup-git.sh install git and perform the initial git configuration." data-sudo="0" data-interactive="1" data-hasdeps="1">
+<h3><code>workflows/setup-git.sh</code><a class="permalink" href="#script-workflows-setup-git-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="workflows/setup-git.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ✅</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Sets up a complete Git environment by chaining standalone scripts.</p>
+<ul><li>Installs Git from the distribution repositories.</li><li>Runs the Git bootstrap configuration.</li><li>Workflow must be started as a regular user.</li><li>Individual scripts handle privilege escalation when required.</li></ul>
+<p>Example: ./setup-git.sh \ --username USERNAME \ --email EMAIL \ --default-branch main \ --token ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \ --store-credentials</p>
+<div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-install-apt-cli-install-git-sh"><code>standalone/install/apt/cli/install-git.sh</code></a></li><li><a href="#script-standalone-git-bootstrap-git-sh"><code>standalone/git/bootstrap-git.sh</code></a></li></ul></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
 <div class="script-card" id="script-workflows-setup-proprietary-software-sh" data-search="workflows setup-proprietary-software.sh install flatpak + flathub + discord, steam, telegram in one step." data-sudo="0" data-interactive="0" data-hasdeps="1">
 <h3><code>workflows/setup-proprietary-software.sh</code><a class="permalink" href="#script-workflows-setup-proprietary-software-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="workflows/setup-proprietary-software.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -2617,8 +2646,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-30 15:48 UTC &middot;
-158 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-30 16:15 UTC &middot;
+160 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -2626,7 +2655,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (19)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (12)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (19)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
