@@ -335,19 +335,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>155</td></tr>
+<tr><td>Total scripts</td><td>156</td></tr>
 <tr><td>Directories</td><td>18</td></tr>
-<tr><td>Require root / sudo</td><td>89 / 155</td></tr>
-<tr><td>Interactive</td><td>28 / 155</td></tr>
+<tr><td>Require root / sudo</td><td>90 / 156</td></tr>
+<tr><td>Interactive</td><td>28 / 156</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>147 / 7 / 1</td></tr>
-<tr><td>Scripts with dependencies</td><td>11 / 155</td></tr>
+    <td>148 / 7 / 1</td></tr>
+<tr><td>Scripts with dependencies</td><td>11 / 156</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>19</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/java</td><td>1</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>5</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>11</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>2</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>19</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/java</td><td>1</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>6</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>11</td></tr>
 </tbody>
 </table>
 
@@ -509,6 +509,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   ├── maintenance/
 │   │   ├── create-swap.sh
 │   │   ├── create-user.sh
+│   │   ├── install-nerd-fonts.sh
 │   │   ├── install-vbox-guest-additions.sh
 │   │   ├── purge-virtualbox.sh
 │   │   └── restore-bashrc.sh
@@ -681,6 +682,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/inventory/system get-user-crontab.sh current user&#x27;s crontab entries." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-user-crontab.sh"><a href="#script-standalone-inventory-system-get-user-crontab-sh"><code>get-user-crontab.sh</code></a></td><td data-value="current user&#x27;s crontab entries.">Current user's crontab entries.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance create-swap.sh create and activate a swap file of any size." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="create-swap.sh"><a href="#script-standalone-maintenance-create-swap-sh"><code>create-swap.sh</code></a></td><td data-value="create and activate a swap file of any size.">Create and activate a swap file of any size.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance create-user.sh create a new local user." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="create-user.sh"><a href="#script-standalone-maintenance-create-user-sh"><code>create-user.sh</code></a></td><td data-value="create a new local user.">Create a new local user.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/maintenance install-nerd-fonts.sh install popular nerd fonts from the official releases." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="install-nerd-fonts.sh"><a href="#script-standalone-maintenance-install-nerd-fonts-sh"><code>install-nerd-fonts.sh</code></a></td><td data-value="install popular nerd fonts from the official releases.">Install popular Nerd Fonts from the official releases.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance install-vbox-guest-additions.sh install virtualbox guest additions from the mounted iso." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="install-vbox-guest-additions.sh"><a href="#script-standalone-maintenance-install-vbox-guest-additions-sh"><code>install-vbox-guest-additions.sh</code></a></td><td data-value="install virtualbox guest additions from the mounted iso.">Install VirtualBox Guest Additions from the mounted ISO.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance purge-virtualbox.sh purge all installed virtualbox packages and extension packs." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="purge-virtualbox.sh"><a href="#script-standalone-maintenance-purge-virtualbox-sh"><code>purge-virtualbox.sh</code></a></td><td data-value="purge all installed virtualbox packages and extension packs.">Purge all installed VirtualBox packages and Extension Packs.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance restore-bashrc.sh reset ~/.bashrc to the distribution default." data-sudo="0" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="restore-bashrc.sh"><a href="#script-standalone-maintenance-restore-bashrc-sh"><code>restore-bashrc.sh</code></a></td><td data-value="reset ~/.bashrc to the distribution default.">Reset ~/.bashrc to the distribution default.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -2252,6 +2254,20 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
+<div class="script-card" id="script-standalone-maintenance-install-nerd-fonts-sh" data-search="standalone/maintenance install-nerd-fonts.sh install popular nerd fonts from the official releases." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/maintenance/install-nerd-fonts.sh</code><a class="permalink" href="#script-standalone-maintenance-install-nerd-fonts-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/install-nerd-fonts.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Downloads and installs several popular Nerd Fonts from the official Nerd Fonts GitHub releases.</p>
+<p>Installed fonts:</p>
+<ul><li>JetBrainsMono</li><li>FiraCode</li><li>Hack</li><li>Meslo</li><li>SourceCodePro</li></ul>
+<p>Repository: https://github.com/ryanoasis/nerd-fonts</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
 <div class="script-card" id="script-standalone-maintenance-install-vbox-guest-additions-sh" data-search="standalone/maintenance install-vbox-guest-additions.sh install virtualbox guest additions from the mounted iso." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/maintenance/install-vbox-guest-additions.sh</code><a class="permalink" href="#script-standalone-maintenance-install-vbox-guest-additions-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/install-vbox-guest-additions.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -2574,8 +2590,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-30 14:38 UTC &middot;
-155 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-30 15:21 UTC &middot;
+156 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -2583,7 +2599,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (19)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-java">standalone/install/java/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (11)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (2)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (19)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-java">standalone/install/java/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (11)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
