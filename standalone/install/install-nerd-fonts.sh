@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ---DOC-START---
-# summary: Install popular Nerd Fonts from the official releases.
+# summary: Install popular [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) from the official releases.
 # description: |
 #   Downloads and installs several popular Nerd Fonts from the official
 #   Nerd Fonts GitHub releases.
@@ -12,10 +12,6 @@
 #   - Hack
 #   - Meslo
 #   - SourceCodePro
-#
-#   Repository:
-#   https://github.com/ryanoasis/nerd-fonts
-#
 # sudo: true
 # interactive: false
 # idempotent: true

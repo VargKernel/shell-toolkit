@@ -3,7 +3,7 @@
 # ---DOC-START---
 # summary: Install VirtualBox Guest Additions from the mounted ISO.
 # description: |
-#   Installs VirtualBox Guest Additions (https://www.virtualbox.org/manual/ch04.html)
+#   Installs [VirtualBox Guest Additions](https://www.virtualbox.org/manual/ch04.html)
 #   by running the vendor installer from the mounted Guest Additions ISO.
 #
 #   - **Run this inside the guest VM**, not on the host.

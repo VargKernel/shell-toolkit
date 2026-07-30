@@ -7,8 +7,6 @@
 #
 #   - Runs in order: `install-cpp.sh`, `install-python.sh`, `install-php.sh`, `install-kate.sh`, `install-kdevelop.sh`, `install-npm.sh`, `install-ghostwriter.sh`, `install-docker.sh`
 #   - Then installs `install-bash-language-server.sh`, `install-markdown-language-server.sh` and `install-python-language-server.sh`
-#   - Each subscript is executed individually so a failure is isolated and traceable
-#   - Located in `workflows/`
 # sudo: false
 # interactive: false
 # idempotent: true
