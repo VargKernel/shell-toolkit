@@ -4,6 +4,7 @@
 # summary: Install Tor Browser via the official Tor Project apt repository.
 # description: |
 #   Installs [Tor Browser](https://www.torproject.org) via the official Tor Project apt repository.
+#   Install path: `$HOME/.local/bin`
 # sudo: true
 # interactive: false
 # idempotent: mostly
