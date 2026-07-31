@@ -6,7 +6,7 @@
 #   Installs [python-lsp-server](https://github.com/python-lsp/python-lsp-server) (`pylsp`)
 #   for the current user, with all optional providers (Rope, Pyflakes, McCabe,
 #   pycodestyle, pydocstyle, autopep8, YAPF) enabled via the `[all]` extra.
-#   Install pash: `$HOME/.local/npm`
+#   Install path: `$HOME/.local/npm`
 #   Marker block path: `~/.bashrc` `~/.profile`
 #
 # sudo: false
