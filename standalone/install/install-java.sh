@@ -4,7 +4,7 @@
 # summary: Eclipse Temurin JDK/JRE installer (v8, 17, 21, 25).
 # description: |
 #   Downloads and installs multiple Eclipse Temurin (Adoptium) JDK/JRE builds.
-#   Install pash: `/opt/java/temurin/`
+#   Install path: `/opt/java/temurin/`
 #
 #   - Supported versions: 8, 17, 21, 25
 #   - Downloads both JDK and JRE variants
