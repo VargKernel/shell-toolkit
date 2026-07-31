@@ -336,7 +336,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
 <tr><td>Total scripts</td><td>160</td></tr>
-<tr><td>Directories</td><td>18</td></tr>
+<tr><td>Directories</td><td>19</td></tr>
 <tr><td>Require root / sudo</td><td>90 / 160</td></tr>
 <tr><td>Interactive</td><td>29 / 160</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
@@ -347,7 +347,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>3</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>19</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>21</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>4</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>3</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>19</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>20</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/kde-plasma</td><td>1</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>4</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
 </tbody>
 </table>
 
@@ -436,7 +436,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   │       ├── install-inkscape.sh
 │   │   │       ├── install-kate.sh
 │   │   │       ├── install-kdevelop.sh
-│   │   │       ├── install-kio-admin.sh
 │   │   │       ├── install-krusader.sh
 │   │   │       ├── install-obs-studio.sh
 │   │   │       ├── install-okular.sh
@@ -509,6 +508,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │       ├── get-top-processes.sh
 │   │       ├── get-usb-devices.sh
 │   │       └── get-user-crontab.sh
+│   ├── kde-plasma/
+│   │   └── install-kio-admin.sh
 │   ├── maintenance/
 │   │   ├── create-swap.sh
 │   │   ├── create-user.sh
@@ -596,7 +597,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/install/apt/cli install-curl.sh install curl from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-curl.sh"><a href="#script-standalone-install-apt-cli-install-curl-sh"><code>install-curl.sh</code></a></td><td data-value="install curl from the distribution repositories.">Install curl from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-docker.sh install docker engine and the docker compose plugin." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-docker.sh"><a href="#script-standalone-install-apt-cli-install-docker-sh"><code>install-docker.sh</code></a></td><td data-value="install docker engine and the docker compose plugin.">Install Docker Engine and the Docker Compose plugin.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-firewalld-cli.sh install firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-firewalld-cli.sh"><a href="#script-standalone-install-apt-cli-install-firewalld-cli-sh"><code>install-firewalld-cli.sh</code></a></td><td data-value="install firewalld.">Install firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-flatpak.sh install flatpak, add the flathub remote, optionally enable kde discover integration." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-flatpak.sh"><a href="#script-standalone-install-apt-cli-install-flatpak-sh"><code>install-flatpak.sh</code></a></td><td data-value="install flatpak, add the flathub remote, optionally enable kde discover integration.">Install flatpak, add the Flathub remote, optionally enable KDE Discover integration.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-flatpak.sh install flatpak, add the flathub repository." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-flatpak.sh"><a href="#script-standalone-install-apt-cli-install-flatpak-sh"><code>install-flatpak.sh</code></a></td><td data-value="install flatpak, add the flathub repository.">Install flatpak, add the Flathub repository.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-git.sh install git from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-git.sh"><a href="#script-standalone-install-apt-cli-install-git-sh"><code>install-git.sh</code></a></td><td data-value="install git from the distribution repositories.">Install git from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-htop.sh install htop from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-htop.sh"><a href="#script-standalone-install-apt-cli-install-htop-sh"><code>install-htop.sh</code></a></td><td data-value="install htop from the distribution repositories.">Install htop from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-nano.sh install gnu nano from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-nano.sh"><a href="#script-standalone-install-apt-cli-install-nano-sh"><code>install-nano.sh</code></a></td><td data-value="install gnu nano from the distribution repositories.">Install GNU nano from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -620,7 +621,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/install/apt/gui install-inkscape.sh install inkscape from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-inkscape.sh"><a href="#script-standalone-install-apt-gui-install-inkscape-sh"><code>install-inkscape.sh</code></a></td><td data-value="install inkscape from the distribution repositories.">Install Inkscape from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/gui install-kate.sh install the kate text editor." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-kate.sh"><a href="#script-standalone-install-apt-gui-install-kate-sh"><code>install-kate.sh</code></a></td><td data-value="install the kate text editor.">Install the Kate text editor.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/gui install-kdevelop.sh install the kdevelop ide." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-kdevelop.sh"><a href="#script-standalone-install-apt-gui-install-kdevelop-sh"><code>install-kdevelop.sh</code></a></td><td data-value="install the kdevelop ide.">Install the KDevelop IDE.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/gui install-kio-admin.sh install kio-admin for dolphin root access." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-kio-admin.sh"><a href="#script-standalone-install-apt-gui-install-kio-admin-sh"><code>install-kio-admin.sh</code></a></td><td data-value="install kio-admin for dolphin root access.">Install kio-admin for Dolphin root access.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/gui install-krusader.sh install krusader from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-krusader.sh"><a href="#script-standalone-install-apt-gui-install-krusader-sh"><code>install-krusader.sh</code></a></td><td data-value="install krusader from the distribution repositories.">Install Krusader from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/gui install-obs-studio.sh install obs studio from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-obs-studio.sh"><a href="#script-standalone-install-apt-gui-install-obs-studio-sh"><code>install-obs-studio.sh</code></a></td><td data-value="install obs studio from the distribution repositories.">Install OBS Studio from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/gui install-okular.sh install the okular document viewer." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-okular.sh"><a href="#script-standalone-install-apt-gui-install-okular-sh"><code>install-okular.sh</code></a></td><td data-value="install the okular document viewer.">Install the Okular document viewer.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -687,6 +687,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/inventory/system get-top-processes.sh top 10 processes by cpu usage." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-top-processes.sh"><a href="#script-standalone-inventory-system-get-top-processes-sh"><code>get-top-processes.sh</code></a></td><td data-value="top 10 processes by cpu usage.">Top 10 processes by CPU usage.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-usb-devices.sh usb device inventory." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-usb-devices.sh"><a href="#script-standalone-inventory-system-get-usb-devices-sh"><code>get-usb-devices.sh</code></a></td><td data-value="usb device inventory.">USB device inventory.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/inventory/system get-user-crontab.sh current user&#x27;s crontab entries." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/inventory/system">standalone/inventory/system</td><td data-value="get-user-crontab.sh"><a href="#script-standalone-inventory-system-get-user-crontab-sh"><code>get-user-crontab.sh</code></a></td><td data-value="current user&#x27;s crontab entries.">Current user's crontab entries.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/kde-plasma install-kio-admin.sh install kio-admin for dolphin root access." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/kde-plasma">standalone/kde-plasma</td><td data-value="install-kio-admin.sh"><a href="#script-standalone-kde-plasma-install-kio-admin-sh"><code>install-kio-admin.sh</code></a></td><td data-value="install kio-admin for dolphin root access.">Install kio-admin for Dolphin root access.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance create-swap.sh create and activate a swap file of any size." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="create-swap.sh"><a href="#script-standalone-maintenance-create-swap-sh"><code>create-swap.sh</code></a></td><td data-value="create and activate a swap file of any size.">Create and activate a swap file of any size.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance create-user.sh create a new local user." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="create-user.sh"><a href="#script-standalone-maintenance-create-user-sh"><code>create-user.sh</code></a></td><td data-value="create a new local user.">Create a new local user.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance purge-virtualbox.sh purge all installed virtualbox packages and extension packs." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="purge-virtualbox.sh"><a href="#script-standalone-maintenance-purge-virtualbox-sh"><code>purge-virtualbox.sh</code></a></td><td data-value="purge all installed virtualbox packages and extension packs.">Purge all installed VirtualBox packages and Extension Packs.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -1029,7 +1030,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Clones every public repository belonging to a GitHub user or organization.</p>
-<ul><li>Usage: <code>./git-clone-all.sh &lt;github-username-or-url&gt; [target-dir]</code></li><li>Accepts either a bare username or a full <code>github.com/&lt;user&gt;</code> URL</li><li>Paginates through the GitHub API to fetch all repositories</li><li>Clones each repo into the target directory (default <code>./repos</code>)</li><li>Skips repositories that are already cloned locally</li><li>No root required</li></ul>
+<ul><li>Usage: <code>./git-clone-all.sh &lt;github-username-or-url&gt; [--path &lt;dir&gt;]</code></li><li>Accepts either a bare username or a full <code>github.com/&lt;user&gt;</code> URL</li><li>Paginates through the GitHub API to fetch all repositories</li><li>Clones each repo into the target directory (default <code>./repos</code>)</li><li>Skips repositories that are already cloned locally</li><li>No root required</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -1155,8 +1156,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>Downloads and installs multiple Eclipse Temurin (Adoptium) JDK/JRE builds.</p>
-<ul><li>Supported versions: 8, 17, 21, 25</li><li>Downloads both JDK and JRE variants</li><li>Installs system-wide to <code>/opt/java/temurin/</code></li><li>Updates the current user's shell configuration</li><li>Requires sudo only for system-wide installation</li></ul>
+<p>Downloads and installs multiple Eclipse Temurin (Adoptium) JDK/JRE builds. Install pash: <code>/opt/java/temurin/</code></p>
+<ul><li>Supported versions: 8, 17, 21, 25</li><li>Downloads both JDK and JRE variants</li><li>Updates the current user's shell configuration</li><li>Requires sudo only for system-wide installation</li></ul>
 <p>Usage: ./install-temurin.sh ./install-temurin.sh --force</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
@@ -1168,7 +1169,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>Downloads and installs several popular Nerd Fonts from the official Nerd Fonts GitHub releases.</p>
+<p>Downloads and installs several popular Nerd Fonts from the official Nerd Fonts GitHub releases. Install path: <code>/usr/local/share/fonts/NerdFonts</code></p>
 <p>Installed fonts:</p>
 <ul><li>JetBrainsMono</li><li>FiraCode</li><li>Hack</li><li>Meslo</li><li>SourceCodePro</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
@@ -1181,8 +1182,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>Installs <a href="https://github.com/alexanderjeurissen/ranger_devicons">ranger_devicons</a> into the current user's ranger configuration.</p>
-<ul><li>Downloads the latest plugin archive from GitHub.</li><li>Installs it to <code>~/.config/ranger/plugins/ranger_devicons</code>.</li><li>Enables <code>default_linemode devicons</code> in <code>~/.config/ranger/rc.conf</code>.</li><li>Requires a Nerd Font configured in your terminal.</li></ul>
+<p>Installs <a href="https://github.com/alexanderjeurissen/ranger_devicons">ranger_devicons</a> into the current user's ranger configuration. Install path: <code>$HOME/.config/ranger/plugins/ranger_devicons</code></p>
+<ul><li>Downloads the latest plugin archive from GitHub.</li><li>Enables <code>default_linemode devicons</code> in <code>$HOME/.config/ranger/rc.conf</code>.</li><li>Requires a Nerd Font configured in your terminal.</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-ranger-sh"><code>workflows/setup-ranger.sh</code></a></li></ul></div>
 </div>
@@ -1244,14 +1245,14 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-firewalld-sh"><code>workflows/setup-firewalld.sh</code></a></li></ul></div>
 </div>
-<div class="script-card" id="script-standalone-install-apt-cli-install-flatpak-sh" data-search="standalone/install/apt/cli install-flatpak.sh install flatpak, add the flathub remote, optionally enable kde discover integration." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<div class="script-card" id="script-standalone-install-apt-cli-install-flatpak-sh" data-search="standalone/install/apt/cli install-flatpak.sh install flatpak, add the flathub repository." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-flatpak.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-flatpak-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-flatpak.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
 <span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>Installs <code>flatpak</code>, adds the <a href="https://flathub.org">Flathub</a> remote, optionally enables KDE Discover integration.</p>
+<p>Installs <code>flatpak</code>, adds the <a href="https://flathub.org">Flathub</a>.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-proprietary-software-sh"><code>workflows/setup-proprietary-software.sh</code></a></li></ul></div>
 </div>
@@ -1521,17 +1522,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-development-environment-sh"><code>workflows/setup-development-environment.sh</code></a></li></ul></div>
 </div>
-<div class="script-card" id="script-standalone-install-apt-gui-install-kio-admin-sh" data-search="standalone/install/apt/gui install-kio-admin.sh install kio-admin for dolphin root access." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/gui/install-kio-admin.sh</code><a class="permalink" href="#script-standalone-install-apt-gui-install-kio-admin-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/gui/install-kio-admin.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs <code>kio-admin</code> for Dolphin root access.</p>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
-</div>
 <div class="script-card" id="script-standalone-install-apt-gui-install-krusader-sh" data-search="standalone/install/apt/gui install-krusader.sh install krusader from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/gui/install-krusader.sh</code><a class="permalink" href="#script-standalone-install-apt-gui-install-krusader-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/gui/install-krusader.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -1694,8 +1684,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>Installs <a href="https://github.com/bash-lsp/bash-language-server">bash-language-server</a> via npm into <code>~/.local/npm</code>; adds to <code>~/.bashrc</code>.</p>
-<ul><li>Idempotent — uses a marker block in <code>~/.bashrc</code> and skips installation if the server is already present</li></ul>
+<p>Installs <a href="https://github.com/bash-lsp/bash-language-server">bash-language-server</a> via npm. Install pash: <code>$HOME/.local/npm</code> Marker block path: <code>~/.bashrc</code> <code>~/.profile</code></p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-development-environment-sh"><code>workflows/setup-development-environment.sh</code></a></li></ul></div>
 </div>
@@ -1730,8 +1719,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>Installs <a href="https://github.com/python-lsp/python-lsp-server">python-lsp-server</a> (<code>pylsp</code>) for the current user, with all optional providers (Rope, Pyflakes, McCabe, pycodestyle, pydocstyle, autopep8, YAPF) enabled via the <code>[all]</code> extra.</p>
-<ul><li>Installs via <code>pipx</code></li><li>Adds <code>~/.local/bin</code> to PATH in <code>.bashrc</code> and <code>.profile</code></li><li>Idempotent — skips installation if <code>pylsp</code> is already available</li></ul>
+<p>Installs <a href="https://github.com/python-lsp/python-lsp-server">python-lsp-server</a> (<code>pylsp</code>) for the current user, with all optional providers (Rope, Pyflakes, McCabe, pycodestyle, pydocstyle, autopep8, YAPF) enabled via the <code>[all]</code> extra. Install pash: <code>$HOME/.local/npm</code> Marker block path: <code>~/.bashrc</code> <code>~/.profile</code></p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-development-environment-sh"><code>workflows/setup-development-environment.sh</code></a></li></ul></div>
 </div><h2 id="dir-standalone-install-pipx" class="dir-heading"><code>standalone/install/pipx/</code><a class="permalink" href="#dir-standalone-install-pipx" aria-label="Link to this section">#</a></h2>
@@ -2282,6 +2270,17 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <blockquote>Running as <code>sudo</code> reads root's crontab instead of the invoking user's.</blockquote>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div><h2 id="dir-standalone-kde-plasma" class="dir-heading"><code>standalone/kde-plasma/</code><a class="permalink" href="#dir-standalone-kde-plasma" aria-label="Link to this section">#</a></h2>
+<div class="script-card" id="script-standalone-kde-plasma-install-kio-admin-sh" data-search="standalone/kde-plasma install-kio-admin.sh install kio-admin for dolphin root access." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/kde-plasma/install-kio-admin.sh</code><a class="permalink" href="#script-standalone-kde-plasma-install-kio-admin-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/kde-plasma/install-kio-admin.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>kio-admin</code> for Dolphin root access (KDE-only utility).</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-maintenance" class="dir-heading"><code>standalone/maintenance/</code><a class="permalink" href="#dir-standalone-maintenance" aria-label="Link to this section">#</a></h2>
 <div class="script-card" id="script-standalone-maintenance-create-swap-sh" data-search="standalone/maintenance create-swap.sh create and activate a swap file of any size." data-sudo="1" data-interactive="1" data-hasdeps="0">
 <h3><code>standalone/maintenance/create-swap.sh</code><a class="permalink" href="#script-standalone-maintenance-create-swap-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/create-swap.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -2494,7 +2493,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Executes cleanup scripts from the <code>standalone/cleanup</code> directory.</p>
-<ul><li>Multiple cleanup tasks may be specified at once.</li><li><code>--all</code> runs every available cleanup script.</li><li><code>--yes</code> and <code>--dry-run</code> are forwarded to each cleanup subscript.</li><li>Automatically requests root privileges only when required.</li></ul>
+<ul><li>Multiple cleanup tasks may be specified at once.</li><li><code>--all</code> runs every available cleanup script.</li><li><code>--yes</code> and <code>--dry-run</code> are forwarded to each cleanup subscript.</li></ul>
 <p>Example: ./cleanup-system.sh --all --yes ./cleanup-system.sh --all --dry-run ./cleanup-system.sh --all --dry-run --yes</p>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-cleanup-cleanup-apt-sh"><code>standalone/cleanup/cleanup-apt.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-browser-brave-sh"><code>standalone/cleanup/cleanup-browser-brave.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-browser-chrome-sh"><code>standalone/cleanup/cleanup-browser-chrome.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-browser-chromium-sh"><code>standalone/cleanup/cleanup-browser-chromium.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-browser-edge-sh"><code>standalone/cleanup/cleanup-browser-edge.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-browser-firefox-sh"><code>standalone/cleanup/cleanup-browser-firefox.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-browser-opera-sh"><code>standalone/cleanup/cleanup-browser-opera.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-browser-vivaldi-sh"><code>standalone/cleanup/cleanup-browser-vivaldi.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-docker-sh"><code>standalone/cleanup/cleanup-docker.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-flatpak-sh"><code>standalone/cleanup/cleanup-flatpak.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-kernels-sh"><code>standalone/cleanup/cleanup-kernels.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-logs-sh"><code>standalone/cleanup/cleanup-logs.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-temp-sh"><code>standalone/cleanup/cleanup-temp.sh</code></a></li><li><a href="#script-standalone-cleanup-cleanup-thumbnails-sh"><code>standalone/cleanup/cleanup-thumbnails.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
@@ -2519,7 +2518,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs a curated set of Python CLI tools via <a href="https://github.com/pypa/pipx">pipx</a> in one step.</p>
-<ul><li>Runs in order: <code>install-pipx.sh</code>, <code>install-gallery-dl.sh</code>, <code>install-yt-dlp.sh</code>, <code>install-spotdl.sh</code></li><li>Located in <code>workflows/</code></li></ul>
+<ul><li>Runs in order: <code>install-pipx.sh</code>, <code>install-gallery-dl.sh</code>, <code>install-yt-dlp.sh</code>, <code>install-spotdl.sh</code></li></ul>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-install-apt-cli-install-pipx-sh"><code>standalone/install/apt/cli/install-pipx.sh</code></a></li><li><a href="#script-standalone-install-pipx-install-gallery-dl-sh"><code>standalone/install/pipx/install-gallery-dl.sh</code></a></li><li><a href="#script-standalone-install-pipx-install-yt-dlp-sh"><code>standalone/install/pipx/install-yt-dlp.sh</code></a></li><li><a href="#script-standalone-install-pipx-install-spotdl-sh"><code>standalone/install/pipx/install-spotdl.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -2531,7 +2530,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs Firewalld and enables the service.</p>
-<ul><li>Runs in order: <code>install-firewalld-cli.sh</code>, <code>enable-firewalld.sh</code></li><li>Each subscript is executed individually so a failure is isolated and traceable</li><li>Located in <code>workflows/</code></li></ul>
+<ul><li>Runs in order: <code>install-firewalld-cli.sh</code>, <code>enable-firewalld.sh</code></li></ul>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-install-apt-cli-install-firewalld-cli-sh"><code>standalone/install/apt/cli/install-firewalld-cli.sh</code></a></li><li><a href="#script-standalone-firewall-enable-firewalld-sh"><code>standalone/firewall/enable-firewalld.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -2543,7 +2542,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Sets up a complete Git environment by chaining standalone scripts.</p>
-<ul><li>Installs Git from the distribution repositories.</li><li>Runs the Git bootstrap configuration.</li><li>Workflow must be started as a regular user.</li><li>Individual scripts handle privilege escalation when required.</li></ul>
+<ul><li>Installs Git from the distribution repositories.</li><li>Runs the Git bootstrap configuration.</li></ul>
 <p>Example: ./setup-git.sh \ --username USERNAME \ --email EMAIL \ --default-branch main \ --token ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \ --store-credentials</p>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-install-apt-cli-install-git-sh"><code>standalone/install/apt/cli/install-git.sh</code></a></li><li><a href="#script-standalone-git-bootstrap-git-sh"><code>standalone/git/bootstrap-git.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
@@ -2556,7 +2555,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs <a href="https://flatpak.org">Flatpak</a> and a standard set of GUI applications in one step.</p>
-<ul><li>Runs in order: <code>install-flatpak.sh</code> (Flatpak + Flathub), <code>install-telegram.sh</code>, <code>install-discord.sh</code>, <code>install-steam.sh</code></li><li>Located in <code>workflows/</code></li></ul>
+<ul><li>Runs in order: <code>install-flatpak.sh</code> (Flatpak + Flathub), <code>install-telegram.sh</code>, <code>install-discord.sh</code>, <code>install-steam.sh</code></li></ul>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-install-apt-cli-install-flatpak-sh"><code>standalone/install/apt/cli/install-flatpak.sh</code></a></li><li><a href="#script-standalone-install-flatpak-install-telegram-sh"><code>standalone/install/flatpak/install-telegram.sh</code></a></li><li><a href="#script-standalone-install-flatpak-install-discord-sh"><code>standalone/install/flatpak/install-discord.sh</code></a></li><li><a href="#script-standalone-install-flatpak-install-steam-sh"><code>standalone/install/flatpak/install-steam.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -2568,7 +2567,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs QEMU/KVM and adds an existing user to the required virtualization groups.</p>
-<ul><li>Runs in order: <code>install-qemu-kvm.sh</code>, <code>grant-libvirt.sh</code>, <code>grant-kvm.sh</code></li><li>Each subscript is executed individually so a failure is isolated and traceable</li><li>Located in <code>workflows/</code></li></ul>
+<ul><li>Runs in order: <code>install-qemu-kvm.sh</code>, <code>grant-libvirt.sh</code>, <code>grant-kvm.sh</code></li></ul>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-install-apt-cli-install-qemu-kvm-sh"><code>standalone/install/apt/cli/install-qemu-kvm.sh</code></a></li><li><a href="#script-standalone-group-management-grant-libvirt-sh"><code>standalone/group-management/grant-libvirt.sh</code></a></li><li><a href="#script-standalone-group-management-grant-kvm-sh"><code>standalone/group-management/grant-kvm.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -2580,8 +2579,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs a complete ranger environment by chaining standalone scripts.</p>
-<ul><li>Installs ranger.</li><li>Installs popular Nerd Fonts.</li><li>Installs and configures ranger_devicons.</li><li>Each subscript is executed individually so failures are isolated and traceable.</li></ul>
-<p>Workflow must be started as a regular user. Individual scripts handle privilege escalation when required.</p>
+<ul><li>Installs ranger.</li><li>Installs popular Nerd Fonts.</li><li>Installs and configures ranger_devicons.</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-install-apt-cli-install-ranger-sh"><code>standalone/install/apt/cli/install-ranger.sh</code></a></li><li><a href="#script-standalone-install-install-nerd-fonts-sh"><code>standalone/install/install-nerd-fonts.sh</code></a></li><li><a href="#script-standalone-install-install-ranger-devicons-sh"><code>standalone/install/install-ranger-devicons.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -2593,7 +2591,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs UFW and enables the firewall.</p>
-<ul><li>Runs in order: <code>install-ufw.sh</code>, <code>enable-ufw.sh</code></li><li>Each subscript is executed individually so a failure is isolated and traceable</li><li>Located in <code>workflows/</code></li></ul>
+<ul><li>Runs in order: <code>install-ufw.sh</code>, <code>enable-ufw.sh</code></li></ul>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-install-apt-cli-install-ufw-sh"><code>standalone/install/apt/cli/install-ufw.sh</code></a></li><li><a href="#script-standalone-firewall-enable-ufw-sh"><code>standalone/firewall/enable-ufw.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -2605,7 +2603,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Installs VirtualBox and adds an existing user to the <code>vboxusers</code> group.</p>
-<ul><li>Runs in order: <code>install-virtualbox.sh</code>, <code>grant-vboxusers.sh</code></li><li>Each subscript is executed individually so a failure is isolated and traceable</li><li>Located in <code>workflows/</code></li></ul>
+<ul><li>Runs in order: <code>install-virtualbox.sh</code>, <code>grant-vboxusers.sh</code></li></ul>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-install-apt-gui-install-virtualbox-sh"><code>standalone/install/apt/gui/install-virtualbox.sh</code></a></li><li><a href="#script-standalone-group-management-grant-vboxusers-sh"><code>standalone/group-management/grant-vboxusers.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -2617,7 +2615,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Disables the Firewalld service and removes the package.</p>
-<ul><li>Runs in order: <code>disable-firewalld.sh</code>, <code>remove-firewalld.sh</code></li><li>Each subscript is executed individually so a failure is isolated and traceable</li><li>Located in <code>workflows/</code></li></ul>
+<ul><li>Runs in order: <code>disable-firewalld.sh</code>, <code>remove-firewalld.sh</code></li></ul>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-firewall-disable-firewalld-sh"><code>standalone/firewall/disable-firewalld.sh</code></a></li><li><a href="#script-standalone-firewall-remove-firewalld-sh"><code>standalone/firewall/remove-firewalld.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -2629,7 +2627,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Disables UFW and removes the package.</p>
-<ul><li>Runs in order: <code>disable-ufw.sh</code>, <code>remove-ufw.sh</code></li><li>Each subscript is executed individually so a failure is isolated and traceable</li><li>Located in <code>workflows/</code></li></ul>
+<ul><li>Runs in order: <code>disable-ufw.sh</code>, <code>remove-ufw.sh</code></li></ul>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-firewall-disable-ufw-sh"><code>standalone/firewall/disable-ufw.sh</code></a></li><li><a href="#script-standalone-firewall-remove-ufw-sh"><code>standalone/firewall/remove-ufw.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -2641,12 +2639,12 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Updates all supported package managers by chaining standalone update scripts.</p>
-<ul><li>Runs in order: <code>update-apt.sh</code>, <code>update-flatpak.sh</code>, <code>update-pipx.sh</code></li><li>Workflow must be started as a regular user.</li><li>Individual scripts handle privilege escalation when required.</li><li>Each subscript is executed individually so a failure is isolated and traceable</li></ul>
+<ul><li>Runs in order: <code>update-apt.sh</code>, <code>update-flatpak.sh</code>, <code>update-pipx.sh</code></li></ul>
 <div class="dep-section"><strong>Dependencies:</strong><ul class="dep-tree"><li><a href="#script-standalone-update-update-apt-sh"><code>standalone/update/update-apt.sh</code></a></li><li><a href="#script-standalone-update-update-flatpak-sh"><code>standalone/update/update-flatpak.sh</code></a></li><li><a href="#script-standalone-update-update-pipx-sh"><code>standalone/update/update-pipx.sh</code></a></li></ul></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-30 16:15 UTC &middot;
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-07-31 16:32 UTC &middot;
 160 scripts documented.</p>
 
 </div>
@@ -2655,7 +2653,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (19)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (21)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (19)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (20)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-kde-plasma">standalone/kde-plasma/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
