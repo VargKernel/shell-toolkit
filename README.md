@@ -30,14 +30,6 @@ Then either run an individual script from `standalone/` or execute a workflow fr
 
 A dry run in a disposable VM or non-production environment is always a good idea before using scripts on production systems.
 
-## Example
-
-Install the base i3 window manager stack:
-
-```bash
-for s in install-xorg install-i3-wm install-i3-components install-terminal install-shell-core install-archive-utils install-cli-utils install-networking install-disk-hw-utils install-system-docs install-firewalld-cli install-git install-ranger install-polkit-agent; do sudo ./standalone/install/apt/cli/$s.sh; done
-```
-
 ## Documentation
 
 Every script includes a metadata block immediately after the shebang describing its purpose, requirements, privileges, dependencies, and other properties (`summary`, `description`, `sudo`, `interactive`, `idempotent`, `dependencies`).
