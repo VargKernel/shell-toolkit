@@ -6,8 +6,6 @@
 #   Installs QEMU/KVM and adds an existing user to the required virtualization groups.
 #
 #   - Runs in order: `install-qemu-kvm.sh`, `grant-libvirt.sh`, `grant-kvm.sh`
-#   - Each subscript is executed individually so a failure is isolated and traceable
-#   - Located in `workflows/`
 # sudo: true
 # interactive: true
 # idempotent: true

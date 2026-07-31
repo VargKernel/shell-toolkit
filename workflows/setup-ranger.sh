@@ -8,10 +8,6 @@
 #   - Installs ranger.
 #   - Installs popular Nerd Fonts.
 #   - Installs and configures ranger_devicons.
-#   - Each subscript is executed individually so failures are isolated and traceable.
-#
-#   Workflow must be started as a regular user.
-#   Individual scripts handle privilege escalation when required.
 # sudo: false
 # interactive: false
 # idempotent: true

@@ -6,7 +6,6 @@
 #   Installs a curated set of Python CLI tools via [pipx](https://github.com/pypa/pipx) in one step.
 #
 #   - Runs in order: `install-pipx.sh`, `install-gallery-dl.sh`, `install-yt-dlp.sh`, `install-spotdl.sh`
-#   - Located in `workflows/`
 # sudo: false
 # interactive: false
 # idempotent: true

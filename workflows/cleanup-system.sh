@@ -8,7 +8,6 @@
 #   - Multiple cleanup tasks may be specified at once.
 #   - `--all` runs every available cleanup script.
 #   - `--yes` and `--dry-run` are forwarded to each cleanup subscript.
-#   - Automatically requests root privileges only when required.
 #
 #   Example:
 #     ./cleanup-system.sh --all --yes

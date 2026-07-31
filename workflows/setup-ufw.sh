@@ -6,8 +6,6 @@
 #   Installs UFW and enables the firewall.
 #
 #   - Runs in order: `install-ufw.sh`, `enable-ufw.sh`
-#   - Each subscript is executed individually so a failure is isolated and traceable
-#   - Located in `workflows/`
 # sudo: true
 # interactive: false
 # idempotent: true

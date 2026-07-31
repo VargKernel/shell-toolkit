@@ -6,8 +6,6 @@
 #   Disables the Firewalld service and removes the package.
 #
 #   - Runs in order: `disable-firewalld.sh`, `remove-firewalld.sh`
-#   - Each subscript is executed individually so a failure is isolated and traceable
-#   - Located in `workflows/`
 # sudo: true
 # interactive: false
 # idempotent: true

@@ -6,9 +6,6 @@
 #   Updates all supported package managers by chaining standalone update scripts.
 #
 #   - Runs in order: `update-apt.sh`, `update-flatpak.sh`, `update-pipx.sh`
-#   - Workflow must be started as a regular user.
-#   - Individual scripts handle privilege escalation when required.
-#   - Each subscript is executed individually so a failure is isolated and traceable
 # sudo: false
 # interactive: false
 # idempotent: true

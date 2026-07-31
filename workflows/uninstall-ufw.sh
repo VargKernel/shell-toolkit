@@ -6,8 +6,6 @@
 #   Disables UFW and removes the package.
 #
 #   - Runs in order: `disable-ufw.sh`, `remove-ufw.sh`
-#   - Each subscript is executed individually so a failure is isolated and traceable
-#   - Located in `workflows/`
 # sudo: true
 # interactive: false
 # idempotent: true

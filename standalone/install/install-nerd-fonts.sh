@@ -3,8 +3,8 @@
 # ---DOC-START---
 # summary: Install popular [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) from the official releases.
 # description: |
-#   Downloads and installs several popular Nerd Fonts from the official
-#   Nerd Fonts GitHub releases.
+#   Downloads and installs several popular Nerd Fonts from the official Nerd Fonts GitHub releases.
+#   Install path: `/usr/local/share/fonts/NerdFonts`
 #
 #   Installed fonts:
 #   - JetBrainsMono

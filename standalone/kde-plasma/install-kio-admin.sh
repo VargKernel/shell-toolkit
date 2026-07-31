@@ -3,7 +3,7 @@
 # ---DOC-START---
 # summary: Install kio-admin for Dolphin root access.
 # description: |
-#   Installs `kio-admin` for Dolphin root access.
+#   Installs `kio-admin` for Dolphin root access (KDE-only utility).
 # sudo: true
 # interactive: false
 # idempotent: true

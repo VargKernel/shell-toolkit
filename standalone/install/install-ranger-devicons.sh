@@ -3,12 +3,11 @@
 # ---DOC-START---
 # summary: Install ranger_devicons for ranger.
 # description: |
-#   Installs [ranger_devicons](https://github.com/alexanderjeurissen/ranger_devicons)
-#   into the current user's ranger configuration.
+#   Installs [ranger_devicons](https://github.com/alexanderjeurissen/ranger_devicons) into the current user's ranger configuration.
+#   Install path: `$HOME/.config/ranger/plugins/ranger_devicons`
 #
 #   - Downloads the latest plugin archive from GitHub.
-#   - Installs it to `~/.config/ranger/plugins/ranger_devicons`.
-#   - Enables `default_linemode devicons` in `~/.config/ranger/rc.conf`.
+#   - Enables `default_linemode devicons` in `$HOME/.config/ranger/rc.conf`.
 #   - Requires a Nerd Font configured in your terminal.
 # sudo: false
 # interactive: false

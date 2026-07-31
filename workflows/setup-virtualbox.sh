@@ -6,8 +6,6 @@
 #   Installs VirtualBox and adds an existing user to the `vboxusers` group.
 #
 #   - Runs in order: `install-virtualbox.sh`, `grant-vboxusers.sh`
-#   - Each subscript is executed individually so a failure is isolated and traceable
-#   - Located in `workflows/`
 # sudo: true
 # interactive: true
 # idempotent: true

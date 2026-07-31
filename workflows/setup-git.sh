@@ -7,8 +7,6 @@
 #
 #   - Installs Git from the distribution repositories.
 #   - Runs the Git bootstrap configuration.
-#   - Workflow must be started as a regular user.
-#   - Individual scripts handle privilege escalation when required.
 #
 #   Example:
 #     ./setup-git.sh \

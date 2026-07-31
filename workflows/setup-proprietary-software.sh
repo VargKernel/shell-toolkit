@@ -6,7 +6,6 @@
 #   Installs [Flatpak](https://flatpak.org) and a standard set of GUI applications in one step.
 #
 #   - Runs in order: `install-flatpak.sh` (Flatpak + Flathub), `install-telegram.sh`, `install-discord.sh`, `install-steam.sh`
-#   - Located in `workflows/`
 # sudo: false
 # interactive: false
 # idempotent: true

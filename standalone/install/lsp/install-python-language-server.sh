@@ -6,10 +6,9 @@
 #   Installs [python-lsp-server](https://github.com/python-lsp/python-lsp-server) (`pylsp`)
 #   for the current user, with all optional providers (Rope, Pyflakes, McCabe,
 #   pycodestyle, pydocstyle, autopep8, YAPF) enabled via the `[all]` extra.
+#   Install pash: `$HOME/.local/npm`
+#   Marker block path: `~/.bashrc` `~/.profile`
 #
-#   - Installs via `pipx`
-#   - Adds `~/.local/bin` to PATH in `.bashrc` and `.profile`
-#   - Idempotent — skips installation if `pylsp` is already available
 # sudo: false
 # interactive: false
 # idempotent: true
