@@ -1,15 +1,13 @@
 #!/bin/bash
-
 # ---DOC-START---
-# summary: Install wget from the distribution repositories.
+# summary: Install i3 companion components.
 # description: |
-#   Installs wget via apt.
+#   Installs `polybar`, `dunst`, `rofi`.
 # sudo: true
 # interactive: false
 # idempotent: true
-# dependencies: none
+# dependencies: 02-install-i3-wm.sh
 # ---DOC-END---
-
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export DEBIAN_FRONTEND=noninteractive
@@ -19,18 +17,16 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo "==> Installing wget"
-
-if command -v wget >/dev/null 2>&1; then
-    echo "wget is already installed, skipping..."
-    exit 0
-fi
+echo "==> Installing i3 companion components"
 
 echo "Updating package lists..."
 apt update -q
 
-echo "Installing wget..."
-apt install -y wget
+echo "Installing i3 companion components..."
+apt install -y \
+    polybar \
+    dunst \
+    rofi
 
 echo ""
-echo "wget installed successfully."
+echo "i3 companion components installed successfully."

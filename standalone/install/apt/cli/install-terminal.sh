@@ -1,15 +1,13 @@
 #!/bin/bash
-
 # ---DOC-START---
-# summary: Install htop from the distribution repositories.
+# summary: Install the terminal emulator.
 # description: |
-#   Installs [htop](https://htop.dev) via apt.
+#   Installs `kitty`.
 # sudo: true
 # interactive: false
 # idempotent: true
 # dependencies: none
 # ---DOC-END---
-
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export DEBIAN_FRONTEND=noninteractive
@@ -19,18 +17,14 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo "==> Installing htop"
-
-if command -v htop >/dev/null 2>&1; then
-    echo "htop is already installed, skipping..."
-    exit 0
-fi
+echo "==> Installing terminal emulator"
 
 echo "Updating package lists..."
 apt update -q
 
-echo "Installing htop..."
-apt install -y htop
+echo "Installing terminal emulator..."
+apt install -y \
+    kitty
 
 echo ""
-echo "htop installed successfully."
+echo "Terminal emulator installed successfully."

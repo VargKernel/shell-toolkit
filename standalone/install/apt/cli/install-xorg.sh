@@ -1,15 +1,13 @@
 #!/bin/bash
-
 # ---DOC-START---
-# summary: Install sudo from the distribution repositories.
+# summary: Install the Xorg window system and X11 utilities.
 # description: |
-#   Installs sudo via apt.
+#   Installs `xorg`, `xinit`, `x11-xserver-utils`.
 # sudo: true
 # interactive: false
 # idempotent: true
 # dependencies: none
 # ---DOC-END---
-
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export DEBIAN_FRONTEND=noninteractive
@@ -19,18 +17,16 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo "==> Installing sudo"
-
-if command -v sudo >/dev/null 2>&1; then
-    echo "sudo is already installed, skipping..."
-    exit 0
-fi
+echo "==> Installing Xorg window system"
 
 echo "Updating package lists..."
 apt update -q
 
-echo "Installing sudo..."
-apt install -y sudo
+echo "Installing Xorg window system..."
+apt install -y \
+    xorg \
+    xinit \
+    x11-xserver-utils
 
 echo ""
-echo "sudo installed successfully."
+echo "Xorg window system installed successfully."

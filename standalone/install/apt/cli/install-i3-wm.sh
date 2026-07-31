@@ -1,15 +1,13 @@
 #!/bin/bash
-
 # ---DOC-START---
-# summary: Install GNU nano from the distribution repositories.
+# summary: Install the i3 window manager.
 # description: |
-#   Installs GNU nano via apt.
+#   Installs `i3-wm`, `i3status`.
 # sudo: true
 # interactive: false
 # idempotent: true
-# dependencies: none
+# dependencies: 01-install-xorg.sh
 # ---DOC-END---
-
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export DEBIAN_FRONTEND=noninteractive
@@ -19,18 +17,15 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo "==> Installing nano"
-
-if command -v nano >/dev/null 2>&1; then
-    echo "nano is already installed, skipping..."
-    exit 0
-fi
+echo "==> Installing i3 window manager"
 
 echo "Updating package lists..."
 apt update -q
 
-echo "Installing nano..."
-apt install -y nano
+echo "Installing i3 window manager..."
+apt install -y \
+    i3-wm \
+    i3status
 
 echo ""
-echo "nano installed successfully."
+echo "i3 window manager installed successfully."
