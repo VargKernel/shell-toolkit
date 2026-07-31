@@ -4,7 +4,7 @@
 # summary: Install bash-language-server via npm for editor/IDE LSP integration.
 # description: |
 #   Installs [bash-language-server](https://github.com/bash-lsp/bash-language-server) via npm.
-#   Install pash: `$HOME/.local/npm`
+#   Install path: `$HOME/.local/npm`
 #   Marker block path: `~/.bashrc` `~/.profile`
 #
 # sudo: false
