@@ -6,7 +6,7 @@
 # sudo: true
 # interactive: false
 # idempotent: true
-# dependencies: 01-install-xorg.sh
+# dependencies: none
 # ---DOC-END---
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
