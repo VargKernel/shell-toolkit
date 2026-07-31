@@ -3,7 +3,8 @@
 # ---DOC-START---
 # summary: Install marksman Markdown language server for editor/IDE LSP integration.
 # description: |
-#   Installs `marksman` into `~/.local/bin` for the current user.
+#   Installs `marksman` into for the current user.
+#   Install path: `$HOME/.local/bin`
 #
 #   - Adds `~/.local/bin` to `.bashrc` and `.profile`
 #   - Idempotent — skips installation if marksman is already present
