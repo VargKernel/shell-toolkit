@@ -34,7 +34,8 @@ apt install -y \
     nvme-cli \
     usbutils \
     pciutils \
-    udisks2
+    udisks2 \
+    hdparm
 
 echo ""
 echo "Disk and hardware utilities installed successfully."
