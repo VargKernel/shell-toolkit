@@ -407,15 +407,13 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   ├── install/
 │   │   ├── apt/
 │   │   │   ├── cli/
-│   │   │   │   ├── install-archive-utils.sh
-│   │   │   │   ├── install-cli-utils.sh
+│   │   │   │   ├── install-base-shell.sh
+│   │   │   │   ├── install-base-system.sh
 │   │   │   │   ├── install-cpp.sh
-│   │   │   │   ├── install-disk-utils.sh
 │   │   │   │   ├── install-docker.sh
 │   │   │   │   ├── install-firewalld-cli.sh
 │   │   │   │   ├── install-flatpak.sh
 │   │   │   │   ├── install-git.sh
-│   │   │   │   ├── install-networking.sh
 │   │   │   │   ├── install-npm.sh
 │   │   │   │   ├── install-nvidia-driver.sh
 │   │   │   │   ├── install-php.sh
@@ -423,9 +421,11 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   │   │   ├── install-python.sh
 │   │   │   │   ├── install-qemu-kvm.sh
 │   │   │   │   ├── install-ranger.sh
-│   │   │   │   ├── install-shell-base.sh
-│   │   │   │   ├── install-system-docs.sh
 │   │   │   │   ├── install-ufw.sh
+│   │   │   │   ├── install-utils-archive.sh
+│   │   │   │   ├── install-utils-cli.sh
+│   │   │   │   ├── install-utils-disk.sh
+│   │   │   │   ├── install-utils-networking.sh
 │   │   │   │   └── install-veracrypt-cli.sh
 │   │   │   └── gui/
 │   │   │       ├── install-blender.sh
@@ -594,15 +594,13 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/group-management revoke-libvirt.sh remove an existing user from the libvirt group." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/group-management">standalone/group-management</td><td data-value="revoke-libvirt.sh"><a href="#script-standalone-group-management-revoke-libvirt-sh"><code>revoke-libvirt.sh</code></a></td><td data-value="remove an existing user from the libvirt group.">Remove an existing user from the libvirt group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/group-management revoke-sudo.sh remove an existing user from the sudo group." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/group-management">standalone/group-management</td><td data-value="revoke-sudo.sh"><a href="#script-standalone-group-management-revoke-sudo-sh"><code>revoke-sudo.sh</code></a></td><td data-value="remove an existing user from the sudo group.">Remove an existing user from the sudo group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/group-management revoke-vboxusers.sh remove an existing user from the vboxusers group." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/group-management">standalone/group-management</td><td data-value="revoke-vboxusers.sh"><a href="#script-standalone-group-management-revoke-vboxusers-sh"><code>revoke-vboxusers.sh</code></a></td><td data-value="remove an existing user from the vboxusers group.">Remove an existing user from the vboxusers group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-archive-utils.sh install archive and compression utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-archive-utils.sh"><a href="#script-standalone-install-apt-cli-install-archive-utils-sh"><code>install-archive-utils.sh</code></a></td><td data-value="install archive and compression utilities.">Install archive and compression utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-cli-utils.sh install cli productivity utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-cli-utils.sh"><a href="#script-standalone-install-apt-cli-install-cli-utils-sh"><code>install-cli-utils.sh</code></a></td><td data-value="install cli productivity utilities.">Install CLI productivity utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-base-shell.sh install the base shell environment and base userland utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-base-shell.sh"><a href="#script-standalone-install-apt-cli-install-base-shell-sh"><code>install-base-shell.sh</code></a></td><td data-value="install the base shell environment and base userland utilities.">Install the base shell environment and base userland utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-base-system.sh install system, time-sync, and documentation packages." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-base-system.sh"><a href="#script-standalone-install-apt-cli-install-base-system-sh"><code>install-base-system.sh</code></a></td><td data-value="install system, time-sync, and documentation packages.">Install system, time-sync, and documentation packages.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-cpp.sh install the c and c++ development environment." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-cpp.sh"><a href="#script-standalone-install-apt-cli-install-cpp-sh"><code>install-cpp.sh</code></a></td><td data-value="install the c and c++ development environment.">Install the C and C++ development environment.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-disk-utils.sh install disk and hardware utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-disk-utils.sh"><a href="#script-standalone-install-apt-cli-install-disk-utils-sh"><code>install-disk-utils.sh</code></a></td><td data-value="install disk and hardware utilities.">Install disk and hardware utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-docker.sh install docker engine and the docker compose plugin." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-docker.sh"><a href="#script-standalone-install-apt-cli-install-docker-sh"><code>install-docker.sh</code></a></td><td data-value="install docker engine and the docker compose plugin.">Install Docker Engine and the Docker Compose plugin.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-firewalld-cli.sh install firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-firewalld-cli.sh"><a href="#script-standalone-install-apt-cli-install-firewalld-cli-sh"><code>install-firewalld-cli.sh</code></a></td><td data-value="install firewalld.">Install firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-flatpak.sh install flatpak, add the flathub repository." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-flatpak.sh"><a href="#script-standalone-install-apt-cli-install-flatpak-sh"><code>install-flatpak.sh</code></a></td><td data-value="install flatpak, add the flathub repository.">Install flatpak, add the Flathub repository.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-git.sh install git from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-git.sh"><a href="#script-standalone-install-apt-cli-install-git-sh"><code>install-git.sh</code></a></td><td data-value="install git from the distribution repositories.">Install git from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-networking.sh install networking tools and utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-networking.sh"><a href="#script-standalone-install-apt-cli-install-networking-sh"><code>install-networking.sh</code></a></td><td data-value="install networking tools and utilities.">Install networking tools and utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-npm.sh install node.js and npm." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-npm.sh"><a href="#script-standalone-install-apt-cli-install-npm-sh"><code>install-npm.sh</code></a></td><td data-value="install node.js and npm.">Install Node.js and npm.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-nvidia-driver.sh nvidia gpu driver installer (auto-detect, apt package, or .run)." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-nvidia-driver.sh"><a href="#script-standalone-install-apt-cli-install-nvidia-driver-sh"><code>install-nvidia-driver.sh</code></a></td><td data-value="nvidia gpu driver installer (auto-detect, apt package, or .run).">NVIDIA GPU driver installer (auto-detect, apt package, or .run).</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">⚠️</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-php.sh install php and common extensions." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-php.sh"><a href="#script-standalone-install-apt-cli-install-php-sh"><code>install-php.sh</code></a></td><td data-value="install php and common extensions.">Install PHP and common extensions.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -610,9 +608,11 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/install/apt/cli install-python.sh install the python development environment." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-python.sh"><a href="#script-standalone-install-apt-cli-install-python-sh"><code>install-python.sh</code></a></td><td data-value="install the python development environment.">Install the Python development environment.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-qemu-kvm.sh install the qemu/kvm virtualization stack." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-qemu-kvm.sh"><a href="#script-standalone-install-apt-cli-install-qemu-kvm-sh"><code>install-qemu-kvm.sh</code></a></td><td data-value="install the qemu/kvm virtualization stack.">Install the QEMU/KVM virtualization stack.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-ranger.sh install ranger from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-ranger.sh"><a href="#script-standalone-install-apt-cli-install-ranger-sh"><code>install-ranger.sh</code></a></td><td data-value="install ranger from the distribution repositories.">Install ranger from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-shell-base.sh install the base shell environment and base userland utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-shell-base.sh"><a href="#script-standalone-install-apt-cli-install-shell-base-sh"><code>install-shell-base.sh</code></a></td><td data-value="install the base shell environment and base userland utilities.">Install the base shell environment and base userland utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-system-docs.sh install system, time-sync, and documentation packages." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-system-docs.sh"><a href="#script-standalone-install-apt-cli-install-system-docs-sh"><code>install-system-docs.sh</code></a></td><td data-value="install system, time-sync, and documentation packages.">Install system, time-sync, and documentation packages.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-ufw.sh install ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-ufw.sh"><a href="#script-standalone-install-apt-cli-install-ufw-sh"><code>install-ufw.sh</code></a></td><td data-value="install ufw.">Install UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-utils-archive.sh install archive and compression utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-utils-archive.sh"><a href="#script-standalone-install-apt-cli-install-utils-archive-sh"><code>install-utils-archive.sh</code></a></td><td data-value="install archive and compression utilities.">Install archive and compression utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-utils-cli.sh install cli productivity utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-utils-cli.sh"><a href="#script-standalone-install-apt-cli-install-utils-cli-sh"><code>install-utils-cli.sh</code></a></td><td data-value="install cli productivity utilities.">Install CLI productivity utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-utils-disk.sh install disk and hardware utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-utils-disk.sh"><a href="#script-standalone-install-apt-cli-install-utils-disk-sh"><code>install-utils-disk.sh</code></a></td><td data-value="install disk and hardware utilities.">Install disk and hardware utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-utils-networking.sh install networking tools and utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-utils-networking.sh"><a href="#script-standalone-install-apt-cli-install-utils-networking-sh"><code>install-utils-networking.sh</code></a></td><td data-value="install networking tools and utilities.">Install networking tools and utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-veracrypt-cli.sh install veracrypt cli from the official ppa." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-veracrypt-cli.sh"><a href="#script-standalone-install-apt-cli-install-veracrypt-cli-sh"><code>install-veracrypt-cli.sh</code></a></td><td data-value="install veracrypt cli from the official ppa.">Install VeraCrypt CLI from the official PPA.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">⚠️</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/gui install-blender.sh install blender from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-blender.sh"><a href="#script-standalone-install-apt-gui-install-blender-sh"><code>install-blender.sh</code></a></td><td data-value="install blender from the distribution repositories.">Install Blender from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/gui install-firefox.sh install firefox from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-firefox.sh"><a href="#script-standalone-install-apt-gui-install-firefox-sh"><code>install-firefox.sh</code></a></td><td data-value="install firefox from the distribution repositories.">Install Firefox from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -1212,25 +1212,25 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-install-apt-cli" class="dir-heading"><code>standalone/install/apt/cli/</code><a class="permalink" href="#dir-standalone-install-apt-cli" aria-label="Link to this section">#</a></h2>
-<div class="script-card" id="script-standalone-install-apt-cli-install-archive-utils-sh" data-search="standalone/install/apt/cli install-archive-utils.sh install archive and compression utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/cli/install-archive-utils.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-archive-utils-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-archive-utils.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="script-card" id="script-standalone-install-apt-cli-install-base-shell-sh" data-search="standalone/install/apt/cli install-base-shell.sh install the base shell environment and base userland utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-base-shell.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-base-shell-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-base-shell.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
 <span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>Installs <code>tar</code>, <code>gzip</code>, <code>bzip2</code>, <code>xz-utils</code>, <code>zstd</code>, <code>zip</code>, <code>unzip</code>, <code>p7zip-full</code>.</p>
+<p>Installs <code>sudo</code>, <code>bash</code>, <code>bash-completion</code>, <code>coreutils</code>, <code>findutils</code>, <code>grep</code>, <code>gawk</code>, <code>sed</code>, <code>diffutils</code>, <code>patch</code>, <code>procps</code>, <code>psmisc</code>, <code>util-linux</code>, <code>file</code>, <code>which</code>.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
-<div class="script-card" id="script-standalone-install-apt-cli-install-cli-utils-sh" data-search="standalone/install/apt/cli install-cli-utils.sh install cli productivity utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/cli/install-cli-utils.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-cli-utils-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-cli-utils.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="script-card" id="script-standalone-install-apt-cli-install-base-system-sh" data-search="standalone/install/apt/cli install-base-system.sh install system, time-sync, and documentation packages." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-base-system.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-base-system-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-base-system.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
 <span class="badge">Sudo: ✅</span>
 <span class="badge">Interactive: ❌</span>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
-<p>Installs <code>curl</code>, <code>wget</code>, <code>htop</code>, <code>fastfetch</code>, <code>less</code>, <code>nano</code>, <code>tree</code>, <code>rsync</code>, <code>bc</code>, <code>jq</code>, <code>ripgrep</code>, <code>fzf</code>, <code>dos2unix</code>, <code>lsof</code>, <code>strace</code>.</p>
+<p>Installs <code>systemd</code>, <code>systemd-timesyncd</code>, <code>man-db</code>, <code>manpages</code>, <code>manpages-dev</code>, <code>ca-certificates</code>, <code>gnupg</code>.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -1244,17 +1244,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <code>build-essential</code>, <code>gcc</code>, <code>g++</code>, <code>clang</code>, <code>cmake</code>, <code>ninja-build</code>, <code>gdb</code>, <code>lldb</code>.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-development-environment-sh"><code>workflows/setup-development-environment.sh</code></a></li></ul></div>
-</div>
-<div class="script-card" id="script-standalone-install-apt-cli-install-disk-utils-sh" data-search="standalone/install/apt/cli install-disk-utils.sh install disk and hardware utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/cli/install-disk-utils.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-disk-utils-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-disk-utils.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs <code>parted</code>, <code>e2fsprogs</code>, <code>dosfstools</code>, <code>ntfs-3g</code>, <code>exfatprogs</code>, <code>smartmontools</code>, <code>nvme-cli</code>, <code>usbutils</code>, <code>pciutils</code>.</p>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-docker-sh" data-search="standalone/install/apt/cli install-docker.sh install docker engine and the docker compose plugin." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-docker.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-docker-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-docker.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -1301,17 +1290,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>Installs <a href="https://git-scm.com">git</a> via apt.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-git-sh"><code>workflows/setup-git.sh</code></a></li></ul></div>
-</div>
-<div class="script-card" id="script-standalone-install-apt-cli-install-networking-sh" data-search="standalone/install/apt/cli install-networking.sh install networking tools and utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/cli/install-networking.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-networking-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-networking.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs <code>openssh-client</code>, <code>network-manager</code>, <code>iproute2</code>, <code>iputils-ping</code>, <code>dnsutils</code>, <code>net-tools</code>, <code>traceroute</code>, <code>tcpdump</code>, <code>nmap</code>.</p>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-npm-sh" data-search="standalone/install/apt/cli install-npm.sh install node.js and npm." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-npm.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-npm-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-npm.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -1394,28 +1372,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-ranger-sh"><code>workflows/setup-ranger.sh</code></a></li></ul></div>
 </div>
-<div class="script-card" id="script-standalone-install-apt-cli-install-shell-base-sh" data-search="standalone/install/apt/cli install-shell-base.sh install the base shell environment and base userland utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/cli/install-shell-base.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-shell-base-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-shell-base.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs <code>sudo</code>, <code>bash</code>, <code>bash-completion</code>, <code>coreutils</code>, <code>findutils</code>, <code>grep</code>, <code>gawk</code>, <code>sed</code>, <code>diffutils</code>, <code>patch</code>, <code>procps</code>, <code>psmisc</code>, <code>util-linux</code>, <code>file</code>, <code>which</code>.</p>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
-</div>
-<div class="script-card" id="script-standalone-install-apt-cli-install-system-docs-sh" data-search="standalone/install/apt/cli install-system-docs.sh install system, time-sync, and documentation packages." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/cli/install-system-docs.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-system-docs-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-system-docs.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs <code>systemd</code>, <code>systemd-timesyncd</code>, <code>man-db</code>, <code>manpages</code>, <code>manpages-dev</code>, <code>ca-certificates</code>, <code>gnupg</code>.</p>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
-</div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-ufw-sh" data-search="standalone/install/apt/cli install-ufw.sh install ufw." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-ufw.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-ufw-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-ufw.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -1428,6 +1384,50 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>netfilter rules; this script does not do that automatically.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-ufw-sh"><code>workflows/setup-ufw.sh</code></a></li></ul></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-utils-archive-sh" data-search="standalone/install/apt/cli install-utils-archive.sh install archive and compression utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-utils-archive.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-utils-archive-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-utils-archive.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>tar</code>, <code>gzip</code>, <code>bzip2</code>, <code>xz-utils</code>, <code>zstd</code>, <code>zip</code>, <code>unzip</code>, <code>p7zip-full</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-utils-cli-sh" data-search="standalone/install/apt/cli install-utils-cli.sh install cli productivity utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-utils-cli.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-utils-cli-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-utils-cli.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>curl</code>, <code>wget</code>, <code>htop</code>, <code>fastfetch</code>, <code>less</code>, <code>nano</code>, <code>tree</code>, <code>rsync</code>, <code>bc</code>, <code>jq</code>, <code>ripgrep</code>, <code>fzf</code>, <code>dos2unix</code>, <code>lsof</code>, <code>strace</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-utils-disk-sh" data-search="standalone/install/apt/cli install-utils-disk.sh install disk and hardware utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-utils-disk.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-utils-disk-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-utils-disk.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>parted</code>, <code>e2fsprogs</code>, <code>dosfstools</code>, <code>ntfs-3g</code>, <code>exfatprogs</code>, <code>smartmontools</code>, <code>nvme-cli</code>, <code>usbutils</code>, <code>pciutils</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-utils-networking-sh" data-search="standalone/install/apt/cli install-utils-networking.sh install networking tools and utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-utils-networking.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-utils-networking-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-utils-networking.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>openssh-client</code>, <code>network-manager</code>, <code>iproute2</code>, <code>iputils-ping</code>, <code>dnsutils</code>, <code>net-tools</code>, <code>traceroute</code>, <code>tcpdump</code>, <code>nmap</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-veracrypt-cli-sh" data-search="standalone/install/apt/cli install-veracrypt-cli.sh install veracrypt cli from the official ppa." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-veracrypt-cli.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-veracrypt-cli-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-veracrypt-cli.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -2657,7 +2657,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-08-01 00:47 UTC &middot;
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-08-01 02:24 UTC &middot;
 161 scripts documented.</p>
 
 </div>
