@@ -23,7 +23,7 @@ fi
 
 echo "Installing Discord via Flatpak..."
 
-flatpak install -y flathub com.discordapp.Discord
+flatpak install -y --user flathub com.discordapp.Discord
 
 echo "Discord installed"
 
