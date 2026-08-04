@@ -1,13 +1,15 @@
 #!/bin/bash
+
 # ---DOC-START---
-# summary: Install archive and compression utilities.
+# summary: Install CryptSetup and disk encryption tooling.
 # description: |
-#   Installs `tar`, `gzip`, `bzip2`, `xz-utils`, `zstd`, `zip`, `unzip`, `p7zip-full`.
+#   Installs `cryptsetup`, `cryptsetup-bin`, `cryptsetup-initramfs`, `keyutils`.
 # sudo: true
 # interactive: false
 # idempotent: true
 # dependencies: none
 # ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export DEBIAN_FRONTEND=noninteractive
@@ -17,21 +19,17 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo "==> Installing archive and compression utilities"
+echo "==> Installing CryptSetup"
 
 echo "Updating package lists..."
 apt update -q
 
-echo "Installing archive and compression utilities..."
+echo "Installing CryptSetup..."
 apt install -y \
-    tar \
-    gzip \
-    bzip2 \
-    xz-utils \
-    zstd \
-    zip \
-    unzip \
-    p7zip-full
+    cryptsetup \
+    cryptsetup-bin \
+    cryptsetup-initramfs \
+    keyutils
 
 echo ""
-echo "Archive and compression utilities installed successfully."
+echo "CryptSetup installed successfully."

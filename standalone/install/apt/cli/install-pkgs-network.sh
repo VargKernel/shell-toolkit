@@ -1,14 +1,16 @@
 #!/bin/bash
+
 # ---DOC-START---
-# summary: Install networking tools and utilities.
+# summary: Install network and Bluetooth management tools.
 # description: |
-#   Installs `openssh-client`, `network-manager`, `iproute2`, `iputils-ping`, `dnsutils`,
-#   `net-tools`, `traceroute`, `tcpdump`, `nmap`.
+#   Installs `network-manager`, `network-manager-gnome`, `blueman`, `bluez`,
+#   `bluez-tools`, `firewalld`, `firewall-config`.
 # sudo: true
 # interactive: false
 # idempotent: true
 # dependencies: none
 # ---DOC-END---
+
 set -euo pipefail
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export DEBIAN_FRONTEND=noninteractive
@@ -18,22 +20,20 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo "==> Installing networking tools"
+echo "==> Installing network and Bluetooth tools"
 
 echo "Updating package lists..."
 apt update -q
 
-echo "Installing networking tools..."
+echo "Installing network and Bluetooth tools..."
 apt install -y \
-    openssh-client \
     network-manager \
-    iproute2 \
-    iputils-ping \
-    dnsutils \
-    net-tools \
-    traceroute \
-    tcpdump \
-    nmap
+    network-manager-gnome \
+    blueman \
+    bluez \
+    bluez-tools \
+    firewalld \
+    firewall-config
 
 echo ""
-echo "Networking tools installed successfully."
+echo "Network and Bluetooth tools installed successfully."
