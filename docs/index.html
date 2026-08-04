@@ -335,19 +335,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>162</td></tr>
+<tr><td>Total scripts</td><td>167</td></tr>
 <tr><td>Directories</td><td>19</td></tr>
-<tr><td>Require root / sudo</td><td>91 / 162</td></tr>
-<tr><td>Interactive</td><td>29 / 162</td></tr>
+<tr><td>Require root / sudo</td><td>96 / 167</td></tr>
+<tr><td>Interactive</td><td>29 / 167</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>154 / 7 / 1</td></tr>
-<tr><td>Scripts with dependencies</td><td>13 / 162</td></tr>
+    <td>159 / 7 / 1</td></tr>
+<tr><td>Scripts with dependencies</td><td>13 / 167</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>3</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>7</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>19</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>19</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/kde-plasma</td><td>1</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>4</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>3</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>7</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>24</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>19</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/kde-plasma</td><td>1</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>4</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
 </tbody>
 </table>
 
@@ -407,8 +407,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   ├── install/
 │   │   ├── apt/
 │   │   │   ├── cli/
-│   │   │   │   ├── install-base-shell.sh
-│   │   │   │   ├── install-base-system.sh
 │   │   │   │   ├── install-cpp.sh
 │   │   │   │   ├── install-docker.sh
 │   │   │   │   ├── install-firewalld-cli.sh
@@ -417,14 +415,21 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   │   │   ├── install-npm.sh
 │   │   │   │   ├── install-php.sh
 │   │   │   │   ├── install-pipx.sh
+│   │   │   │   ├── install-pkgs-apps.sh
+│   │   │   │   ├── install-pkgs-audio.sh
+│   │   │   │   ├── install-pkgs-core.sh
+│   │   │   │   ├── install-pkgs-cryptsetup.sh
+│   │   │   │   ├── install-pkgs-graphics.sh
+│   │   │   │   ├── install-pkgs-network.sh
+│   │   │   │   ├── install-pkgs-notify.sh
+│   │   │   │   ├── install-pkgs-storage.sh
+│   │   │   │   ├── install-pkgs-system-helpers.sh
+│   │   │   │   ├── install-pkgs-theming.sh
+│   │   │   │   ├── install-pkgs-wayland-core.sh
 │   │   │   │   ├── install-python.sh
 │   │   │   │   ├── install-qemu-kvm.sh
 │   │   │   │   ├── install-ranger.sh
 │   │   │   │   ├── install-ufw.sh
-│   │   │   │   ├── install-utils-archive.sh
-│   │   │   │   ├── install-utils-cli.sh
-│   │   │   │   ├── install-utils-disk.sh
-│   │   │   │   ├── install-utils-networking.sh
 │   │   │   │   └── install-veracrypt-cli.sh
 │   │   │   └── gui/
 │   │   │       ├── install-blender.sh
@@ -595,8 +600,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/group-management revoke-libvirt.sh remove an existing user from the libvirt group." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/group-management">standalone/group-management</td><td data-value="revoke-libvirt.sh"><a href="#script-standalone-group-management-revoke-libvirt-sh"><code>revoke-libvirt.sh</code></a></td><td data-value="remove an existing user from the libvirt group.">Remove an existing user from the libvirt group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/group-management revoke-sudo.sh remove an existing user from the sudo group." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/group-management">standalone/group-management</td><td data-value="revoke-sudo.sh"><a href="#script-standalone-group-management-revoke-sudo-sh"><code>revoke-sudo.sh</code></a></td><td data-value="remove an existing user from the sudo group.">Remove an existing user from the sudo group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/group-management revoke-vboxusers.sh remove an existing user from the vboxusers group." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/group-management">standalone/group-management</td><td data-value="revoke-vboxusers.sh"><a href="#script-standalone-group-management-revoke-vboxusers-sh"><code>revoke-vboxusers.sh</code></a></td><td data-value="remove an existing user from the vboxusers group.">Remove an existing user from the vboxusers group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-base-shell.sh install the base shell environment and base userland utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-base-shell.sh"><a href="#script-standalone-install-apt-cli-install-base-shell-sh"><code>install-base-shell.sh</code></a></td><td data-value="install the base shell environment and base userland utilities.">Install the base shell environment and base userland utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-base-system.sh install system, time-sync, and documentation packages." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-base-system.sh"><a href="#script-standalone-install-apt-cli-install-base-system-sh"><code>install-base-system.sh</code></a></td><td data-value="install system, time-sync, and documentation packages.">Install system, time-sync, and documentation packages.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-cpp.sh install the c and c++ development environment." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-cpp.sh"><a href="#script-standalone-install-apt-cli-install-cpp-sh"><code>install-cpp.sh</code></a></td><td data-value="install the c and c++ development environment.">Install the C and C++ development environment.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-docker.sh install docker engine and the docker compose plugin." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-docker.sh"><a href="#script-standalone-install-apt-cli-install-docker-sh"><code>install-docker.sh</code></a></td><td data-value="install docker engine and the docker compose plugin.">Install Docker Engine and the Docker Compose plugin.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-firewalld-cli.sh install firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-firewalld-cli.sh"><a href="#script-standalone-install-apt-cli-install-firewalld-cli-sh"><code>install-firewalld-cli.sh</code></a></td><td data-value="install firewalld.">Install firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -605,14 +608,21 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/install/apt/cli install-npm.sh install node.js and npm." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-npm.sh"><a href="#script-standalone-install-apt-cli-install-npm-sh"><code>install-npm.sh</code></a></td><td data-value="install node.js and npm.">Install Node.js and npm.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-php.sh install php and common extensions." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-php.sh"><a href="#script-standalone-install-apt-cli-install-php-sh"><code>install-php.sh</code></a></td><td data-value="install php and common extensions.">Install PHP and common extensions.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-pipx.sh install pipx and ensure ~/.local/bin is on path." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pipx.sh"><a href="#script-standalone-install-apt-cli-install-pipx-sh"><code>install-pipx.sh</code></a></td><td data-value="install pipx and ensure ~/.local/bin is on path.">Install pipx and ensure ~/.local/bin is on PATH.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-pkgs-apps.sh install user-facing applications." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pkgs-apps.sh"><a href="#script-standalone-install-apt-cli-install-pkgs-apps-sh"><code>install-pkgs-apps.sh</code></a></td><td data-value="install user-facing applications.">Install user-facing applications.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-pkgs-audio.sh install the audio stack (pipewire/wireplumber)." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pkgs-audio.sh"><a href="#script-standalone-install-apt-cli-install-pkgs-audio-sh"><code>install-pkgs-audio.sh</code></a></td><td data-value="install the audio stack (pipewire/wireplumber).">Install the audio stack (PipeWire/WirePlumber).</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-pkgs-core.sh install base system and cli utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pkgs-core.sh"><a href="#script-standalone-install-apt-cli-install-pkgs-core-sh"><code>install-pkgs-core.sh</code></a></td><td data-value="install base system and cli utilities.">Install base system and CLI utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-pkgs-cryptsetup.sh install cryptsetup and disk encryption tooling." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pkgs-cryptsetup.sh"><a href="#script-standalone-install-apt-cli-install-pkgs-cryptsetup-sh"><code>install-pkgs-cryptsetup.sh</code></a></td><td data-value="install cryptsetup and disk encryption tooling.">Install CryptSetup and disk encryption tooling.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-pkgs-graphics.sh install graphics/gl libraries and diagnostics tools." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pkgs-graphics.sh"><a href="#script-standalone-install-apt-cli-install-pkgs-graphics-sh"><code>install-pkgs-graphics.sh</code></a></td><td data-value="install graphics/gl libraries and diagnostics tools.">Install graphics/GL libraries and diagnostics tools.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-pkgs-network.sh install network and bluetooth management tools." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pkgs-network.sh"><a href="#script-standalone-install-apt-cli-install-pkgs-network-sh"><code>install-pkgs-network.sh</code></a></td><td data-value="install network and bluetooth management tools.">Install network and Bluetooth management tools.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-pkgs-notify.sh install notification, screenshot, and speech tools." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pkgs-notify.sh"><a href="#script-standalone-install-apt-cli-install-pkgs-notify-sh"><code>install-pkgs-notify.sh</code></a></td><td data-value="install notification, screenshot, and speech tools.">Install notification, screenshot, and speech tools.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-pkgs-storage.sh install disk, filesystem, and removable media tools." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pkgs-storage.sh"><a href="#script-standalone-install-apt-cli-install-pkgs-storage-sh"><code>install-pkgs-storage.sh</code></a></td><td data-value="install disk, filesystem, and removable media tools.">Install disk, filesystem, and removable media tools.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-pkgs-system-helpers.sh install the polkit agent and system hotkey helpers." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pkgs-system-helpers.sh"><a href="#script-standalone-install-apt-cli-install-pkgs-system-helpers-sh"><code>install-pkgs-system-helpers.sh</code></a></td><td data-value="install the polkit agent and system hotkey helpers.">Install the polkit agent and system hotkey helpers.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-pkgs-theming.sh install qt/gtk theming integration tools." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pkgs-theming.sh"><a href="#script-standalone-install-apt-cli-install-pkgs-theming-sh"><code>install-pkgs-theming.sh</code></a></td><td data-value="install qt/gtk theming integration tools.">Install Qt/GTK theming integration tools.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/install/apt/cli install-pkgs-wayland-core.sh install the wayland/sway core environment." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-pkgs-wayland-core.sh"><a href="#script-standalone-install-apt-cli-install-pkgs-wayland-core-sh"><code>install-pkgs-wayland-core.sh</code></a></td><td data-value="install the wayland/sway core environment.">Install the Wayland/Sway core environment.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-python.sh install the python development environment." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-python.sh"><a href="#script-standalone-install-apt-cli-install-python-sh"><code>install-python.sh</code></a></td><td data-value="install the python development environment.">Install the Python development environment.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-qemu-kvm.sh install the qemu/kvm virtualization stack." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-qemu-kvm.sh"><a href="#script-standalone-install-apt-cli-install-qemu-kvm-sh"><code>install-qemu-kvm.sh</code></a></td><td data-value="install the qemu/kvm virtualization stack.">Install the QEMU/KVM virtualization stack.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-ranger.sh install ranger from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-ranger.sh"><a href="#script-standalone-install-apt-cli-install-ranger-sh"><code>install-ranger.sh</code></a></td><td data-value="install ranger from the distribution repositories.">Install ranger from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-ufw.sh install ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-ufw.sh"><a href="#script-standalone-install-apt-cli-install-ufw-sh"><code>install-ufw.sh</code></a></td><td data-value="install ufw.">Install UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-utils-archive.sh install archive and compression utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-utils-archive.sh"><a href="#script-standalone-install-apt-cli-install-utils-archive-sh"><code>install-utils-archive.sh</code></a></td><td data-value="install archive and compression utilities.">Install archive and compression utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-utils-cli.sh install cli productivity utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-utils-cli.sh"><a href="#script-standalone-install-apt-cli-install-utils-cli-sh"><code>install-utils-cli.sh</code></a></td><td data-value="install cli productivity utilities.">Install CLI productivity utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-utils-disk.sh install disk and hardware utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-utils-disk.sh"><a href="#script-standalone-install-apt-cli-install-utils-disk-sh"><code>install-utils-disk.sh</code></a></td><td data-value="install disk and hardware utilities.">Install disk and hardware utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
-<tr data-search="standalone/install/apt/cli install-utils-networking.sh install networking tools and utilities." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-utils-networking.sh"><a href="#script-standalone-install-apt-cli-install-utils-networking-sh"><code>install-utils-networking.sh</code></a></td><td data-value="install networking tools and utilities.">Install networking tools and utilities.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/cli install-veracrypt-cli.sh install veracrypt cli from the official ppa." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/cli">standalone/install/apt/cli</td><td data-value="install-veracrypt-cli.sh"><a href="#script-standalone-install-apt-cli-install-veracrypt-cli-sh"><code>install-veracrypt-cli.sh</code></a></td><td data-value="install veracrypt cli from the official ppa.">Install VeraCrypt CLI from the official PPA.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">⚠️</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/gui install-blender.sh install blender from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-blender.sh"><a href="#script-standalone-install-apt-gui-install-blender-sh"><code>install-blender.sh</code></a></td><td data-value="install blender from the distribution repositories.">Install Blender from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/install/apt/gui install-firefox.sh install firefox from the distribution repositories." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/install/apt/gui">standalone/install/apt/gui</td><td data-value="install-firefox.sh"><a href="#script-standalone-install-apt-gui-install-firefox-sh"><code>install-firefox.sh</code></a></td><td data-value="install firefox from the distribution repositories.">Install Firefox from the distribution repositories.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -1241,28 +1251,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-install-apt-cli" class="dir-heading"><code>standalone/install/apt/cli/</code><a class="permalink" href="#dir-standalone-install-apt-cli" aria-label="Link to this section">#</a></h2>
-<div class="script-card" id="script-standalone-install-apt-cli-install-base-shell-sh" data-search="standalone/install/apt/cli install-base-shell.sh install the base shell environment and base userland utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/cli/install-base-shell.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-base-shell-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-base-shell.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs <code>sudo</code>, <code>bash</code>, <code>bash-completion</code>, <code>coreutils</code>, <code>findutils</code>, <code>grep</code>, <code>gawk</code>, <code>sed</code>, <code>diffutils</code>, <code>patch</code>, <code>procps</code>, <code>psmisc</code>, <code>util-linux</code>, <code>file</code>, <code>which</code>.</p>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
-</div>
-<div class="script-card" id="script-standalone-install-apt-cli-install-base-system-sh" data-search="standalone/install/apt/cli install-base-system.sh install system, time-sync, and documentation packages." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/cli/install-base-system.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-base-system-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-base-system.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs <code>systemd</code>, <code>systemd-timesyncd</code>, <code>man-db</code>, <code>manpages</code>, <code>manpages-dev</code>, <code>ca-certificates</code>, <code>gnupg</code>.</p>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
-</div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-cpp-sh" data-search="standalone/install/apt/cli install-cpp.sh install the c and c++ development environment." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-cpp.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-cpp-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-cpp.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -1353,6 +1341,129 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-downloaders-sh"><code>workflows/setup-downloaders.sh</code></a></li></ul></div>
 </div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-pkgs-apps-sh" data-search="standalone/install/apt/cli install-pkgs-apps.sh install user-facing applications." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-pkgs-apps.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-pkgs-apps-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-pkgs-apps.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>firefox-esr</code>, <code>thunar</code>, <code>thunar-archive-plugin</code>, <code>thunar-volman</code>, <code>xarchiver</code>, <code>python3-pil</code>, <code>tty-clock</code>, <code>chafa</code>, <code>cmus</code>, <code>nsxiv</code>, <code>cava</code>, <code>vlc</code>, <code>flameshot</code>, <code>copyq</code>, <code>wl-clipboard</code>, <code>fastfetch</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-pkgs-audio-sh" data-search="standalone/install/apt/cli install-pkgs-audio.sh install the audio stack (pipewire/wireplumber)." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-pkgs-audio.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-pkgs-audio-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-pkgs-audio.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>pipewire</code>, <code>pipewire-pulse</code>, <code>wireplumber</code>, <code>alsa-utils</code>.</p>
+<p>This stack is required for the <code>wpctl</code>/<code>pactl</code> commands used in <code>audio.conf</code> and <code>waybar</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-pkgs-core-sh" data-search="standalone/install/apt/cli install-pkgs-core.sh install base system and cli utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-pkgs-core.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-pkgs-core-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-pkgs-core.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>sudo</code>, <code>git</code>, <code>ranger</code>, <code>htop</code>, <code>tree</code>, <code>curl</code>, <code>wget</code>, <code>unzip</code>, <code>zip</code>, <code>p7zip-full</code>, <code>rsync</code>, <code>less</code>, <code>nano</code>, <code>ripgrep</code>, <code>fd-find</code>, <code>fzf</code>, <code>jq</code>, <code>bc</code>, <code>file</code>, <code>tar</code>, <code>xdg-user-dirs</code>, <code>zoxide</code>, <code>bash-completion</code>, <code>pciutils</code>, <code>usbutils</code>, <code>xdg-utils</code>, <code>acl</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-pkgs-cryptsetup-sh" data-search="standalone/install/apt/cli install-pkgs-cryptsetup.sh install cryptsetup and disk encryption tooling." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-pkgs-cryptsetup.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-pkgs-cryptsetup-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-pkgs-cryptsetup.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>cryptsetup</code>, <code>cryptsetup-bin</code>, <code>cryptsetup-initramfs</code>, <code>keyutils</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-pkgs-graphics-sh" data-search="standalone/install/apt/cli install-pkgs-graphics.sh install graphics/gl libraries and diagnostics tools." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-pkgs-graphics.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-pkgs-graphics-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-pkgs-graphics.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>libegl1</code>, <code>libgl1</code>, <code>libgles2</code>, <code>mesa-utils</code> for software rendering support and GL diagnostics.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-pkgs-network-sh" data-search="standalone/install/apt/cli install-pkgs-network.sh install network and bluetooth management tools." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-pkgs-network.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-pkgs-network-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-pkgs-network.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>network-manager</code>, <code>network-manager-gnome</code>, <code>blueman</code>, <code>bluez</code>, <code>bluez-tools</code>, <code>firewalld</code>, <code>firewall-config</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-pkgs-notify-sh" data-search="standalone/install/apt/cli install-pkgs-notify.sh install notification, screenshot, and speech tools." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-pkgs-notify.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-pkgs-notify-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-pkgs-notify.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>sway-notification-center</code>, <code>grim</code>, <code>slurp</code>, <code>speech-dispatcher</code>, <code>libnotify-bin</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-pkgs-storage-sh" data-search="standalone/install/apt/cli install-pkgs-storage.sh install disk, filesystem, and removable media tools." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-pkgs-storage.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-pkgs-storage-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-pkgs-storage.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>udisks2</code>, <code>gvfs</code>, <code>gvfs-backends</code>, <code>gvfs-fuse</code>, <code>gnome-disk-utility</code>, <code>e2fsprogs</code>, <code>btrfs-progs</code>, <code>xfsprogs</code>, <code>dosfstools</code>, <code>ntfs-3g</code>, <code>smartmontools</code>, <code>nvme-cli</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-pkgs-system-helpers-sh" data-search="standalone/install/apt/cli install-pkgs-system-helpers.sh install the polkit agent and system hotkey helpers." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-pkgs-system-helpers.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-pkgs-system-helpers-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-pkgs-system-helpers.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>lxpolkit</code>, <code>brightnessctl</code>.</p>
+<p><code>lxpolkit</code> is the polkit authentication agent, started in <code>autostart.conf</code>. <code>brightnessctl</code> backs the brightness hotkeys.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-pkgs-theming-sh" data-search="standalone/install/apt/cli install-pkgs-theming.sh install qt/gtk theming integration tools." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-pkgs-theming.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-pkgs-theming-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-pkgs-theming.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>qt5ct</code>, <code>qt6ct</code>, <code>nwg-look</code>, <code>adwaita-qt</code>, <code>adwaita-qt6</code>, <code>kde-style-breeze</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-install-apt-cli-install-pkgs-wayland-core-sh" data-search="standalone/install/apt/cli install-pkgs-wayland-core.sh install the wayland/sway core environment." data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/install/apt/cli/install-pkgs-wayland-core.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-pkgs-wayland-core-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-pkgs-wayland-core.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Installs <code>sway</code>, <code>swaybg</code>, <code>wofi</code>, <code>waybar</code>, <code>xwayland</code>, <code>xdg-desktop-portal-wlr</code>, <code>xdg-desktop-portal-gtk</code>, <code>fuse3</code>, <code>libfuse2t64</code>, <code>libnss3</code>.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-python-sh" data-search="standalone/install/apt/cli install-python.sh install the python development environment." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-python.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-python-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-python.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
 <div class="meta-row">
@@ -1401,50 +1512,6 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <p>netfilter rules; this script does not do that automatically.</p>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-setup-ufw-sh"><code>workflows/setup-ufw.sh</code></a></li></ul></div>
-</div>
-<div class="script-card" id="script-standalone-install-apt-cli-install-utils-archive-sh" data-search="standalone/install/apt/cli install-utils-archive.sh install archive and compression utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/cli/install-utils-archive.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-utils-archive-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-utils-archive.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs <code>tar</code>, <code>gzip</code>, <code>bzip2</code>, <code>xz-utils</code>, <code>zstd</code>, <code>zip</code>, <code>unzip</code>, <code>p7zip-full</code>.</p>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
-</div>
-<div class="script-card" id="script-standalone-install-apt-cli-install-utils-cli-sh" data-search="standalone/install/apt/cli install-utils-cli.sh install cli productivity utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/cli/install-utils-cli.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-utils-cli-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-utils-cli.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs <code>curl</code>, <code>wget</code>, <code>htop</code>, <code>fastfetch</code>, <code>less</code>, <code>nano</code>, <code>tree</code>, <code>rsync</code>, <code>bc</code>, <code>jq</code>, <code>ripgrep</code>, <code>fzf</code>, <code>dos2unix</code>, <code>lsof</code>, <code>strace</code>.</p>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
-</div>
-<div class="script-card" id="script-standalone-install-apt-cli-install-utils-disk-sh" data-search="standalone/install/apt/cli install-utils-disk.sh install disk and hardware utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/cli/install-utils-disk.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-utils-disk-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-utils-disk.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs <code>parted</code>, <code>e2fsprogs</code>, <code>dosfstools</code>, <code>ntfs-3g</code>, <code>exfatprogs</code>, <code>smartmontools</code>, <code>nvme-cli</code>, <code>usbutils</code>, <code>pciutils</code>.</p>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
-</div>
-<div class="script-card" id="script-standalone-install-apt-cli-install-utils-networking-sh" data-search="standalone/install/apt/cli install-utils-networking.sh install networking tools and utilities." data-sudo="1" data-interactive="0" data-hasdeps="0">
-<h3><code>standalone/install/apt/cli/install-utils-networking.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-utils-networking-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-utils-networking.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
-<div class="meta-row">
-<span class="badge">Sudo: ✅</span>
-<span class="badge">Interactive: ❌</span>
-<span class="badge">Idempotent: ✅ (true)</span>
-</div>
-<p>Installs <code>openssh-client</code>, <code>network-manager</code>, <code>iproute2</code>, <code>iputils-ping</code>, <code>dnsutils</code>, <code>net-tools</code>, <code>traceroute</code>, <code>tcpdump</code>, <code>nmap</code>.</p>
-<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
-<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 <div class="script-card" id="script-standalone-install-apt-cli-install-veracrypt-cli-sh" data-search="standalone/install/apt/cli install-veracrypt-cli.sh install veracrypt cli from the official ppa." data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/install/apt/cli/install-veracrypt-cli.sh</code><a class="permalink" href="#script-standalone-install-apt-cli-install-veracrypt-cli-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/install/apt/cli/install-veracrypt-cli.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -2674,8 +2741,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-08-04 00:07 UTC &middot;
-162 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-08-04 00:29 UTC &middot;
+167 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -2683,7 +2750,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (7)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (19)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (19)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-kde-plasma">standalone/kde-plasma/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (7)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (24)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (19)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-kde-plasma">standalone/kde-plasma/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
