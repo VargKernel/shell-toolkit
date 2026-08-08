@@ -335,19 +335,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>167</td></tr>
+<tr><td>Total scripts</td><td>169</td></tr>
 <tr><td>Directories</td><td>19</td></tr>
-<tr><td>Require root / sudo</td><td>96 / 167</td></tr>
-<tr><td>Interactive</td><td>29 / 167</td></tr>
+<tr><td>Require root / sudo</td><td>96 / 169</td></tr>
+<tr><td>Interactive</td><td>29 / 169</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>159 / 7 / 1</td></tr>
-<tr><td>Scripts with dependencies</td><td>13 / 167</td></tr>
+    <td>161 / 7 / 1</td></tr>
+<tr><td>Scripts with dependencies</td><td>13 / 169</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>3</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>7</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>24</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>15</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/kde-plasma</td><td>5</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>4</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>5</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>7</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>24</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>15</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/kde-plasma</td><td>5</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>4</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
 </tbody>
 </table>
 
@@ -394,6 +394,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   ├── git/
 │   │   ├── bootstrap-git.sh
 │   │   ├── git-clone-all.sh
+│   │   ├── git-pull-all.sh
+│   │   ├── git-push-all.sh
 │   │   └── git-rewrite-identity.sh
 │   ├── group-management/
 │   │   ├── grant-kvm.sh
@@ -591,6 +593,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/firewall remove-ufw.sh remove ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall">standalone/firewall</td><td data-value="remove-ufw.sh"><a href="#script-standalone-firewall-remove-ufw-sh"><code>remove-ufw.sh</code></a></td><td data-value="remove ufw.">Remove UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/git bootstrap-git.sh bootstrap git configuration for a github account." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="bootstrap-git.sh"><a href="#script-standalone-git-bootstrap-git-sh"><code>bootstrap-git.sh</code></a></td><td data-value="bootstrap git configuration for a github account.">Bootstrap Git configuration for a GitHub account.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/git git-clone-all.sh clone all public repositories from a github user/profile." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="git-clone-all.sh"><a href="#script-standalone-git-git-clone-all-sh"><code>git-clone-all.sh</code></a></td><td data-value="clone all public repositories from a github user/profile.">Clone all public repositories from a GitHub user/profile.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/git git-pull-all.sh pull updates for all git repositories in a directory." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="git-pull-all.sh"><a href="#script-standalone-git-git-pull-all-sh"><code>git-pull-all.sh</code></a></td><td data-value="pull updates for all git repositories in a directory.">Pull updates for all Git repositories in a directory.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/git git-push-all.sh push updates for all git repositories in a directory." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="git-push-all.sh"><a href="#script-standalone-git-git-push-all-sh"><code>git-push-all.sh</code></a></td><td data-value="push updates for all git repositories in a directory.">Push updates for all Git repositories in a directory.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/git git-rewrite-identity.sh rewrite author/committer name and email across all commits in a git repository." data-sudo="0" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="git-rewrite-identity.sh"><a href="#script-standalone-git-git-rewrite-identity-sh"><code>git-rewrite-identity.sh</code></a></td><td data-value="rewrite author/committer name and email across all commits in a git repository.">Rewrite author/committer name and email across all commits in a Git repository.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/group-management grant-kvm.sh add an existing user to the kvm group." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/group-management">standalone/group-management</td><td data-value="grant-kvm.sh"><a href="#script-standalone-group-management-grant-kvm-sh"><code>grant-kvm.sh</code></a></td><td data-value="add an existing user to the kvm group.">Add an existing user to the kvm group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/group-management grant-libvirt.sh add an existing user to the libvirt group." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/group-management">standalone/group-management</td><td data-value="grant-libvirt.sh"><a href="#script-standalone-group-management-grant-libvirt-sh"><code>grant-libvirt.sh</code></a></td><td data-value="add an existing user to the libvirt group.">Add an existing user to the libvirt group.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -1044,7 +1048,31 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <span class="badge">Idempotent: ✅ (true)</span>
 </div>
 <p>Clones every public repository belonging to a GitHub user or organization.</p>
-<ul><li>Usage: <code>./git-clone-all.sh &lt;github-username-or-url&gt; [--path &lt;dir&gt;]</code></li><li>Accepts either a bare username or a full <code>github.com/&lt;user&gt;</code> URL</li><li>Paginates through the GitHub API to fetch all repositories</li><li>Clones each repo into the target directory (default <code>./repos</code>)</li><li>Skips repositories that are already cloned locally</li><li>No root required</li></ul>
+<ul><li>Usage: <code>./git-clone-all.sh &lt;github-username-or-url&gt; [--path &lt;dir&gt;]</code></li><li>Accepts either a bare username or a full <code>github.com/&lt;user&gt;</code> URL</li><li>Paginates through the GitHub API to fetch all repositories</li><li>Clones each repo into the target directory (default <code>./repos</code>)</li><li>Skips repositories that are already cloned locally</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-git-git-pull-all-sh" data-search="standalone/git git-pull-all.sh pull updates for all git repositories in a directory." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/git/git-pull-all.sh</code><a class="permalink" href="#script-standalone-git-git-pull-all-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/git/git-pull-all.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Updates every Git repository located directly inside the target directory.</p>
+<ul><li>Usage: <code>./git-pull-all.sh [--path &lt;dir&gt;]</code></li><li>Pulls the latest changes for each existing Git repository</li><li>Skips directories that are not Git repositories</li><li>Skips repositories with uncommitted changes</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-git-git-push-all-sh" data-search="standalone/git git-push-all.sh push updates for all git repositories in a directory." data-sudo="0" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/git/git-push-all.sh</code><a class="permalink" href="#script-standalone-git-git-push-all-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/git/git-push-all.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Pushes local commits from every Git repository located directly inside the target directory.</p>
+<ul><li>Usage: <code>./git-push-all.sh [--path &lt;dir&gt;]</code></li><li>Pushes commits from each existing Git repository</li><li>Skips directories that are not Git repositories</li><li>Skips repositories with no commits to push</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
@@ -2741,8 +2769,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-08-04 20:29 UTC &middot;
-167 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-08-08 17:58 UTC &middot;
+169 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -2750,7 +2778,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (7)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (24)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (15)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-kde-plasma">standalone/install/kde-plasma/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (7)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (24)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (15)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-kde-plasma">standalone/install/kde-plasma/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
