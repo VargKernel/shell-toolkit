@@ -10,7 +10,6 @@
 #   - Paginates through the GitHub API to fetch all repositories
 #   - Clones each repo into the target directory (default `./repos`)
 #   - Skips repositories that are already cloned locally
-#   - No root required
 # sudo: false
 # interactive: false
 # idempotent: true
