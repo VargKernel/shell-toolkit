@@ -5,12 +5,12 @@
 # description: |
 #   Installs a complete development environment by chaining scripts from `apt/` and `lsp/`.
 #
-#   - Runs in order: `install-cpp.sh`, `install-python.sh`, `install-php.sh`, `install-npm.sh`, `install-docker.sh`
+#   - Runs in order: `install-cpp.sh`, `install-python.sh`, `install-php.sh`, `install-npm.sh`
 #   - Then installs `install-bash-language-server.sh`, `install-markdown-language-server.sh` and `install-python-language-server.sh`
 # sudo: false
 # interactive: false
 # idempotent: true
-# dependencies: standalone/install/apt/cli/install-cpp.sh, standalone/install/apt/cli/install-python.sh, standalone/install/apt/cli/install-php.sh, standalone/install/apt/cli/install-npm.sh, standalone/install/apt/cli/install-docker.sh, standalone/install/lsp/install-bash-language-server.sh, standalone/install/lsp/install-markdown-language-server.sh, standalone/install/lsp/install-python-language-server.sh
+# dependencies: standalone/install/apt/cli/install-cpp.sh, standalone/install/apt/cli/install-python.sh, standalone/install/apt/cli/install-php.sh, standalone/install/apt/cli/install-npm.sh, standalone/install/lsp/install-bash-language-server.sh, standalone/install/lsp/install-markdown-language-server.sh, standalone/install/lsp/install-python-language-server.sh
 # ---DOC-END---
 
 set -euo pipefail
@@ -43,8 +43,7 @@ run_root_scripts "$CLI_DIR" \
     install-cpp.sh \
     install-python.sh \
     install-php.sh \
-    install-npm.sh \
-    install-docker.sh
+    install-npm.sh
 
 echo "Running LSP installation scripts..."
 run_user_scripts "$LSP_DIR" \
