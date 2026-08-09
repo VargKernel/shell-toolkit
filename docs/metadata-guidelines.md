@@ -41,9 +41,7 @@ Every script must contain a documentation metadata block immediately after the s
 # ---DOC-START---
 # summary: Install the C and C++ development environment.
 # description: |
-#   Installs the GNU C and C++ toolchain, CMake, GDB, Make,
-#   pkg-config, and other packages required for native
-#   development on Debian-based systems.
+#   Installs the GNU C and C++ toolchain, CMake, GDB, Make, pkg-config, and other packages required for native development on Debian-based systems.
 # sudo: true
 # interactive: false
 # idempotent: mostly
