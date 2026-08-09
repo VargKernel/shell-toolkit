@@ -6,11 +6,11 @@
 #   Installs a complete development environment by chaining scripts from `apt/` and `lsp/`.
 #
 #   - Runs in order: `install-cpp.sh`, `install-python.sh`, `install-php.sh`, `install-npm.sh`
-#   - Then installs `install-bash-language-server.sh`, `install-markdown-language-server.sh` and `install-python-language-server.sh`
+#   - Then installs `install-bash-language-server.sh`, `install-markdown-language-server.sh`, `install-python-language-server.sh` and `install-clang-language-server.sh`
 # sudo: false
 # interactive: false
 # idempotent: true
-# dependencies: standalone/install/apt/cli/install-cpp.sh, standalone/install/apt/cli/install-python.sh, standalone/install/apt/cli/install-php.sh, standalone/install/apt/cli/install-npm.sh, standalone/install/lsp/install-bash-language-server.sh, standalone/install/lsp/install-markdown-language-server.sh, standalone/install/lsp/install-python-language-server.sh
+# dependencies: standalone/install/apt/cli/install-cpp.sh, standalone/install/apt/cli/install-python.sh, standalone/install/apt/cli/install-php.sh, standalone/install/apt/cli/install-npm.sh, standalone/install/lsp/install-bash-language-server.sh, standalone/install/lsp/install-markdown-language-server.sh, standalone/install/lsp/install-python-language-server.sh, standalone/install/lsp/install-clang-language-server.sh
 # ---DOC-END---
 
 set -euo pipefail
@@ -50,5 +50,7 @@ run_user_scripts "$LSP_DIR" \
     install-bash-language-server.sh \
     install-markdown-language-server.sh \
     install-python-language-server.sh
+run_root_scripts "$LSP_DIR" \
+    install-clang-language-server.sh
 
 echo "Done."
