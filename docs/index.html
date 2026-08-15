@@ -335,19 +335,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>169</td></tr>
+<tr><td>Total scripts</td><td>170</td></tr>
 <tr><td>Directories</td><td>19</td></tr>
-<tr><td>Require root / sudo</td><td>96 / 169</td></tr>
-<tr><td>Interactive</td><td>29 / 169</td></tr>
+<tr><td>Require root / sudo</td><td>96 / 170</td></tr>
+<tr><td>Interactive</td><td>30 / 170</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>161 / 7 / 1</td></tr>
-<tr><td>Scripts with dependencies</td><td>13 / 169</td></tr>
+    <td>162 / 7 / 1</td></tr>
+<tr><td>Scripts with dependencies</td><td>13 / 170</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>5</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>7</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>24</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>15</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/kde-plasma</td><td>5</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>4</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>5</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>7</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>24</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>15</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/kde-plasma</td><td>5</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>5</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
 </tbody>
 </table>
 
@@ -523,7 +523,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   ├── create-swap.sh
 │   │   ├── create-user.sh
 │   │   ├── purge-virtualbox.sh
-│   │   └── restore-bashrc.sh
+│   │   ├── restore-bashrc.sh
+│   │   └── restore-profile.sh
 │   ├── sources/
 │   │   ├── edit-sources-list-d-list.sh
 │   │   ├── edit-sources-list-d-sources.sh
@@ -710,6 +711,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/maintenance create-user.sh create a new local user." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="create-user.sh"><a href="#script-standalone-maintenance-create-user-sh"><code>create-user.sh</code></a></td><td data-value="create a new local user.">Create a new local user.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance purge-virtualbox.sh purge all installed virtualbox packages and extension packs." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="purge-virtualbox.sh"><a href="#script-standalone-maintenance-purge-virtualbox-sh"><code>purge-virtualbox.sh</code></a></td><td data-value="purge all installed virtualbox packages and extension packs.">Purge all installed VirtualBox packages and Extension Packs.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/maintenance restore-bashrc.sh reset ~/.bashrc to the distribution default." data-sudo="0" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="restore-bashrc.sh"><a href="#script-standalone-maintenance-restore-bashrc-sh"><code>restore-bashrc.sh</code></a></td><td data-value="reset ~/.bashrc to the distribution default.">Reset ~/.bashrc to the distribution default.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/maintenance restore-profile.sh reset ~/.profile to the distribution default." data-sudo="0" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/maintenance">standalone/maintenance</td><td data-value="restore-profile.sh"><a href="#script-standalone-maintenance-restore-profile-sh"><code>restore-profile.sh</code></a></td><td data-value="reset ~/.profile to the distribution default.">Reset ~/.profile to the distribution default.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/sources edit-sources-list-d-list.sh open all .list files in /etc/apt/sources.list.d/." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/sources">standalone/sources</td><td data-value="edit-sources-list-d-list.sh"><a href="#script-standalone-sources-edit-sources-list-d-list-sh"><code>edit-sources-list-d-list.sh</code></a></td><td data-value="open all .list files in /etc/apt/sources.list.d/.">Open all .list files in /etc/apt/sources.list.d/.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/sources edit-sources-list-d-sources.sh open all .sources files in /etc/apt/sources.list.d/." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/sources">standalone/sources</td><td data-value="edit-sources-list-d-sources.sh"><a href="#script-standalone-sources-edit-sources-list-d-sources-sh"><code>edit-sources-list-d-sources.sh</code></a></td><td data-value="open all .sources files in /etc/apt/sources.list.d/.">Open all .sources files in /etc/apt/sources.list.d/.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/sources edit-sources-list.sh open /etc/apt/sources.list in nano." data-sudo="1" data-interactive="1" data-hasdeps="0"><td class="dir-tag" data-value="standalone/sources">standalone/sources</td><td data-value="edit-sources-list.sh"><a href="#script-standalone-sources-edit-sources-list-sh"><code>edit-sources-list.sh</code></a></td><td data-value="open /etc/apt/sources.list in nano.">Open /etc/apt/sources.list in Nano.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -2457,6 +2459,18 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul><li>Usage: <code>./restore-bashrc.sh [--yes]</code></li><li>Backs up the current <code>~/.bashrc</code> with a timestamp before overwriting</li><li>Restores the file from <code>/etc/skel/.bashrc</code></li><li>Requires explicit confirmation before making changes, unless <code>--yes</code> is passed</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-maintenance-restore-profile-sh" data-search="standalone/maintenance restore-profile.sh reset ~/.profile to the distribution default." data-sudo="0" data-interactive="1" data-hasdeps="0">
+<h3><code>standalone/maintenance/restore-profile.sh</code><a class="permalink" href="#script-standalone-maintenance-restore-profile-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/maintenance/restore-profile.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ❌</span>
+<span class="badge">Interactive: ✅</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Restores <code>~/.profile</code> to the distro default.</p>
+<ul><li>Usage: <code>./restore-profile.sh [--yes]</code></li><li>Backs up the current <code>~/.profile</code> with a timestamp before overwriting</li><li>Restores the file from <code>/etc/skel/.profile</code></li><li>Requires explicit confirmation before making changes, unless <code>--yes</code> is passed</li></ul>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-sources" class="dir-heading"><code>standalone/sources/</code><a class="permalink" href="#dir-standalone-sources" aria-label="Link to this section">#</a></h2>
 <div class="script-card" id="script-standalone-sources-edit-sources-list-d-list-sh" data-search="standalone/sources edit-sources-list-d-list.sh open all .list files in /etc/apt/sources.list.d/." data-sudo="1" data-interactive="1" data-hasdeps="0">
 <h3><code>standalone/sources/edit-sources-list-d-list.sh</code><a class="permalink" href="#script-standalone-sources-edit-sources-list-d-list-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/sources/edit-sources-list-d-list.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -2769,8 +2783,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-08-09 09:24 UTC &middot;
-169 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-08-15 18:43 UTC &middot;
+170 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -2778,7 +2792,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (7)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (24)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (15)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-kde-plasma">standalone/install/kde-plasma/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (7)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (24)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (15)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-kde-plasma">standalone/install/kde-plasma/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
