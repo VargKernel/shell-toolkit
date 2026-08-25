@@ -335,19 +335,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>170</td></tr>
-<tr><td>Directories</td><td>19</td></tr>
-<tr><td>Require root / sudo</td><td>96 / 170</td></tr>
-<tr><td>Interactive</td><td>30 / 170</td></tr>
+<tr><td>Total scripts</td><td>218</td></tr>
+<tr><td>Directories</td><td>22</td></tr>
+<tr><td>Require root / sudo</td><td>144 / 218</td></tr>
+<tr><td>Interactive</td><td>30 / 218</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>162 / 7 / 1</td></tr>
-<tr><td>Scripts with dependencies</td><td>13 / 170</td></tr>
+    <td>210 / 7 / 1</td></tr>
+<tr><td>Scripts with dependencies</td><td>13 / 218</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/git</td><td>5</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>7</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>24</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>15</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/kde-plasma</td><td>5</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>5</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/firewall/firewalld/ports</td><td>12</td></tr><tr><td class='dir-tag'>standalone/firewall/firewalld/services</td><td>12</td></tr><tr><td class='dir-tag'>standalone/firewall/ufw/ports</td><td>24</td></tr><tr><td class='dir-tag'>standalone/git</td><td>5</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>7</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>24</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>15</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/kde-plasma</td><td>5</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>5</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
 </tbody>
 </table>
 
@@ -385,6 +385,59 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   ├── cleanup-temp.sh
 │   │   └── cleanup-thumbnails.sh
 │   ├── firewall/
+│   │   ├── firewalld/
+│   │   │   ├── ports/
+│   │   │   │   ├── close-localsend.sh
+│   │   │   │   ├── close-minecraft.sh
+│   │   │   │   ├── close-plex.sh
+│   │   │   │   ├── close-syncthing.sh
+│   │   │   │   ├── close-transmission.sh
+│   │   │   │   ├── close-wireguard.sh
+│   │   │   │   ├── open-localsend.sh
+│   │   │   │   ├── open-minecraft.sh
+│   │   │   │   ├── open-plex.sh
+│   │   │   │   ├── open-syncthing.sh
+│   │   │   │   ├── open-transmission.sh
+│   │   │   │   └── open-wireguard.sh
+│   │   │   └── services/
+│   │   │       ├── close-dns.sh
+│   │   │       ├── close-http.sh
+│   │   │       ├── close-https.sh
+│   │   │       ├── close-mdns.sh
+│   │   │       ├── close-samba.sh
+│   │   │       ├── close-ssh.sh
+│   │   │       ├── open-dns.sh
+│   │   │       ├── open-http.sh
+│   │   │       ├── open-https.sh
+│   │   │       ├── open-mdns.sh
+│   │   │       ├── open-samba.sh
+│   │   │       └── open-ssh.sh
+│   │   ├── ufw/
+│   │   │   └── ports/
+│   │   │       ├── close-dns.sh
+│   │   │       ├── close-http.sh
+│   │   │       ├── close-https.sh
+│   │   │       ├── close-localsend.sh
+│   │   │       ├── close-mdns.sh
+│   │   │       ├── close-minecraft.sh
+│   │   │       ├── close-plex.sh
+│   │   │       ├── close-samba.sh
+│   │   │       ├── close-ssh.sh
+│   │   │       ├── close-syncthing.sh
+│   │   │       ├── close-transmission.sh
+│   │   │       ├── close-wireguard.sh
+│   │   │       ├── open-dns.sh
+│   │   │       ├── open-http.sh
+│   │   │       ├── open-https.sh
+│   │   │       ├── open-localsend.sh
+│   │   │       ├── open-mdns.sh
+│   │   │       ├── open-minecraft.sh
+│   │   │       ├── open-plex.sh
+│   │   │       ├── open-samba.sh
+│   │   │       ├── open-ssh.sh
+│   │   │       ├── open-syncthing.sh
+│   │   │       ├── open-transmission.sh
+│   │   │       └── open-wireguard.sh
 │   │   ├── disable-firewalld.sh
 │   │   ├── disable-ufw.sh
 │   │   ├── enable-firewalld.sh
@@ -590,8 +643,56 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/firewall disable-ufw.sh disable ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall">standalone/firewall</td><td data-value="disable-ufw.sh"><a href="#script-standalone-firewall-disable-ufw-sh"><code>disable-ufw.sh</code></a></td><td data-value="disable ufw.">Disable UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/firewall enable-firewalld.sh enable firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall">standalone/firewall</td><td data-value="enable-firewalld.sh"><a href="#script-standalone-firewall-enable-firewalld-sh"><code>enable-firewalld.sh</code></a></td><td data-value="enable firewalld.">Enable Firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/firewall enable-ufw.sh enable ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall">standalone/firewall</td><td data-value="enable-ufw.sh"><a href="#script-standalone-firewall-enable-ufw-sh"><code>enable-ufw.sh</code></a></td><td data-value="enable ufw.">Enable UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/ports close-localsend.sh close firewalld port for localsend" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="close-localsend.sh"><a href="#script-standalone-firewall-firewalld-ports-close-localsend-sh"><code>close-localsend.sh</code></a></td><td data-value="close firewalld port for localsend">Close firewalld port for localsend</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/ports close-minecraft.sh close firewalld port for minecraft" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="close-minecraft.sh"><a href="#script-standalone-firewall-firewalld-ports-close-minecraft-sh"><code>close-minecraft.sh</code></a></td><td data-value="close firewalld port for minecraft">Close firewalld port for minecraft</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/ports close-plex.sh close firewalld port for plex" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="close-plex.sh"><a href="#script-standalone-firewall-firewalld-ports-close-plex-sh"><code>close-plex.sh</code></a></td><td data-value="close firewalld port for plex">Close firewalld port for plex</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/ports close-syncthing.sh close firewalld port for syncthing" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="close-syncthing.sh"><a href="#script-standalone-firewall-firewalld-ports-close-syncthing-sh"><code>close-syncthing.sh</code></a></td><td data-value="close firewalld port for syncthing">Close firewalld port for syncthing</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/ports close-transmission.sh close firewalld port for transmission" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="close-transmission.sh"><a href="#script-standalone-firewall-firewalld-ports-close-transmission-sh"><code>close-transmission.sh</code></a></td><td data-value="close firewalld port for transmission">Close firewalld port for transmission</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/ports close-wireguard.sh close firewalld port for wireguard" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="close-wireguard.sh"><a href="#script-standalone-firewall-firewalld-ports-close-wireguard-sh"><code>close-wireguard.sh</code></a></td><td data-value="close firewalld port for wireguard">Close firewalld port for wireguard</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/ports open-localsend.sh open firewalld port for localsend" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="open-localsend.sh"><a href="#script-standalone-firewall-firewalld-ports-open-localsend-sh"><code>open-localsend.sh</code></a></td><td data-value="open firewalld port for localsend">Open firewalld port for localsend</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/ports open-minecraft.sh open firewalld port for minecraft" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="open-minecraft.sh"><a href="#script-standalone-firewall-firewalld-ports-open-minecraft-sh"><code>open-minecraft.sh</code></a></td><td data-value="open firewalld port for minecraft">Open firewalld port for minecraft</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/ports open-plex.sh open firewalld port for plex" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="open-plex.sh"><a href="#script-standalone-firewall-firewalld-ports-open-plex-sh"><code>open-plex.sh</code></a></td><td data-value="open firewalld port for plex">Open firewalld port for plex</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/ports open-syncthing.sh open firewalld port for syncthing" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="open-syncthing.sh"><a href="#script-standalone-firewall-firewalld-ports-open-syncthing-sh"><code>open-syncthing.sh</code></a></td><td data-value="open firewalld port for syncthing">Open firewalld port for syncthing</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/ports open-transmission.sh open firewalld port for transmission" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="open-transmission.sh"><a href="#script-standalone-firewall-firewalld-ports-open-transmission-sh"><code>open-transmission.sh</code></a></td><td data-value="open firewalld port for transmission">Open firewalld port for transmission</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/ports open-wireguard.sh open firewalld port for wireguard" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="open-wireguard.sh"><a href="#script-standalone-firewall-firewalld-ports-open-wireguard-sh"><code>open-wireguard.sh</code></a></td><td data-value="open firewalld port for wireguard">Open firewalld port for wireguard</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/services close-dns.sh close firewalld service dns" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/services">standalone/firewall/firewalld/services</td><td data-value="close-dns.sh"><a href="#script-standalone-firewall-firewalld-services-close-dns-sh"><code>close-dns.sh</code></a></td><td data-value="close firewalld service dns">Close firewalld service dns</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/services close-http.sh close firewalld service http" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/services">standalone/firewall/firewalld/services</td><td data-value="close-http.sh"><a href="#script-standalone-firewall-firewalld-services-close-http-sh"><code>close-http.sh</code></a></td><td data-value="close firewalld service http">Close firewalld service http</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/services close-https.sh close firewalld service https" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/services">standalone/firewall/firewalld/services</td><td data-value="close-https.sh"><a href="#script-standalone-firewall-firewalld-services-close-https-sh"><code>close-https.sh</code></a></td><td data-value="close firewalld service https">Close firewalld service https</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/services close-mdns.sh close firewalld service mdns" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/services">standalone/firewall/firewalld/services</td><td data-value="close-mdns.sh"><a href="#script-standalone-firewall-firewalld-services-close-mdns-sh"><code>close-mdns.sh</code></a></td><td data-value="close firewalld service mdns">Close firewalld service mdns</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/services close-samba.sh close firewalld service samba" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/services">standalone/firewall/firewalld/services</td><td data-value="close-samba.sh"><a href="#script-standalone-firewall-firewalld-services-close-samba-sh"><code>close-samba.sh</code></a></td><td data-value="close firewalld service samba">Close firewalld service samba</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/services close-ssh.sh close firewalld service ssh" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/services">standalone/firewall/firewalld/services</td><td data-value="close-ssh.sh"><a href="#script-standalone-firewall-firewalld-services-close-ssh-sh"><code>close-ssh.sh</code></a></td><td data-value="close firewalld service ssh">Close firewalld service ssh</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/services open-dns.sh open firewalld service dns" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/services">standalone/firewall/firewalld/services</td><td data-value="open-dns.sh"><a href="#script-standalone-firewall-firewalld-services-open-dns-sh"><code>open-dns.sh</code></a></td><td data-value="open firewalld service dns">Open firewalld service dns</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/services open-http.sh open firewalld service http" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/services">standalone/firewall/firewalld/services</td><td data-value="open-http.sh"><a href="#script-standalone-firewall-firewalld-services-open-http-sh"><code>open-http.sh</code></a></td><td data-value="open firewalld service http">Open firewalld service http</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/services open-https.sh open firewalld service https" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/services">standalone/firewall/firewalld/services</td><td data-value="open-https.sh"><a href="#script-standalone-firewall-firewalld-services-open-https-sh"><code>open-https.sh</code></a></td><td data-value="open firewalld service https">Open firewalld service https</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/services open-mdns.sh open firewalld service mdns" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/services">standalone/firewall/firewalld/services</td><td data-value="open-mdns.sh"><a href="#script-standalone-firewall-firewalld-services-open-mdns-sh"><code>open-mdns.sh</code></a></td><td data-value="open firewalld service mdns">Open firewalld service mdns</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/services open-samba.sh open firewalld service samba" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/services">standalone/firewall/firewalld/services</td><td data-value="open-samba.sh"><a href="#script-standalone-firewall-firewalld-services-open-samba-sh"><code>open-samba.sh</code></a></td><td data-value="open firewalld service samba">Open firewalld service samba</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld/services open-ssh.sh open firewalld service ssh" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/services">standalone/firewall/firewalld/services</td><td data-value="open-ssh.sh"><a href="#script-standalone-firewall-firewalld-services-open-ssh-sh"><code>open-ssh.sh</code></a></td><td data-value="open firewalld service ssh">Open firewalld service ssh</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/firewall remove-firewalld.sh remove firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall">standalone/firewall</td><td data-value="remove-firewalld.sh"><a href="#script-standalone-firewall-remove-firewalld-sh"><code>remove-firewalld.sh</code></a></td><td data-value="remove firewalld.">Remove Firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/firewall remove-ufw.sh remove ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall">standalone/firewall</td><td data-value="remove-ufw.sh"><a href="#script-standalone-firewall-remove-ufw-sh"><code>remove-ufw.sh</code></a></td><td data-value="remove ufw.">Remove UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports close-dns.sh close ufw port for dns" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="close-dns.sh"><a href="#script-standalone-firewall-ufw-ports-close-dns-sh"><code>close-dns.sh</code></a></td><td data-value="close ufw port for dns">Close ufw port for dns</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports close-http.sh close ufw port for http" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="close-http.sh"><a href="#script-standalone-firewall-ufw-ports-close-http-sh"><code>close-http.sh</code></a></td><td data-value="close ufw port for http">Close ufw port for http</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports close-https.sh close ufw port for https" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="close-https.sh"><a href="#script-standalone-firewall-ufw-ports-close-https-sh"><code>close-https.sh</code></a></td><td data-value="close ufw port for https">Close ufw port for https</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports close-localsend.sh close ufw port for localsend" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="close-localsend.sh"><a href="#script-standalone-firewall-ufw-ports-close-localsend-sh"><code>close-localsend.sh</code></a></td><td data-value="close ufw port for localsend">Close ufw port for localsend</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports close-mdns.sh close ufw port for mdns" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="close-mdns.sh"><a href="#script-standalone-firewall-ufw-ports-close-mdns-sh"><code>close-mdns.sh</code></a></td><td data-value="close ufw port for mdns">Close ufw port for mdns</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports close-minecraft.sh close ufw port for minecraft" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="close-minecraft.sh"><a href="#script-standalone-firewall-ufw-ports-close-minecraft-sh"><code>close-minecraft.sh</code></a></td><td data-value="close ufw port for minecraft">Close ufw port for minecraft</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports close-plex.sh close ufw port for plex" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="close-plex.sh"><a href="#script-standalone-firewall-ufw-ports-close-plex-sh"><code>close-plex.sh</code></a></td><td data-value="close ufw port for plex">Close ufw port for plex</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports close-samba.sh close ufw port for samba" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="close-samba.sh"><a href="#script-standalone-firewall-ufw-ports-close-samba-sh"><code>close-samba.sh</code></a></td><td data-value="close ufw port for samba">Close ufw port for samba</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports close-ssh.sh close ufw port for ssh" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="close-ssh.sh"><a href="#script-standalone-firewall-ufw-ports-close-ssh-sh"><code>close-ssh.sh</code></a></td><td data-value="close ufw port for ssh">Close ufw port for ssh</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports close-syncthing.sh close ufw port for syncthing" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="close-syncthing.sh"><a href="#script-standalone-firewall-ufw-ports-close-syncthing-sh"><code>close-syncthing.sh</code></a></td><td data-value="close ufw port for syncthing">Close ufw port for syncthing</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports close-transmission.sh close ufw port for transmission" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="close-transmission.sh"><a href="#script-standalone-firewall-ufw-ports-close-transmission-sh"><code>close-transmission.sh</code></a></td><td data-value="close ufw port for transmission">Close ufw port for transmission</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports close-wireguard.sh close ufw port for wireguard" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="close-wireguard.sh"><a href="#script-standalone-firewall-ufw-ports-close-wireguard-sh"><code>close-wireguard.sh</code></a></td><td data-value="close ufw port for wireguard">Close ufw port for wireguard</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports open-dns.sh open ufw port for dns" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="open-dns.sh"><a href="#script-standalone-firewall-ufw-ports-open-dns-sh"><code>open-dns.sh</code></a></td><td data-value="open ufw port for dns">Open ufw port for dns</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports open-http.sh open ufw port for http" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="open-http.sh"><a href="#script-standalone-firewall-ufw-ports-open-http-sh"><code>open-http.sh</code></a></td><td data-value="open ufw port for http">Open ufw port for http</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports open-https.sh open ufw port for https" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="open-https.sh"><a href="#script-standalone-firewall-ufw-ports-open-https-sh"><code>open-https.sh</code></a></td><td data-value="open ufw port for https">Open ufw port for https</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports open-localsend.sh open ufw port for localsend" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="open-localsend.sh"><a href="#script-standalone-firewall-ufw-ports-open-localsend-sh"><code>open-localsend.sh</code></a></td><td data-value="open ufw port for localsend">Open ufw port for localsend</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports open-mdns.sh open ufw port for mdns" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="open-mdns.sh"><a href="#script-standalone-firewall-ufw-ports-open-mdns-sh"><code>open-mdns.sh</code></a></td><td data-value="open ufw port for mdns">Open ufw port for mdns</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports open-minecraft.sh open ufw port for minecraft" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="open-minecraft.sh"><a href="#script-standalone-firewall-ufw-ports-open-minecraft-sh"><code>open-minecraft.sh</code></a></td><td data-value="open ufw port for minecraft">Open ufw port for minecraft</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports open-plex.sh open ufw port for plex" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="open-plex.sh"><a href="#script-standalone-firewall-ufw-ports-open-plex-sh"><code>open-plex.sh</code></a></td><td data-value="open ufw port for plex">Open ufw port for plex</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports open-samba.sh open ufw port for samba" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="open-samba.sh"><a href="#script-standalone-firewall-ufw-ports-open-samba-sh"><code>open-samba.sh</code></a></td><td data-value="open ufw port for samba">Open ufw port for samba</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports open-ssh.sh open ufw port for ssh" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="open-ssh.sh"><a href="#script-standalone-firewall-ufw-ports-open-ssh-sh"><code>open-ssh.sh</code></a></td><td data-value="open ufw port for ssh">Open ufw port for ssh</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports open-syncthing.sh open ufw port for syncthing" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="open-syncthing.sh"><a href="#script-standalone-firewall-ufw-ports-open-syncthing-sh"><code>open-syncthing.sh</code></a></td><td data-value="open ufw port for syncthing">Open ufw port for syncthing</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports open-transmission.sh open ufw port for transmission" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="open-transmission.sh"><a href="#script-standalone-firewall-ufw-ports-open-transmission-sh"><code>open-transmission.sh</code></a></td><td data-value="open ufw port for transmission">Open ufw port for transmission</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/ufw/ports open-wireguard.sh open ufw port for wireguard" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/ufw/ports">standalone/firewall/ufw/ports</td><td data-value="open-wireguard.sh"><a href="#script-standalone-firewall-ufw-ports-open-wireguard-sh"><code>open-wireguard.sh</code></a></td><td data-value="open ufw port for wireguard">Open ufw port for wireguard</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/git bootstrap-git.sh bootstrap git configuration for a github account." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="bootstrap-git.sh"><a href="#script-standalone-git-bootstrap-git-sh"><code>bootstrap-git.sh</code></a></td><td data-value="bootstrap git configuration for a github account.">Bootstrap Git configuration for a GitHub account.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/git git-clone-all.sh clone all public repositories from a github user/profile." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="git-clone-all.sh"><a href="#script-standalone-git-git-clone-all-sh"><code>git-clone-all.sh</code></a></td><td data-value="clone all public repositories from a github user/profile.">Clone all public repositories from a GitHub user/profile.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/git git-pull-all.sh pull updates for all git repositories in a directory." data-sudo="0" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/git">standalone/git</td><td data-value="git-pull-all.sh"><a href="#script-standalone-git-git-pull-all-sh"><code>git-pull-all.sh</code></a></td><td data-value="pull updates for all git repositories in a directory.">Pull updates for all Git repositories in a directory.</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -1029,6 +1130,534 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul><li>Resets all UFW rules</li><li>Removes the UFW package</li><li>Removes automatically installed unused dependencies</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-uninstall-ufw-sh"><code>workflows/uninstall-ufw.sh</code></a></li></ul></div>
+</div><h2 id="dir-standalone-firewall-firewalld-ports" class="dir-heading"><code>standalone/firewall/firewalld/ports/</code><a class="permalink" href="#dir-standalone-firewall-firewalld-ports" aria-label="Link to this section">#</a></h2>
+<div class="script-card" id="script-standalone-firewall-firewalld-ports-close-localsend-sh" data-search="standalone/firewall/firewalld/ports close-localsend.sh close firewalld port for localsend" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/ports/close-localsend.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-close-localsend-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/close-localsend.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by LocalSend file transfer as permanent firewalld rule(s) and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-ports-close-minecraft-sh" data-search="standalone/firewall/firewalld/ports close-minecraft.sh close firewalld port for minecraft" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/ports/close-minecraft.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-close-minecraft-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/close-minecraft.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by Minecraft game server as permanent firewalld rule(s) and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-ports-close-plex-sh" data-search="standalone/firewall/firewalld/ports close-plex.sh close firewalld port for plex" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/ports/close-plex.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-close-plex-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/close-plex.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by Plex media server as permanent firewalld rule(s) and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-ports-close-syncthing-sh" data-search="standalone/firewall/firewalld/ports close-syncthing.sh close firewalld port for syncthing" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/ports/close-syncthing.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-close-syncthing-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/close-syncthing.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by Syncthing file synchronization as permanent firewalld rule(s) and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-ports-close-transmission-sh" data-search="standalone/firewall/firewalld/ports close-transmission.sh close firewalld port for transmission" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/ports/close-transmission.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-close-transmission-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/close-transmission.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by Transmission BitTorrent client as permanent firewalld rule(s) and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-ports-close-wireguard-sh" data-search="standalone/firewall/firewalld/ports close-wireguard.sh close firewalld port for wireguard" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/ports/close-wireguard.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-close-wireguard-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/close-wireguard.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by WireGuard VPN as permanent firewalld rule(s) and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-ports-open-localsend-sh" data-search="standalone/firewall/firewalld/ports open-localsend.sh open firewalld port for localsend" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/ports/open-localsend.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-open-localsend-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/open-localsend.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by LocalSend file transfer as permanent firewalld rule(s) and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-ports-open-minecraft-sh" data-search="standalone/firewall/firewalld/ports open-minecraft.sh open firewalld port for minecraft" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/ports/open-minecraft.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-open-minecraft-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/open-minecraft.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by Minecraft game server as permanent firewalld rule(s) and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-ports-open-plex-sh" data-search="standalone/firewall/firewalld/ports open-plex.sh open firewalld port for plex" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/ports/open-plex.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-open-plex-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/open-plex.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by Plex media server as permanent firewalld rule(s) and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-ports-open-syncthing-sh" data-search="standalone/firewall/firewalld/ports open-syncthing.sh open firewalld port for syncthing" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/ports/open-syncthing.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-open-syncthing-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/open-syncthing.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by Syncthing file synchronization as permanent firewalld rule(s) and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-ports-open-transmission-sh" data-search="standalone/firewall/firewalld/ports open-transmission.sh open firewalld port for transmission" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/ports/open-transmission.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-open-transmission-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/open-transmission.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by Transmission BitTorrent client as permanent firewalld rule(s) and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-ports-open-wireguard-sh" data-search="standalone/firewall/firewalld/ports open-wireguard.sh open firewalld port for wireguard" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/ports/open-wireguard.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-open-wireguard-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/open-wireguard.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by WireGuard VPN as permanent firewalld rule(s) and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div><h2 id="dir-standalone-firewall-firewalld-services" class="dir-heading"><code>standalone/firewall/firewalld/services/</code><a class="permalink" href="#dir-standalone-firewall-firewalld-services" aria-label="Link to this section">#</a></h2>
+<div class="script-card" id="script-standalone-firewall-firewalld-services-close-dns-sh" data-search="standalone/firewall/firewalld/services close-dns.sh close firewalld service dns" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/services/close-dns.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-services-close-dns-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/services/close-dns.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the predefined firewalld service 'dns' (DNS resolution service) as a permanent rule and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-services-close-http-sh" data-search="standalone/firewall/firewalld/services close-http.sh close firewalld service http" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/services/close-http.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-services-close-http-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/services/close-http.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the predefined firewalld service 'http' (HTTP web server) as a permanent rule and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-services-close-https-sh" data-search="standalone/firewall/firewalld/services close-https.sh close firewalld service https" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/services/close-https.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-services-close-https-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/services/close-https.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the predefined firewalld service 'https' (HTTPS web server) as a permanent rule and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-services-close-mdns-sh" data-search="standalone/firewall/firewalld/services close-mdns.sh close firewalld service mdns" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/services/close-mdns.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-services-close-mdns-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/services/close-mdns.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the predefined firewalld service 'mdns' (mDNS/Avahi service discovery) as a permanent rule and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-services-close-samba-sh" data-search="standalone/firewall/firewalld/services close-samba.sh close firewalld service samba" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/services/close-samba.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-services-close-samba-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/services/close-samba.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the predefined firewalld service 'samba' (Samba/CIFS file sharing) as a permanent rule and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-services-close-ssh-sh" data-search="standalone/firewall/firewalld/services close-ssh.sh close firewalld service ssh" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/services/close-ssh.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-services-close-ssh-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/services/close-ssh.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the predefined firewalld service 'ssh' (SSH remote access) as a permanent rule and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-services-open-dns-sh" data-search="standalone/firewall/firewalld/services open-dns.sh open firewalld service dns" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/services/open-dns.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-services-open-dns-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/services/open-dns.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the predefined firewalld service 'dns' (DNS resolution service) as a permanent rule and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-services-open-http-sh" data-search="standalone/firewall/firewalld/services open-http.sh open firewalld service http" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/services/open-http.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-services-open-http-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/services/open-http.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the predefined firewalld service 'http' (HTTP web server) as a permanent rule and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-services-open-https-sh" data-search="standalone/firewall/firewalld/services open-https.sh open firewalld service https" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/services/open-https.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-services-open-https-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/services/open-https.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the predefined firewalld service 'https' (HTTPS web server) as a permanent rule and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-services-open-mdns-sh" data-search="standalone/firewall/firewalld/services open-mdns.sh open firewalld service mdns" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/services/open-mdns.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-services-open-mdns-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/services/open-mdns.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the predefined firewalld service 'mdns' (mDNS/Avahi service discovery) as a permanent rule and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-services-open-samba-sh" data-search="standalone/firewall/firewalld/services open-samba.sh open firewalld service samba" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/services/open-samba.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-services-open-samba-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/services/open-samba.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the predefined firewalld service 'samba' (Samba/CIFS file sharing) as a permanent rule and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-firewalld-services-open-ssh-sh" data-search="standalone/firewall/firewalld/services open-ssh.sh open firewalld service ssh" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/services/open-ssh.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-services-open-ssh-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/services/open-ssh.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the predefined firewalld service 'ssh' (SSH remote access) as a permanent rule and reloads firewalld.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div><h2 id="dir-standalone-firewall-ufw-ports" class="dir-heading"><code>standalone/firewall/ufw/ports/</code><a class="permalink" href="#dir-standalone-firewall-ufw-ports" aria-label="Link to this section">#</a></h2>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-close-dns-sh" data-search="standalone/firewall/ufw/ports close-dns.sh close ufw port for dns" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/close-dns.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-close-dns-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/close-dns.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by DNS resolution service via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-close-http-sh" data-search="standalone/firewall/ufw/ports close-http.sh close ufw port for http" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/close-http.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-close-http-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/close-http.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by HTTP web server via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-close-https-sh" data-search="standalone/firewall/ufw/ports close-https.sh close ufw port for https" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/close-https.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-close-https-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/close-https.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by HTTPS web server via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-close-localsend-sh" data-search="standalone/firewall/ufw/ports close-localsend.sh close ufw port for localsend" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/close-localsend.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-close-localsend-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/close-localsend.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by LocalSend file transfer via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-close-mdns-sh" data-search="standalone/firewall/ufw/ports close-mdns.sh close ufw port for mdns" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/close-mdns.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-close-mdns-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/close-mdns.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by mDNS/Avahi service discovery via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-close-minecraft-sh" data-search="standalone/firewall/ufw/ports close-minecraft.sh close ufw port for minecraft" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/close-minecraft.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-close-minecraft-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/close-minecraft.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by Minecraft game server via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-close-plex-sh" data-search="standalone/firewall/ufw/ports close-plex.sh close ufw port for plex" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/close-plex.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-close-plex-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/close-plex.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by Plex media server via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-close-samba-sh" data-search="standalone/firewall/ufw/ports close-samba.sh close ufw port for samba" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/close-samba.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-close-samba-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/close-samba.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by Samba/CIFS file sharing via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-close-ssh-sh" data-search="standalone/firewall/ufw/ports close-ssh.sh close ufw port for ssh" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/close-ssh.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-close-ssh-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/close-ssh.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by SSH remote access via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-close-syncthing-sh" data-search="standalone/firewall/ufw/ports close-syncthing.sh close ufw port for syncthing" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/close-syncthing.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-close-syncthing-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/close-syncthing.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by Syncthing file synchronization via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-close-transmission-sh" data-search="standalone/firewall/ufw/ports close-transmission.sh close ufw port for transmission" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/close-transmission.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-close-transmission-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/close-transmission.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by Transmission BitTorrent client via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-close-wireguard-sh" data-search="standalone/firewall/ufw/ports close-wireguard.sh close ufw port for wireguard" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/close-wireguard.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-close-wireguard-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/close-wireguard.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Closes the port(s) used by WireGuard VPN via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-open-dns-sh" data-search="standalone/firewall/ufw/ports open-dns.sh open ufw port for dns" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/open-dns.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-open-dns-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/open-dns.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by DNS resolution service via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-open-http-sh" data-search="standalone/firewall/ufw/ports open-http.sh open ufw port for http" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/open-http.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-open-http-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/open-http.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by HTTP web server via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-open-https-sh" data-search="standalone/firewall/ufw/ports open-https.sh open ufw port for https" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/open-https.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-open-https-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/open-https.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by HTTPS web server via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-open-localsend-sh" data-search="standalone/firewall/ufw/ports open-localsend.sh open ufw port for localsend" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/open-localsend.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-open-localsend-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/open-localsend.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by LocalSend file transfer via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-open-mdns-sh" data-search="standalone/firewall/ufw/ports open-mdns.sh open ufw port for mdns" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/open-mdns.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-open-mdns-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/open-mdns.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by mDNS/Avahi service discovery via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-open-minecraft-sh" data-search="standalone/firewall/ufw/ports open-minecraft.sh open ufw port for minecraft" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/open-minecraft.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-open-minecraft-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/open-minecraft.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by Minecraft game server via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-open-plex-sh" data-search="standalone/firewall/ufw/ports open-plex.sh open ufw port for plex" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/open-plex.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-open-plex-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/open-plex.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by Plex media server via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-open-samba-sh" data-search="standalone/firewall/ufw/ports open-samba.sh open ufw port for samba" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/open-samba.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-open-samba-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/open-samba.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by Samba/CIFS file sharing via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-open-ssh-sh" data-search="standalone/firewall/ufw/ports open-ssh.sh open ufw port for ssh" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/open-ssh.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-open-ssh-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/open-ssh.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by SSH remote access via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-open-syncthing-sh" data-search="standalone/firewall/ufw/ports open-syncthing.sh open ufw port for syncthing" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/open-syncthing.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-open-syncthing-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/open-syncthing.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by Syncthing file synchronization via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-open-transmission-sh" data-search="standalone/firewall/ufw/ports open-transmission.sh open ufw port for transmission" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/open-transmission.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-open-transmission-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/open-transmission.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by Transmission BitTorrent client via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
+</div>
+<div class="script-card" id="script-standalone-firewall-ufw-ports-open-wireguard-sh" data-search="standalone/firewall/ufw/ports open-wireguard.sh open ufw port for wireguard" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/ufw/ports/open-wireguard.sh</code><a class="permalink" href="#script-standalone-firewall-ufw-ports-open-wireguard-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/ufw/ports/open-wireguard.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Opens the port(s) used by WireGuard VPN via ufw.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-git" class="dir-heading"><code>standalone/git/</code><a class="permalink" href="#dir-standalone-git" aria-label="Link to this section">#</a></h2>
 <div class="script-card" id="script-standalone-git-bootstrap-git-sh" data-search="standalone/git bootstrap-git.sh bootstrap git configuration for a github account." data-sudo="0" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/git/bootstrap-git.sh</code><a class="permalink" href="#script-standalone-git-bootstrap-git-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/git/bootstrap-git.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -2783,8 +3412,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-08-25 08:12 UTC &middot;
-170 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-08-25 08:40 UTC &middot;
+218 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -2792,7 +3421,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (7)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (24)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (15)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-kde-plasma">standalone/install/kde-plasma/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-firewall-firewalld-ports">standalone/firewall/firewalld/ports/<span class="toc-count"> (12)</span></a></li><li><a href="#dir-standalone-firewall-firewalld-services">standalone/firewall/firewalld/services/<span class="toc-count"> (12)</span></a></li><li><a href="#dir-standalone-firewall-ufw-ports">standalone/firewall/ufw/ports/<span class="toc-count"> (24)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (7)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (24)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (15)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-kde-plasma">standalone/install/kde-plasma/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
