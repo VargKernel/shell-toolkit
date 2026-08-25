@@ -5,7 +5,9 @@
 # description: |
 #   Pushes local commits from every Git repository located directly inside the target directory.
 #
-#   - Usage: `./git-push-all.sh [--path <dir>]`
+#   - Usage: `./git-push-all.sh <github-username-or-url> [--path <dir>]`
+#   - Accepts either a bare username or a full `github.com/<user>` URL
+#   - Defaults to the `./<username>` directory produced by `git-clone-all.sh`
 #   - Pushes commits from each existing Git repository
 #   - Skips directories that are not Git repositories
 #   - Skips repositories with no commits to push
@@ -20,15 +22,19 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 usage() {
     cat <<EOF
-Usage: $0 [--path <dir>]
+Usage: $0 <github-username-or-url> [--path <dir>]
+
+Arguments:
+  <github-username-or-url>  Bare GitHub username or a github.com/<user> URL
 
 Options:
-  --path <dir>              Directory containing Git repositories (default: ./repos)
+  --path <dir>              Directory containing Git repositories (default: ./<username>)
   -h, --help                Show this help message and exit
 EOF
 }
 
-DEST="./repos"
+INPUT=""
+DEST=""
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -45,12 +51,28 @@ while [[ $# -gt 0 ]]; do
             shift 2
             ;;
         *)
-            echo "Error: unexpected argument: $1" >&2
-            usage
-            exit 1
+            if [[ -n "$INPUT" ]]; then
+                echo "Error: unexpected argument: $1" >&2
+                usage
+                exit 1
+            fi
+            INPUT="$1"
+            shift
             ;;
     esac
 done
+
+if [[ -z "$INPUT" ]]; then
+    usage
+    exit 1
+fi
+
+# Extract username from URL or use as-is
+USER=$(echo "$INPUT" | sed -E 's#https?://github\.com/##; s#/$##')
+
+if [[ -z "$DEST" ]]; then
+    DEST="./$USER"
+fi
 
 if [[ ! -d "$DEST" ]]; then
     echo "Error: directory does not exist: $DEST" >&2

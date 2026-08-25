@@ -8,7 +8,7 @@
 #   - Usage: `./git-clone-all.sh <github-username-or-url> [--path <dir>]`
 #   - Accepts either a bare username or a full `github.com/<user>` URL
 #   - Paginates through the GitHub API to fetch all repositories
-#   - Clones each repo into the target directory (default `./repos`)
+#   - Clones each repo into the target directory (default `./<username>`)
 #   - Skips repositories that are already cloned locally
 # sudo: false
 # interactive: false
@@ -27,13 +27,13 @@ Arguments:
   <github-username-or-url>  Bare GitHub username or a github.com/<user> URL
 
 Options:
-  --path <dir>              Target directory for cloned repos (default: ./repos)
+  --path <dir>              Target directory for cloned repos (default: ./<username>)
   -h, --help                Show this help message and exit
 EOF
 }
 
 INPUT=""
-DEST="./repos"
+DEST=""
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -68,6 +68,10 @@ fi
 
 # Extract username from URL or use as-is
 USER=$(echo "$INPUT" | sed -E 's#https?://github\.com/##; s#/$##')
+
+if [[ -z "$DEST" ]]; then
+    DEST="./$USER"
+fi
 
 mkdir -p "$DEST"
 cd "$DEST"
