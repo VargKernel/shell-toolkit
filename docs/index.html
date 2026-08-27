@@ -335,19 +335,19 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
 <tbody>
-<tr><td>Total scripts</td><td>219</td></tr>
-<tr><td>Directories</td><td>23</td></tr>
-<tr><td>Require root / sudo</td><td>144 / 219</td></tr>
-<tr><td>Interactive</td><td>30 / 219</td></tr>
+<tr><td>Total scripts</td><td>220</td></tr>
+<tr><td>Directories</td><td>24</td></tr>
+<tr><td>Require root / sudo</td><td>145 / 220</td></tr>
+<tr><td>Interactive</td><td>30 / 220</td></tr>
 <tr><td>Idempotent (always / mostly / no)</td>
-    <td>211 / 7 / 1</td></tr>
-<tr><td>Scripts with dependencies</td><td>13 / 219</td></tr>
+    <td>212 / 7 / 1</td></tr>
+<tr><td>Scripts with dependencies</td><td>13 / 220</td></tr>
 </tbody>
 </table>
 <table>
 <thead><tr><th>Directory</th><th>Scripts</th></tr></thead>
 <tbody>
-<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/ffmpeg</td><td>1</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/firewall/firewalld/ports</td><td>12</td></tr><tr><td class='dir-tag'>standalone/firewall/firewalld/services</td><td>12</td></tr><tr><td class='dir-tag'>standalone/firewall/ufw/ports</td><td>24</td></tr><tr><td class='dir-tag'>standalone/git</td><td>5</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>7</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>24</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>15</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/kde-plasma</td><td>5</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>5</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
+<tr><td class='dir-tag'>standalone/chmod</td><td>4</td></tr><tr><td class='dir-tag'>standalone/cleanup</td><td>14</td></tr><tr><td class='dir-tag'>standalone/ffmpeg</td><td>1</td></tr><tr><td class='dir-tag'>standalone/firewall</td><td>6</td></tr><tr><td class='dir-tag'>standalone/firewall/firewalld</td><td>1</td></tr><tr><td class='dir-tag'>standalone/firewall/firewalld/ports</td><td>12</td></tr><tr><td class='dir-tag'>standalone/firewall/firewalld/services</td><td>12</td></tr><tr><td class='dir-tag'>standalone/firewall/ufw/ports</td><td>24</td></tr><tr><td class='dir-tag'>standalone/git</td><td>5</td></tr><tr><td class='dir-tag'>standalone/group-management</td><td>8</td></tr><tr><td class='dir-tag'>standalone/install</td><td>7</td></tr><tr><td class='dir-tag'>standalone/install/apt/cli</td><td>24</td></tr><tr><td class='dir-tag'>standalone/install/apt/gui</td><td>15</td></tr><tr><td class='dir-tag'>standalone/install/flatpak</td><td>3</td></tr><tr><td class='dir-tag'>standalone/install/kde-plasma</td><td>5</td></tr><tr><td class='dir-tag'>standalone/install/lsp</td><td>4</td></tr><tr><td class='dir-tag'>standalone/install/pipx</td><td>5</td></tr><tr><td class='dir-tag'>standalone/inventory/network</td><td>16</td></tr><tr><td class='dir-tag'>standalone/inventory/system</td><td>23</td></tr><tr><td class='dir-tag'>standalone/maintenance</td><td>5</td></tr><tr><td class='dir-tag'>standalone/sources</td><td>4</td></tr><tr><td class='dir-tag'>standalone/update</td><td>5</td></tr><tr><td class='dir-tag'>standalone/yt-dlp</td><td>4</td></tr><tr><td class='dir-tag'>workflows</td><td>13</td></tr>
 </tbody>
 </table>
 
@@ -401,19 +401,20 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 │   │   │   │   ├── open-syncthing.sh
 │   │   │   │   ├── open-transmission.sh
 │   │   │   │   └── open-wireguard.sh
-│   │   │   └── services/
-│   │   │       ├── close-dns.sh
-│   │   │       ├── close-http.sh
-│   │   │       ├── close-https.sh
-│   │   │       ├── close-mdns.sh
-│   │   │       ├── close-samba.sh
-│   │   │       ├── close-ssh.sh
-│   │   │       ├── open-dns.sh
-│   │   │       ├── open-http.sh
-│   │   │       ├── open-https.sh
-│   │   │       ├── open-mdns.sh
-│   │   │       ├── open-samba.sh
-│   │   │       └── open-ssh.sh
+│   │   │   ├── services/
+│   │   │   │   ├── close-dns.sh
+│   │   │   │   ├── close-http.sh
+│   │   │   │   ├── close-https.sh
+│   │   │   │   ├── close-mdns.sh
+│   │   │   │   ├── close-samba.sh
+│   │   │   │   ├── close-ssh.sh
+│   │   │   │   ├── open-dns.sh
+│   │   │   │   ├── open-http.sh
+│   │   │   │   ├── open-https.sh
+│   │   │   │   ├── open-mdns.sh
+│   │   │   │   ├── open-samba.sh
+│   │   │   │   └── open-ssh.sh
+│   │   │   └── get-firewalld-list.sh
 │   │   ├── ufw/
 │   │   │   └── ports/
 │   │   │       ├── close-dns.sh
@@ -646,6 +647,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <tr data-search="standalone/firewall disable-ufw.sh disable ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall">standalone/firewall</td><td data-value="disable-ufw.sh"><a href="#script-standalone-firewall-disable-ufw-sh"><code>disable-ufw.sh</code></a></td><td data-value="disable ufw.">Disable UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/firewall enable-firewalld.sh enable firewalld." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall">standalone/firewall</td><td data-value="enable-firewalld.sh"><a href="#script-standalone-firewall-enable-firewalld-sh"><code>enable-firewalld.sh</code></a></td><td data-value="enable firewalld.">Enable Firewalld.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/firewall enable-ufw.sh enable ufw." data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall">standalone/firewall</td><td data-value="enable-ufw.sh"><a href="#script-standalone-firewall-enable-ufw-sh"><code>enable-ufw.sh</code></a></td><td data-value="enable ufw.">Enable UFW.</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
+<tr data-search="standalone/firewall/firewalld get-firewalld-list.sh display firewalld ports and services for public and home zones" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld">standalone/firewall/firewalld</td><td data-value="get-firewalld-list.sh"><a href="#script-standalone-firewall-firewalld-get-firewalld-list-sh"><code>get-firewalld-list.sh</code></a></td><td data-value="display firewalld ports and services for public and home zones">Display firewalld ports and services for public and home zones</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/firewall/firewalld/ports close-localsend.sh close firewalld port for localsend" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="close-localsend.sh"><a href="#script-standalone-firewall-firewalld-ports-close-localsend-sh"><code>close-localsend.sh</code></a></td><td data-value="close firewalld port for localsend">Close firewalld port for localsend</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/firewall/firewalld/ports close-minecraft.sh close firewalld port for minecraft" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="close-minecraft.sh"><a href="#script-standalone-firewall-firewalld-ports-close-minecraft-sh"><code>close-minecraft.sh</code></a></td><td data-value="close firewalld port for minecraft">Close firewalld port for minecraft</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
 <tr data-search="standalone/firewall/firewalld/ports close-plex.sh close firewalld port for plex" data-sudo="1" data-interactive="0" data-hasdeps="0"><td class="dir-tag" data-value="standalone/firewall/firewalld/ports">standalone/firewall/firewalld/ports</td><td data-value="close-plex.sh"><a href="#script-standalone-firewall-firewalld-ports-close-plex-sh"><code>close-plex.sh</code></a></td><td data-value="close firewalld port for plex">Close firewalld port for plex</td><td class="badge" data-value="1">✅</td><td class="badge" data-value="0">❌</td><td class="badge" data-value="2">✅</td><td class="deps-count" data-value="0">—</td></tr>
@@ -1144,6 +1146,17 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul><li>Resets all UFW rules</li><li>Removes the UFW package</li><li>Removes automatically installed unused dependencies</li></ul>
 <div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
 <div class="dep-section"><strong>Used by:</strong><ul class="dep-tree"><li><a href="#script-workflows-uninstall-ufw-sh"><code>workflows/uninstall-ufw.sh</code></a></li></ul></div>
+</div><h2 id="dir-standalone-firewall-firewalld" class="dir-heading"><code>standalone/firewall/firewalld/</code><a class="permalink" href="#dir-standalone-firewall-firewalld" aria-label="Link to this section">#</a></h2>
+<div class="script-card" id="script-standalone-firewall-firewalld-get-firewalld-list-sh" data-search="standalone/firewall/firewalld get-firewalld-list.sh display firewalld ports and services for public and home zones" data-sudo="1" data-interactive="0" data-hasdeps="0">
+<h3><code>standalone/firewall/firewalld/get-firewalld-list.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-get-firewalld-list-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/get-firewalld-list.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
+<div class="meta-row">
+<span class="badge">Sudo: ✅</span>
+<span class="badge">Interactive: ❌</span>
+<span class="badge">Idempotent: ✅ (true)</span>
+</div>
+<p>Lists configured ports and services for the public and home firewalld zones.</p>
+<div class="dep-section"><strong>Dependencies:</strong> <span class="dep-none">none</span></div>
+<div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div><h2 id="dir-standalone-firewall-firewalld-ports" class="dir-heading"><code>standalone/firewall/firewalld/ports/</code><a class="permalink" href="#dir-standalone-firewall-firewalld-ports" aria-label="Link to this section">#</a></h2>
 <div class="script-card" id="script-standalone-firewall-firewalld-ports-close-localsend-sh" data-search="standalone/firewall/firewalld/ports close-localsend.sh close firewalld port for localsend" data-sudo="1" data-interactive="0" data-hasdeps="0">
 <h3><code>standalone/firewall/firewalld/ports/close-localsend.sh</code><a class="permalink" href="#script-standalone-firewall-firewalld-ports-close-localsend-sh" aria-label="Link to this section">#</a><button type="button" class="copy-btn" data-path="standalone/firewall/firewalld/ports/close-localsend.sh" title="Copy path" aria-label="Copy path">&#10697;</button></h3>
@@ -3426,8 +3439,8 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <div class="dep-section"><strong>Used by:</strong> <span class="dep-none">none</span></div>
 </div>
 
-<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-08-27 15:46 UTC &middot;
-219 scripts documented.</p>
+<p class="generated-note">Generated by <code>generate-docs.py</code> on 2026-08-27 16:01 UTC &middot;
+220 scripts documented.</p>
 
 </div>
 <nav class="toc" id="toc" aria-label="On this page">
@@ -3435,7 +3448,7 @@ scripts and re-run <code>generate-docs.py</code> instead.</p>
 <ul>
 <li><a href="#at-a-glance">At a Glance</a></li><li><a href="#repository-structure">Repository Structure</a></li><li><a href="#all-scripts">All Scripts</a></li>
 <li class="toc-divider">Directories</li>
-<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-ffmpeg">standalone/ffmpeg/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-firewall-firewalld-ports">standalone/firewall/firewalld/ports/<span class="toc-count"> (12)</span></a></li><li><a href="#dir-standalone-firewall-firewalld-services">standalone/firewall/firewalld/services/<span class="toc-count"> (12)</span></a></li><li><a href="#dir-standalone-firewall-ufw-ports">standalone/firewall/ufw/ports/<span class="toc-count"> (24)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (7)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (24)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (15)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-kde-plasma">standalone/install/kde-plasma/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
+<li><a href="#dir-standalone-chmod">standalone/chmod/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-cleanup">standalone/cleanup/<span class="toc-count"> (14)</span></a></li><li><a href="#dir-standalone-ffmpeg">standalone/ffmpeg/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-firewall">standalone/firewall/<span class="toc-count"> (6)</span></a></li><li><a href="#dir-standalone-firewall-firewalld">standalone/firewall/firewalld/<span class="toc-count"> (1)</span></a></li><li><a href="#dir-standalone-firewall-firewalld-ports">standalone/firewall/firewalld/ports/<span class="toc-count"> (12)</span></a></li><li><a href="#dir-standalone-firewall-firewalld-services">standalone/firewall/firewalld/services/<span class="toc-count"> (12)</span></a></li><li><a href="#dir-standalone-firewall-ufw-ports">standalone/firewall/ufw/ports/<span class="toc-count"> (24)</span></a></li><li><a href="#dir-standalone-git">standalone/git/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-group-management">standalone/group-management/<span class="toc-count"> (8)</span></a></li><li><a href="#dir-standalone-install">standalone/install/<span class="toc-count"> (7)</span></a></li><li><a href="#dir-standalone-install-apt-cli">standalone/install/apt/cli/<span class="toc-count"> (24)</span></a></li><li><a href="#dir-standalone-install-apt-gui">standalone/install/apt/gui/<span class="toc-count"> (15)</span></a></li><li><a href="#dir-standalone-install-flatpak">standalone/install/flatpak/<span class="toc-count"> (3)</span></a></li><li><a href="#dir-standalone-install-kde-plasma">standalone/install/kde-plasma/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-install-lsp">standalone/install/lsp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-install-pipx">standalone/install/pipx/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-inventory-network">standalone/inventory/network/<span class="toc-count"> (16)</span></a></li><li><a href="#dir-standalone-inventory-system">standalone/inventory/system/<span class="toc-count"> (23)</span></a></li><li><a href="#dir-standalone-maintenance">standalone/maintenance/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-sources">standalone/sources/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-standalone-update">standalone/update/<span class="toc-count"> (5)</span></a></li><li><a href="#dir-standalone-yt-dlp">standalone/yt-dlp/<span class="toc-count"> (4)</span></a></li><li><a href="#dir-workflows">workflows/<span class="toc-count"> (13)</span></a></li>
 </ul>
 <a class="toc-back-to-top" href="#top">&uarr; Back to top</a>
 </nav>
