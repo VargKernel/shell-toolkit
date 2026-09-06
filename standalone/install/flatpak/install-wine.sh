@@ -18,7 +18,7 @@
 #   having to type the full `flatpak run --command=...` command.
 #
 # sudo: false
-# interactive: false
+# interactive: true
 # idempotent: true
 # dependencies: none
 # ---DOC-END---
