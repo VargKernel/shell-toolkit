@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ---DOC-START---
-# summary: Install the Wayland/Sway core environment.
+# summary: Install the Wayland/Sway environment.
 # description: |
 #   Installs `sway`, `swaybg`, `wofi`, `waybar`, `xwayland`,
 #   `xdg-desktop-portal-wlr`, `xdg-desktop-portal-gtk`, `fuse3`,
